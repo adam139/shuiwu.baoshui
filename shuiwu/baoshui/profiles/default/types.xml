@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- This file registers new types with portal_types. The types are
+     then configured with the corresponding files in types/*.xml. Note
+     that spaces are allowed in type names, but the corresponding XML file
+     uses an underscore instead. The "Factory-based Type Information with
+     dynamic views" refers to an FTI from Products.CMFDynamicViewFTI,
+     which supports Plone's "display" menu.
+  -->
+<object name="portal_types" meta_type="Plone Types Tool">
+  <!-- -*- extra stuff goes here -*- -->
+  <object name="shuiwu.baoshui.jidujilu" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.yuedujilu" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.ziyuanshui" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.qishui" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.gengdizhanyongshui" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.yinhuashuianci" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.yinhuashuizijinzhangbo" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.gonghuijingfei" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.tudizengzhishuianji" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.yinhuashuianji" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.tudishiyongshui" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.shuilijijinjibao" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.fangchanshuifangchanyuanzhi" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.qiyesuodeshuialei" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.zhifugongzimingxi" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.baobiaofuzhu" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.lirunbiao" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.xianjinliuliangbiao" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.zichanfuzaibiao" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.touzizhegerensuodeshui" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.shebaofei" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.shuilijijin" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.tudizengzhishui" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.fangchanshui" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.qiyesuodeshuiblei" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.yinhuashuianyue" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.gerensuodeshui" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.jiaoyufeifujia" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.chengjianshui" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.nashuiren" meta_type="Dexterity FTI" />
+</object>
