@@ -94,7 +94,7 @@ class Allcontents(unittest.TestCase):
 # add jidu records
         for i in range(3):
             j = str(i + 1)
-            id = "yuedujilu%s" % (j)
+            id = "jidujilu%s" % (j)
             portal['nashuiren1']['qiyesuodeshuialei1'].invokeFactory('shuiwu.baoshui.jidujilu',id,title=id)
             portal['nashuiren1']['fangchanshuifangchanyuanzhi1'].invokeFactory('shuiwu.baoshui.jidujilu',id,title=id)
             portal['nashuiren1']['shuilijijinjibao1'].invokeFactory('shuiwu.baoshui.jidujilu',id,title=id)

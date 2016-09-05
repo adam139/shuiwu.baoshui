@@ -9,8 +9,38 @@
     i18n:translate="">na shui ren niandu sheshui shenbao jilu</property>
   <property name="content_icon">folder_icon.gif</property>
   <property name="global_allow">True</property>
-  <property name="filter_content_types">False</property>  
-  <property name="allowed_content_types" />
+  <property name="filter_content_types">False</property>
+
+  <property name="allowed_content_types" >
+  <element value="shuiwu.baoshui.ziyuanshui" />
+  <element value="shuiwu.baoshui.qishui" />
+  <element value="shuiwu.baoshui.gengdizhanyongshui" />
+  <element value="shuiwu.baoshui.yinhuashuianci" />      
+  <element value="shuiwu.baoshui.yinhuashuizijinzhangbo" />
+  <element value="shuiwu.baoshui.gonghuijingfei" />
+  <element value="shuiwu.baoshui.tudizengzhishuianji" />
+  <element value="shuiwu.baoshui.yinhuashuianji" /> 	  	
+  <element value="shuiwu.baoshui.tudishiyongshui" />
+  <element value="shuiwu.baoshui.shuilijijinjibao" />
+  <element value="shuiwu.baoshui.fangchanshuifangchanyuanzhi" />
+  <element value="shuiwu.baoshui.qiyesuodeshuialei" />      
+  <element value="shuiwu.baoshui.zhifugongzimingxi" />
+  <element value="shuiwu.baoshui.baobiaofuzhu" />
+  <element value="shuiwu.baoshui.lirunbiao" />
+  <element value="shuiwu.baoshui.xianjinliuliangbiao" />
+  <element value="shuiwu.baoshui.zichanfuzaibiao" />
+  <element value="shuiwu.baoshui.touzizhegerensuodeshui" />
+  <element value="shuiwu.baoshui.shebaofei" />
+  <element value="shuiwu.baoshui.shuilijijin" />      
+  <element value="shuiwu.baoshui.tudizengzhishui" />
+  <element value="shuiwu.baoshui.fangchanshui" />
+  <element value="shuiwu.baoshui.qiyesuodeshuiblei" />
+  <element value="shuiwu.baoshui.yinhuashuianyue" /> 
+  <element value="shuiwu.baoshui.gerensuodeshui" />
+  <element value="shuiwu.baoshui.jiaoyufeifujia" />
+  <element value="shuiwu.baoshui.chengjianshui" />      
+  </property>
+
   <property name="allow_discussion">False</property>
 
  <!-- schema interface FIXME: this is ugly -->
