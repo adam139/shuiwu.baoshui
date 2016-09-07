@@ -8,9 +8,10 @@
     <includeDependencies package="." />
 
   <i18n:registerTranslations directory="locales" />
+  <include package=".browser" />  
 
     <!-- Register an extension profile to make the product installable -->
-  <include package=".behavior" />
+
 
   <genericsetup:registerProfile
       name="default"

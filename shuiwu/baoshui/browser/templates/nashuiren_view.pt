@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="context/main_template/macros/master"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"      
+      i18n:domain="shuiwu.baoshui">       
+
+<body>
+<metal:main fill-slot="main">
+	<tal:main-macro metal:define-macro="main">
+    	<!-- jquery ajax callback function update status notify -->
+    	<div class="row" id="ajax-status-notify" style="display:none;">
+    		<div class="col-xs-12">notify message</div>
+    	</div>		
+		<div class ="row"><h2 class="text-center" tal:content="context.title">某某公司</h2></div>
+		<div class="report row">
+			<table class="table bodered outer col-md-12">
+				<tbody>
+					<tr class="row">
+						<td class="property col-md-4">管理代码</td>
+						<td class="property col-md-8">档案编号</td>
+					</tr>
+					<tr class="row">
+						<td class="text-center col-md-4">资料种类</td>
+						<td class="data col-md-8">
+							<table class="table bordered inner">
+								<tr class="row">
+									<td class="col-md-1">1月</td>
+									<td class="col-md-1">2月</td>
+									<td class="col-md-1">3月</td>
+									<td class="col-md-1">4月</td>
+									<td class="col-md-1">5月</td>
+									<td class="col-md-1">6月</td>
+									<td class="col-md-1">7月</td>
+									<td class="col-md-1">8月</td>
+									<td class="col-md-1">9月</td>
+									<td class="col-md-1">10月</td>
+									<td class="col-md-1">11月</td>
+									<td class="col-md-1">12月</td>
+								</tr>
+							</table>
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="text-center col-md-12">按月申报</td>
+					</tr>					
+					<tr class="row">
+						<td class="property col-md-4">城建税申报表</td>
+						<td class="data col-md-8" tal:content="python:view.getChildrensByMonth('chengjianshui')">
+
+						</td>						
+					</tr>					
+					<tr class="row">
+						<td class="text-center col-md-12">按季申报</td>
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">企业所得税预缴表（A类）</td>
+						<td class="data col-md-8" tal:content="python:view.getChildrensByQuarter('qiyesuodeshuialei')">
+
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="text-center col-md-12">按次申报</td>
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">印花税申报表（资金帐薄）</td>
+						<td class="data col-md-8" tal:content="python:view.getChildrensByNumber('yinhuashuizijinzhangbo')">
+
+						</td>						
+					</tr>															
+				</tbody>
+			</table>
+		</div>    	
+    </tal:main-macro>
+</metal:main>
+<metal:js fill-slot="javascript_bottom_slot">
+<script>
+	$(document).ready(function(){
+		//click a triger
+		$(".workflow-action").on("click","a",function(e) {
+		e.preventDefault();
+		//located parent object and add css class
+		$(this).parent().parent().addClass("current");
+		// close old form
+	  $(".workflow-action form").hide();
+		//hide submit buttom
+		$(".workflow-action span").show();		
+		//display ajax input form
+		$(".current form").show();
+		//hide submit buttom
+		$(".current span").hide();
+		return false;	
+		});
+	$(".buttonarea").on("click",".current button[name='ok']",function(e) {
+		e.preventDefault();	
+		var action = $(".current span a").attr('href');
+		var actionid = $(".current span a").attr('data-action-id');
+		var actiontype = $(".current span a").attr('data-action-type');		
+		var formval = $(".current  textarea").val();
+		if (formval ==="") {
+		alert( "must input comment" );
+		return false;
+		}
+		var data = {'subject':formval,'actionid':actionid,'actiontype':actiontype};
+		$.post(action,data,function(callback) {
+			$(".current form").hide();
+			$(".current span").show();
+			if (callback['result']) {
+//			  location.reload(true);
+				$(".workflow-status").html(callback['status']);
+				$("#ajax-status-notify div").html(callback['message']);
+				$("#ajax-status-notify").show();
+			}				
+		},'json');
+		return false;
+	});
+
+	$(".buttonarea").on("click",".current button[name='cancel']",function(e) {
+			e.preventDefault();
+			$(".current form").hide();
+			$(".current span").show();
+			return false;
+	});	
+			
+}
+)
+</script>
+</metal:js>
+</body>
+</html>

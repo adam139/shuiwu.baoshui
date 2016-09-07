@@ -26,6 +26,10 @@ setup(name='shuiwu.baoshui',
       install_requires=[
           'setuptools',
           'plone.app.dexterity',
+          'plone.directives.form',
+          'plone.directives.dexterity',
+          'collective.dexteritytextindexer',          
+          'five.grok',
           'collective.autopermission',
           # -*- Extra requirements: -*-
       ],

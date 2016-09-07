@@ -1,0 +1,44 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="shuiwu.baoshui">
+    
+	<include package="plone.app.contentmenu" />
+  <include package="Products.CMFCore" file="permissions.zcml" />
+
+
+  <!-- Register static resource directory -->
+	<browser:resourceDirectory
+  		name="shuiwu.baoshui"
+  		directory="static" /> 
+        
+  <browser:page
+        name="sysajax_listings"
+        template="templates/sysajax_listings_novocabulary.pt"
+        for="*"
+        permission="cmf.ManagePortal"
+        class=".ajax_listing.sysAjaxListingView"
+        menu="plone_displayviews"
+        title="system Ajax view"/>		
+
+
+
+   <browser:page
+        name="datainout-controlpanel"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".datainout.DataInOut"
+        template="templates/datainout.pt"
+        permission="cmf.ManagePortal"
+
+        />
+
+   <browser:page
+        name="datainout-getCSVTemplate"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".datainout.DataInOut"
+        attribute="getCSVTemplate"
+        permission="cmf.ManagePortal"
+
+        />
+		       
+</configure>

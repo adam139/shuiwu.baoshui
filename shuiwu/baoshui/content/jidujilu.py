@@ -1,7 +1,7 @@
-from five import grok
+# from five import grok
 from zope import schema
 
-from plone.directives import form, dexterity
+from plone.directives import form
 
 from shuiwu.baoshui import _
 

@@ -8,6 +8,7 @@
   -->
 <object name="portal_types" meta_type="Plone Types Tool">
   <!-- -*- extra stuff goes here -*- -->
+  <object name="shuiwu.baoshui.ancijilu" meta_type="Dexterity FTI" />  
   <object name="shuiwu.baoshui.jidujilu" meta_type="Dexterity FTI" />
   <object name="shuiwu.baoshui.yuedujilu" meta_type="Dexterity FTI" />
   <object name="shuiwu.baoshui.ziyuanshui" meta_type="Dexterity FTI" />
@@ -38,4 +39,5 @@
   <object name="shuiwu.baoshui.jiaoyufeifujia" meta_type="Dexterity FTI" />
   <object name="shuiwu.baoshui.chengjianshui" meta_type="Dexterity FTI" />
   <object name="shuiwu.baoshui.nashuiren" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.nashuiku" meta_type="Dexterity FTI" />  
 </object>

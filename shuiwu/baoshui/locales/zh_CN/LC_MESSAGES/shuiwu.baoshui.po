@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: shuiwu.baoshui\n"
-"POT-Creation-Date: 2016-09-03 13:27+0000\n"
-"PO-Revision-Date: 2016-09-03 21:30+0800\n"
+"POT-Creation-Date: 2016-09-06 14:21+0000\n"
+"PO-Revision-Date: 2016-09-06 22:24+0800\n"
 "Last-Translator: adam <yuejun.tang@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,9 +15,85 @@ msgstr ""
 "Domain: my315ok.socialorgnization\n"
 "X-Poedit-Language: Chinese\n"
 
+#: ./browser/templates/datainout.pt:102
+msgid "Click here to get the errors as a CSV file"
+msgstr "点击这里获取包含错误信息的CSV文件"
+
+#: ./browser/templates/datainout.pt:115
+msgid "Click on the Export button in order to download the full list of the social organizations as a CSV file. The CSV syntax is the same used in the template."
+msgstr ""
+
+#: ./browser/templates/datainout.pt:45
+msgid "Csv file"
+msgstr "Csv 文件"
+
+#: ./browser/datainout.py:157
+msgid "Data successfully imported."
+msgstr "数据已成功导入"
+
+#: ./browser/templates/datainout.pt:92
+msgid "Errors detail"
+msgstr "错误详情"
+
+#: ./browser/templates/datainout.pt:112
+msgid "Export"
+msgstr "导出"
+
+#: ./browser/templates/datainout.pt:135
+msgid "ExportXiangtanshi"
+msgstr ""
+
+#: ./browser/templates/datainout.pt:156
+msgid "ExportXiangtanshiJijinhui"
+msgstr ""
+
+#: ./browser/templates/datainout.pt:149
+msgid "ExportXiangtanshiMinfei"
+msgstr ""
+
+#: ./browser/templates/datainout.pt:142
+msgid "ExportXiangtanshiShetuan"
+msgstr ""
+
+#: ./browser/templates/datainout.pt:40
+msgid "Import"
+msgstr "导入"
+
+#: ./profiles/default/types/shuiwu.baoshui.nashuiku.xml
+msgid "Na shui ku"
+msgstr "纳税人资料库"
+
 #: ./profiles/default/types/shuiwu.baoshui.nashuiren.xml
 msgid "Na shui ren"
 msgstr "纳税人"
+
+#: ./browser/templates/datainout.pt:14
+msgid "Organizations In/Out"
+msgstr ""
+
+#: ./browser/templates/datainout.pt:27
+msgid "Organizations import and export as CSV files."
+msgstr ""
+
+#: ./browser/templates/datainout.pt:77
+msgid "Results"
+msgstr ""
+
+#: ./browser/templates/datainout.pt:48
+msgid "Select your CSV file here. Please respect the syntax of the template available ${here}"
+msgstr ""
+
+#: ./browser/datainout.py:154
+msgid "Some errors occured. Please check your CSV syntax and retry."
+msgstr ""
+
+#: ./browser/datainout.py:99
+msgid "Wrong specification of the CSV file. Please correct it and retry."
+msgstr ""
+
+#: ./browser/templates/datainout.pt:93
+msgid "You will find below the CSV lines that failed."
+msgstr ""
 
 #: ./profiles/default/types/shuiwu.baoshui.baobiaofuzhu.xml
 msgid "baobiao fuzhu"
@@ -103,9 +179,17 @@ msgstr "工会经费申报表"
 msgid "gonghuijingfei"
 msgstr "工会经费"
 
+#: ./browser/templates/datainout.pt:87
+msgid "group(s) added."
+msgstr ""
+
 #: ./content/nashuiren.py:19
 msgid "guanli daima"
 msgstr "管理代码"
+
+#: ./browser/templates/datainout.pt:49
+msgid "here"
+msgstr ""
 
 #: ./profiles/default/types/shuiwu.baoshui.jiaoyufeifujia.xml
 msgid "jiaoyu fei fujia"
@@ -127,6 +211,10 @@ msgstr "利润表"
 msgid "lirunbiao"
 msgstr "利润表"
 
+#: ./profiles/default/types/shuiwu.baoshui.nashuiku.xml
+msgid "na shui ku baohan duoge nashuiren jilu"
+msgstr ""
+
 #: ./profiles/default/types/shuiwu.baoshui.nashuiren.xml
 msgid "na shui ren niandu sheshui shenbao jilu"
 msgstr "纳税人年度涉税申报记录"
@@ -134,6 +222,10 @@ msgstr "纳税人年度涉税申报记录"
 #: ./content/nashuiren.py:20
 msgid "nashuiren guanli daima."
 msgstr "纳税人管理代码"
+
+#: ./browser/templates/datainout.pt:83
+msgid "nashuiren(s) added."
+msgstr ""
 
 #: ./content/nashuiren.py:14
 msgid "niandu"
@@ -195,6 +287,50 @@ msgstr "水利基金申报表（月报）"
 #: ./profiles/default/types/shuiwu.baoshui.shuilijijinjibao.xml
 msgid "shuilijijin jibao"
 msgstr "水利基金季报"
+
+#: ./browser/templates/nashuiren_view.pt:36
+msgid "submit comments"
+msgstr ""
+
+#: ./browser/templates/nashuiren_view.pt:28
+msgid "submit to chuyang"
+msgstr ""
+
+#: ./browser/templates/nashuiren_view.pt:48
+msgid "submit to chuyang1"
+msgstr ""
+
+#: ./browser/templates/nashuiren_view.pt:209
+msgid "submit to chuyang2"
+msgstr ""
+
+#: ./browser/templates/nashuiren_view.pt:348
+msgid "submit to dingxing"
+msgstr ""
+
+#: ./browser/templates/nashuiren_view.pt:68
+msgid "submit to shiyang"
+msgstr ""
+
+#: ./browser/templates/nashuiren_view.pt:149
+msgid "submit to shiyang1"
+msgstr ""
+
+#: ./browser/templates/nashuiren_view.pt:427
+msgid "submit to shiyang2"
+msgstr ""
+
+#: ./browser/templates/nashuiren_view.pt:87
+msgid "submit to zhengyang"
+msgstr ""
+
+#: ./browser/templates/nashuiren_view.pt:168
+msgid "submit to zhengyang1"
+msgstr ""
+
+#: ./browser/templates/nashuiren_view.pt:588
+msgid "submit to zhengyang2"
+msgstr ""
 
 #: ./profiles/default/types/shuiwu.baoshui.touzizhegerensuodeshui.xml
 msgid "touzizhe genren suodeshui shenbaobiao"

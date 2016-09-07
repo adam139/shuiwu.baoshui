@@ -3,6 +3,7 @@ from five import grok
 from zope import schema
 
 from plone.directives import form, dexterity
+from collective import dexteritytextindexer
 
 from shuiwu.baoshui import _
 
@@ -10,14 +11,27 @@ class INashuiren(form.Schema):
     """
     na shui ren niandu sheshui shenbao jilu
     """
-#年度           
+# 纳税人名称/所属科室/税管员、税务登记日期
+    dexteritytextindexer.searchable('title')
+    title = schema.TextLine(title=_(u"nashuiren mingcheng"),
+                             default=u"",
+                             required=True,)
+    description = schema.TextLine(title=_(u"nashuiren suoshu keshi"),
+                             default=u"",
+                             required=True,)
+    dengjiriqi = schema.Date(
+        title=_(u"dengji riqi"),
+        description=u'',
+        required=True,)        
+
+#当前报表年度           
     year = schema.TextLine(title=_(u"niandu"),
                              default=u"2012",
                              required=False,)
 #管理代码    
     guanlidaima = schema.ASCIILine(
             title=_(u"guanli daima"),
-            description=_(u"nashuiren guanli daima."),
+            description=_(u"shehui xingren daima (nashuiren shibiehao)"),
             required=True)
 #档案编号     
     danganbianhao = schema.ASCIILine(
@@ -45,9 +59,16 @@ class INashuiren(form.Schema):
     feizhenghurending = schema.Bool(title=_(u"fei zhenghu rending biao"),
                        required=False,
                        default=False)
+
+    
     
     form.omitted('year')
     
+@form.default_value(field=INashuiren['dengjiriqi'])
+def dengjiriqiDefaultValue(data):
+    # To get hold of the folder, do: context = data.context
+    return datetime.datetime.today()
+
 @form.default_value(field=INashuiren['year'])
 def YearDefaultValue(data):
     # To get hold of the folder, do: context = data.context
