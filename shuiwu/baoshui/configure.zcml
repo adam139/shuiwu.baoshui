@@ -22,5 +22,9 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
-
+  <subscriber
+            for="shuiwu.baoshui.content.nashuiren.Inashuiren
+                 zope.lifecycleevent.interfaces.IObjectAddedEvent"
+            handler=".subscriber.initObjectTree"
+            />
 </configure>

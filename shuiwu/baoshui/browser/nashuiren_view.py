@@ -74,6 +74,13 @@ class NashuirenView(BrowserView):
         query['path'] = "%s/%s" % (path,id)
         return query    
     
+    def needInit(self,objid):
+        query = self.getPathQuery(objid)
+        query['object_provides'] = Iyuedujilu.__identifier__
+        brains = self.catalog()(query)
+        return not bool(brains)
+        
+        
     def getChildrensByMonth(self,objid):
         "依据按月度申报的内容对象id，提取其每个月申报记录（是否已申报）"
         
