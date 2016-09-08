@@ -19,7 +19,16 @@
         permission="cmf.ManagePortal"
         class=".ajax_listing.sysAjaxListingView"
         menu="plone_displayviews"
-        title="system Ajax view"/>		
+        title="system Ajax view"/>
+
+  <browser:page
+        name="nashuiren_view"
+        template="templates/nashuiren_view.pt"
+        for="shuiwu.baoshui.content.nashuiren.Inashuiren"
+        permission="cmf.ManagePortal"
+        class=".nashuiren_view.NashuirenView"
+        menu="plone_displayviews"
+        title="nashuiren view"/>	        		
 
 
 

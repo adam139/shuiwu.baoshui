@@ -7,7 +7,7 @@ from collective import dexteritytextindexer
 
 from shuiwu.baoshui import _
 
-class INashuiren(form.Schema):
+class Inashuiren(form.Schema):
     """
     na shui ren niandu sheshui shenbao jilu
     """
@@ -64,12 +64,12 @@ class INashuiren(form.Schema):
     
     form.omitted('year')
     
-@form.default_value(field=INashuiren['dengjiriqi'])
+@form.default_value(field=Inashuiren['dengjiriqi'])
 def dengjiriqiDefaultValue(data):
     # To get hold of the folder, do: context = data.context
     return datetime.datetime.today()
 
-@form.default_value(field=INashuiren['year'])
+@form.default_value(field=Inashuiren['year'])
 def YearDefaultValue(data):
     # To get hold of the folder, do: context = data.context
 #     return (datetime.datetime.today() + datetime.timedelta(-365)).strftime("%Y")

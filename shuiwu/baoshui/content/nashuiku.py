@@ -6,7 +6,7 @@ from plone.directives import form
 
 # from shuiwu.baoshui import _
 
-class INashuiku(form.Schema):
+class Inashuiku(form.Schema):
     """
     na shui ku baohan duoge nashuiren jilu
     """

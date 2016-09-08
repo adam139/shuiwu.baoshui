@@ -87,11 +87,11 @@ class InitContents(unittest.TestCase):
             portal['nashuiku1']['nashuiren1']['lirunbiao1'].invokeFactory('shuiwu.baoshui.yuedujilu',id,title=id)
             portal['nashuiku1']['nashuiren1']['baobiaofuzhu1'].invokeFactory('shuiwu.baoshui.yuedujilu',id,title=id)
             portal['nashuiku1']['nashuiren1']['zhifugongzimingxi1'].invokeFactory('shuiwu.baoshui.yuedujilu',id,title=id)
-            portal['nashuiku1']['nashuiren1']['yinhuashuizijinzhangbo1'].invokeFactory('shuiwu.baoshui.yuedujilu',id,title=id)
-            portal['nashuiku1']['nashuiren1']['yinhuashuianci1'].invokeFactory('shuiwu.baoshui.yuedujilu',id,title=id)
-            portal['nashuiku1']['nashuiren1']['gengdizhanyongshui1'].invokeFactory('shuiwu.baoshui.yuedujilu',id,title=id)
-            portal['nashuiku1']['nashuiren1']['qishui1'].invokeFactory('shuiwu.baoshui.yuedujilu',id,title=id)
-            portal['nashuiku1']['nashuiren1']['ziyuanshui1'].invokeFactory('shuiwu.baoshui.yuedujilu',id,title=id)                                                
+            portal['nashuiku1']['nashuiren1']['yinhuashuizijinzhangbo1'].invokeFactory('shuiwu.baoshui.ancijilu',id,title=id)
+            portal['nashuiku1']['nashuiren1']['yinhuashuianci1'].invokeFactory('shuiwu.baoshui.ancijilu',id,title=id)
+            portal['nashuiku1']['nashuiren1']['gengdizhanyongshui1'].invokeFactory('shuiwu.baoshui.ancijilu',id,title=id)
+            portal['nashuiku1']['nashuiren1']['qishui1'].invokeFactory('shuiwu.baoshui.ancijilu',id,title=id)
+            portal['nashuiku1']['nashuiren1']['ziyuanshui1'].invokeFactory('shuiwu.baoshui.ancijilu',id,title=id)                                                
 # add jidu records
         for i in range(3):
             j = str(i + 1)

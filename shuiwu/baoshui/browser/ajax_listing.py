@@ -16,8 +16,8 @@ from Products.CMFCore import permissions
 # from plone.directives import dexterity
 from plone.memoize.instance import memoize
 from shuiwu.baoshui import _
-from shuiwu.baoshui.content.nashuiku import INashuiku
-from shuiwu.baoshui.content.nashuiren import INashuiren
+from shuiwu.baoshui.content.nashuiku import Inashuiku
+from shuiwu.baoshui.content.nashuiren import Inashuiren
 
 from Products.Five.browser import BrowserView
 

@@ -9,7 +9,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.statusmessages.interfaces import IStatusMessage
 from plone.i18n.normalizer.interfaces import IUserPreferredFileNameNormalizer
 
-from shuiwu.baoshui.content.nashuiren import INashuiren
+from shuiwu.baoshui.content.nashuiren import Inashuiren
 
 from shuiwu.baoshui import _
 

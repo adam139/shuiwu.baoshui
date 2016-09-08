@@ -13,12 +13,12 @@
     	<div class="row" id="ajax-status-notify" style="display:none;">
     		<div class="col-xs-12">notify message</div>
     	</div>		
-		<div class ="row"><h2 class="text-center" tal:content="context.title">某某公司</h2></div>
+		<div class ="row"><h2 class="text-center" tal:content="python:context.title">某某公司</h2></div>
 		<div class="report row">
 			<table class="table bodered outer col-md-12">
 				<tbody>
 					<tr class="row">
-						<td class="property col-md-4">管理代码</td>
+						<td class="property col-md-4"><span>管理代码:</span><span tal:content="python:context.guanlidaima"></span></td>
 						<td class="property col-md-8">档案编号</td>
 					</tr>
 					<tr class="row">
@@ -47,7 +47,7 @@
 					</tr>					
 					<tr class="row">
 						<td class="property col-md-4">城建税申报表</td>
-						<td class="data col-md-8" tal:content="python:view.getChildrensByMonth('chengjianshui')">
+						<td class="data col-md-8" tal:content="structure python:view.getChildrensByMonth('chengjianshui1')">
 
 						</td>						
 					</tr>					
@@ -56,7 +56,7 @@
 					</tr>
 					<tr class="row">
 						<td class="property col-md-4">企业所得税预缴表（A类）</td>
-						<td class="data col-md-8" tal:content="python:view.getChildrensByQuarter('qiyesuodeshuialei')">
+						<td class="data col-md-8" tal:content="structure python:view.getChildrensByQuarter('qiyesuodeshuialei1')">
 
 						</td>						
 					</tr>
@@ -65,7 +65,7 @@
 					</tr>
 					<tr class="row">
 						<td class="property col-md-4">印花税申报表（资金帐薄）</td>
-						<td class="data col-md-8" tal:content="python:view.getChildrensByNumber('yinhuashuizijinzhangbo')">
+						<td class="data col-md-8" tal:content="structure python:view.getChildrensByNumber('yinhuashuizijinzhangbo1')">
 
 						</td>						
 					</tr>															
