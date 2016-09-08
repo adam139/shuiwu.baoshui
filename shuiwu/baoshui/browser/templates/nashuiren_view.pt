@@ -18,8 +18,12 @@
 			<table class="table bodered outer col-md-12">
 				<tbody>
 					<tr class="row">
-						<td class="property col-md-4"><span>管理代码:</span><span tal:content="python:context.guanlidaima"></span></td>
-						<td class="property col-md-8">档案编号</td>
+						<td class="property col-md-4">
+							<span>管理代码:</span><span tal:content="python:context.guanlidaima"></span>
+						</td>
+						<td class="property col-md-8"><span>档案编号:</span>
+						<span tal:content="python:context.guanlidaima">201</span>
+						</td>
 					</tr>
 					<tr class="row">
 						<td class="text-center col-md-4">资料种类</td>
@@ -47,28 +51,172 @@
 					</tr>					
 					<tr class="row">
 						<td class="property col-md-4">城建税申报表</td>
-						<td class="data col-md-8" tal:content="structure python:view.getChildrensByMonth('chengjianshui1')">
-
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByMonth('chengjianshui1')">
 						</td>						
-					</tr>					
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">教育费附加申报表</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByMonth('jiaoyufeifujia1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">个人所得税扣缴表</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByMonth('gerensuodeshui1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">印花税申报表（按月）</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByMonth('yinhuashuianyue1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">企业所得税预缴表（B类）</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByMonth('qiyesuodeshuiblei1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">房产税申报表（租金收入）</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByMonth('fangchanshui1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">土地增值税申报表（按月）</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByMonth('tudizengzhishui1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">水利基金申报表（月报）</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByMonth('shuilijijin1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">社保费申报表</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByMonth('shebaofei1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">投资者个人所得税申报表</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByMonth('touzizhegerensuodeshui1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">资产负债表</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByMonth('zichanfuzaibiao1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">现金流量表</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByMonth('xianjinliuliangbiao1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">利润表</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByMonth('lirunbiao1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">报表附注</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByMonth('baobiaofuzhu1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">支付工资明细</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByMonth('zhifugongzimingxi1')">
+						</td>						
+					</tr>																																																																											
 					<tr class="row">
 						<td class="text-center col-md-12">按季申报</td>
 					</tr>
 					<tr class="row">
 						<td class="property col-md-4">企业所得税预缴表（A类）</td>
-						<td class="data col-md-8" tal:content="structure python:view.getChildrensByQuarter('qiyesuodeshuialei1')">
-
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByQuarter('qiyesuodeshuialei1')">
 						</td>						
 					</tr>
+					<tr class="row">
+						<td class="property col-md-4">房产税申报表（房产原值）</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByQuarter('fangchanshuifangchanyuanzhi1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">水利基金申报表（季报）</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByQuarter('shuilijijinjibao1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">土地使用税申报表</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByQuarter('tudishiyongshui1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">印花税申报表（按季）</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByQuarter('yinhuashuianji1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">土地增值税申报表（按季）</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByQuarter('tudizengzhishuianji1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">工会经费申报表</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByQuarter('gonghuijingfei1')">
+						</td>						
+					</tr>																														
 					<tr class="row">
 						<td class="text-center col-md-12">按次申报</td>
 					</tr>
 					<tr class="row">
 						<td class="property col-md-4">印花税申报表（资金帐薄）</td>
-						<td class="data col-md-8" tal:content="structure python:view.getChildrensByNumber('yinhuashuizijinzhangbo1')">
-
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByNumber('yinhuashuizijinzhangbo1')">
 						</td>						
-					</tr>															
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">印花税申报表（按次）</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByNumber('yinhuashuianci1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">耕地占用税申报表</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByNumber('gengdizhanyongshui1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">契税申报表</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByNumber('qishui1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">资源税申报表</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByNumber('ziyuanshui1')">
+						</td>						
+					</tr>																																			
 				</tbody>
 			</table>
 		</div>    	
