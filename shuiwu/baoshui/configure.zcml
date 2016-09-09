@@ -27,4 +27,8 @@
                  zope.lifecycleevent.interfaces.IObjectAddedEvent"
             handler=".subscriber.initObjectTree"
             />
+<subscriber
+    for="shuiwu.baoshui.interfaces.ICreateNashuirenEvent"
+    handler=".subscriber.CreateNashuirenEvent"
+    />            
 </configure>
