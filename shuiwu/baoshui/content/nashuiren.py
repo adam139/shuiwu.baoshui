@@ -3,11 +3,12 @@ from five import grok
 from zope import schema
 
 from plone.directives import form, dexterity
+from plone.app.dexterity.behaviors.metadata import IBasic
 from collective import dexteritytextindexer
 
 from shuiwu.baoshui import _
 
-class Inashuiren(form.Schema):
+class Inashuiren(form.Schema,IBasic):
     """
     na shui ren niandu sheshui shenbao jilu
     """
@@ -16,13 +17,25 @@ class Inashuiren(form.Schema):
     title = schema.TextLine(title=_(u"nashuiren mingcheng"),
                              default=u"",
                              required=True,)
+#主管税务所（科、分局）    
     description = schema.TextLine(title=_(u"nashuiren suoshu keshi"),
                              default=u"",
                              required=True,)
+#   税务登记日期 
     dengjiriqi = schema.Date(
         title=_(u"dengji riqi"),
         description=u'',
         required=True,)        
+#主管税务机关
+    zhuguanshuiwujiguan = schema.TextLine(title=_(u"zhu guan shuiwu jiguan"),
+                             default=u"",
+                             required=False,)
+
+
+#税收管理员
+    shuiguanyuan = schema.TextLine(title=_(u"shuishou guanlirenyuan"),
+                             default=u"",
+                             required=False,)
 
 #当前报表年度           
     year = schema.TextLine(title=_(u"niandu"),
@@ -62,7 +75,7 @@ class Inashuiren(form.Schema):
 
     
     
-    form.omitted('year')
+    form.omitted('year','zhuguanshuiwujiguan')
     
 @form.default_value(field=Inashuiren['dengjiriqi'])
 def dengjiriqiDefaultValue(data):

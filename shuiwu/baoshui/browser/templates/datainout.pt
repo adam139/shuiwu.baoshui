@@ -13,7 +13,7 @@
     <div metal:fill-slot="prefs_configlet_main">
       <h1 class="documentFirstHeading"
           i18n:translate="">
-        Organizations In/Out
+        nashuiren daoru huo daochu
       </h1>      
       <tal:trans i18n:domain="plone">
         <a href=""
@@ -25,7 +25,7 @@
       </tal:trans>
       
       <p class="discreet" i18n:translate="">
-          Organizations import and export as CSV files.
+          nashuiren import and export as CSV files.
       </p>
         
       <form method="POST" action="#"  enctype="multipart/form-data"
@@ -114,7 +114,7 @@
           </legend>            
           <div class="formHelp" i18n:translate="">
             Click on the Export button in order to download the full list of the
-            social organizations as a CSV file. The CSV syntax is the same used in the
+            nashuiren jiben xinxi as a CSV file. The CSV syntax is the same used in the
             template.
           </div>          
           <div class="formControls"
@@ -132,34 +132,7 @@
                    i18n:attributes="value"
                    i18n:domain="shuiwu.baoshui"
                    />
-            <input class="standalone btn btn-primary"
-                   type="submit"
-                   value="ExportXiangtanshi"
-                   name="form.button.ExportXiangtanshi"
-                   i18n:attributes="value"
-                   i18n:domain="shuiwu.baoshui"
-                   />  
-            <input class="standalone btn btn-primary"
-                   type="submit"
-                   value="ExportXiangtanshiShetuan"
-                   name="form.button.ExportXiangtanshiShetuan"
-                   i18n:attributes="value"
-                   i18n:domain="shuiwu.baoshui"
-                   />  
-            <input class="standalone btn btn-primary"
-                   type="submit"
-                   value="ExportXiangtanshiMinfei"
-                   name="form.button.ExportXiangtanshiMinfei"
-                   i18n:attributes="value"
-                   i18n:domain="shuiwu.baoshui"
-                   />
-            <input class="standalone btn btn-primary"
-                   type="submit"
-                   value="ExportXiangtanshiJijinhui"
-                   name="form.button.ExportXiangtanshiJijinhui"
-                   i18n:attributes="value"
-                   i18n:domain="shuiwu.baoshui"
-                   />                                                                               
+                                                                             
           </div>
         </fieldset>
         <input tal:replace="structure context/@@authenticator/authenticator" />

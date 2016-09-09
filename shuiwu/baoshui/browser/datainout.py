@@ -10,33 +10,28 @@ from Products.statusmessages.interfaces import IStatusMessage
 from plone.i18n.normalizer.interfaces import IUserPreferredFileNameNormalizer
 
 from shuiwu.baoshui.content.nashuiren import Inashuiren
+from shuiwu.baoshui.events import CreateNashuirenEvent
 
 from shuiwu.baoshui import _
 
+# field names will be imported
 data_PROPERTIES = [
     'title',
+    'guanlidaima',
+    'dengjiriqi',
     'description',
-    'address',
-    'legal_person',        
-    'supervisor',
-    'register_code',
-    'belondto_area',
-    'organization_type',
-    'announcement_type',
-    'passDate'
+    'shuiguanyuan',        
+    'danganbianhao'
     ] 
 # need byte string
 data_VALUES = [
-               u"社会组织名称".encode('utf-8'),
-               u"经营范围".encode('utf-8'),
-               u"注册地址".encode('utf-8'),
-               u"法定代表热".encode('utf-8'),
-               u"上级主管部门".encode('utf-8'),
-               u"登记证号".encode('utf-8'),
-               u"所属区县".encode('utf-8'),
-               u"社会组织类型".encode('utf-8'),
-               u"公告类别".encode('utf-8'),
-               u"批准日期".encode('utf-8')
+               u"纳税人名称".encode('utf-8'),
+               u"社会信用代码".encode('utf-8'),
+               u"登记日期".encode('utf-8'),
+#                u"主管税务机关".encode('utf-8'),
+               u"主管税务所（科、分局）".encode('utf-8'),
+               u"税收管理员".encode('utf-8'),               
+               u"税收档案编号".encode('utf-8')
                ]
 
 
@@ -62,17 +57,6 @@ class DataInOut (BrowserView):
         if self.request.form.get('form.button.Export'):
             return self.exportData()
         
-        if self.request.form.get('form.button.ExportXiangtanshi'):
-            return self.exportData(orgnization_belondtoArea="xiangtanshi")        
-        
-        if self.request.form.get('form.button.ExportXiangtanshiShetuan'):
-            return self.exportData(orgnization_belondtoArea="xiangtanshi",orgnization_orgnizationType="shetuan")
-        
-        if self.request.form.get('form.button.ExportXiangtanshiMinfei'):
-            return self.exportData(orgnization_belondtoArea="xiangtanshi",orgnization_orgnizationType="minfei") 
-                      
-        if self.request.form.get('form.button.ExportXiangtanshiJijinhui'):
-            return self.exportData(orgnization_belondtoArea="xiangtanshi",orgnization_orgnizationType="jijinhui") 
 
     def getCSVTemplate(self):
         """Return a CSV template to use when importing members."""
@@ -81,7 +65,7 @@ class DataInOut (BrowserView):
 
     def IdIsExist(self,Id):
         catalog = getToolByName(self.context, "portal_catalog")
-        brains = catalog(object_provides=IOrgnization.__identifier__,id=Id) 
+        brains = catalog(object_provides=Inashuiren.__identifier__,id=Id) 
         return bool(brains) 
             
     def importData(self):
@@ -113,30 +97,26 @@ class DataInOut (BrowserView):
             datas = dict(zip(data_PROPERTIES, line))  
             
             try:
-#                groups = [g.strip() for g in datas.pop('groups').split(',') if g]
-                name = datas['title']
-                if not isinstance(name, unicode):
-                    filename = unicode(name, 'utf-8')
-                id = IUserPreferredFileNameNormalizer(self.request).normalize(filename)
-#                id = datas['id']
+#                映射数据到纳税人字段
+                title = datas['title']
+                if not isinstance(title, unicode):
+                    filename = unicode(title, 'utf-8')
+#                 id = IUserPreferredFileNameNormalizer(self.request).normalize(filename)
+                id = datas['guanlidaima']
                 if self.IdIsExist(id):continue
-                title = filename                
+                title = filename
+                guanlidaima = id                
+                dengjiriqi = datas.pop('dengjiriqi')
                 description = datas.pop('description')
-                address = datas.pop('address')
-                legal_person = datas['legal_person']
-                supervisor = datas.pop('supervisor')
-                register_code = datas.pop('register_code')
-                belondto_area = datas.pop('belondto_area')
-                organization_type = datas['organization_type']
-                announcement_type = datas.pop('announcement_type')
-                passDate = datas.pop('passDate')
+                shuiguanyuan = datas['shuiguanyuan']
+                danganbianhao = datas.pop('danganbianhao')
+
                 
 # send a add organization event
                 try:
-                    event.notify(CreateOrgEvent(
-                                                id,title,description,
-                                                address,legal_person,supervisor,register_code,
-                                                belondto_area,organization_type,announcement_type,passDate))
+                    event.notify(CreateNashuirenEvent(
+                                                id,title,guanlidaima,dengjiriqi,description,
+                                                shuiguanyuan,danganbianhao))
 
                 except (AttributeError, ValueError), err:
                     logging.exception(err)
