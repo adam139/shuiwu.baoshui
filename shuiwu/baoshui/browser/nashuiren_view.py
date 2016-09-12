@@ -1,5 +1,5 @@
 #-*- coding: UTF-8 -*-
-# from five import grok
+from five import grok
 from z3c.form import field
 from Acquisition import aq_inner
 from plone.directives import dexterity
@@ -10,6 +10,7 @@ from Products.Five.browser import BrowserView
 from shuiwu.baoshui.content.jidujilu import Ijidujilu
 from shuiwu.baoshui.content.ancijilu import Iancijilu
 from shuiwu.baoshui.content.yuedujilu import Iyuedujilu
+from shuiwu.baoshui.content.nashuiren import Inashuiren
 # from shuiwu.baoshui.content.ziyuanshui import IZiyuanshui
 # from shuiwu.baoshui.content.qishui import IQishui
 # from shuiwu.baoshui.content.gengdizhanyongshui import IGengdizhanyongshui
@@ -111,11 +112,13 @@ class NashuirenView(BrowserView):
         for i in braindata:
             o = i.getObject()
             if o.shenbaofou == False:           
-                out = """<td class="col-md-%(width)s text-center"><input type="checkbox" /></td>""" \
-                % dict(width=width)
+                out = """<td class="col-md-%(width)s text-center">
+                <input data-id="%(objid)s" type="checkbox" /></td>""" \
+                % dict(width=width,objid=i.id)
             else:
-                out = """<td class="col-md-%(width)s text-center"><input type="checkbox" checked="checked" /></td>""" \
-                % dict(width=width)                                  
+                out = """<td class="col-md-%(width)s text-center">
+                <input data-id="%(objid)s" type="checkbox" checked="checked" /></td>""" \
+                % dict(width=width,objid=i.id)                                  
             outhtml = "%s%s" %(outhtml ,out)
            
         data = """%s</tr></table>"""  % outhtml
@@ -133,7 +136,121 @@ class NashuirenView(BrowserView):
             outhtml = "%s%s" %(outhtml ,out)           
         data = """%s</tr></table>""" % outhtml
         return data     
+  
+class NashuirenEdit(NashuirenView):
+    """nashuiren edit view"""
+
+    def outputcheckbox(self,braindata,width=1):
+        "根据参数total,braindata,返回jason 输出"
+        outhtml = """<table class="table bordered inner"><tr class="row">"""      
+
+        for i in braindata:
+            o = i.getObject()
+            if o.shenbaofou == False:           
+                out = """<td class="col-md-%(width)s text-center">
+                <input data-url="%(objurl)s" type="checkbox" /></td>""" \
+                % dict(width=width,objurl=o.absolute_url())
+            else:
+                out = """<td class="col-md-%(width)s text-center">
+                <input data-url="%(objurl)s" type="checkbox" checked="checked" /></td>""" \
+                % dict(width=width,objurl=o.absolute_url())                                  
+            outhtml = "%s%s" %(outhtml ,out)
+           
+        data = """%s</tr></table>"""  % outhtml
+
+        return data
     
+    def outputnumber(self,braindata,width=1):
+        "根据参数输出html"
+        outhtml = """<table class="table bordered inner"><tr class="row">"""      
+
+        for i in braindata:
+            o = i.getObject()
+            out = """<td class="col-md-%(width)s text-center">
+            <input data-url="%(objurl)s" type="text" value="%(num)s" /></td>""" \
+                % dict(width=width,objurl=o.absolute_url(),num=o.shenbaocishu)                                  
+            outhtml = "%s%s" %(outhtml ,out)           
+        data = """%s</tr></table>""" % outhtml
+        return data        
                     
+ # ajax modify yuedu jilu
+class BatchModify(grok.View):
+    """AJAX action for batch modify yuedu jilu.
+    """    
+    grok.context(Inashuiren)
+    grok.name('batch_modify')
+    grok.require('zope2.View')
+    
+    @memoize    
+    def catalog(self):
+        context = aq_inner(self.context)
+        pc = getToolByName(context, "portal_catalog")
+        return pc
+        
+    def render(self):    
+        datadic = self.request.form
+        objid = datadic['objid']
+        shenbaofou = datadic['shenbaofou']
+        if shenbaofou == 'true':
+            shenbaofou = True
+        else:
+            shenbaofou = False
+        path = "/".join(self.context.getPhysicalPath())
+        path ="%s/%s" %(path,objid)
+        query = {}
+        query['path'] = path
+        query['object_provides'] = [Iyuedujilu.__identifier__,Ijidujilu.__identifier__]
+        brains = self.catalog()(query)
+        for o in brains:
+            obj = o.getObject()
+            obj.shenbaofou = shenbaofou
+        
+        
+
+ 
+ # ajax modify yuedu jilu
+class ModifyYuedujlu(grok.View):
+    """AJAX action for yuedu jilu.
+    """    
+    grok.context(Iyuedujilu)
+    grok.name('modify_yuedujilu')
+    grok.require('zope2.View')
+    
+    def render(self):    
+        datadic = self.request.form
+        shenbaofou = datadic['shenbaofou'] 
+        if shenbaofou =="true":
+            self.context.shenbaofou = True
+        else:
+            self.context.shenbaofou = True
+
+ # ajax modify yuedu jilu
+class ModifyJidujlu(grok.View):
+    """AJAX action for jidu jilu.
+    """    
+    grok.context(Ijidujilu)
+    grok.name('modify_jidujilu')
+    
+    def render(self):    
+        datadic = self.request.form
+        shenbaofou = datadic['shenbaofou'] 
+        if shenbaofou =="true":
+            self.context.shenbaofou = True
+        else:
+            self.context.shenbaofou = True    
+
+ 
+ # ajax modify anci jilu
+class ModifyAncijlu(grok.View):
+    """AJAX action for jidu jilu.
+    """    
+    grok.context(Iancijilu)
+    grok.name('modify_ancijilu')
+    grok.require('zope2.View')
+    
+    def render(self):    
+        datadic = self.request.form
+        shenbaocishu = int(datadic['shenbaocishu'])
+        self.context.shenbaocishu =  shenbaocishu
 
 

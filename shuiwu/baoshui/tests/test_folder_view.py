@@ -14,10 +14,7 @@ import datetime
 
 class TestFolderView(InitContents):
     
-    layer = FUNCTIONAL_TESTING
-
-
-                
+    layer = FUNCTIONAL_TESTING                
         
     def test_view(self):
 

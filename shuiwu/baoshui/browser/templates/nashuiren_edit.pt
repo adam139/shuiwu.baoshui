@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="context/main_template/macros/master"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"      
+      i18n:domain="shuiwu.baoshui">       
+
+<body>
+<metal:main fill-slot="main">
+	<tal:main-macro metal:define-macro="main">
+    	<!-- jquery ajax callback function update status notify -->
+    	<div class="row" id="ajax-status-notify" style="display:none;">
+    		<div class="col-xs-12">notify message</div>
+    	</div>		
+		<div class ="row"><h2 class="text-center" tal:content="python:context.title">某某公司</h2></div>
+		<div class="report row">
+			<table class="table bodered outer col-md-12">
+				<tbody>
+					<tr class="row">
+						<td class="property col-md-4">
+							<span>管理代码:</span><span tal:content="python:context.guanlidaima"></span>
+						</td>
+						<td class="property col-md-8"><span>档案编号:</span>
+						<span tal:content="python:context.guanlidaima">201</span>
+						</td>
+					</tr>
+					<tr class="row">
+						<td class="text-center col-md-4">资料种类</td>
+						<td class="data col-md-8">
+							<table class="table bordered inner">
+								<tr class="row">
+									<td class="col-md-1">1月</td>
+									<td class="col-md-1">2月</td>
+									<td class="col-md-1">3月</td>
+									<td class="col-md-1">4月</td>
+									<td class="col-md-1">5月</td>
+									<td class="col-md-1">6月</td>
+									<td class="col-md-1">7月</td>
+									<td class="col-md-1">8月</td>
+									<td class="col-md-1">9月</td>
+									<td class="col-md-1">10月</td>
+									<td class="col-md-1">11月</td>
+									<td class="col-md-1">12月</td>
+								</tr>
+							</table>
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="text-center col-md-12">按月申报</td>
+					</tr>					
+					<tr class="row">
+						<td class="property col-md-4">城建税申报表</td>
+						<td class="data col-md-8" data-id="chengjianshui1"
+							tal:content="structure python:view.getChildrensByMonth('chengjianshui1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">教育费附加申报表</td>
+						<td class="data col-md-8" data-id="jiaoyufeifujia1" 
+							tal:content="structure python:view.getChildrensByMonth('jiaoyufeifujia1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">个人所得税扣缴表</td>
+						<td class="data col-md-8" data-id="gerensuodeshui1" 
+							tal:content="structure python:view.getChildrensByMonth('gerensuodeshui1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">印花税申报表（按月）</td>
+						<td class="data col-md-8" data-id="yinhuashuianyue1" 
+							tal:content="structure python:view.getChildrensByMonth('yinhuashuianyue1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">企业所得税预缴表（B类）</td>
+						<td class="data col-md-8" data-id="qiyesuodeshuiblei1" 
+							tal:content="structure python:view.getChildrensByMonth('qiyesuodeshuiblei1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">房产税申报表（租金收入）</td>
+						<td class="data col-md-8" data-id="chengjianshui1" 
+							tal:content="structure python:view.getChildrensByMonth('fangchanshui1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">土地增值税申报表（按月）</td>
+						<td class="data col-md-8" data-id="tudizengzhishui1" 
+							tal:content="structure python:view.getChildrensByMonth('tudizengzhishui1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">水利基金申报表（月报）</td>
+						<td class="data col-md-8" data-id="shuilijijin1" 
+							tal:content="structure python:view.getChildrensByMonth('shuilijijin1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">社保费申报表</td>
+						<td class="data col-md-8" data-id="shebaofei1" 
+							tal:content="structure python:view.getChildrensByMonth('shebaofei1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">投资者个人所得税申报表</td>
+						<td class="data col-md-8" data-id="touzizhegerensuodeshui1" 
+							tal:content="structure python:view.getChildrensByMonth('touzizhegerensuodeshui1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">资产负债表</td>
+						<td class="data col-md-8" data-id="zichanfuzaibiao1" 
+							tal:content="structure python:view.getChildrensByMonth('zichanfuzaibiao1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">现金流量表</td>
+						<td class="data col-md-8" data-id="xianjinliuliangbiao1" 
+							tal:content="structure python:view.getChildrensByMonth('xianjinliuliangbiao1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">利润表</td>
+						<td class="data col-md-8" data-id="lirunbiao1" 
+							tal:content="structure python:view.getChildrensByMonth('lirunbiao1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">报表附注</td>
+						<td class="data col-md-8" data-id="baobiaofuzhu1" 
+							tal:content="structure python:view.getChildrensByMonth('baobiaofuzhu1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">支付工资明细</td>
+						<td class="data col-md-8" data-id="zhifugongzimingxi1" 
+							tal:content="structure python:view.getChildrensByMonth('zhifugongzimingxi1')">
+						</td>						
+					</tr>																																																																											
+					<tr class="row">
+						<td class="text-center col-md-12">按季申报</td>
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">企业所得税预缴表（A类）</td>
+						<td class="data col-md-8" data-id="qiyesuodeshuialei1" 
+							tal:content="structure python:view.getChildrensByQuarter('qiyesuodeshuialei1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">房产税申报表（房产原值）</td>
+						<td class="data col-md-8" data-id="fangchanshuifangchanyuanzhi1" 
+							tal:content="structure python:view.getChildrensByQuarter('fangchanshuifangchanyuanzhi1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">水利基金申报表（季报）</td>
+						<td class="data col-md-8" data-id="shuilijijinjibao1" 
+							tal:content="structure python:view.getChildrensByQuarter('shuilijijinjibao1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">土地使用税申报表</td>
+						<td class="data col-md-8" data-id="tudishiyongshui1" 
+							tal:content="structure python:view.getChildrensByQuarter('tudishiyongshui1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">印花税申报表（按季）</td>
+						<td class="data col-md-8" data-id="yinhuashuianji1" 
+							tal:content="structure python:view.getChildrensByQuarter('yinhuashuianji1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">土地增值税申报表（按季）</td>
+						<td class="data col-md-8" data-id="tudizengzhishuianji1" 
+							tal:content="structure python:view.getChildrensByQuarter('tudizengzhishuianji1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">工会经费申报表</td>
+						<td class="data col-md-8" data-id="gonghuijingfei1" 
+							tal:content="structure python:view.getChildrensByQuarter('gonghuijingfei1')">
+						</td>						
+					</tr>																														
+					<tr class="row">
+						<td class="text-center col-md-12">按次申报</td>
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">印花税申报表（资金帐薄）</td>
+						<td class="data col-md-8" data-id="yinhuashuizijinzhangbo1" 
+							tal:content="structure python:view.getChildrensByNumber('yinhuashuizijinzhangbo1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">印花税申报表（按次）</td>
+						<td class="data col-md-8" data-id="yinhuashuianci1" 
+							tal:content="structure python:view.getChildrensByNumber('yinhuashuianci1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">耕地占用税申报表</td>
+						<td class="data col-md-8" data-id="gengdizhanyongshui1" 
+							tal:content="structure python:view.getChildrensByNumber('gengdizhanyongshui1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">契税申报表</td>
+						<td class="data col-md-8" data-id="qishui1" 
+							tal:content="structure python:view.getChildrensByNumber('qishui1')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">资源税申报表</td>
+						<td class="data col-md-8" data-id="ziyuanshui1" 
+							tal:content="structure python:view.getChildrensByNumber('ziyuanshui1')">
+						</td>						
+					</tr>																																			
+				</tbody>
+			</table>
+		</div>    	
+    </tal:main-macro>
+</metal:main>
+<metal:js fill-slot="javascript_bottom_slot">
+<script>
+	$(document).ready(function(){
+		//click a triger
+		$(".workflow-action").on("click","a",function(e) {
+		e.preventDefault();
+		//located parent object and add css class
+		$(this).parent().parent().addClass("current");
+		// close old form
+	  $(".workflow-action form").hide();
+		//hide submit buttom
+		$(".workflow-action span").show();		
+		//display ajax input form
+		$(".current form").show();
+		//hide submit buttom
+		$(".current span").hide();
+		return false;	
+		});
+	$(".buttonarea").on("click",".current button[name='ok']",function(e) {
+		e.preventDefault();	
+		var action = $(".current span a").attr('href');
+		var actionid = $(".current span a").attr('data-action-id');
+		var actiontype = $(".current span a").attr('data-action-type');		
+		var formval = $(".current  textarea").val();
+		if (formval ==="") {
+		alert( "must input comment" );
+		return false;
+		}
+		var data = {'subject':formval,'actionid':actionid,'actiontype':actiontype};
+		$.post(action,data,function(callback) {
+			$(".current form").hide();
+			$(".current span").show();
+			if (callback['result']) {
+//			  location.reload(true);
+				$(".workflow-status").html(callback['status']);
+				$("#ajax-status-notify div").html(callback['message']);
+				$("#ajax-status-notify").show();
+			}				
+		},'json');
+		return false;
+	});
+
+	$(".buttonarea").on("click",".current button[name='cancel']",function(e) {
+			e.preventDefault();
+			$(".current form").hide();
+			$(".current span").show();
+			return false;
+	});	
+			
+}
+)
+</script>
+</metal:js>
+</body>
+</html>

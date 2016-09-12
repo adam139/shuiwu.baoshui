@@ -87,6 +87,10 @@ class InitContents(unittest.TestCase):
             portal['nashuiku1']['nashuiren1']['lirunbiao1'].invokeFactory('shuiwu.baoshui.yuedujilu',id,title=id)
             portal['nashuiku1']['nashuiren1']['baobiaofuzhu1'].invokeFactory('shuiwu.baoshui.yuedujilu',id,title=id)
             portal['nashuiku1']['nashuiren1']['zhifugongzimingxi1'].invokeFactory('shuiwu.baoshui.yuedujilu',id,title=id)
+# add anci records
+        for i in range(11):
+            j = str(i + 1)
+            id = "ancijilu%s" % (j)             
             portal['nashuiku1']['nashuiren1']['yinhuashuizijinzhangbo1'].invokeFactory('shuiwu.baoshui.ancijilu',id,title=id)
             portal['nashuiku1']['nashuiren1']['yinhuashuianci1'].invokeFactory('shuiwu.baoshui.ancijilu',id,title=id)
             portal['nashuiku1']['nashuiren1']['gengdizhanyongshui1'].invokeFactory('shuiwu.baoshui.ancijilu',id,title=id)
@@ -126,5 +130,5 @@ class Allcontents(InitContents):
     def test_item_types(self):
         self.assertEqual(self.portal['nashuiku1']['nashuiren1']['tudizengzhishuianji1']['jidujilu1'].id,'jidujilu1')
         
-        self.assertEqual(self.portal['nashuiku1']['nashuiren1']['ziyuanshui1']['yuedujilu1'].id,'yuedujilu1')           
+        self.assertEqual(self.portal['nashuiku1']['nashuiren1']['ziyuanshui1']['ancijilu1'].id,'ancijilu1')           
         

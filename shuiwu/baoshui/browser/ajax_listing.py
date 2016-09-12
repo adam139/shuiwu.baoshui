@@ -237,6 +237,8 @@ class sysAjaxListingView(BrowserView):
 #         return settings.tags    
     
 
+  
+
  # ajax load more tags       
 class sysloadMore(grok.View):
     """AJAX action for loardmore.

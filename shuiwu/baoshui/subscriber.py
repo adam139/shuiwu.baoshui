@@ -9,7 +9,8 @@ from zope.site.hooks import getSite
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import safe_unicode
 from zope.lifecycleevent.interfaces import IObjectAddedEvent
-from shuiwu.baoshui.content.nashuiren import Inashuiren,Inashuiku
+from shuiwu.baoshui.content.nashuiren import Inashuiren
+from shuiwu.baoshui.content.nashuiku import Inashuiku
 from shuiwu.baoshui.interfaces import ICreateNashuirenEvent
 
 
