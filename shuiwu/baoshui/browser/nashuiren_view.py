@@ -148,7 +148,7 @@ class NashuirenEdit(NashuirenView):
             o = i.getObject()
             if o.shenbaofou == False:           
                 out = """<td class="col-md-%(width)s text-center">
-                <input data-url="%(objurl)s" type="checkbox" /></td>""" \
+                <input class="checkbox" data-url="%(objurl)s" type="checkbox" /></td>""" \
                 % dict(width=width,objurl=o.absolute_url())
             else:
                 out = """<td class="col-md-%(width)s text-center">
@@ -167,13 +167,33 @@ class NashuirenEdit(NashuirenView):
         for i in braindata:
             o = i.getObject()
             out = """<td class="col-md-%(width)s text-center">
-            <input data-url="%(objurl)s" type="text" value="%(num)s" /></td>""" \
+            <input class="number" onkeypress='return event.charCode >= 48 && event.charCode <= 57' data-url="%(objurl)s" type="text" value="%(num)s" /></td>""" \
                 % dict(width=width,objurl=o.absolute_url(),num=o.shenbaocishu)                                  
             outhtml = "%s%s" %(outhtml ,out)           
         data = """%s</tr></table>""" % outhtml
         return data        
                     
- # ajax modify yuedu jilu
+# ajax modify nashuiren properties,using setattr
+class ModifyProperty(grok.View):
+    """AJAX action for modify nashuiren properties .
+    """    
+    grok.context(Inashuiren)
+    grok.name('modify_property')
+    grok.require('zope2.View')
+    
+    def render(self):    
+        datadic = self.request.form
+        property = datadic['property']
+        property = datadic['shenbaofou'] 
+        if shenbaofou =="true":
+           setattr(context,property,True)
+        else:
+            setattr(context,property,False)
+        ajaxtext = u"<p class='text-sccess'>更改已保存</p>"
+        callback = {"result":True,'message':ajaxtext}
+        self.request.response.setHeader('Content-Type', 'application/json')
+        return json.dumps(callback)     
+ # ajax modify yuedu jilu,jidu jilu
 class BatchModify(grok.View):
     """AJAX action for batch modify yuedu jilu.
     """    
@@ -190,8 +210,8 @@ class BatchModify(grok.View):
     def render(self):    
         datadic = self.request.form
         objid = datadic['objid']
-        shenbaofou = datadic['shenbaofou']
-        if shenbaofou == 'true':
+        shenbaofou = datadic['action']
+        if shenbaofou == 'selectall':
             shenbaofou = True
         else:
             shenbaofou = False
@@ -204,6 +224,10 @@ class BatchModify(grok.View):
         for o in brains:
             obj = o.getObject()
             obj.shenbaofou = shenbaofou
+        ajaxtext = u"<p class='text-sccess'>更改已保存</p>"
+        callback = {"result":True,'message':ajaxtext}
+        self.request.response.setHeader('Content-Type', 'application/json')
+        return json.dumps(callback)            
         
         
 
@@ -223,7 +247,10 @@ class ModifyYuedujlu(grok.View):
             self.context.shenbaofou = True
         else:
             self.context.shenbaofou = True
-
+        ajaxtext = u"<p class='text-sccess'>更改已保存</p>"
+        callback = {"result":True,'message':ajaxtext}
+        self.request.response.setHeader('Content-Type', 'application/json')
+        return json.dumps(callback)
  # ajax modify yuedu jilu
 class ModifyJidujlu(grok.View):
     """AJAX action for jidu jilu.
@@ -238,7 +265,10 @@ class ModifyJidujlu(grok.View):
             self.context.shenbaofou = True
         else:
             self.context.shenbaofou = True    
-
+        ajaxtext = u"<p class='text-sccess'>更改已保存</p>"
+        callback = {"result":True,'message':ajaxtext}
+        self.request.response.setHeader('Content-Type', 'application/json')
+        return json.dumps(callback)
  
  # ajax modify anci jilu
 class ModifyAncijlu(grok.View):
@@ -253,4 +283,7 @@ class ModifyAncijlu(grok.View):
         shenbaocishu = int(datadic['shenbaocishu'])
         self.context.shenbaocishu =  shenbaocishu
 
-
+        ajaxtext = u"<p class='text-sccess'>更改已保存</p>"
+        callback = {"result":True,'message':ajaxtext}
+        self.request.response.setHeader('Content-Type', 'application/json')
+        return json.dumps(callback)

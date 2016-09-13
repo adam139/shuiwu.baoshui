@@ -9,6 +9,9 @@
 <body>
 <metal:main fill-slot="main">
 	<tal:main-macro metal:define-macro="main">
+    	<div tal:attributes="data-target python:context.absolute_url()" id="ajax-target"  style="display:none;">
+
+    	</div>			
     	<!-- jquery ajax callback function update status notify -->
     	<div class="row" id="ajax-status-notify" style="display:none;">
     		<div class="col-xs-12">notify message</div>
@@ -50,91 +53,91 @@
 						<td class="text-center col-md-12">按月申报</td>
 					</tr>					
 					<tr class="row">
-						<td class="property col-md-4">城建税申报表</td>
+						<td class="property selectall col-md-4">城建税申报表</td>
 						<td class="data col-md-8" data-id="chengjianshui1"
 							tal:content="structure python:view.getChildrensByMonth('chengjianshui1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">教育费附加申报表</td>
+						<td class="property selectall col-md-4">教育费附加申报表</td>
 						<td class="data col-md-8" data-id="jiaoyufeifujia1" 
 							tal:content="structure python:view.getChildrensByMonth('jiaoyufeifujia1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">个人所得税扣缴表</td>
+						<td class="property selectall col-md-4">个人所得税扣缴表</td>
 						<td class="data col-md-8" data-id="gerensuodeshui1" 
 							tal:content="structure python:view.getChildrensByMonth('gerensuodeshui1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">印花税申报表（按月）</td>
+						<td class="property selectall col-md-4">印花税申报表（按月）</td>
 						<td class="data col-md-8" data-id="yinhuashuianyue1" 
 							tal:content="structure python:view.getChildrensByMonth('yinhuashuianyue1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">企业所得税预缴表（B类）</td>
+						<td class="property selectall col-md-4">企业所得税预缴表（B类）</td>
 						<td class="data col-md-8" data-id="qiyesuodeshuiblei1" 
 							tal:content="structure python:view.getChildrensByMonth('qiyesuodeshuiblei1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">房产税申报表（租金收入）</td>
+						<td class="property selectall col-md-4">房产税申报表（租金收入）</td>
 						<td class="data col-md-8" data-id="chengjianshui1" 
 							tal:content="structure python:view.getChildrensByMonth('fangchanshui1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">土地增值税申报表（按月）</td>
+						<td class="property selectall col-md-4">土地增值税申报表（按月）</td>
 						<td class="data col-md-8" data-id="tudizengzhishui1" 
 							tal:content="structure python:view.getChildrensByMonth('tudizengzhishui1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">水利基金申报表（月报）</td>
+						<td class="property selectall col-md-4">水利基金申报表（月报）</td>
 						<td class="data col-md-8" data-id="shuilijijin1" 
 							tal:content="structure python:view.getChildrensByMonth('shuilijijin1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">社保费申报表</td>
+						<td class="property selectall col-md-4">社保费申报表</td>
 						<td class="data col-md-8" data-id="shebaofei1" 
 							tal:content="structure python:view.getChildrensByMonth('shebaofei1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">投资者个人所得税申报表</td>
+						<td class="property selectall col-md-4">投资者个人所得税申报表</td>
 						<td class="data col-md-8" data-id="touzizhegerensuodeshui1" 
 							tal:content="structure python:view.getChildrensByMonth('touzizhegerensuodeshui1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">资产负债表</td>
+						<td class="property selectall col-md-4">资产负债表</td>
 						<td class="data col-md-8" data-id="zichanfuzaibiao1" 
 							tal:content="structure python:view.getChildrensByMonth('zichanfuzaibiao1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">现金流量表</td>
+						<td class="property selectall col-md-4">现金流量表</td>
 						<td class="data col-md-8" data-id="xianjinliuliangbiao1" 
 							tal:content="structure python:view.getChildrensByMonth('xianjinliuliangbiao1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">利润表</td>
+						<td class="property selectall col-md-4">利润表</td>
 						<td class="data col-md-8" data-id="lirunbiao1" 
 							tal:content="structure python:view.getChildrensByMonth('lirunbiao1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">报表附注</td>
+						<td class="property selectall col-md-4">报表附注</td>
 						<td class="data col-md-8" data-id="baobiaofuzhu1" 
 							tal:content="structure python:view.getChildrensByMonth('baobiaofuzhu1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">支付工资明细</td>
+						<td class="property selectall col-md-4">支付工资明细</td>
 						<td class="data col-md-8" data-id="zhifugongzimingxi1" 
 							tal:content="structure python:view.getChildrensByMonth('zhifugongzimingxi1')">
 						</td>						
@@ -143,13 +146,13 @@
 						<td class="text-center col-md-12">按季申报</td>
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">企业所得税预缴表（A类）</td>
+						<td class="property selectall col-md-4">企业所得税预缴表（A类）</td>
 						<td class="data col-md-8" data-id="qiyesuodeshuialei1" 
 							tal:content="structure python:view.getChildrensByQuarter('qiyesuodeshuialei1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">房产税申报表（房产原值）</td>
+						<td class="property selectall col-md-4">房产税申报表（房产原值）</td>
 						<td class="data col-md-8" data-id="fangchanshuifangchanyuanzhi1" 
 							tal:content="structure python:view.getChildrensByQuarter('fangchanshuifangchanyuanzhi1')">
 						</td>						
@@ -161,29 +164,83 @@
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">土地使用税申报表</td>
+						<td class="property selectall col-md-4">土地使用税申报表</td>
 						<td class="data col-md-8" data-id="tudishiyongshui1" 
 							tal:content="structure python:view.getChildrensByQuarter('tudishiyongshui1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">印花税申报表（按季）</td>
+						<td class="property selectall col-md-4">印花税申报表（按季）</td>
 						<td class="data col-md-8" data-id="yinhuashuianji1" 
 							tal:content="structure python:view.getChildrensByQuarter('yinhuashuianji1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">土地增值税申报表（按季）</td>
+						<td class="property selectall col-md-4">土地增值税申报表（按季）</td>
 						<td class="data col-md-8" data-id="tudizengzhishuianji1" 
 							tal:content="structure python:view.getChildrensByQuarter('tudizengzhishuianji1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">工会经费申报表</td>
+						<td class="property selectall col-md-4">工会经费申报表</td>
 						<td class="data col-md-8" data-id="gonghuijingfei1" 
 							tal:content="structure python:view.getChildrensByQuarter('gonghuijingfei1')">
 						</td>						
+					</tr>
+					<tr class="row">
+						<td class="text-center col-md-12">按年申报</td>
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">印花税申报表（营业帐薄）</td>
+						<td class="data col-md-8">
+							<input class="" type="checkbox"></input>
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">车船税申报表</td>
+						<td class="data col-md-8">
+							<input class="" type="checkbox"></input>
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">残疾人保证金申报表</td>
+						<td class="data col-md-8">
+							<input class="" type="checkbox"></input>
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">地方各税汇算清缴表</td>
+						<td class="data col-md-8">
+							<input class="" type="checkbox"></input>
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">个人所得税年度申报表</td>
+						<td class="data col-md-8">
+							<input class="" type="checkbox"></input>
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">企业所得税年度申报表及汇算清缴辅导记录</td>
+						<td class="data col-md-8">
+							<input class="" type="checkbox"></input>
+						</td>						
 					</tr>																														
+					<tr class="row">
+						<td class="text-center col-md-12">管理类</td>
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">注销税务登记表</td>
+						<td class="data col-md-8">
+							<input class="" type="checkbox"></input>
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">非正户认定表</td>
+						<td class="data col-md-8">
+							<input class="" type="checkbox"></input>
+						</td>						
+					</tr>																																																		
 					<tr class="row">
 						<td class="text-center col-md-12">按次申报</td>
 					</tr>
@@ -225,38 +282,60 @@
 <metal:js fill-slot="javascript_bottom_slot">
 <script>
 	$(document).ready(function(){
-		//click a triger
-		$(".workflow-action").on("click","a",function(e) {
+		//single click mocify checkbox
+ 
+		$(".checkbox").on("click",function(e) {
 		e.preventDefault();
-		//located parent object and add css class
-		$(this).parent().parent().addClass("current");
-		// close old form
-	  $(".workflow-action form").hide();
-		//hide submit buttom
-		$(".workflow-action span").show();		
-		//display ajax input form
-		$(".current form").show();
-		//hide submit buttom
-		$(".current span").hide();
-		return false;	
-		});
-	$(".buttonarea").on("click",".current button[name='ok']",function(e) {
-		e.preventDefault();	
-		var action = $(".current span a").attr('href');
-		var actionid = $(".current span a").attr('data-action-id');
-		var actiontype = $(".current span a").attr('data-action-type');		
-		var formval = $(".current  textarea").val();
-		if (formval ==="") {
-		alert( "must input comment" );
-		return false;
+		var shenbaofou = 'true';
+		if ($(this).is(':checked') {
+		$(this).prop('checked', false);
+		shenbaofou = 'false';	
 		}
-		var data = {'subject':formval,'actionid':actionid,'actiontype':actiontype};
+		else {
+		$(this).prop('checked', false);
+		}
+		var action = $(this).attr('data-url');
+		var data = {'shenbaofou':shenbaofou};		
+		//located parent object and add css class
+		$(this).parent().addClass("current");
 		$.post(action,data,function(callback) {
-			$(".current form").hide();
-			$(".current span").show();
+
 			if (callback['result']) {
 //			  location.reload(true);
-				$(".workflow-status").html(callback['status']);
+				$("#ajax-status-notify div").html(callback['message']);
+				$("#ajax-status-notify").show();
+			}				
+		},'json');
+		return false;	
+		});
+// modify number
+		$(".number").change(function(e) {
+		e.preventDefault();
+		var shenbaocishu = 0;
+		shenbaocishu = $(this).val();
+
+		var action = $(this).attr('data-url');
+		var data = {'shenbaocishu':shenbaocishu};
+		$(this).parent().addClass("current");
+		$.post(action,data,function(callback) {
+			if (callback['result']) {
+				$("#ajax-status-notify div").html(callback['message']);
+				$("#ajax-status-notify").show();
+			}				
+		},'json');
+		return false;	
+		});		
+	$(".selectall").on("click",function() {
+		var url = $("#ajax-target").attr('data-target');
+		var actionid = $(this).siblings('.data').attr('data-id');
+
+		$(this).siblings('.data').find('.checkbox').prop('checked', true);
+    var action = "selectall";
+		var data = {'objid':actionid,'action':action};
+		$(this).addClass('unselectall').removeClass('selectall');
+		$.post(url,data,function(callback) {
+
+			if (callback['result']) {
 				$("#ajax-status-notify div").html(callback['message']);
 				$("#ajax-status-notify").show();
 			}				
@@ -264,13 +343,22 @@
 		return false;
 	});
 
-	$(".buttonarea").on("click",".current button[name='cancel']",function(e) {
-			e.preventDefault();
-			$(".current form").hide();
-			$(".current span").show();
-			return false;
-	});	
-			
+	$(".unselectall").on("click",function() {
+		var url = $("#ajax-target").attr('data-target');
+		var actionid = $(this).siblings('.data').attr('data-id');
+		$(this).siblings('.data').find('.checkbox').prop('checked', false);
+    var action = "unselectall";
+		var data = {'objid':actionid,'action':action};
+		$(this).addClass('selectall').removeClass('unselectall');
+		$.post(url,data,function(callback) {
+
+			if (callback['result']) {
+				$("#ajax-status-notify div").html(callback['message']);
+				$("#ajax-status-notify").show();
+			}				
+		},'json');
+		return false;
+	});			
 }
 )
 </script>

@@ -183,7 +183,61 @@
 						<td class="data col-md-8" 
 							tal:content="structure python:view.getChildrensByQuarter('gonghuijingfei1')">
 						</td>						
+					</tr>
+					<tr class="row">
+						<td class="text-center col-md-12">按年申报</td>
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">印花税申报表（营业帐薄）</td>
+						<td class="data col-md-8">
+							<input class="" type="checkbox"></input>
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">车船税申报表</td>
+						<td class="data col-md-8">
+							<input class="" type="checkbox"></input>
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">残疾人保证金申报表</td>
+						<td class="data col-md-8">
+							<input class="" type="checkbox"></input>
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">地方各税汇算清缴表</td>
+						<td class="data col-md-8">
+							<input class="" type="checkbox"></input>
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">个人所得税年度申报表</td>
+						<td class="data col-md-8">
+							<input class="" type="checkbox"></input>
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">企业所得税年度申报表及汇算清缴辅导记录</td>
+						<td class="data col-md-8">
+							<input class="" type="checkbox"></input>
+						</td>						
 					</tr>																														
+					<tr class="row">
+						<td class="text-center col-md-12">管理类</td>
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">注销税务登记表</td>
+						<td class="data col-md-8">
+							<input class="" type="checkbox"></input>
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">非正户认定表</td>
+						<td class="data col-md-8">
+							<input class="" type="checkbox"></input>
+						</td>						
+					</tr>																																			
 					<tr class="row">
 						<td class="text-center col-md-12">按次申报</td>
 					</tr>
