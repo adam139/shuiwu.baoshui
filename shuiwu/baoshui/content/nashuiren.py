@@ -60,6 +60,9 @@ class Inashuiren(form.Schema,IBasic):
     canjirenbaozhengjin = schema.Bool(title=_(u"canjirenbaozhengjin shenbaobiao"),
                        required=False,
                        default=False)
+    difangshuihuisuan = schema.Bool(title=_(u"difang geshui huisuan qingjiaobiao"),
+                       required=False,
+                       default=False)    
     gerensuodeshuiniandu = schema.Bool(title=_(u"geren suodeshui niandu shenbaobiao"),
                        required=False,
                        default=False)

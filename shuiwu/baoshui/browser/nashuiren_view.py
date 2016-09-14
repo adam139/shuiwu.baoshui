@@ -136,7 +136,15 @@ class NashuirenView(BrowserView):
                 % dict(width=width,num=o.shenbaocishu)                                  
             outhtml = "%s%s" %(outhtml ,out)           
         data = """%s</tr></table>""" % outhtml
-        return data     
+        return data
+    
+    def propertyChecked(self,property):
+        "check narenren object,if the property is True"
+        if self.context.property:
+            return True
+        else:
+            return False
+                 
   
 class NashuirenEdit(NashuirenView):
     """nashuiren edit view"""
@@ -161,6 +169,8 @@ class NashuirenEdit(NashuirenView):
 
         return data
     
+
+        
     def outputnumber(self,braindata,width=1):
         "根据参数输出html"
         outhtml = """<table class="table bordered inner"><tr class="row">"""      
