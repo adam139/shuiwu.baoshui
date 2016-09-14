@@ -1,5 +1,6 @@
 #-*- coding: UTF-8 -*-
 from five import grok
+import json
 from z3c.form import field
 from Acquisition import aq_inner
 from plone.directives import dexterity
@@ -184,7 +185,8 @@ class ModifyProperty(grok.View):
     def render(self):    
         datadic = self.request.form
         property = datadic['property']
-        property = datadic['shenbaofou'] 
+        shenbaofou = datadic['shenbaofou']
+        context = self.context 
         if shenbaofou =="true":
            setattr(context,property,True)
         else:

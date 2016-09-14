@@ -56,6 +56,25 @@ class TestView(InitContents):
         view = obj.restrictedTraverse('@@modify_ancijilu')
         result = view()
         self.assertEqual(obj.shenbaocishu,3)
+# modify property        
+    def test_propertyedit(self):
+        request = self.layer['request']        
+        keyManager = getUtility(IKeyManager)
+        secret = keyManager.secret()
+        auth = hmac.new(secret, TEST_USER_NAME, sha).hexdigest()
+        request.form = {
+                        '_authenticator': auth,
+                        'shenbaofou': 'true',
+                        'property':'yinhuashui'
+                                                                       
+                        }
+# Look up and invoke the view via traversal
+        obj = self.portal['nashuiku1']['nashuiren1']
+ 
+
+        view = obj.restrictedTraverse('@@modify_property')
+        result = view()
+        self.assertEqual(obj.yinhuashui,True)        
                       
     def test_batchedit(self):
         request = self.layer['request']        
@@ -64,7 +83,7 @@ class TestView(InitContents):
         auth = hmac.new(secret, TEST_USER_NAME, sha).hexdigest()
         request.form = {
                         '_authenticator': auth,
-                        'shenbaofou': 'true',
+                        'action': 'selectall',
                         'objid':'chengjianshui1'
                         }
 # Look up and invoke the view via traversal
