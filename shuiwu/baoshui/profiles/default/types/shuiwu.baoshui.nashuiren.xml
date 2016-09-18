@@ -9,8 +9,7 @@
     i18n:translate="">na shui ren niandu sheshui shenbao jilu</property>
   <property name="content_icon">folder_icon.gif</property>
   <property name="global_allow">True</property>
-  <property name="filter_content_types">False</property>
-
+  <property name="filter_content_types">True</property>
   <property name="allowed_content_types" >
   <element value="shuiwu.baoshui.ziyuanshui" />
   <element value="shuiwu.baoshui.qishui" />
@@ -68,7 +67,7 @@
 
   <!-- Method aliases -->
   <alias from="(Default)" to="(selected layout)" />
-  <alias from="edit" to="@@edit" />
+  <alias from="edit" to="@@nashuiren_edit" />
   <alias from="sharing" to="@@sharing" />
   <alias from="view" to="@@view" />
 

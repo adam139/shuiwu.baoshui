@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: shuiwu.baoshui\n"
-"POT-Creation-Date: 2016-09-06 14:21+0000\n"
-"PO-Revision-Date: 2016-09-06 22:24+0800\n"
+"POT-Creation-Date: 2016-09-17 00:43+0000\n"
+"PO-Revision-Date: 2016-09-17 08:53+0800\n"
 "Last-Translator: adam <yuejun.tang@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -20,14 +20,14 @@ msgid "Click here to get the errors as a CSV file"
 msgstr "点击这里获取包含错误信息的CSV文件"
 
 #: ./browser/templates/datainout.pt:115
-msgid "Click on the Export button in order to download the full list of the social organizations as a CSV file. The CSV syntax is the same used in the template."
+msgid "Click on the Export button in order to download the full list of the nashuiren jiben xinxi as a CSV file. The CSV syntax is the same used in the template."
 msgstr ""
 
 #: ./browser/templates/datainout.pt:45
 msgid "Csv file"
 msgstr "Csv 文件"
 
-#: ./browser/datainout.py:157
+#: ./browser/datainout.py:137
 msgid "Data successfully imported."
 msgstr "数据已成功导入"
 
@@ -38,22 +38,6 @@ msgstr "错误详情"
 #: ./browser/templates/datainout.pt:112
 msgid "Export"
 msgstr "导出"
-
-#: ./browser/templates/datainout.pt:135
-msgid "ExportXiangtanshi"
-msgstr ""
-
-#: ./browser/templates/datainout.pt:156
-msgid "ExportXiangtanshiJijinhui"
-msgstr ""
-
-#: ./browser/templates/datainout.pt:149
-msgid "ExportXiangtanshiMinfei"
-msgstr ""
-
-#: ./browser/templates/datainout.pt:142
-msgid "ExportXiangtanshiShetuan"
-msgstr ""
 
 #: ./browser/templates/datainout.pt:40
 msgid "Import"
@@ -67,33 +51,29 @@ msgstr "纳税人资料库"
 msgid "Na shui ren"
 msgstr "纳税人"
 
-#: ./browser/templates/datainout.pt:14
-msgid "Organizations In/Out"
-msgstr ""
-
-#: ./browser/templates/datainout.pt:27
-msgid "Organizations import and export as CSV files."
-msgstr ""
-
 #: ./browser/templates/datainout.pt:77
 msgid "Results"
-msgstr ""
+msgstr "结果"
 
 #: ./browser/templates/datainout.pt:48
 msgid "Select your CSV file here. Please respect the syntax of the template available ${here}"
 msgstr ""
 
-#: ./browser/datainout.py:154
+#: ./browser/datainout.py:134
 msgid "Some errors occured. Please check your CSV syntax and retry."
 msgstr ""
 
-#: ./browser/datainout.py:99
+#: ./browser/datainout.py:83
 msgid "Wrong specification of the CSV file. Please correct it and retry."
 msgstr ""
 
 #: ./browser/templates/datainout.pt:93
 msgid "You will find below the CSV lines that failed."
 msgstr ""
+
+#: ./profiles/default/types/shuiwu.baoshui.ancijilu.xml
+msgid "ancijilu"
+msgstr "按次记录"
 
 #: ./profiles/default/types/shuiwu.baoshui.baobiaofuzhu.xml
 msgid "baobiao fuzhu"
@@ -103,11 +83,11 @@ msgstr "报表附注"
 msgid "baobiaofuzhu"
 msgstr "报表附注"
 
-#: ./content/nashuiren.py:33
+#: ./content/nashuiren.py:60
 msgid "canjirenbaozhengjin shenbaobiao"
 msgstr "残疾人保证金申报表"
 
-#: ./content/nashuiren.py:30
+#: ./content/nashuiren.py:57
 msgid "chechuanshui shenbaobiao"
 msgstr "车船税申报表"
 
@@ -119,9 +99,17 @@ msgstr "城建税"
 msgid "chengjian shui shenbao biao"
 msgstr "城建税申报表"
 
-#: ./content/nashuiren.py:24
+#: ./content/nashuiren.py:51
 msgid "dangan bianhao"
 msgstr "档案编号"
+
+#: ./content/nashuiren.py:26
+msgid "dengji riqi"
+msgstr "登记日期"
+
+#: ./content/nashuiren.py:63
+msgid "difang geshui huisuan qingjiaobiao"
+msgstr "地方税费汇算清缴表"
 
 #: ./profiles/default/types/shuiwu.baoshui.fangchanshui.xml
 msgid "fangchanshui"
@@ -139,13 +127,18 @@ msgstr "房产税申报表（租金收入）"
 msgid "fangchanshui shenbaobiao(fangchanyuanzhi)"
 msgstr "房产税申报表（房产原值）"
 
-#: ./content/nashuiren.py:45
+#: ./content/nashuiren.py:75
 msgid "fei zhenghu rending biao"
 msgstr "非正户认定表"
 
 #: ./profiles/default/types/shuiwu.baoshui.jidujilu.xml
 msgid "gai jidu you shenbao ji dagou,fouze wei kong"
 msgstr "该季度有申报就打钩，否则为空"
+
+#: ./content/ancijilu.py:12
+#: ./profiles/default/types/shuiwu.baoshui.ancijilu.xml
+msgid "gaiyue shenbao cishu"
+msgstr "该月申报次数"
 
 #: ./profiles/default/types/shuiwu.baoshui.yuedujilu.xml
 msgid "gaiyue you shenbao ji dagou,fouze wei kong"
@@ -167,7 +160,7 @@ msgstr "个人所得税"
 msgid "geren suodeshui koujiao biao"
 msgstr "个人所得税扣缴表"
 
-#: ./content/nashuiren.py:36
+#: ./content/nashuiren.py:66
 msgid "geren suodeshui niandu shenbaobiao"
 msgstr "个人所得税年度申报表"
 
@@ -183,13 +176,13 @@ msgstr "工会经费"
 msgid "group(s) added."
 msgstr ""
 
-#: ./content/nashuiren.py:19
+#: ./content/nashuiren.py:46
 msgid "guanli daima"
 msgstr "管理代码"
 
 #: ./browser/templates/datainout.pt:49
 msgid "here"
-msgstr ""
+msgstr "这儿"
 
 #: ./profiles/default/types/shuiwu.baoshui.jiaoyufeifujia.xml
 msgid "jiaoyu fei fujia"
@@ -213,21 +206,33 @@ msgstr "利润表"
 
 #: ./profiles/default/types/shuiwu.baoshui.nashuiku.xml
 msgid "na shui ku baohan duoge nashuiren jilu"
-msgstr ""
+msgstr "纳税人资料库包含很多纳税人记录"
 
 #: ./profiles/default/types/shuiwu.baoshui.nashuiren.xml
 msgid "na shui ren niandu sheshui shenbao jilu"
 msgstr "纳税人年度涉税申报记录"
 
-#: ./content/nashuiren.py:20
-msgid "nashuiren guanli daima."
-msgstr "纳税人管理代码"
+#: ./browser/templates/datainout.pt:14
+msgid "nashuiren daoru huo daochu"
+msgstr "纳税人导入或导出"
+
+#: ./browser/templates/datainout.pt:27
+msgid "nashuiren import and export as CSV files."
+msgstr "纳税人导入或导出为CSV文件"
+
+#: ./content/nashuiren.py:17
+msgid "nashuiren mingcheng"
+msgstr "纳税人名称"
+
+#: ./content/nashuiren.py:21
+msgid "nashuiren suoshu keshi"
+msgstr "纳税人所属科室"
 
 #: ./browser/templates/datainout.pt:83
 msgid "nashuiren(s) added."
-msgstr ""
+msgstr "纳税人已添加"
 
-#: ./content/nashuiren.py:14
+#: ./content/nashuiren.py:41
 msgid "niandu"
 msgstr "年度"
 
@@ -243,7 +248,7 @@ msgstr "契税申报表"
 msgid "qiye suodeshui blei"
 msgstr "企业所得税B类"
 
-#: ./content/nashuiren.py:39
+#: ./content/nashuiren.py:69
 msgid "qiye suodeshui niandu shenbaobiao ji huisuan qinjiao fudaojilu"
 msgstr "企业所得税年度申报表及汇算清缴辅导记录"
 
@@ -267,6 +272,10 @@ msgstr "社保费"
 msgid "shebao fei shenbaobiao"
 msgstr "社保费申报表"
 
+#: ./content/nashuiren.py:47
+msgid "shehui xingren daima (nashuiren shibiehao)"
+msgstr "社会信任代码（纳税人识别号）"
+
 #: ./content/jidujilu.py:12
 #: ./content/yuedujilu.py:12
 msgid "shifou yi shenbao?"
@@ -288,49 +297,9 @@ msgstr "水利基金申报表（月报）"
 msgid "shuilijijin jibao"
 msgstr "水利基金季报"
 
-#: ./browser/templates/nashuiren_view.pt:36
-msgid "submit comments"
-msgstr ""
-
-#: ./browser/templates/nashuiren_view.pt:28
-msgid "submit to chuyang"
-msgstr ""
-
-#: ./browser/templates/nashuiren_view.pt:48
-msgid "submit to chuyang1"
-msgstr ""
-
-#: ./browser/templates/nashuiren_view.pt:209
-msgid "submit to chuyang2"
-msgstr ""
-
-#: ./browser/templates/nashuiren_view.pt:348
-msgid "submit to dingxing"
-msgstr ""
-
-#: ./browser/templates/nashuiren_view.pt:68
-msgid "submit to shiyang"
-msgstr ""
-
-#: ./browser/templates/nashuiren_view.pt:149
-msgid "submit to shiyang1"
-msgstr ""
-
-#: ./browser/templates/nashuiren_view.pt:427
-msgid "submit to shiyang2"
-msgstr ""
-
-#: ./browser/templates/nashuiren_view.pt:87
-msgid "submit to zhengyang"
-msgstr ""
-
-#: ./browser/templates/nashuiren_view.pt:168
-msgid "submit to zhengyang1"
-msgstr ""
-
-#: ./browser/templates/nashuiren_view.pt:588
-msgid "submit to zhengyang2"
-msgstr ""
+#: ./content/nashuiren.py:36
+msgid "shuishou guanlirenyuan"
+msgstr "税收管理人员"
 
 #: ./profiles/default/types/shuiwu.baoshui.touzizhegerensuodeshui.xml
 msgid "touzizhe genren suodeshui shenbaobiao"
@@ -396,7 +365,7 @@ msgstr "印花税申报表（按次）"
 msgid "yinhuashui shenbaobiao(anji)"
 msgstr "印花税申报表（按季）"
 
-#: ./content/nashuiren.py:27
+#: ./content/nashuiren.py:54
 msgid "yinhuashui shenbaobiao(yingyezhangbo)"
 msgstr "印花税申报表（营业帐薄）"
 
@@ -416,7 +385,11 @@ msgstr "月度记录"
 msgid "zhifu gongzi mingxi"
 msgstr "支付工资明细"
 
-#: ./content/nashuiren.py:42
+#: ./content/nashuiren.py:30
+msgid "zhu guan shuiwu jiguan"
+msgstr "主管税务机关"
+
+#: ./content/nashuiren.py:72
 msgid "zhuxiao shuiwu dengjibiao"
 msgstr "注销税务登记表"
 

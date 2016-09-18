@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2016-09-06 14:21+0000\n"
+"POT-Creation-Date: 2016-09-17 00:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,14 +19,14 @@ msgid "Click here to get the errors as a CSV file"
 msgstr ""
 
 #: ./browser/templates/datainout.pt:115
-msgid "Click on the Export button in order to download the full list of the social organizations as a CSV file. The CSV syntax is the same used in the template."
+msgid "Click on the Export button in order to download the full list of the nashuiren jiben xinxi as a CSV file. The CSV syntax is the same used in the template."
 msgstr ""
 
 #: ./browser/templates/datainout.pt:45
 msgid "Csv file"
 msgstr ""
 
-#: ./browser/datainout.py:157
+#: ./browser/datainout.py:137
 msgid "Data successfully imported."
 msgstr ""
 
@@ -36,22 +36,6 @@ msgstr ""
 
 #: ./browser/templates/datainout.pt:112
 msgid "Export"
-msgstr ""
-
-#: ./browser/templates/datainout.pt:135
-msgid "ExportXiangtanshi"
-msgstr ""
-
-#: ./browser/templates/datainout.pt:156
-msgid "ExportXiangtanshiJijinhui"
-msgstr ""
-
-#: ./browser/templates/datainout.pt:149
-msgid "ExportXiangtanshiMinfei"
-msgstr ""
-
-#: ./browser/templates/datainout.pt:142
-msgid "ExportXiangtanshiShetuan"
 msgstr ""
 
 #: ./browser/templates/datainout.pt:40
@@ -66,14 +50,6 @@ msgstr ""
 msgid "Na shui ren"
 msgstr ""
 
-#: ./browser/templates/datainout.pt:14
-msgid "Organizations In/Out"
-msgstr ""
-
-#: ./browser/templates/datainout.pt:27
-msgid "Organizations import and export as CSV files."
-msgstr ""
-
 #: ./browser/templates/datainout.pt:77
 msgid "Results"
 msgstr ""
@@ -82,16 +58,20 @@ msgstr ""
 msgid "Select your CSV file here. Please respect the syntax of the template available ${here}"
 msgstr ""
 
-#: ./browser/datainout.py:154
+#: ./browser/datainout.py:134
 msgid "Some errors occured. Please check your CSV syntax and retry."
 msgstr ""
 
-#: ./browser/datainout.py:99
+#: ./browser/datainout.py:83
 msgid "Wrong specification of the CSV file. Please correct it and retry."
 msgstr ""
 
 #: ./browser/templates/datainout.pt:93
 msgid "You will find below the CSV lines that failed."
+msgstr ""
+
+#: ./profiles/default/types/shuiwu.baoshui.ancijilu.xml
+msgid "ancijilu"
 msgstr ""
 
 #: ./profiles/default/types/shuiwu.baoshui.baobiaofuzhu.xml
@@ -102,11 +82,11 @@ msgstr ""
 msgid "baobiaofuzhu"
 msgstr ""
 
-#: ./content/nashuiren.py:33
+#: ./content/nashuiren.py:60
 msgid "canjirenbaozhengjin shenbaobiao"
 msgstr ""
 
-#: ./content/nashuiren.py:30
+#: ./content/nashuiren.py:57
 msgid "chechuanshui shenbaobiao"
 msgstr ""
 
@@ -118,8 +98,16 @@ msgstr ""
 msgid "chengjian shui shenbao biao"
 msgstr ""
 
-#: ./content/nashuiren.py:24
+#: ./content/nashuiren.py:51
 msgid "dangan bianhao"
+msgstr ""
+
+#: ./content/nashuiren.py:26
+msgid "dengji riqi"
+msgstr ""
+
+#: ./content/nashuiren.py:63
+msgid "difang geshui huisuan qingjiaobiao"
 msgstr ""
 
 #: ./profiles/default/types/shuiwu.baoshui.fangchanshui.xml
@@ -138,12 +126,17 @@ msgstr ""
 msgid "fangchanshui shenbaobiao(fangchanyuanzhi)"
 msgstr ""
 
-#: ./content/nashuiren.py:45
+#: ./content/nashuiren.py:75
 msgid "fei zhenghu rending biao"
 msgstr ""
 
 #: ./profiles/default/types/shuiwu.baoshui.jidujilu.xml
 msgid "gai jidu you shenbao ji dagou,fouze wei kong"
+msgstr ""
+
+#: ./content/ancijilu.py:12
+#: ./profiles/default/types/shuiwu.baoshui.ancijilu.xml
+msgid "gaiyue shenbao cishu"
 msgstr ""
 
 #: ./profiles/default/types/shuiwu.baoshui.yuedujilu.xml
@@ -166,7 +159,7 @@ msgstr ""
 msgid "geren suodeshui koujiao biao"
 msgstr ""
 
-#: ./content/nashuiren.py:36
+#: ./content/nashuiren.py:66
 msgid "geren suodeshui niandu shenbaobiao"
 msgstr ""
 
@@ -182,7 +175,7 @@ msgstr ""
 msgid "group(s) added."
 msgstr ""
 
-#: ./content/nashuiren.py:19
+#: ./content/nashuiren.py:46
 msgid "guanli daima"
 msgstr ""
 
@@ -218,15 +211,27 @@ msgstr ""
 msgid "na shui ren niandu sheshui shenbao jilu"
 msgstr ""
 
-#: ./content/nashuiren.py:20
-msgid "nashuiren guanli daima."
+#: ./browser/templates/datainout.pt:14
+msgid "nashuiren daoru huo daochu"
+msgstr ""
+
+#: ./browser/templates/datainout.pt:27
+msgid "nashuiren import and export as CSV files."
+msgstr ""
+
+#: ./content/nashuiren.py:17
+msgid "nashuiren mingcheng"
+msgstr ""
+
+#: ./content/nashuiren.py:21
+msgid "nashuiren suoshu keshi"
 msgstr ""
 
 #: ./browser/templates/datainout.pt:83
 msgid "nashuiren(s) added."
 msgstr ""
 
-#: ./content/nashuiren.py:14
+#: ./content/nashuiren.py:41
 msgid "niandu"
 msgstr ""
 
@@ -242,7 +247,7 @@ msgstr ""
 msgid "qiye suodeshui blei"
 msgstr ""
 
-#: ./content/nashuiren.py:39
+#: ./content/nashuiren.py:69
 msgid "qiye suodeshui niandu shenbaobiao ji huisuan qinjiao fudaojilu"
 msgstr ""
 
@@ -266,6 +271,10 @@ msgstr ""
 msgid "shebao fei shenbaobiao"
 msgstr ""
 
+#: ./content/nashuiren.py:47
+msgid "shehui xingren daima (nashuiren shibiehao)"
+msgstr ""
+
 #: ./content/jidujilu.py:12
 #: ./content/yuedujilu.py:12
 msgid "shifou yi shenbao?"
@@ -287,48 +296,8 @@ msgstr ""
 msgid "shuilijijin jibao"
 msgstr ""
 
-#: ./browser/templates/nashuiren_view.pt:36
-msgid "submit comments"
-msgstr ""
-
-#: ./browser/templates/nashuiren_view.pt:28
-msgid "submit to chuyang"
-msgstr ""
-
-#: ./browser/templates/nashuiren_view.pt:48
-msgid "submit to chuyang1"
-msgstr ""
-
-#: ./browser/templates/nashuiren_view.pt:209
-msgid "submit to chuyang2"
-msgstr ""
-
-#: ./browser/templates/nashuiren_view.pt:348
-msgid "submit to dingxing"
-msgstr ""
-
-#: ./browser/templates/nashuiren_view.pt:68
-msgid "submit to shiyang"
-msgstr ""
-
-#: ./browser/templates/nashuiren_view.pt:149
-msgid "submit to shiyang1"
-msgstr ""
-
-#: ./browser/templates/nashuiren_view.pt:427
-msgid "submit to shiyang2"
-msgstr ""
-
-#: ./browser/templates/nashuiren_view.pt:87
-msgid "submit to zhengyang"
-msgstr ""
-
-#: ./browser/templates/nashuiren_view.pt:168
-msgid "submit to zhengyang1"
-msgstr ""
-
-#: ./browser/templates/nashuiren_view.pt:588
-msgid "submit to zhengyang2"
+#: ./content/nashuiren.py:36
+msgid "shuishou guanlirenyuan"
 msgstr ""
 
 #: ./profiles/default/types/shuiwu.baoshui.touzizhegerensuodeshui.xml
@@ -395,7 +364,7 @@ msgstr ""
 msgid "yinhuashui shenbaobiao(anji)"
 msgstr ""
 
-#: ./content/nashuiren.py:27
+#: ./content/nashuiren.py:54
 msgid "yinhuashui shenbaobiao(yingyezhangbo)"
 msgstr ""
 
@@ -415,7 +384,11 @@ msgstr ""
 msgid "zhifu gongzi mingxi"
 msgstr ""
 
-#: ./content/nashuiren.py:42
+#: ./content/nashuiren.py:30
+msgid "zhu guan shuiwu jiguan"
+msgstr ""
+
+#: ./content/nashuiren.py:72
 msgid "zhuxiao shuiwu dengjibiao"
 msgstr ""
 

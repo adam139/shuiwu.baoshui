@@ -7,7 +7,7 @@ from plone.app.testing import TEST_USER_ID, login, TEST_USER_NAME, \
 from plone.testing.z2 import Browser
 from shuiwu.baoshui.tests.test_contents import InitContents
 import unittest
-from plone.namedfile.file import NamedImage
+
 import os
 import datetime
 
@@ -37,7 +37,7 @@ class TestNashuirenView(InitContents):
         outstr = '<span>888201</span>'        
         self.assertTrue(outstr in browser.contents)
 
-        outstr = '<input type="checkbox" />'
+        outstr = 'data-property="gerensuodeshuiniandu"'
         self.assertTrue(outstr in browser.contents)
         outstr = '<td class="col-md-1 text-center">0</td>'
         self.assertTrue(outstr in browser.contents)        

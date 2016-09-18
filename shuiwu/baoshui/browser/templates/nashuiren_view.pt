@@ -47,7 +47,7 @@
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="text-center col-md-12">按月申报</td>
+						<td colspan="2" class="text-center col-md-12">按月申报</td>
 					</tr>					
 					<tr class="row">
 						<td class="property col-md-4">城建税申报表</td>
@@ -140,7 +140,7 @@
 						</td>						
 					</tr>																																																																											
 					<tr class="row">
-						<td class="text-center col-md-12">按季申报</td>
+						<td colspan="2" class="text-center col-md-12">按季申报</td>
 					</tr>
 					<tr class="row">
 						<td class="property col-md-4">企业所得税预缴表（A类）</td>
@@ -185,101 +185,101 @@
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="text-center col-md-12">按年申报</td>
+						<td colspan="2" class="text-center col-md-12">按年申报</td>
 					</tr>
 					<tr class="row">
 						<td class="property col-md-4">印花税申报表（营业帐薄）</td>
-						<td class="data col-md-8" tal:defne="property string:yinhuashui;checked python:view.propertyChecked(property)">
+						<td class="data col-md-8" tal:define="property string:yinhuashui;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
-								<input class="property"  checked type="checkbox"></input>
+								<input class="property" readonly readonly  checked type="checkbox"/>
 							</tal:block>
 							<tal:block tal:condition="not:checked">
-								<input class="property" tal:attributes="data-property python:property" type="checkbox"></input>
+								<input class="property" readonly readonly tal:attributes="data-property python:property" type="checkbox"/>
 							</tal:block>							
 						</td>						
 					</tr>
 					<tr class="row">
 						<td class="property col-md-4">车船税申报表</td>
-						<td class="data col-md-8" tal:defne="property string:chechuanshui;checked python:view.propertyChecked(property)">
+						<td class="data col-md-8" tal:define="property string:chechuanshui;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
-								<input class="property"  checked type="checkbox"></input>
+								<input class="property" readonly readonly  checked type="checkbox"/>
 							</tal:block>
 							<tal:block tal:condition="not:checked">
-								<input class="property" tal:attributes="data-property python:property" type="checkbox"></input>
+								<input class="property" readonly readonly tal:attributes="data-property python:property" type="checkbox"/>
 							</tal:block>							
 						</td>						
 					</tr>
 					<tr class="row">
 						<td class="property col-md-4">残疾人保证金申报表</td>
-						<td class="data col-md-8" tal:defne="property string:canjirenbaozhengjin;checked python:view.propertyChecked(property)">
+						<td class="data col-md-8" tal:define="property string:canjirenbaozhengjin;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
-								<input class="property"  checked type="checkbox"></input>
+								<input class="property" readonly readonly  checked type="checkbox"/>
 							</tal:block>
 							<tal:block tal:condition="not:checked">
-								<input class="property" tal:attributes="data-property python:property" type="checkbox"></input>
+								<input class="property" readonly readonly tal:attributes="data-property python:property" type="checkbox"/>
 							</tal:block>							
 						</td>						
 					</tr>
 					<tr class="row">
 						<td class="property col-md-4">地方各税汇算清缴表</td>
-						<td class="data col-md-8" tal:defne="property string:difangshuihuisuan;checked python:view.propertyChecked(property)">
+						<td class="data col-md-8" tal:define="property string:difangshuihuisuan;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
-								<input class="property"  checked type="checkbox"></input>
+								<input class="property" readonly readonly  checked type="checkbox"/>
 							</tal:block>
 							<tal:block tal:condition="not:checked">
-								<input class="property" tal:attributes="data-property python:property" type="checkbox"></input>
+								<input class="property" readonly readonly tal:attributes="data-property python:property" type="checkbox"/>
 							</tal:block>							
 						</td>						
 					</tr>
 					<tr class="row">
 						<td class="property col-md-4">个人所得税年度申报表</td>
-						<td class="data col-md-8" tal:defne="property string:gerensuodeshuiniandu;checked python:view.propertyChecked(property)">
+						<td class="data col-md-8" tal:define="property string:gerensuodeshuiniandu;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
-								<input class="property"  checked type="checkbox"></input>
+								<input class="property" readonly  checked type="checkbox"/>
 							</tal:block>
 							<tal:block tal:condition="not:checked">
-								<input class="property" tal:attributes="data-property python:property" type="checkbox"></input>
+								<input class="property" readonly tal:attributes="data-property python:property" type="checkbox"/>
 							</tal:block>							
 						</td>						
 					</tr>
 					<tr class="row">
 						<td class="property col-md-4">企业所得税年度申报表及汇算清缴辅导记录</td>
-						<td class="data col-md-8" tal:defne="property string:qiyesuodeshuiniandu;checked python:view.propertyChecked(property)">
+						<td class="data col-md-8" tal:define="property string:qiyesuodeshuiniandu;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
-								<input class="property"  checked type="checkbox"></input>
+								<input class="property" readonly  checked type="checkbox"/>
 							</tal:block>
 							<tal:block tal:condition="not:checked">
-								<input class="property" tal:attributes="data-property python:property" type="checkbox"></input>
+								<input class="property" readonly tal:attributes="data-property python:property" type="checkbox"/>
 							</tal:block>							
 						</td>						
 					</tr>																														
 					<tr class="row">
-						<td class="text-center col-md-12">管理类</td>
+						<td colspan="2" class="text-center col-md-12">管理类</td>
 					</tr>
 					<tr class="row">
 						<td class="property col-md-4">注销税务登记表</td>
-						<td class="data col-md-8" tal:defne="property string:zhuxiaoshuiwudengji;checked python:view.propertyChecked(property)">
+						<td class="data col-md-8" tal:define="property string:zhuxiaoshuiwudengji;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
-								<input class="property"  checked type="checkbox"></input>
+								<input class="property" readonly  checked type="checkbox"/>
 							</tal:block>
 							<tal:block tal:condition="not:checked">
-								<input class="property" tal:attributes="data-property python:property" type="checkbox"></input>
+								<input class="property" readonly tal:attributes="data-property python:property" type="checkbox"/>
 							</tal:block>							
 						</td>						
 					</tr>
 					<tr class="row">
 						<td class="property col-md-4">非正户认定表</td>
-						<td class="data col-md-8" tal:defne="property string:feizhenghurending;checked python:view.propertyChecked(property)">
+						<td class="data col-md-8" tal:define="property string:feizhenghurending;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
-								<input class="property"  checked type="checkbox"></input>
+								<input class="property" readonly  checked type="checkbox"/>
 							</tal:block>
 							<tal:block tal:condition="not:checked">
-								<input class="property" tal:attributes="data-property python:property" type="checkbox"></input>
+								<input class="property" readonly tal:attributes="data-property python:property" type="checkbox"/>
 							</tal:block>							
 						</td>						
 					</tr>																																			
 					<tr class="row">
-						<td class="text-center col-md-12">按次申报</td>
+						<td colspan="2" class="text-center col-md-12">按次申报</td>
 					</tr>
 					<tr class="row">
 						<td class="property col-md-4">印花税申报表（资金帐薄）</td>
@@ -316,58 +316,6 @@
 		</div>    	
     </tal:main-macro>
 </metal:main>
-<metal:js fill-slot="javascript_bottom_slot">
-<script>
-	$(document).ready(function(){
-		//click a triger
-		$(".workflow-action").on("click","a",function(e) {
-		e.preventDefault();
-		//located parent object and add css class
-		$(this).parent().parent().addClass("current");
-		// close old form
-	  $(".workflow-action form").hide();
-		//hide submit buttom
-		$(".workflow-action span").show();		
-		//display ajax input form
-		$(".current form").show();
-		//hide submit buttom
-		$(".current span").hide();
-		return false;	
-		});
-	$(".buttonarea").on("click",".current button[name='ok']",function(e) {
-		e.preventDefault();	
-		var action = $(".current span a").attr('href');
-		var actionid = $(".current span a").attr('data-action-id');
-		var actiontype = $(".current span a").attr('data-action-type');		
-		var formval = $(".current  textarea").val();
-		if (formval ==="") {
-		alert( "must input comment" );
-		return false;
-		}
-		var data = {'subject':formval,'actionid':actionid,'actiontype':actiontype};
-		$.post(action,data,function(callback) {
-			$(".current form").hide();
-			$(".current span").show();
-			if (callback['result']) {
-//			  location.reload(true);
-				$(".workflow-status").html(callback['status']);
-				$("#ajax-status-notify div").html(callback['message']);
-				$("#ajax-status-notify").show();
-			}				
-		},'json');
-		return false;
-	});
 
-	$(".buttonarea").on("click",".current button[name='cancel']",function(e) {
-			e.preventDefault();
-			$(".current form").hide();
-			$(".current span").show();
-			return false;
-	});	
-			
-}
-)
-</script>
-</metal:js>
 </body>
 </html>

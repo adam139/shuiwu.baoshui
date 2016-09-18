@@ -140,7 +140,11 @@ class NashuirenView(BrowserView):
     
     def propertyChecked(self,property):
         "check narenren object,if the property is True"
-        if self.context.property:
+        obj = self.context
+#         import pdb
+#         pdb.set_trace()
+        pro = getattr(obj,property)
+        if pro:
             return True
         else:
             return False
@@ -156,12 +160,14 @@ class NashuirenEdit(NashuirenView):
         for i in braindata:
             o = i.getObject()
             if o.shenbaofou == False:           
-                out = """<td class="col-md-%(width)s text-center">
-                <input class="checkbox" data-url="%(objurl)s" type="checkbox" /></td>""" \
+                out = """<td class="col-md-%(width)s text-center checkbox">
+                <input type="checkbox" />
+                <span data-url="%(objurl)s" class="switch-style off">&nbsp;</span></td>""" \
                 % dict(width=width,objurl=o.absolute_url())
             else:
-                out = """<td class="col-md-%(width)s text-center">
-                <input data-url="%(objurl)s" type="checkbox" checked="checked" /></td>""" \
+                out = """<td class="col-md-%(width)s text-center checkbox">
+                <input  type="checkbox" checked="checked" />
+                <span data-url="%(objurl)s" class="switch-style on">&nbsp;</span></td>""" \
                 % dict(width=width,objurl=o.absolute_url())                                  
             outhtml = "%s%s" %(outhtml ,out)
            
@@ -173,15 +179,26 @@ class NashuirenEdit(NashuirenView):
         
     def outputnumber(self,braindata,width=1):
         "根据参数输出html"
-        outhtml = """<table class="table bordered inner"><tr class="row">"""      
+        outhtml = """<table class="table bordered inner"><tr class="row number-row">"""      
 
         for i in braindata:
             o = i.getObject()
             out = """<td class="col-md-%(width)s text-center">
-            <input class="number" onkeypress='return event.charCode >= 48 && event.charCode <= 57' data-url="%(objurl)s" type="text" value="%(num)s" /></td>""" \
+            <span class="number" data-url="%(objurl)s">%(num)s</span></td>""" \
                 % dict(width=width,objurl=o.absolute_url(),num=o.shenbaocishu)                                  
             outhtml = "%s%s" %(outhtml ,out)           
-        data = """%s</tr></table>""" % outhtml
+        data = """%s</tr>
+        <tr class="row form" style=" display:none;">
+        <td class="col-md-4 text-center">
+        <form class="ajaxform">                          
+                         <div class="form-group">
+                             <label for="InputComment">输入申报次数</label>
+                            <input class="form-control" type="number" value=""/>
+                        </div>
+                        <button class="btn btn-default" name="ok">确定</button>
+                        <button class="btn btn-default" name="cancel">取消</button>
+                     </form>
+        </td></tr></table>""" % outhtml
         return data        
                     
 # ajax modify nashuiren properties,using setattr
@@ -258,7 +275,7 @@ class ModifyYuedujlu(grok.View):
         if shenbaofou =="true":
             self.context.shenbaofou = True
         else:
-            self.context.shenbaofou = True
+            self.context.shenbaofou = False
         ajaxtext = u"<p class='text-sccess'>更改已保存</p>"
         callback = {"result":True,'message':ajaxtext}
         self.request.response.setHeader('Content-Type', 'application/json')
@@ -276,7 +293,7 @@ class ModifyJidujlu(grok.View):
         if shenbaofou =="true":
             self.context.shenbaofou = True
         else:
-            self.context.shenbaofou = True    
+            self.context.shenbaofou = False    
         ajaxtext = u"<p class='text-sccess'>更改已保存</p>"
         callback = {"result":True,'message':ajaxtext}
         self.request.response.setHeader('Content-Type', 'application/json')
