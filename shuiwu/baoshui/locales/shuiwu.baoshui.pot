@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2016-09-17 00:43+0000\n"
+"POT-Creation-Date: 2016-09-19 08:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,6 +28,10 @@ msgstr ""
 
 #: ./browser/datainout.py:137
 msgid "Data successfully imported."
+msgstr ""
+
+#: ./browser/nashuiren_view.py:179
+msgid "Edit nashuiren base info"
 msgstr ""
 
 #: ./browser/templates/datainout.pt:92
@@ -82,11 +86,11 @@ msgstr ""
 msgid "baobiaofuzhu"
 msgstr ""
 
-#: ./content/nashuiren.py:60
+#: ./content/nashuiren.py:64
 msgid "canjirenbaozhengjin shenbaobiao"
 msgstr ""
 
-#: ./content/nashuiren.py:57
+#: ./content/nashuiren.py:61
 msgid "chechuanshui shenbaobiao"
 msgstr ""
 
@@ -106,7 +110,7 @@ msgstr ""
 msgid "dengji riqi"
 msgstr ""
 
-#: ./content/nashuiren.py:63
+#: ./content/nashuiren.py:67
 msgid "difang geshui huisuan qingjiaobiao"
 msgstr ""
 
@@ -126,7 +130,7 @@ msgstr ""
 msgid "fangchanshui shenbaobiao(fangchanyuanzhi)"
 msgstr ""
 
-#: ./content/nashuiren.py:75
+#: ./content/nashuiren.py:79
 msgid "fei zhenghu rending biao"
 msgstr ""
 
@@ -159,7 +163,7 @@ msgstr ""
 msgid "geren suodeshui koujiao biao"
 msgstr ""
 
-#: ./content/nashuiren.py:66
+#: ./content/nashuiren.py:70
 msgid "geren suodeshui niandu shenbaobiao"
 msgstr ""
 
@@ -247,7 +251,7 @@ msgstr ""
 msgid "qiye suodeshui blei"
 msgstr ""
 
-#: ./content/nashuiren.py:69
+#: ./content/nashuiren.py:73
 msgid "qiye suodeshui niandu shenbaobiao ji huisuan qinjiao fudaojilu"
 msgstr ""
 
@@ -340,6 +344,10 @@ msgstr ""
 msgid "xianjinliuliangbiao"
 msgstr ""
 
+#: ./content/nashuiren.py:54
+msgid "xiao guimo nashuiren rending"
+msgstr ""
+
 #: ./profiles/default/types/shuiwu.baoshui.yinhuashuianci.xml
 msgid "yinhuashui anci"
 msgstr ""
@@ -364,7 +372,7 @@ msgstr ""
 msgid "yinhuashui shenbaobiao(anji)"
 msgstr ""
 
-#: ./content/nashuiren.py:54
+#: ./content/nashuiren.py:58
 msgid "yinhuashui shenbaobiao(yingyezhangbo)"
 msgstr ""
 
@@ -388,7 +396,7 @@ msgstr ""
 msgid "zhu guan shuiwu jiguan"
 msgstr ""
 
-#: ./content/nashuiren.py:72
+#: ./content/nashuiren.py:76
 msgid "zhuxiao shuiwu dengjibiao"
 msgstr ""
 

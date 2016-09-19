@@ -2,6 +2,7 @@
 from five import grok
 import json
 from z3c.form import field
+from zope.interface import Interface
 from Acquisition import aq_inner
 from plone.directives import dexterity
 from Products.CMFCore.utils import getToolByName
@@ -12,37 +13,8 @@ from shuiwu.baoshui.content.jidujilu import Ijidujilu
 from shuiwu.baoshui.content.ancijilu import Iancijilu
 from shuiwu.baoshui.content.yuedujilu import Iyuedujilu
 from shuiwu.baoshui.content.nashuiren import Inashuiren
-# from shuiwu.baoshui.content.ziyuanshui import IZiyuanshui
-# from shuiwu.baoshui.content.qishui import IQishui
-# from shuiwu.baoshui.content.gengdizhanyongshui import IGengdizhanyongshui
-# from shuiwu.baoshui.content.yinhuashuianci import IYinhuashuianci
-# from shuiwu.baoshui.content.yinhuashuizijinzhangbo import IYinhuashuizijinzhangbo
-# from shuiwu.baoshui.content.gonghuijingfei import IGonghuijingfei
-# from shuiwu.baoshui.content.tudizengzhishuianji import ITudizengzhishuianji
-# from shuiwu.baoshui.content.yinhuashuianji import IYinhuashuianji
-# from shuiwu.baoshui.content.tudishiyongshui import ITudishiyongshui
-# from shuiwu.baoshui.content.shuilijijinjibao import IShuilijijinjibao
-# from shuiwu.baoshui.content.fangchanshuifangchanyuanzhi import IFangchanshuifangchanyuanzhi
-# from shuiwu.baoshui.content.qiyesuodeshuialei import IQiyesuodeshuialei
-# from shuiwu.baoshui.content.zhifugongzimingxi import IZhifugongzimingxi
-# from shuiwu.baoshui.content.baobiaofuzhu import IBaobiaofuzhu
-# from shuiwu.baoshui.content.lirunbiao import ILirunbiao
-# from shuiwu.baoshui.content.xianjinliuliangbiao import IXianjinliuliangbiao
-# from shuiwu.baoshui.content.zichanfuzaibiao import IZichanfuzaibiao
-# from shuiwu.baoshui.content.touzizhegerensuodeshui import ITouzizhegerensuodeshui
-# from shuiwu.baoshui.content.shebaofei import IShebaofei
-# from shuiwu.baoshui.content.shuilijijin import IShuilijijin
-# from shuiwu.baoshui.content.tudizengzhishui import ITudizengzhishui
-# from shuiwu.baoshui.content.fangchanshui import IFangchanshui
-# from shuiwu.baoshui.content.qiyesuodeshuiblei import IQiyesuodeshuiblei
-# from shuiwu.baoshui.content.yinhuashuianyue import IYinhuashuianyue
-# from shuiwu.baoshui.content.gerensuodeshui import IGerensuodeshui
-# from shuiwu.baoshui.content.jiaoyufeifujia import IJiaoyufeifujia
-# from shuiwu.baoshui.content.chengjianshui import IChengjianshui
 
-
-
-
+from shuiwu.baoshui import _
 
 # grok.templatedir('templates')
 
@@ -114,12 +86,12 @@ class NashuirenView(BrowserView):
             o = i.getObject()
             if o.shenbaofou == False:           
                 out = """<td class="col-md-%(width)s text-center">
-                <input data-id="%(objid)s" type="checkbox" /></td>""" \
+                <input disabled type="checkbox" /></td>""" \
                 % dict(width=width,objid=i.id)
             else:
                 out = """<td class="col-md-%(width)s text-center">
-                <input data-id="%(objid)s" type="checkbox" checked="checked" /></td>""" \
-                % dict(width=width,objid=i.id)                                  
+                <input disabled type="checkbox" checked="checked" /></td>""" \
+                % dict(width=width)                                  
             outhtml = "%s%s" %(outhtml ,out)
            
         data = """%s</tr></table>"""  % outhtml
@@ -201,6 +173,19 @@ class NashuirenEdit(NashuirenView):
         </td></tr></table>""" % outhtml
         return data        
                     
+class BaseEdit(dexterity.EditForm):
+    grok.name('ajaxedit')
+    grok.context(Inashuiren)    
+    label = _(u'Edit nashuiren base info')
+# avoid autoform functionality
+    def updateFields(self):
+        pass
+    @property
+    def fields(self):
+        return field.Fields(Inashuiren).select('title', 'description','dengjiriqi',
+                                                 'shuiguanyuan','danganbianhao','xiaoguimo')
+
+
 # ajax modify nashuiren properties,using setattr
 class ModifyProperty(grok.View):
     """AJAX action for modify nashuiren properties .
@@ -265,7 +250,7 @@ class BatchModify(grok.View):
 class ModifyYuedujlu(grok.View):
     """AJAX action for yuedu jilu.
     """    
-    grok.context(Iyuedujilu)
+    grok.context(Interface)
     grok.name('modify_yuedujilu')
     grok.require('zope2.View')
     

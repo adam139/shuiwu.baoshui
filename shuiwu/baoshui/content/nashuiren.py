@@ -50,6 +50,10 @@ class Inashuiren(form.Schema,IBasic):
     danganbianhao = schema.ASCIILine(
             title=_(u"dangan bianhao"),
             required=False)
+#小规模认定
+    xiaoguimo = schema.Bool(title=_(u"xiao guimo nashuiren rending"),
+                       required=False,
+                       default=False)
 #年度记录
     yinhuashui = schema.Bool(title=_(u"yinhuashui shenbaobiao(yingyezhangbo)"),
                        required=False,

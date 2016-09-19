@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: shuiwu.baoshui\n"
-"POT-Creation-Date: 2016-09-17 00:43+0000\n"
+"POT-Creation-Date: 2016-09-19 08:33+0000\n"
 "PO-Revision-Date: 2016-09-17 08:53+0800\n"
 "Last-Translator: adam <yuejun.tang@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,6 +30,10 @@ msgstr "Csv 文件"
 #: ./browser/datainout.py:137
 msgid "Data successfully imported."
 msgstr "数据已成功导入"
+
+#: ./browser/nashuiren_view.py:179
+msgid "Edit nashuiren base info"
+msgstr "编辑纳税人基本信息"
 
 #: ./browser/templates/datainout.pt:92
 msgid "Errors detail"
@@ -83,11 +87,11 @@ msgstr "报表附注"
 msgid "baobiaofuzhu"
 msgstr "报表附注"
 
-#: ./content/nashuiren.py:60
+#: ./content/nashuiren.py:64
 msgid "canjirenbaozhengjin shenbaobiao"
 msgstr "残疾人保证金申报表"
 
-#: ./content/nashuiren.py:57
+#: ./content/nashuiren.py:61
 msgid "chechuanshui shenbaobiao"
 msgstr "车船税申报表"
 
@@ -107,7 +111,7 @@ msgstr "档案编号"
 msgid "dengji riqi"
 msgstr "登记日期"
 
-#: ./content/nashuiren.py:63
+#: ./content/nashuiren.py:67
 msgid "difang geshui huisuan qingjiaobiao"
 msgstr "地方税费汇算清缴表"
 
@@ -127,7 +131,7 @@ msgstr "房产税申报表（租金收入）"
 msgid "fangchanshui shenbaobiao(fangchanyuanzhi)"
 msgstr "房产税申报表（房产原值）"
 
-#: ./content/nashuiren.py:75
+#: ./content/nashuiren.py:79
 msgid "fei zhenghu rending biao"
 msgstr "非正户认定表"
 
@@ -160,7 +164,7 @@ msgstr "个人所得税"
 msgid "geren suodeshui koujiao biao"
 msgstr "个人所得税扣缴表"
 
-#: ./content/nashuiren.py:66
+#: ./content/nashuiren.py:70
 msgid "geren suodeshui niandu shenbaobiao"
 msgstr "个人所得税年度申报表"
 
@@ -248,7 +252,7 @@ msgstr "契税申报表"
 msgid "qiye suodeshui blei"
 msgstr "企业所得税B类"
 
-#: ./content/nashuiren.py:69
+#: ./content/nashuiren.py:73
 msgid "qiye suodeshui niandu shenbaobiao ji huisuan qinjiao fudaojilu"
 msgstr "企业所得税年度申报表及汇算清缴辅导记录"
 
@@ -341,6 +345,10 @@ msgstr "现金流量表"
 msgid "xianjinliuliangbiao"
 msgstr "现金流量表"
 
+#: ./content/nashuiren.py:54
+msgid "xiao guimo nashuiren rending"
+msgstr "小规模纳税人认定"
+
 #: ./profiles/default/types/shuiwu.baoshui.yinhuashuianci.xml
 msgid "yinhuashui anci"
 msgstr "印花税按次"
@@ -365,7 +373,7 @@ msgstr "印花税申报表（按次）"
 msgid "yinhuashui shenbaobiao(anji)"
 msgstr "印花税申报表（按季）"
 
-#: ./content/nashuiren.py:54
+#: ./content/nashuiren.py:58
 msgid "yinhuashui shenbaobiao(yingyezhangbo)"
 msgstr "印花税申报表（营业帐薄）"
 
@@ -389,7 +397,7 @@ msgstr "支付工资明细"
 msgid "zhu guan shuiwu jiguan"
 msgstr "主管税务机关"
 
-#: ./content/nashuiren.py:72
+#: ./content/nashuiren.py:76
 msgid "zhuxiao shuiwu dengjibiao"
 msgstr "注销税务登记表"
 

@@ -16,7 +16,13 @@
     	<div class="row" id="ajax-status-notify" style="display:none;">
     		<div class="col-xs-12">notify message</div>
     	</div>		
-		<div class ="row"><h2 class="text-center" tal:content="python:context.title">某某公司</h2></div>
+		<div class ="row">
+			<h2 class="text-center">
+				<a class="btn btn-primary" 
+					tal:attributes="title string:编辑纳税人基本信息;
+					href python:context.absolute_url() + '/@@ajaxedit'" tal:content="python:context.title">某某公司</a>
+			</h2>
+		</div>
 		<div class="report row">
 			<table class="table bodered outer col-md-12">
 				<tbody>
@@ -50,7 +56,7 @@
 						</td>						
 					</tr>
 					<tr class="row">
-						<td colsapn="2" class="text-center col-md-12">按月申报</td>
+						<td colspan="2" class="text-center col-md-12">按月申报</td>
 					</tr>					
 					<tr class="row">
 						<td class="property selectall col-md-4">城建税申报表</td>
@@ -143,7 +149,7 @@
 						</td>						
 					</tr>																																																																											
 					<tr class="row">
-						<td colsapn="2" class="text-center col-md-12">按季申报</td>
+						<td colspan="2" class="text-center col-md-12">按季申报</td>
 					</tr>
 					<tr class="row">
 						<td class="property selectall col-md-4">企业所得税预缴表（A类）</td>
@@ -188,7 +194,7 @@
 						</td>						
 					</tr>
 					<tr class="row">
-						<td colsapn="2" class="text-center col-md-12">按年申报</td>
+						<td colspan="2" class="text-center col-md-12">按年申报</td>
 					</tr>
 					<tr class="row">
 						<td class="property col-md-4">印花税申报表（营业帐薄）</td>
@@ -269,7 +275,7 @@
 						</td>						
 					</tr>																														
 					<tr class="row">
-						<td colsapn="2" class="text-center col-md-12">管理类</td>
+						<td colspan="2" class="text-center col-md-12">管理类</td>
 					</tr>
 					<tr class="row">
 						<td class="property col-md-4">注销税务登记表</td>
@@ -298,7 +304,7 @@
 						</td>						
 					</tr>																																																		
 					<tr class="row">
-						<td colsapn="2" class="text-center col-md-12">按次申报</td>
+						<td colspan="2" class="text-center col-md-12">按次申报</td>
 					</tr>
 					<tr class="row">
 						<td class="property col-md-4">印花税申报表（资金帐薄）</td>
@@ -368,16 +374,14 @@
 		var shenbaofou = 'true';
 		var property = $(this).attr('data-property');
 		if (checkboxID.is(':checked')) {
-		$(this).prop('checked', false);
+		checkboxID.prop('checked', false);
 		shenbaofou = 'false';	
 		}
 		else {
-		$(this).prop('checked', false);
+		checkboxID.prop('checked', true);
 		}
 		var action = $("#ajax-target").attr('data-target') + "/@@modify_property";
-		var data = {'shenbaofou':shenbaofou,'property':property};		
-		//located parent object and add css class
-		//$(this).parent().addClass("current");
+		var data = {'shenbaofou':shenbaofou,'property':property};	
 		$.post(action,data,function(callback) {
 			if (callback['result']) {
 				$("#ajax-status-notify div").html(callback['message']);
@@ -396,7 +400,7 @@
     $(".running .number-row").hide();
     return false;
     });
-    $(".running").on("click","button[name='ok']",function() {
+    $(".running button[name='ok']").on("click",function() {
     var old = $(".running .focus").val();
 		var action = $(".running .focus").attr('data-url') + "/@@modify_ancijilu";
 		var shenbaocishu = $(this).siblings('form-group').find('input').attr('value');
@@ -417,7 +421,7 @@
 		},'json');
 		return false;	
 		});	
-  $(".running").on("click","button[name='cancel']",function() {
+  $(".running button[name='cancel']").on("click",function() {
          $(".running .form").hide();
          $(".running .number-row").show();
         	$(".running .focus").removeClass("focus");
@@ -429,7 +433,8 @@
 		var url = $("#ajax-target").attr('data-target') + "/@@batch_modify";
 		var actionid = $(this).siblings('.data').attr('data-id');
 
-		$(this).siblings('.data').find('.checkbox').prop('checked', true);
+		$(this).siblings('.data').find('input').prop('checked', true);
+		//$(this).siblings('.data').find([type='checkbox']).prop('checked', true);
     var action = "selectall";
 		var data = {'objid':actionid,'action':action};
 		$(this).addClass('unselectall').removeClass('selectall');
@@ -446,7 +451,7 @@
 	$(".unselectall").on("click",function() {
 		var url = $("#ajax-target").attr('data-target') + "/@@batch_modify";
 		var actionid = $(this).siblings('.data').attr('data-id');
-		$(this).siblings('.data').find('.checkbox').prop('checked', false);
+		$(this).siblings('.data').find('input').prop('checked', false);
     var action = "unselectall";
 		var data = {'objid':actionid,'action':action};
 		$(this).addClass('selectall').removeClass('unselectall');
