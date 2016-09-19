@@ -165,7 +165,7 @@ class NashuirenEdit(NashuirenView):
         <form class="ajaxform">                          
                          <div class="form-group">
                              <label for="InputComment">输入申报次数</label>
-                            <input class="form-control" type="number" value=""/>
+                            <input class="form-control" type="text" value=""/>
                         </div>
                         <button class="btn btn-default" name="ok">确定</button>
                         <button class="btn btn-default" name="cancel">取消</button>

@@ -400,17 +400,21 @@
     $(".running .number-row").hide();
     return false;
     });
-    $(".running button[name='ok']").on("click",function() {
-    var old = $(".running .focus").val();
+    $(".outer").on("click",".running button[name='ok']",function() {
+    var old = $(".running .focus").html();
 		var action = $(".running .focus").attr('data-url') + "/@@modify_ancijilu";
-		var shenbaocishu = $(this).siblings('form-group').find('input').attr('value');
+		var shenbaocishu = $(this).parent().find('input').val();
 		if (old == shenbaocishu) {
-		return false;
+         $(".running .form").hide();
+         $(".running .number-row").show();
+        	$(".running .focus").removeClass("focus");
+        	$(".running").removeClass("running");		
+		    return false;
 		}
 		var data = {'shenbaocishu':shenbaocishu};
 		$.post(action,data,function(callback) {
 			if (callback['result']) {
-			  $(".running .focus").val(shenbaocishu);
+			  $(".running .focus").html(shenbaocishu);
          $(".running .form").hide();
          $(".running .number-row").show();
         	$(".running .focus").removeClass("focus");
@@ -421,7 +425,7 @@
 		},'json');
 		return false;	
 		});	
-  $(".running button[name='cancel']").on("click",function() {
+    $(".outer").on("click",".running button[name='cancel']",function() {
          $(".running .form").hide();
          $(".running .number-row").show();
         	$(".running .focus").removeClass("focus");
