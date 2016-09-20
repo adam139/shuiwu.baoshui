@@ -16,7 +16,7 @@
 		<div class ="row"><h2 class="text-center" tal:content="python:context.title">某某公司</h2></div>
 		<div class ="row">
 		<h5>
-		<a title="打印预览" tal:attributes="href python:context.absolute_url() + '/@@print_preview'" class="col-md-1 col-md-offset-11 text-center" >打印预览</a>
+		<a title="打印预览" tal:attributes="href python:context.absolute_url() + '/@@print_preview'" class="col-md-2 col-md-offset-10 text-center" >打印预览</a>
 		</h5>
 		</div>
 		<div class="report row">

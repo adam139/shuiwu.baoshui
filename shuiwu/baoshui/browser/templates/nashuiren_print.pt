@@ -1,3 +1,4 @@
+<metal:page define-macro="print">
 <tal:doctype tal:replace="structure string:&lt;!DOCTYPE html&gt;" />
 
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -62,7 +63,7 @@
 		<div class ="row">
 		<h5>
 		<a title="打印" href="javascript:this.print();" 
-			class="printthis col-md-1 col-md-offset-11 text-center" >打印</a>
+			class="printthis btn btn-primary col-md-1 col-md-offset-11 text-center" >打印</a>
 		</h5>
 		</div>
 		<div class="report row">
@@ -375,3 +376,4 @@
     </article>
   </body>
 </html>
+</metal:page>

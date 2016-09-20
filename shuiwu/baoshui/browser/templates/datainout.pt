@@ -82,10 +82,6 @@
                 <tal:number content="view/request/users_results"/> 
                 <tal:trans i18n:translate="">nashuiren(s) added.</tal:trans>
               </div>
-              <div class="discreet">
-                <tal:number content="view/request/groups_results"/> 
-                <tal:trans i18n:translate="">group(s) added.</tal:trans>
-              </div>
           </div>
           <tal:errors tal:condition="view/request/csverrors|nothing">            
             <div class="field">  
@@ -93,8 +89,8 @@
               <div class="formHelp" i18n:translate="">
                 You will find below the CSV lines that failed.
               </div>
-              <textarea name="users_sheet_errors"
-                        tal:content="view/request/form/users_sheet_errors|nothing">
+              <textarea name="nashuiren_sheet_errors"
+                        tal:content="view/request/form/nashuiren_sheet_errors|nothing">
               </textarea>
             </div>
             

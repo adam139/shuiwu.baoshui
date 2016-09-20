@@ -7,7 +7,7 @@ from zope.interface import implements
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from Products.statusmessages.interfaces import IStatusMessage
-from plone.i18n.normalizer.interfaces import IUserPreferredFileNameNormalizer
+# from plone.i18n.normalizer.interfaces import IUserPreferredFileNameNormalizer
 
 from shuiwu.baoshui.content.nashuiren import Inashuiren
 from shuiwu.baoshui.events import CreateNashuirenEvent
@@ -61,7 +61,7 @@ class DataInOut (BrowserView):
     def getCSVTemplate(self):
         """Return a CSV template to use when importing members."""
         datafile = self._createCSV([])
-        return self._createRequest(datafile.getvalue(), "orgs_sheet_template.csv")     
+        return self._createRequest(datafile.getvalue(), "nashuiren_sheet_template.csv")     
 
     def IdIsExist(self,Id):
         catalog = getToolByName(self.context, "portal_catalog")
@@ -100,11 +100,11 @@ class DataInOut (BrowserView):
 #                映射数据到纳税人字段
                 title = datas['title']
                 if not isinstance(title, unicode):
-                    filename = unicode(title, 'utf-8')
+                    name = unicode(title, 'utf-8')
 #                 id = IUserPreferredFileNameNormalizer(self.request).normalize(filename)
                 id = datas['guanlidaima']
                 if self.IdIsExist(id):continue
-                title = filename
+                title = name
                 guanlidaima = id                
                 dengjiriqi = datas.pop('dengjiriqi')
                 description = datas.pop('description')
@@ -112,7 +112,7 @@ class DataInOut (BrowserView):
                 danganbianhao = datas.pop('danganbianhao')
 
                 
-# send a add organization event
+# send a add nashuiren event
                 try:
                     event.notify(CreateNashuirenEvent(
                                                 id,title,guanlidaima,dengjiriqi,description,
@@ -130,7 +130,7 @@ class DataInOut (BrowserView):
         if invalidLines:
             datafile = self._createCSV(invalidLines)
             self.request['csverrors'] = True
-            self.request.form['orgs_sheet_errors'] = datafile.getvalue()
+            self.request.form['nashuiren_sheet_errors'] = datafile.getvalue()
             msg = _('Some errors occured. Please check your CSV syntax and retry.')
             type = 'error'
         else:
@@ -138,16 +138,15 @@ class DataInOut (BrowserView):
 
         IStatusMessage(self.request).addStatusMessage(msg, type=type)
         self.request['users_results'] = usersNumber
-        self.request['groups_results'] = 0
         return self.index()
 
     def getCSVWithErrors(self):
         """Return a CSV file that contains lines witch failed."""
 
-        users_sheet_errors = self.request.form.get('orgs_sheet_errors', None)
+        users_sheet_errors = self.request.form.get('nashuiren_sheet_errors', None)
         if users_sheet_errors is None:
             return # XXX
-        return self._createRequest(users_sheet_errors, "orgs_sheet_errors.csv")
+        return self._createRequest(users_sheet_errors, "nashuiren_sheet_errors.csv")
 
     def exportData(self,**kw):
         """Export Data within CSV file."""
@@ -172,7 +171,7 @@ class DataInOut (BrowserView):
 
         catalog = getToolByName(self.context, "portal_catalog")
         query = kw
-        query.update({"object_provides":IOrgnization.__identifier__})
+        query.update({"object_provides":Inashuiren.__identifier__})
         
         brains = catalog(query)
         

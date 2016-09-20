@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: shuiwu.baoshui\n"
-"POT-Creation-Date: 2016-09-19 08:33+0000\n"
+"POT-Creation-Date: 2016-09-20 07:35+0000\n"
 "PO-Revision-Date: 2016-09-17 08:53+0800\n"
 "Last-Translator: adam <yuejun.tang@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,13 +15,13 @@ msgstr ""
 "Domain: my315ok.socialorgnization\n"
 "X-Poedit-Language: Chinese\n"
 
-#: ./browser/templates/datainout.pt:102
+#: ./browser/templates/datainout.pt:98
 msgid "Click here to get the errors as a CSV file"
 msgstr "点击这里获取包含错误信息的CSV文件"
 
-#: ./browser/templates/datainout.pt:115
+#: ./browser/templates/datainout.pt:111
 msgid "Click on the Export button in order to download the full list of the nashuiren jiben xinxi as a CSV file. The CSV syntax is the same used in the template."
-msgstr ""
+msgstr "点击导出按钮以下载纳税人基本信息，将生成一个CSV文件，该文件语法和模板中一样"
 
 #: ./browser/templates/datainout.pt:45
 msgid "Csv file"
@@ -35,11 +35,11 @@ msgstr "数据已成功导入"
 msgid "Edit nashuiren base info"
 msgstr "编辑纳税人基本信息"
 
-#: ./browser/templates/datainout.pt:92
+#: ./browser/templates/datainout.pt:88
 msgid "Errors detail"
 msgstr "错误详情"
 
-#: ./browser/templates/datainout.pt:112
+#: ./browser/templates/datainout.pt:108
 msgid "Export"
 msgstr "导出"
 
@@ -61,19 +61,19 @@ msgstr "结果"
 
 #: ./browser/templates/datainout.pt:48
 msgid "Select your CSV file here. Please respect the syntax of the template available ${here}"
-msgstr ""
+msgstr "选择CSV文件，该文件模板在${here}"
 
 #: ./browser/datainout.py:134
 msgid "Some errors occured. Please check your CSV syntax and retry."
-msgstr ""
+msgstr "CSV文件语法错误，请更正后，重试。"
 
 #: ./browser/datainout.py:83
 msgid "Wrong specification of the CSV file. Please correct it and retry."
-msgstr ""
+msgstr "CSV文件错误，请更正后，重试。"
 
-#: ./browser/templates/datainout.pt:93
+#: ./browser/templates/datainout.pt:89
 msgid "You will find below the CSV lines that failed."
-msgstr ""
+msgstr "你能在下面发现CSV文件在何处有问题。"
 
 #: ./profiles/default/types/shuiwu.baoshui.ancijilu.xml
 msgid "ancijilu"
@@ -175,10 +175,6 @@ msgstr "工会经费申报表"
 #: ./profiles/default/types/shuiwu.baoshui.gonghuijingfei.xml
 msgid "gonghuijingfei"
 msgstr "工会经费"
-
-#: ./browser/templates/datainout.pt:87
-msgid "group(s) added."
-msgstr ""
 
 #: ./content/nashuiren.py:46
 msgid "guanli daima"

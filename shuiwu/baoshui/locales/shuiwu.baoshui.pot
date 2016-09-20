@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2016-09-19 08:33+0000\n"
+"POT-Creation-Date: 2016-09-20 07:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,11 +14,11 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: ./browser/templates/datainout.pt:102
+#: ./browser/templates/datainout.pt:98
 msgid "Click here to get the errors as a CSV file"
 msgstr ""
 
-#: ./browser/templates/datainout.pt:115
+#: ./browser/templates/datainout.pt:111
 msgid "Click on the Export button in order to download the full list of the nashuiren jiben xinxi as a CSV file. The CSV syntax is the same used in the template."
 msgstr ""
 
@@ -34,11 +34,11 @@ msgstr ""
 msgid "Edit nashuiren base info"
 msgstr ""
 
-#: ./browser/templates/datainout.pt:92
+#: ./browser/templates/datainout.pt:88
 msgid "Errors detail"
 msgstr ""
 
-#: ./browser/templates/datainout.pt:112
+#: ./browser/templates/datainout.pt:108
 msgid "Export"
 msgstr ""
 
@@ -70,7 +70,7 @@ msgstr ""
 msgid "Wrong specification of the CSV file. Please correct it and retry."
 msgstr ""
 
-#: ./browser/templates/datainout.pt:93
+#: ./browser/templates/datainout.pt:89
 msgid "You will find below the CSV lines that failed."
 msgstr ""
 
@@ -173,10 +173,6 @@ msgstr ""
 
 #: ./profiles/default/types/shuiwu.baoshui.gonghuijingfei.xml
 msgid "gonghuijingfei"
-msgstr ""
-
-#: ./browser/templates/datainout.pt:87
-msgid "group(s) added."
 msgstr ""
 
 #: ./content/nashuiren.py:46
