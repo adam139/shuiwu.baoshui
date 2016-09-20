@@ -1,22 +1,68 @@
-<!DOCTYPE html>
+<tal:doctype tal:replace="structure string:&lt;!DOCTYPE html&gt;" />
+
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/main_template/macros/master"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"      
-      i18n:domain="shuiwu.baoshui">       
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      tal:define="portal_state context/@@plone_portal_state;
+          context_state context/@@plone_context_state;
+          plone_view context/@@plone;
+          plone_layout context/@@plone_layout;
+          lang portal_state/language;
+          view nocall:view | nocall: plone_view;
+          dummy python: plone_layout.mark_view(view);
+          portal_url portal_state/portal_url;
+          checkPermission nocall: context/portal_membership/checkPermission;
+          site_properties context/portal_properties/site_properties;
+          ajax_include_head request/ajax_include_head | nothing;
+          ajax_load python:False;"
+      i18n:domain="plone"
+      tal:attributes="lang lang;">
 
-<body>
-<metal:main fill-slot="main">
-	<tal:main-macro metal:define-macro="main">
-    	<!-- jquery ajax callback function update status notify -->
-    	<div class="row" id="ajax-status-notify" style="display:none;">
-    		<div class="col-xs-12">notify message</div>
-    	</div>		
-		<div class ="row"><h2 class="text-center" tal:content="python:context.title">某某公司</h2></div>
+    <metal:cache tal:replace="structure provider:plone.httpheaders" />
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <div tal:replace="structure provider:plone.htmlhead" />
+
+    <tal:comment replace="nothing">
+        Various slots where you can insert elements in the header from a template.
+    </tal:comment>
+    <metal:topslot define-slot="top_slot" />
+    <metal:headslot define-slot="head_slot" />
+    <metal:styleslot define-slot="style_slot" />
+
+    <div tal:replace="structure provider:plone.scripts" />
+    <metal:javascriptslot define-slot="javascript_head_slot" />
+    <link tal:replace="structure provider:plone.htmlhead.links" />
+    <link rel="stylesheet" href="http://images.315ok.org/shuiwu/css/print.css"/>
+  </head>
+  
+  <body tal:define="isRTL portal_state/is_rtl;
+                    sl python:plone_layout.have_portlets('plone.leftcolumn', view);
+                    sr python:plone_layout.have_portlets('plone.rightcolumn', view);
+                    body_class python:plone_layout.bodyClass(template, view);"
+        tal:attributes="class body_class;
+                        dir python:isRTL and 'rtl' or 'ltr';
+                        python:plone_view.patterns_settings()"
+        id="visual-portal-wrapper">
+
+    <header id="portal-top" i18n:domain="plone">
+      <div tal:replace="structure provider:plone.portaltop" />
+    </header>
+
+    <article id="portal-column-content">
+
+      <metal:block define-slot="content">
+
+      <div metal:define-macro="content">
+        <metal:slot define-slot="body">
+        <article id="content">
 		<div class ="row">
 		<h5>
-		<a title="打印预览" tal:attributes="href python:context.absolute_url() + '/@@print_preview'" class="col-md-1 col-md-offset-11 text-center" >打印预览</a>
+		<a title="打印" href="javascript:this.print();" 
+			class="printthis col-md-1 col-md-offset-11 text-center" >打印</a>
 		</h5>
 		</div>
 		<div class="report row">
@@ -30,7 +76,7 @@
 						<span tal:content="python:context.guanlidaima">201</span>
 						</td>
 					</tr>
-					<tr class="row">
+					<tr class="row theader">
 						<td class="text-center col-md-4">资料种类</td>
 						<td class="data col-md-8">
 							<table class="table bordered inner">
@@ -248,7 +294,7 @@
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">企业所得税年度申报表及汇算清缴辅导记录</td>
+						<td class="property col-md-4">企业所得税年度申报表</td>
 						<td class="data col-md-8" tal:define="property string:qiyesuodeshuiniandu;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
 								<input class="property" readonly  checked type="checkbox"/>
@@ -318,9 +364,14 @@
 					</tr>																																			
 				</tbody>
 			</table>
-		</div>    	
-    </tal:main-macro>
-</metal:main>
+		</div>          
+        </article>
+        </metal:slot>
 
-</body>
+      </div>
+
+      </metal:block>
+
+    </article>
+  </body>
 </html>

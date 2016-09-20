@@ -30,7 +30,13 @@
         permission="cmf.ManagePortal"
         class=".nashuiren_view.NashuirenView"
         menu="plone_displayviews"
-        title="nashuiren view"/>	        		
+        title="nashuiren view"/>
+  <browser:page
+        name="print_preview"
+        template="templates/nashuiren_print.pt"
+        for="shuiwu.baoshui.content.nashuiren.Inashuiren"
+        permission="cmf.ManagePortal"
+        class=".nashuiren_view.NashuirenView"/>        	        		
   <browser:page
         name="nashuiren_edit"
         template="templates/nashuiren_edit.pt"
