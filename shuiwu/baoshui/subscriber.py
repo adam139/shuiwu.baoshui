@@ -217,6 +217,7 @@ def initObjectTree(obj,event):
 # @grok.subscribe(ICreateNashuirenEvent)
 def CreateNashuirenEvent(event):
     """this event be fired by import nashuiren ui"""
+
     site = getSite()
      
     catalog = getToolByName(site,'portal_catalog')
@@ -228,8 +229,13 @@ def CreateNashuirenEvent(event):
     memberfolder = newest[0].getObject()
     memberid = event.id        
     try:
-        item =createContentInContainer(memberfolder,"shuiwu.baoshui.nashuiren",checkConstraints=False,id=memberid)
-#        setattr(memberfolder,'registrant_increment',memberid)
+        item = api.content.create(
+                                  type="shuiwu.baoshui.nashuiren",
+                                  container=memberfolder,
+                                  id = memberid,
+                                  safe_id = True)
+#         item =createContentInContainer(memberfolder,"shuiwu.baoshui.nashuiren",checkConstraints=False,id=memberid)
+
         item.title = event.title
         item.description = event.description
         item.guanlidaima = event.guanlidaima

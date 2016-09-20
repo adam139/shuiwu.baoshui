@@ -1,9 +1,10 @@
+#-*- coding: UTF-8 -*-
 import unittest
 from zope import event
 from shuiwu.baoshui.events import CreateNashuirenEvent
 from shuiwu.baoshui.testing import INTEGRATION_TESTING
 from plone.app.testing import TEST_USER_ID, setRoles
-from plone.namedfile.file import NamedImage
+
 
 class InitContents(unittest.TestCase):
     """for test create all content objects"""
@@ -27,9 +28,30 @@ class InitContents(unittest.TestCase):
                                                 shuiguanyuan,danganbianhao))
         self.portal = portal    
     
-class Allevents(InitContents):
-    layer = INTEGRATION_TESTING   
-                
+class Allevents(unittest.TestCase):
+    layer = INTEGRATION_TESTING
+       
+    def setUp(self):
+        portal = self.layer['portal']
+        setRoles(portal, TEST_USER_ID, ('Manager',))
+        portal.invokeFactory('shuiwu.baoshui.nashuiku', 'nashuiku1',
+                             title=u'nashuiku1')                                                               
+
+       
+        id="a8001"
+        guanlidaima = id
+        title=u"某某公司"
+        dengjiriqi = "2016-09-12"
+        description = u"一科"
+        shuiguanyuan = u"张三"
+        danganbianhao = "dang%s" % id
+        
+        event.notify(CreateNashuirenEvent(
+                                                id,title,guanlidaima,dengjiriqi,description,
+                                                shuiguanyuan,danganbianhao))
+        self.portal = portal                
+    
+    
     def test_CreateNashuirenEvent(self):
         self.assertEqual(self.portal['nashuiku1']['a8001'].id,'a8001')
         self.assertEqual(self.portal['nashuiku1']['a8001'].guanlidaima,'a8001')
