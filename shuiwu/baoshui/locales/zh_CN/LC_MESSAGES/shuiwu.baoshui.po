@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: shuiwu.baoshui\n"
-"POT-Creation-Date: 2016-09-20 07:35+0000\n"
+"POT-Creation-Date: 2016-09-22 08:46+0000\n"
 "PO-Revision-Date: 2016-09-17 08:53+0800\n"
 "Last-Translator: adam <yuejun.tang@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,7 +27,11 @@ msgstr "点击导出按钮以下载纳税人基本信息，将生成一个CSV文
 msgid "Csv file"
 msgstr "Csv 文件"
 
-#: ./browser/datainout.py:137
+#: ./profiles/default/controlpanel.xml
+msgid "Data In/Out"
+msgstr "税务信息导入/导出"
+
+#: ./browser/datainout.py:141
 msgid "Data successfully imported."
 msgstr "数据已成功导入"
 
@@ -63,11 +67,11 @@ msgstr "结果"
 msgid "Select your CSV file here. Please respect the syntax of the template available ${here}"
 msgstr "选择CSV文件，该文件模板在${here}"
 
-#: ./browser/datainout.py:134
+#: ./browser/datainout.py:138
 msgid "Some errors occured. Please check your CSV syntax and retry."
 msgstr "CSV文件语法错误，请更正后，重试。"
 
-#: ./browser/datainout.py:83
+#: ./browser/datainout.py:84
 msgid "Wrong specification of the CSV file. Please correct it and retry."
 msgstr "CSV文件错误，请更正后，重试。"
 

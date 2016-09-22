@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2016-09-20 07:35+0000\n"
+"POT-Creation-Date: 2016-09-22 08:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,11 @@ msgstr ""
 msgid "Csv file"
 msgstr ""
 
-#: ./browser/datainout.py:137
+#: ./profiles/default/controlpanel.xml
+msgid "Data In/Out"
+msgstr ""
+
+#: ./browser/datainout.py:141
 msgid "Data successfully imported."
 msgstr ""
 
@@ -62,11 +66,11 @@ msgstr ""
 msgid "Select your CSV file here. Please respect the syntax of the template available ${here}"
 msgstr ""
 
-#: ./browser/datainout.py:134
+#: ./browser/datainout.py:138
 msgid "Some errors occured. Please check your CSV syntax and retry."
 msgstr ""
 
-#: ./browser/datainout.py:83
+#: ./browser/datainout.py:84
 msgid "Wrong specification of the CSV file. Please correct it and retry."
 msgstr ""
 
