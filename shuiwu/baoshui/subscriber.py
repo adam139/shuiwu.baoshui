@@ -244,6 +244,7 @@ def CreateNashuirenEvent(event):
         item.danganbianhao = event.danganbianhao
         
         import datetime
+
         datearray = event.dengjiriqi.split('-')
         if len(datearray) >= 3:
             val = map(int,datearray)
@@ -251,6 +252,8 @@ def CreateNashuirenEvent(event):
             item.dengjiriqi = datetime.date(*val)  
         else:
             item.dengjiriqi = datetime.date.today()
+#set default view        
+#         item.setLayout('nashuiren_view')
         item.reindexObject()                
         
     except:

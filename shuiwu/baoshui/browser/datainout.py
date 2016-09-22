@@ -74,6 +74,7 @@ class DataInOut (BrowserView):
         In case of error, return a CSV file filled with the lines where
         errors occured.
         """
+
         file_upload = self.request.form.get('csv_upload', None)
         if file_upload is None or not file_upload.filename:
             return
@@ -103,6 +104,8 @@ class DataInOut (BrowserView):
                     name = unicode(title, 'utf-8')
 #                 id = IUserPreferredFileNameNormalizer(self.request).normalize(filename)
                 id = datas['guanlidaima']
+
+                id = self.float2str(id,"E+")
                 if self.IdIsExist(id):continue
                 title = name
                 guanlidaima = id                
@@ -110,6 +113,7 @@ class DataInOut (BrowserView):
                 description = datas.pop('description')
                 shuiguanyuan = datas['shuiguanyuan']
                 danganbianhao = datas.pop('danganbianhao')
+                danganbianhao = self.float2str(danganbianhao,"E+")
 
                 
 # send a add nashuiren event
@@ -152,7 +156,7 @@ class DataInOut (BrowserView):
         """Export Data within CSV file."""
 
         datafile = self._createCSV(self._getDataInfos(**kw))
-        return self._createRequest(datafile.getvalue(), "orgs_sheet_export.csv")
+        return self._createRequest(datafile.getvalue(), "sheet_export.csv")
 
     def tranVoc(self,value):
         """ translate vocabulary value to title"""
@@ -166,6 +170,16 @@ class DataInOut (BrowserView):
                                                   default=u"未填写")
         return title 
 
+    def float2str(self,input,patern):
+        "float to string"
+        
+        if patern in input:
+            output = str(int(float(input)))
+            return output
+        else:
+            return input
+        
+    
     def _getDataInfos(self,**kw):
         """Generator filled with the orgs data."""
 

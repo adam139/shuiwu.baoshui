@@ -329,6 +329,7 @@ class ajaxsearch(grok.View):
         keyword = (datadic['searchabletext']).strip()     
 
         origquery = searchview.getPathQuery()
+        origquery['object_provides'] = Inashuiren.__identifier__
         origquery['sort_on'] = sortcolumn  
         origquery['sort_order'] = sortdirection
                 

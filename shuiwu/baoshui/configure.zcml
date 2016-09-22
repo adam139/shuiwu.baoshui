@@ -21,7 +21,8 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
-  <!-- -*- extra stuff goes here -*- -->
+<!-- register indexer -->
+  <adapter name="guanlidaima" factory=".indexer.indexer_guanlidaima"/>
 
   <subscriber
             for="shuiwu.baoshui.content.nashuiren.Inashuiren
@@ -29,7 +30,7 @@
             handler=".subscriber.initObjectTree"
             />
 
-<subscriber
+  <subscriber
     for="shuiwu.baoshui.interfaces.ICreateNashuirenEvent"
     handler=".subscriber.CreateNashuirenEvent"
     />            
