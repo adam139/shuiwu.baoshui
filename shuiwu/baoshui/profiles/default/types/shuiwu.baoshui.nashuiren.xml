@@ -63,6 +63,10 @@
   <property name="default_view_fallback">False</property>
   <property name="view_methods">
     <element value="base_view" />
+    <element value="nashuiren_view" />
+    <element value="sysajax_listings" />
+    <element value="print_preview" />
+    <element value="nashuiren_edit" />                
   </property>
 
   <!-- Method aliases -->

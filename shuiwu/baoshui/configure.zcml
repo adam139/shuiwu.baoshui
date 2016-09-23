@@ -23,7 +23,7 @@
 
 <!-- register indexer -->
   <adapter name="guanlidaima" factory=".indexer.indexer_guanlidaima"/>
-
+  <adapter name="dengjiriqi" factory=".indexer.indexer_dengjiriqi"/>
   <subscriber
             for="shuiwu.baoshui.content.nashuiren.Inashuiren
                  zope.lifecycleevent.interfaces.IObjectAddedEvent"

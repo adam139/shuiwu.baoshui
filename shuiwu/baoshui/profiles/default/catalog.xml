@@ -3,5 +3,9 @@
     <index name="guanlidaima" meta_type="FieldIndex">
         <indexed_attr value="guanlidaima"/>
     </index>
-    <column value="guanlidaima"/>                     
+    <column value="guanlidaima"/>                    
+    <index name="dengjiriqi" meta_type="DateIndex">
+        <indexed_attr value="dengjiriqi"/>
+    </index>
+    <column value="dengjiriqi"/>                     
 </object>
