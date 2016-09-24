@@ -13,6 +13,7 @@ class InitContents(unittest.TestCase):
                              title=u'nashuiku1')        
         portal['nashuiku1'].invokeFactory('shuiwu.baoshui.nashuiren', 'nashuiren1',
                              guanlidaima='888201',
+                             dengjiriqi='2015-12-21',
                              year='2016')                                                          
 
         

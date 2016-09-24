@@ -29,6 +29,8 @@ class CatalogSetupTest(InitContents):
     
     def test_catalog_installed(self):
         self.assertTrue('guanlidaima' in self.portal.portal_catalog.indexes())
+        self.assertTrue('dengjiriqi' in self.portal.portal_catalog.indexes())        
+        
 
 
     def test_indexer(self):
@@ -37,7 +39,7 @@ class CatalogSetupTest(InitContents):
         
         p1 = self.portal['nashuiku1']['nashuiren1']
         self.assertEqual(catalog.indexer_guanlidaima(p1)(), "888201")
-
+        self.assertEqual(catalog.indexer_dengjiriqi(p1)(), "2015-12-21")
 
                   
 
