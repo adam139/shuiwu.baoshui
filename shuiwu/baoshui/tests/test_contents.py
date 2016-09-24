@@ -1,5 +1,5 @@
 import unittest
-
+import datetime
 from shuiwu.baoshui.testing import INTEGRATION_TESTING
 from plone.app.testing import TEST_USER_ID, setRoles
 from plone.namedfile.file import NamedImage
@@ -13,7 +13,7 @@ class InitContents(unittest.TestCase):
                              title=u'nashuiku1')        
         portal['nashuiku1'].invokeFactory('shuiwu.baoshui.nashuiren', 'nashuiren1',
                              guanlidaima='888201',
-                             dengjiriqi='2015-12-21',
+                             dengjiriqi=datetime.datetime.today(),
                              year='2016')                                                          
 
         

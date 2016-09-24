@@ -396,7 +396,7 @@ class ajaxsearch(grok.View):
                                             num=str(k + 1),
                                             title=i.Title,
                                             description= i.Description,
-                                            date = i.created.strftime('%Y-%m-%d'))           
+                                            date = i.dengjiriqi.strftime('%Y-%m-%d'))           
             outhtml = "%s%s" %(outhtml ,out)
             k = k + 1 
            

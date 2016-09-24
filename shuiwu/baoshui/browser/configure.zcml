@@ -18,7 +18,7 @@
         name="sysajax_listings"
         template="templates/sysajax_listings_novocabulary.pt"
         for="*"
-        permission="cmf.ManagePortal"
+        permission="shuiwu.baoshui.view_shuiwusummary"
         class=".ajax_listing.sysAjaxListingView"
         menu="plone_displayviews"
         title="system Ajax view"/>
@@ -27,7 +27,7 @@
         name="nashuiren_view"
         template="templates/nashuiren_view.pt"
         for="shuiwu.baoshui.content.nashuiren.Inashuiren"
-        permission="cmf.ManagePortal"
+        permission="shuiwu.baoshui.view_nashuiren"
         class=".nashuiren_view.NashuirenView"
         menu="plone_displayviews"
         title="nashuiren view"/>
@@ -35,13 +35,13 @@
         name="print_preview"
         template="templates/nashuiren_print.pt"
         for="shuiwu.baoshui.content.nashuiren.Inashuiren"
-        permission="cmf.ManagePortal"
+        permission="shuiwu.baoshui.view_nashuiren"
         class=".nashuiren_view.NashuirenView"/>        	        		
   <browser:page
         name="nashuiren_edit"
         template="templates/nashuiren_edit.pt"
         for="shuiwu.baoshui.content.nashuiren.Inashuiren"
-        permission="cmf.ManagePortal"
+        permission="shuiwu.baoshui.modify_nashuiren"
         class=".nashuiren_view.NashuirenEdit"/>
 
 

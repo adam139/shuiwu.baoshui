@@ -51,7 +51,7 @@
   <property name="product">shuiwu.baoshui</property>
   <property name="factory">addNashuiren</property>
 -->
- <property name="add_permission">cmf.AddPortalContent</property>
+ <property name="add_permission">shuiwu.baoshui.add_nashuiren</property>
  <property name="behaviors">
      <element value="plone.app.content.interfaces.INameFromTitle" />
      <element value="collective.dexteritytextindexer.behavior.IDexterityTextIndexer"/>     
@@ -83,6 +83,6 @@
 
   <action title="Edit" action_id="edit" category="object" condition_expr=""
     url_expr="string:${object_url}/edit" visible="True">
-    <permission value="Modify portal content" />
+    <permission value="shuiwu.baoshui:Modify nashuiren" />
   </action>
 </object>

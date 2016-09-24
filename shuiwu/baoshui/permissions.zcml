@@ -1,0 +1,40 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="shuiwu.baoshui">
+
+    <!-- Define new permissions -->
+                
+
+	<permission
+        id="shuiwu.baoshui.add_nashuiku"
+		title="shuiwu.baoshui:Add nashuiku"
+        />	
+
+	<permission
+       id="shuiwu.baoshui.add_nashuiren"
+		title="shuiwu.baoshui:Add nashuiren"
+        />
+                          		
+	<permission
+       id="shuiwu.baoshui.modify_nashuiku"
+		title="shuiwu.baoshui:Modify nashuiku"
+        />
+		
+	<permission
+       id="shuiwu.baoshui.modify_nashuiren"
+		title="shuiwu.baoshui:Modify nashuiren"
+        />       
+       
+		
+	<permission
+       id="shuiwu.baoshui.view_shuiwusummary"
+		title="shuiwu.baoshui:View shuiwusummary"
+        />	
+		
+	<permission
+       id="shuiwu.baoshui.view_nashuiren"
+		title="shuiwu.baoshui:View nashuiren"
+        />	
+	
+</configure>
