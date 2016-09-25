@@ -31,7 +31,7 @@
 							<span>管理代码:</span><span tal:content="python:context.guanlidaima"></span>
 						</td>
 						<td class="property col-md-8"><span>档案编号:</span>
-						<span tal:content="python:context.guanlidaima">201</span>
+						<span tal:content="python:context.danganbianhao">201</span>
 						</td>
 					</tr>
 					<tr class="row">
