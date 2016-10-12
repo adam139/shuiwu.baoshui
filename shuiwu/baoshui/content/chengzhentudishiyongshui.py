@@ -5,7 +5,7 @@ from plone.directives import form, dexterity
 
 from shuiwu.baoshui import _
 
-class Ibaobiaofuzhu(form.Schema):
+class Ichengzhentudishiyongshui(form.Schema):
     """
-    baobiao fuzhu
+    tudi shiyong shui shenbaobiao
     """

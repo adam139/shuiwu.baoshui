@@ -5,7 +5,7 @@ from plone.directives import form, dexterity
 
 from shuiwu.baoshui import _
 
-class Ichengjianshui(form.Schema):
+class Iqiyesuodeshuialeiblei(form.Schema):
     """
-    chengjian shui shenbao biao
+    qiye suodeshui yujiaobiao(a lei)
     """

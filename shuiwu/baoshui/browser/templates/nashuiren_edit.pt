@@ -164,7 +164,7 @@
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">水利基金申报表（季报）</td>
+						<td class="property selectall col-md-4">水利基金申报表（季报）</td>
 						<td class="data col-md-8" data-id="shuilijijinjibao1" 
 							tal:content="structure python:view.getChildrensByQuarter('shuilijijinjibao1')">
 						</td>						

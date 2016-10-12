@@ -11,33 +11,35 @@
   <object name="shuiwu.baoshui.ancijilu" meta_type="Dexterity FTI" />  
   <object name="shuiwu.baoshui.jidujilu" meta_type="Dexterity FTI" />
   <object name="shuiwu.baoshui.yuedujilu" meta_type="Dexterity FTI" />
+  <!-- anci shenbao -->
   <object name="shuiwu.baoshui.ziyuanshui" meta_type="Dexterity FTI" />
-  <object name="shuiwu.baoshui.qishui" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.anciqita" meta_type="Dexterity FTI" />
   <object name="shuiwu.baoshui.gengdizhanyongshui" meta_type="Dexterity FTI" />
-  <object name="shuiwu.baoshui.yinhuashuianci" meta_type="Dexterity FTI" />
   <object name="shuiwu.baoshui.yinhuashuizijinzhangbo" meta_type="Dexterity FTI" />
-  <object name="shuiwu.baoshui.gonghuijingfei" meta_type="Dexterity FTI" />
-  <object name="shuiwu.baoshui.tudizengzhishuianji" meta_type="Dexterity FTI" />
-  <object name="shuiwu.baoshui.yinhuashuianji" meta_type="Dexterity FTI" />
-  <object name="shuiwu.baoshui.tudishiyongshui" meta_type="Dexterity FTI" />
-  <object name="shuiwu.baoshui.shuilijijinjibao" meta_type="Dexterity FTI" />
+  <!-- anji shenbao -->  
+
+  <object name="shuiwu.baoshui.anjiqita1" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.anjiqita2" meta_type="Dexterity FTI" />  
+  <object name="shuiwu.baoshui.chengzhentudishiyongshui" meta_type="Dexterity FTI" />
   <object name="shuiwu.baoshui.fangchanshuifangchanyuanzhi" meta_type="Dexterity FTI" />
-  <object name="shuiwu.baoshui.qiyesuodeshuialei" meta_type="Dexterity FTI" />
-  <object name="shuiwu.baoshui.zhifugongzimingxi" meta_type="Dexterity FTI" />
-  <object name="shuiwu.baoshui.baobiaofuzhu" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.qiyesuodeshuialeiblei" meta_type="Dexterity FTI" />
+   <!-- anyue shenbao -->
   <object name="shuiwu.baoshui.lirunbiao" meta_type="Dexterity FTI" />
   <object name="shuiwu.baoshui.xianjinliuliangbiao" meta_type="Dexterity FTI" />
   <object name="shuiwu.baoshui.zichanfuzaibiao" meta_type="Dexterity FTI" />
-  <object name="shuiwu.baoshui.touzizhegerensuodeshui" meta_type="Dexterity FTI" />
-  <object name="shuiwu.baoshui.shebaofei" meta_type="Dexterity FTI" />
-  <object name="shuiwu.baoshui.shuilijijin" meta_type="Dexterity FTI" />
-  <object name="shuiwu.baoshui.tudizengzhishui" meta_type="Dexterity FTI" />
-  <object name="shuiwu.baoshui.fangchanshui" meta_type="Dexterity FTI" />
-  <object name="shuiwu.baoshui.qiyesuodeshuiblei" meta_type="Dexterity FTI" />
-  <object name="shuiwu.baoshui.yinhuashuianyue" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.chengjianjiaoyudifangfujia" meta_type="Dexterity FTI" />
   <object name="shuiwu.baoshui.gerensuodeshui" meta_type="Dexterity FTI" />
-  <object name="shuiwu.baoshui.jiaoyufeifujia" meta_type="Dexterity FTI" />
-  <object name="shuiwu.baoshui.chengjianshui" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.zhifugongzimingxi" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.yinhuashuianyue" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.canbaojinshenbaobiao" meta_type="Dexterity FTI" />             
+  <object name="shuiwu.baoshui.gonghuijingfei" meta_type="Dexterity FTI" />   
+  <object name="shuiwu.baoshui.shuilijijin" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.shebaofei" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.fangchanshui" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.tudizengzhishuianyue" meta_type="Dexterity FTI" />      
+  <object name="shuiwu.baoshui.anyueqita1" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.anyueqita2" meta_type="Dexterity FTI" />
+  
   <object name="shuiwu.baoshui.nashuiren" meta_type="Dexterity FTI" />
   <object name="shuiwu.baoshui.nashuiku" meta_type="Dexterity FTI" />  
 </object>

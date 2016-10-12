@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
-<object name="shuiwu.baoshui.touzizhegerensuodeshui"
+<object name="shuiwu.baoshui.anjiqita1"
    meta_type="Dexterity FTI"
    i18n:domain="shuiwu.baoshui" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
   <!-- Basic metadata -->
-  <property name="title" i18n:translate="">touzizhe geren suodeshui</property>
+  <property name="title" i18n:translate="">anjiqita1</property>
   <property name="description"
-    i18n:translate="">touzizhe genren suodeshui shenbaobiao</property>
+    i18n:translate="">anji qita1</property>
   <property name="content_icon">folder_icon.gif</property>
   <property name="global_allow">False</property>
   <property name="filter_content_types">False</property>  
   <property name="allowed_content_types">
-  <element value="shuiwu.baoshui.yuedujilu" />  	
+  <element value="shuiwu.baoshui.jidujilu" />  	
   </property>
   <property name="allow_discussion">False</property>
 
  <!-- schema interface FIXME: this is ugly -->
- <property name="schema">shuiwu.baoshui.content.touzizhegerensuodeshui.Itouzizhegerensuodeshui</property> 
+ <property name="schema">shuiwu.baoshui.content.anjiqita1.Ianjiqita1</property> 
 
  <!-- class used for content items -->
  <property name="klass">plone.dexterity.content.Container</property>
 <!--
   <property name="product">shuiwu.baoshui</property>
-  <property name="factory">addtouzizhegerensuodeshui</property>
+  <property name="factory">addshuilijijinjibao</property>
 -->
  <property name="add_permission">cmf.AddPortalContent</property>
  <property name="behaviors">

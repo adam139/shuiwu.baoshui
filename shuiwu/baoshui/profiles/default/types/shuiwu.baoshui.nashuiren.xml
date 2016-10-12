@@ -11,33 +11,33 @@
   <property name="global_allow">True</property>
   <property name="filter_content_types">True</property>
   <property name="allowed_content_types" >
+  	<!-- anci-->
   <element value="shuiwu.baoshui.ziyuanshui" />
-  <element value="shuiwu.baoshui.qishui" />
-  <element value="shuiwu.baoshui.gengdizhanyongshui" />
-  <element value="shuiwu.baoshui.yinhuashuianci" />      
+  <element value="shuiwu.baoshui.anciqita" />
+  <element value="shuiwu.baoshui.gengdizhanyongshui" />      
   <element value="shuiwu.baoshui.yinhuashuizijinzhangbo" />
-  <element value="shuiwu.baoshui.gonghuijingfei" />
-  <element value="shuiwu.baoshui.tudizengzhishuianji" />
-  <element value="shuiwu.baoshui.yinhuashuianji" /> 	  	
-  <element value="shuiwu.baoshui.tudishiyongshui" />
-  <element value="shuiwu.baoshui.shuilijijinjibao" />
+  	<!-- anjidu-->  
+  <element value="shuiwu.baoshui.qiyesuodeshuialeiblei" /> 	  	
+  <element value="shuiwu.baoshui.chengzhentudishiyongshui" />
   <element value="shuiwu.baoshui.fangchanshuifangchanyuanzhi" />
-  <element value="shuiwu.baoshui.qiyesuodeshuialei" />      
-  <element value="shuiwu.baoshui.zhifugongzimingxi" />
-  <element value="shuiwu.baoshui.baobiaofuzhu" />
+  <element value="shuiwu.baoshui.anjiqita1" />
+  <element value="shuiwu.baoshui.anjiqita2" />  
+  	<!-- anyuedu-->         
+  <element value="shuiwu.baoshui.zichanfuzaibiao" />  
   <element value="shuiwu.baoshui.lirunbiao" />
   <element value="shuiwu.baoshui.xianjinliuliangbiao" />
-  <element value="shuiwu.baoshui.zichanfuzaibiao" />
-  <element value="shuiwu.baoshui.touzizhegerensuodeshui" />
-  <element value="shuiwu.baoshui.shebaofei" />
-  <element value="shuiwu.baoshui.shuilijijin" />      
-  <element value="shuiwu.baoshui.tudizengzhishui" />
+  <element value="shuiwu.baoshui.chengjianjiaoyudifangfujia" />
+  <element value="shuiwu.baoshui.gerensuodeshui" />   
+  <element value="shuiwu.baoshui.zhifugongzimingxi" />
+  <element value="shuiwu.baoshui.yinhuashuianyue" />      
+  <element value="shuiwu.baoshui.canbaojinshenbaobiao" />
+  <element value="shuiwu.baoshui.gonghuijingfei" /> 
+  <element value="shuiwu.baoshui.shuilijijin" />
+  <element value="shuiwu.baoshui.shebaofei" />       
   <element value="shuiwu.baoshui.fangchanshui" />
-  <element value="shuiwu.baoshui.qiyesuodeshuiblei" />
-  <element value="shuiwu.baoshui.yinhuashuianyue" /> 
-  <element value="shuiwu.baoshui.gerensuodeshui" />
-  <element value="shuiwu.baoshui.jiaoyufeifujia" />
-  <element value="shuiwu.baoshui.chengjianshui" />      
+  <element value="shuiwu.baoshui.tudizengzhishuianyue" /> 
+  <element value="shuiwu.baoshui.anyueqita1" /> 
+  <element value="shuiwu.baoshui.anyueqita2" />      
   </property>
 
   <property name="allow_discussion">False</property>
