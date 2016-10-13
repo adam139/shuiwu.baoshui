@@ -22,7 +22,7 @@ class TestView(InitContents):
     
     layer = FUNCTIONAL_TESTING                        
         
-    def test_edit(self):
+    def test_anyueedit(self):
         request = self.layer['request']        
         keyManager = getUtility(IKeyManager)
         secret = keyManager.secret()
@@ -33,12 +33,29 @@ class TestView(InitContents):
                                                                        
                         }
 # Look up and invoke the view via traversal
-        obj = self.portal['nashuiku1']['nashuiren1']['chengjianshui1']['yuedujilu1']
+        obj = self.portal['nashuiku1']['nashuiren1']['zichanfuzaibiao1']['yuedujilu1']
 
         view = obj.restrictedTraverse('@@modify_yuedujilu')
         result = view()
         self.assertEqual(obj.shenbaofou,True)
 
+    def test_anjiedit(self):
+        request = self.layer['request']        
+        keyManager = getUtility(IKeyManager)
+        secret = keyManager.secret()
+        auth = hmac.new(secret, TEST_USER_NAME, sha).hexdigest()
+        request.form = {
+                        '_authenticator': auth,
+                        'shenbaofou': 'true',
+                                                                       
+                        }
+# Look up and invoke the view via traversal
+        obj = self.portal['nashuiku1']['nashuiren1']['qiyesuodeshuialeiblei']['jidujilu1']
+
+        view = obj.restrictedTraverse('@@modify_jidujilu')
+        result = view()
+        self.assertEqual(obj.shenbaofou,True)
+        
     def test_anciedit(self):
         request = self.layer['request']        
         keyManager = getUtility(IKeyManager)
@@ -84,7 +101,7 @@ class TestView(InitContents):
         request.form = {
                         '_authenticator': auth,
                         'action': 'selectall',
-                        'objid':'chengjianshui1'
+                        'objid':'xianjinliuliangbiao1'
                         }
 # Look up and invoke the view via traversal
         obj = self.portal['nashuiku1']['nashuiren1']
@@ -92,4 +109,4 @@ class TestView(InitContents):
 
         view = obj.restrictedTraverse('@@batch_modify')
         result = view()
-        self.assertEqual(obj['chengjianshui1']['yuedujilu1'].shenbaofou,True)
+        self.assertEqual(obj['xianjinliuliangbiao1']['yuedujilu1'].shenbaofou,True)

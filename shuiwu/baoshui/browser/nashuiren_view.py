@@ -120,6 +120,21 @@ class NashuirenView(BrowserView):
             return True
         else:
             return False
+        
+    def getChildDesByName(self,child):
+        "get child description by child's id"
+        query = self.getPathQuery(child)
+        brains = self.catalog()(query)
+        des = brains[0].Description
+        return des
+    
+    def getProcessor(self):
+        "get processor"
+        obj = self.context
+        if obj.shuiguanyuan !="":
+            return obj.shuiguanyuan
+        else:
+            return obj.creators[0]
                  
   
 class NashuirenEdit(NashuirenView):
@@ -171,7 +186,37 @@ class NashuirenEdit(NashuirenView):
                         <button class="btn btn-default" name="cancel">取消</button>
                      </form>
         </td></tr></table>""" % outhtml
-        return data        
+        return data
+    
+    def getChildDesByName(self,child):
+        "get child description by child's id"
+        query = self.getPathQuery(child)
+        brains = self.catalog()(query)
+        num = self.getNumId(child)
+        des = brains[0].Description.strip()
+        if des =="":
+            des = u"点击设置描述".encode("utf-8")        
+        out = """<div class="modifydes">
+        <form class="ajaxform" style=" display:none;">                          
+                         <div class="form-group">
+                             <label for="InputComment">输入详细描述</label>
+                            <input class="form-control" type="text" value="%(des)s"/>
+                        </div>
+                        <button class="btn btn-default" name="ok">确定</button>
+                        <button class="btn btn-default" name="cancel">取消</button>
+                     </form>
+                     <div class="other">其他%(num)s(<span data-id="%(id)s" class="description">%(des)s</span>)</div>
+                </div>                                        
+        """ % dict(des=des,num=num,id=child)
+        return des
+    
+    def getNumId(self,id):
+        "get right's number for the specify id"
+        rightchar = id[-1]
+        if rightchar == '1' or rightchar == '2':
+            return rightchar
+        else:
+            return ''            
                     
 class BaseEdit(dexterity.EditForm):
     grok.name('ajaxedit')
@@ -203,7 +248,7 @@ class ModifyProperty(grok.View):
            setattr(context,property,True)
         else:
             setattr(context,property,False)
-        ajaxtext = u"<p class='text-sccess'>更改已保存</p>"
+        ajaxtext = u"<p class='text-success'>更改已保存</p>"
         callback = {"result":True,'message':ajaxtext}
         self.request.response.setHeader('Content-Type', 'application/json')
         return json.dumps(callback)     
@@ -238,7 +283,7 @@ class BatchModify(grok.View):
         for o in brains:
             obj = o.getObject()
             obj.shenbaofou = shenbaofou
-        ajaxtext = u"<p class='text-sccess'>更改已保存</p>"
+        ajaxtext = u"<p class='text-success'>更改已保存</p>"
         callback = {"result":True,'message':ajaxtext}
         self.request.response.setHeader('Content-Type', 'application/json')
         return json.dumps(callback)            
@@ -261,7 +306,7 @@ class ModifyYuedujlu(grok.View):
             self.context.shenbaofou = True
         else:
             self.context.shenbaofou = False
-        ajaxtext = u"<p class='text-sccess'>更改已保存</p>"
+        ajaxtext = u"<p class='text-success'>更改已保存</p>"
         callback = {"result":True,'message':ajaxtext}
         self.request.response.setHeader('Content-Type', 'application/json')
         return json.dumps(callback)
@@ -279,7 +324,7 @@ class ModifyJidujlu(grok.View):
             self.context.shenbaofou = True
         else:
             self.context.shenbaofou = False    
-        ajaxtext = u"<p class='text-sccess'>更改已保存</p>"
+        ajaxtext = u"<p class='text-success'>更改已保存</p>"
         callback = {"result":True,'message':ajaxtext}
         self.request.response.setHeader('Content-Type', 'application/json')
         return json.dumps(callback)
@@ -297,7 +342,27 @@ class ModifyAncijlu(grok.View):
         shenbaocishu = int(datadic['shenbaocishu'])
         self.context.shenbaocishu =  shenbaocishu
 
-        ajaxtext = u"<p class='text-sccess'>更改已保存</p>"
+        ajaxtext = u"<p class='text-success'>更改已保存</p>"
+        callback = {"result":True,'message':ajaxtext}
+        self.request.response.setHeader('Content-Type', 'application/json')
+        return json.dumps(callback)
+# ajax modify qita description
+class ModifyDescription(grok.View):
+    """AJAX action for modify description.
+    """    
+    grok.context(Inashuiren)
+    grok.name('modify_description')
+    grok.require('zope2.View')
+    
+    def render(self):    
+        datadic = self.request.form
+        des = datadic['description']
+        id = datadic['subobj_id']
+        subobj = getattr(self.context,id,None)
+        if subobj != None:
+            subodj.description = des
+
+        ajaxtext = u"<p class='text-success'>更改已保存</p>"
         callback = {"result":True,'message':ajaxtext}
         self.request.response.setHeader('Content-Type', 'application/json')
         return json.dumps(callback)

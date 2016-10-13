@@ -37,7 +37,7 @@ class TestNashuirenView(InitContents):
         outstr = '<span>888201</span>'        
         self.assertTrue(outstr in browser.contents)
 
-        outstr = 'data-property="gerensuodeshuiniandu"'
+        outstr = 'data-property="yinhuashui"'
         self.assertTrue(outstr in browser.contents)
         outstr = '<td class="col-md-1 text-center">0</td>'
         self.assertTrue(outstr in browser.contents)        

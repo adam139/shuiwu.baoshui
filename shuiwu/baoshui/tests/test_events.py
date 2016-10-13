@@ -62,16 +62,17 @@ class Allevents(unittest.TestCase):
 
     
     def test_NashuirenObjectAddedEvent(self):
-        self.assertEqual(self.portal['nashuiku1']['a8001']['gonghuijingfei1'].id,'gonghuijingfei1')
-        self.assertEqual(self.portal['nashuiku1']['a8001']['tudizengzhishuianji1'].id,'tudizengzhishuianji1')
-        self.assertEqual(self.portal['nashuiku1']['a8001']['yinhuashuianji1'].id,'yinhuashuianji1')
-        self.assertEqual(self.portal['nashuiku1']['a8001']['tudishiyongshui1'].id,'tudishiyongshui1')
-        self.assertEqual(self.portal['nashuiku1']['a8001']['shuilijijinjibao1'].id,'shuilijijinjibao1')                               
-        self.assertEqual(self.portal['nashuiku1']['a8001']['yinhuashuianci1'].id,'yinhuashuianci1')                                                      
+        self.assertEqual(self.portal['nashuiku1']['a8001']['lirunbiao1'].id,'lirunbiao1')
+        self.assertEqual(self.portal['nashuiku1']['a8001']['chengjianjiaoyudifangfujia'].id,'chengjianjiaoyudifangfujia')
+        self.assertEqual(self.portal['nashuiku1']['a8001']['gerensuodeshui1'].id,'gerensuodeshui1')
+        self.assertEqual(self.portal['nashuiku1']['a8001']['yinhuashuianyue1'].id,'yinhuashuianyue1')
+        self.assertEqual(self.portal['nashuiku1']['a8001']['canbaojinshenbaobiao'].id,'canbaojinshenbaobiao')                               
+        self.assertEqual(self.portal['nashuiku1']['a8001']['anyueqita1'].id,'anyueqita1')                                                      
         self.assertEqual(self.portal['nashuiku1']['a8001']['gengdizhanyongshui1'].id,'gengdizhanyongshui1')
-        self.assertEqual(self.portal['nashuiku1']['a8001']['qishui1'].id,'qishui1')
-        self.assertEqual(self.portal['nashuiku1']['a8001']['ziyuanshui1'].id,'ziyuanshui1')
+        self.assertEqual(self.portal['nashuiku1']['a8001']['yinhuashuizijinzhangbo1'].id,'yinhuashuizijinzhangbo1')
+        self.assertEqual(self.portal['nashuiku1']['a8001']['qiyesuodeshuialeiblei'].id,'qiyesuodeshuialeiblei')
                  
-        self.assertEqual(self.portal['nashuiku1']['a8001']['tudizengzhishuianji1']['jidujilu1'].id,'jidujilu1')        
-        self.assertEqual(self.portal['nashuiku1']['a8001']['ziyuanshui1']['ancijilu1'].id,'ancijilu1')           
+        self.assertEqual(self.portal['nashuiku1']['a8001']['chengzhentudishiyongshui1']['jidujilu1'].id,'jidujilu1')        
+        self.assertEqual(self.portal['nashuiku1']['a8001']['ziyuanshui1']['ancijilu1'].id,'ancijilu1')
+        self.assertEqual(self.portal['nashuiku1']['a8001']['anciqita']['ancijilu1'].id,'ancijilu1')                   
         

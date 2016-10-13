@@ -26,6 +26,13 @@ def initObjectTree(obj,event):
         j = str(i + 1)
         id = "yuedujilu%s" % (j)        
         tmp = api.content.create(type='shuiwu.baoshui.yuedujilu',id=id,title=id,container=item)    
+    id = 'lirunbiao1'
+    title = u'利润表'.encode("utf-8")
+    item = api.content.create(type='shuiwu.baoshui.lirunbiao',id=id,title=title,container=obj)
+    for i in range(12):
+        j = str(i + 1)
+        id = "yuedujilu%s" % (j)        
+        tmp = api.content.create(type='shuiwu.baoshui.yuedujilu',id=id,title=id,container=item)     
     id = 'xianjinliuliangbiao1'
     title = u'现金流量表'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.xianjinliuliangbiao',id=id,title=title,container=obj)
@@ -33,13 +40,7 @@ def initObjectTree(obj,event):
         j = str(i + 1)
         id = "yuedujilu%s" % (j)        
         tmp = api.content.create(type='shuiwu.baoshui.yuedujilu',id=id,title=id,container=item)    
-    id = 'lirunbiao1'
-    title = u'利润表'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.lirunbiao',id=id,title=title,container=obj)
-    for i in range(12):
-        j = str(i + 1)
-        id = "yuedujilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.yuedujilu',id=id,title=id,container=item)   
+  
     id = 'chengjianjiaoyudifangfujia'
     title = u'城建、教育、地方教育附加申报表'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.chengjianjiaoyudifangfujia',id=id,title=title,container=obj)
