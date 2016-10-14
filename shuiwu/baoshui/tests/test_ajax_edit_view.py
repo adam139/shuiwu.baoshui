@@ -110,3 +110,21 @@ class TestView(InitContents):
         view = obj.restrictedTraverse('@@batch_modify')
         result = view()
         self.assertEqual(obj['xianjinliuliangbiao1']['yuedujilu1'].shenbaofou,True)
+        
+    def test_desedit(self):
+        request = self.layer['request']        
+        keyManager = getUtility(IKeyManager)
+        secret = keyManager.secret()
+        auth = hmac.new(secret, TEST_USER_NAME, sha).hexdigest()
+        request.form = {
+                        '_authenticator': auth,
+                        'description': 'special',
+                        'subobj_id':'anyueqita1'
+                        }
+# Look up and invoke the view via traversal
+        obj = self.portal['nashuiku1']['nashuiren1']
+ 
+
+        view = obj.restrictedTraverse('@@modify_description')
+        result = view()
+        self.assertEqual(obj['anyueqita1'].description,'special')        

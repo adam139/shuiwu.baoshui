@@ -70,7 +70,7 @@
 		</div>
 		<h2 class="text-center">资料报送回执表</h2>
 		<div class="report row">
-			<table class="table bodered outer col-md-12">
+			<table class="table bodered top col-md-12">
 				<tbody>
 					<tr class="row">
 						<td class="property col-md-8">
@@ -79,7 +79,7 @@
 						<td class="property col-md-4"><span>档案编码:</span>
 						<span tal:content="python:context.danganbianhao">201</span>
 						</td>
-					</tr>					
+					</tr>
 					<tr class="row">
 						<td class="property col-md-8">
 							<span>纳税人识别号:</span><span tal:content="python:context.id"></span>
@@ -87,7 +87,11 @@
 						<td class="property col-md-4"><span>报送日期:</span>
 						<span tal:content="python:context.modified().strftime('%Y-%m-%d')">201</span>
 						</td>
-					</tr>
+					</tr>					
+				</tbody>
+			</table>			
+			<table class="table bodered outer col-md-12">
+				<tbody>
 					<tr class="row theader">
 						<td class="text-center col-md-4">资料种类</td>
 						<td class="data col-md-8">
@@ -191,7 +195,7 @@
 						</td>						
 					</tr>
 					<tal:block tal:define="description python:view.getChildDesByName('anyueqita2')">					
-					<tr class="row">
+					<tr class="row" tal:condition="description">
 						<td class="property col-md-4">其他1(<span tal:content="python:description"></span>)
 						</td>
 						<td class="data col-md-8" 
@@ -243,7 +247,7 @@
 						</td>						
 					</tr>
 					<tal:block tal:define="description python:view.getChildDesByName('anjiqita1')">					
-					<tr class="row">
+					<tr class="row" tal:condition="description">
 						<td class="property col-md-4">其他1(<span tal:content="python:description"></span>)
 						</td>
 						<td class="data col-md-8" 
@@ -252,7 +256,7 @@
 					</tr>
 					</tal:block>					
 					<tal:block tal:define="description python:view.getChildDesByName('anjiqita2')">					
-					<tr class="row">
+					<<tr class="row" tal:condition="description">
 						<td class="property col-md-4">其他2(<span tal:content="python:description"></span>)
 						</td>
 						<td class="data col-md-8" 
@@ -339,7 +343,7 @@
 						</td>						
 					</tr>
 					<tal:block tal:define="description python:view.getChildDesByName('anciqita')">					
-					<tr class="row">
+					<tr class="row" tal:condition="description">
 						<td class="property col-md-4">其他(<span tal:content="python:description"></span>)
 						</td>
 						<td class="data col-md-8" 

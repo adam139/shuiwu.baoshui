@@ -125,7 +125,10 @@ class NashuirenView(BrowserView):
         "get child description by child's id"
         query = self.getPathQuery(child)
         brains = self.catalog()(query)
-        des = brains[0].Description
+        des = brains[0].description
+        default = '\xe6\xb9\x98\xe6\xbd\xad\xe9\xab\x98\xe6\x96\xb0\xe5\x8c\xba\xe5\x9c\xb0\xe7\xa8\x8e\xe5\xb1\x80\xe7\xa8\x8e\xe5\x8a\xa1\xe7\xae\xa1\xe7\x90\x86\xe4\xbf\xa1\xe6\x81\xaf'
+        if des == default:
+            return ""
         return des
     
     def getProcessor(self):
@@ -358,9 +361,11 @@ class ModifyDescription(grok.View):
         datadic = self.request.form
         des = datadic['description']
         id = datadic['subobj_id']
+#         import pdb
+#         pdb.set_trace()        
         subobj = getattr(self.context,id,None)
         if subobj != None:
-            subodj.description = des
+            subobj.description = des
 
         ajaxtext = u"<p class='text-success'>更改已保存</p>"
         callback = {"result":True,'message':ajaxtext}

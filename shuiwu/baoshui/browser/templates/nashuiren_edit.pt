@@ -5,7 +5,13 @@
       metal:use-macro="context/main_template/macros/master"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"      
       i18n:domain="shuiwu.baoshui">       
-
+<head>
+      <metal:block fill-slot="top_slot">
+        <tal:insert tal:replace="nothing"
+              tal:define="disable_column_two python:request.set('disable_plone.rightcolumn', 1);
+              			  disable_column_one python:request.set('disable_plone.leftcolumn', 1)" />
+      </metal:block>
+  </head>
 <body>
 <metal:main fill-slot="main">
 	<tal:main-macro metal:define-macro="main">
@@ -24,7 +30,7 @@
 			</h2>
 		</div>
 		<div class="report row">
-			<table class="table bodered outer col-md-12">
+			<table class="table bodered top col-md-12">
 				<tbody>
 					<tr class="row">
 						<td class="property col-md-8">
@@ -33,7 +39,7 @@
 						<td class="property col-md-4"><span>档案编码:</span>
 						<span tal:content="python:context.danganbianhao">201</span>
 						</td>
-					</tr>					
+					</tr>
 					<tr class="row">
 						<td class="property col-md-8">
 							<span>纳税人识别号:</span><span tal:content="python:context.id"></span>
@@ -41,7 +47,11 @@
 						<td class="property col-md-4"><span>报送日期:</span>
 						<span tal:content="python:context.modified().strftime('%Y-%m-%d')">201</span>
 						</td>
-					</tr>
+					</tr>					
+				</tbody>
+			</table>			
+			<table class="table bodered outer col-md-12">
+				<tbody>
 					<tr class="row theader">
 						<td class="text-center col-md-4">资料种类</td>
 						<td class="data col-md-8">
@@ -146,7 +156,7 @@
 					</tr>
 					<tal:block tal:define="description python:view.getChildDesByName('anyueqita1')">
 					<tr class="row">
-						<td class="property selectall col-md-4" tal:content="python:description">其他</td>
+						<td class="property selectall col-md-4" tal:content="structure python:description">其他</td>
 						<td class="data col-md-8" data-id="anyueqita1" 
 							tal:content="structure python:view.getChildrensByMonth('anyueqita1')">
 						</td>						
@@ -154,7 +164,7 @@
 					</tal:block>
 					<tal:block tal:define="description python:view.getChildDesByName('anyueqita2')">
 					<tr class="row">
-						<td class="property selectall col-md-4" tal:content="python:description">其他</td>
+						<td class="property selectall col-md-4" tal:content="structure python:description">其他</td>
 						<td class="data col-md-8" data-id="anyueqita2" 
 							tal:content="structure python:view.getChildrensByMonth('anyueqita2')">
 						</td>						
@@ -196,7 +206,7 @@
 					</tr>
 					<tal:block tal:define="description python:view.getChildDesByName('anjiqita1')">
 					<tr class="row">
-						<td class="property selectall col-md-4" tal:content="python:description">其他</td>
+						<td class="property selectall col-md-4" tal:content="structure python:description">其他</td>
 						<td class="data col-md-8" data-id="anjiqita1" 
 							tal:content="structure python:view.getChildrensByQuarter('anjiqita1')">
 						</td>						
@@ -204,7 +214,7 @@
 					</tal:block>
 					<tal:block tal:define="description python:view.getChildDesByName('anjiqita2')">
 					<tr class="row">
-						<td class="property selectall col-md-4" tal:content="python:description">其他</td>
+						<td class="property selectall col-md-4" tal:content="structure python:description">其他</td>
 						<td class="data col-md-8" data-id="anjiqita2" 
 							tal:content="structure python:view.getChildrensByQuarter('anjiqita2')">
 						</td>						
@@ -326,7 +336,7 @@
 					</tr>
 					<tal:block tal:define="description python:view.getChildDesByName('anciqita')">					
 					<tr class="row">
-						<td class="property col-md-4" tal:content="python:description">其他</td>
+						<td class="property col-md-4" tal:content="structure python:description">其他</td>
 						<td class="data col-md-8" data-id="anciqita" 
 							tal:content="structure python:view.getChildrensByNumber('anciqita')">
 						</td>						

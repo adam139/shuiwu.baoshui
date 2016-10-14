@@ -81,9 +81,9 @@ def initObjectTree(obj,event):
     id = 'gonghuijingfei1'
     title = u'工会经费申报表'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.gonghuijingfei',id=id,title=title,container=obj)
-    for i in range(4):
+    for i in range(12):
         j = str(i + 1)
-        id = "jidujilu%s" % (j)        
+        id = "yuedujilu%s" % (j)        
         tmp = api.content.create(type='shuiwu.baoshui.yuedujilu',id=id,title=id,container=item)    
     id = 'shuilijijin1'
     title = u'水利基金申报表（月报）'.encode("utf-8")
