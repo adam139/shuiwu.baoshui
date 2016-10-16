@@ -125,6 +125,8 @@ class NashuirenView(BrowserView):
         "get child description by child's id"
         query = self.getPathQuery(child)
         brains = self.catalog()(query)
+        import pdb
+        pdb.set_trace()
         des = brains[0].description
         default = '\xe6\xb9\x98\xe6\xbd\xad\xe9\xab\x98\xe6\x96\xb0\xe5\x8c\xba\xe5\x9c\xb0\xe7\xa8\x8e\xe5\xb1\x80\xe7\xa8\x8e\xe5\x8a\xa1\xe7\xae\xa1\xe7\x90\x86\xe4\xbf\xa1\xe6\x81\xaf'
         if des == default:
@@ -200,7 +202,7 @@ class NashuirenEdit(NashuirenView):
         if des =="":
             des = u"点击设置描述".encode("utf-8")        
         out = """<div class="modifydes">
-        <form class="ajaxform" style=" display:none;">                          
+        <form class="ajaxdes" style=" display:none;">                          
                          <div class="form-group">
                              <label for="InputComment">输入详细描述</label>
                             <input class="form-control" type="text" value="%(des)s"/>
@@ -211,7 +213,7 @@ class NashuirenEdit(NashuirenView):
                      <div class="other">其他%(num)s(<span data-id="%(id)s" class="description">%(des)s</span>)</div>
                 </div>                                        
         """ % dict(des=des,num=num,id=child)
-        return des
+        return out
     
     def getNumId(self,id):
         "get right's number for the specify id"
@@ -360,12 +362,14 @@ class ModifyDescription(grok.View):
     def render(self):    
         datadic = self.request.form
         des = datadic['description']
+
         id = datadic['subobj_id']
 #         import pdb
 #         pdb.set_trace()        
         subobj = getattr(self.context,id,None)
         if subobj != None:
             subobj.description = des
+            subobj.reindexObject(idxs=['description'])
 
         ajaxtext = u"<p class='text-success'>更改已保存</p>"
         callback = {"result":True,'message':ajaxtext}
