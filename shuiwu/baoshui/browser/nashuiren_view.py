@@ -125,9 +125,10 @@ class NashuirenView(BrowserView):
         "get child description by child's id"
         query = self.getPathQuery(child)
         brains = self.catalog()(query)
-        import pdb
-        pdb.set_trace()
-        des = brains[0].description
+#         import pdb
+#         pdb.set_trace()
+#         des = brains[0].description
+        des = brains[0].Description.strip()
         default = '\xe6\xb9\x98\xe6\xbd\xad\xe9\xab\x98\xe6\x96\xb0\xe5\x8c\xba\xe5\x9c\xb0\xe7\xa8\x8e\xe5\xb1\x80\xe7\xa8\x8e\xe5\x8a\xa1\xe7\xae\xa1\xe7\x90\x86\xe4\xbf\xa1\xe6\x81\xaf'
         if des == default:
             return ""

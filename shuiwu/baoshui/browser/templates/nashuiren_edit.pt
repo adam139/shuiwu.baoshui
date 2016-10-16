@@ -78,95 +78,114 @@
 						<td colspan="3" class="text-center col-md-12">按月申报</td>
 					</tr>					
 					<tr class="row">
-						<td class="property selectall col-md-4">资产负责表</td>
-						<td class="data col-md-8" data-id="zichanfuzaibiao1"
+						<td class="property col-md-4">资产负责表</td>
+						<td class="selectall col-md-1 text-center checkbox">
+							<input type="checkbox" />
+							<span class="all">&nbsp;</span>
+						</td>
+						<td class="data col-md-7" data-id="zichanfuzaibiao1"
 							tal:content="structure python:view.getChildrensByMonth('zichanfuzaibiao1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property selectall col-md-4">利润表</td>
-						<td class="data col-md-8" data-id="lirunbiao1" 
+						<td class="property col-md-4">利润表</td>
+						<td class="selectall col-md-1 text-center checkbox">
+							<input type="checkbox" /><span class="all">&nbsp;</span></td>
+						<td class="data col-md-7" data-id="lirunbiao1" 
 							tal:content="structure python:view.getChildrensByMonth('lirunbiao1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property selectall col-md-4">现金流量表</td>
-						<td class="data col-md-8" data-id="xianjinliuliangbiao1" 
+						<td class="property col-md-4">现金流量表</td>
+						<td class="selectall col-md-1 text-center checkbox"><input type="checkbox" /><span class="all">&nbsp;</span></td>
+						<td class="data col-md-7" data-id="xianjinliuliangbiao1" 
 							tal:content="structure python:view.getChildrensByMonth('xianjinliuliangbiao1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property selectall col-md-4">城建、教育、地方教育附加申报表</td>
-						<td class="data col-md-8" data-id="chengjianjiaoyudifangfujia" 
+						<td class="property col-md-4">城建、教育、地方教育附加申报表</td>
+						<td class="selectall col-md-1 text-center checkbox"><input type="checkbox" /><span class="all">&nbsp;</span></td>
+						<td class="data col-md-7" data-id="chengjianjiaoyudifangfujia" 
 							tal:content="structure python:view.getChildrensByMonth('chengjianjiaoyudifangfujia')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property selectall col-md-4">个人所得税扣缴表</td>
-						<td class="data col-md-8" data-id="gerensuodeshui1" 
+						<td class="property col-md-4">个人所得税扣缴表</td>
+						<td class="selectall col-md-1 text-center checkbox"><input type="checkbox" /><span class="all">&nbsp;</span></td>
+						<td class="data col-md-7" data-id="gerensuodeshui1" 
 							tal:content="structure python:view.getChildrensByMonth('gerensuodeshui1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property selectall col-md-4">支付工资明细</td>
-						<td class="data col-md-8" data-id="zhifugongzimingxi1" 
+						<td class="property col-md-4">支付工资明细</td>
+						<td class="selectall col-md-1 text-center checkbox"><input type="checkbox" /><span class="all">&nbsp;</span></td>
+						<td class="data col-md-7" data-id="zhifugongzimingxi1" 
 							tal:content="structure python:view.getChildrensByMonth('zhifugongzimingxi1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property selectall col-md-4">印花税申报表（按月）</td>
-						<td class="data col-md-8" data-id="yinhuashuianyue1" 
+						<td class="property col-md-4">印花税申报表（按月）</td>
+						<td class="selectall col-md-1 text-center checkbox"><input type="checkbox" /><span class="all">&nbsp;</span></td>
+						<td class="data col-md-7" data-id="yinhuashuianyue1" 
 							tal:content="structure python:view.getChildrensByMonth('yinhuashuianyue1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property selectall col-md-4">残保金申报表</td>
-						<td class="data col-md-8" data-id="canbaojinshenbaobiao" 
+						<td class="property col-md-4">残保金申报表</td>
+						<td class="selectall col-md-1 text-center checkbox"><input type="checkbox" /><span class="all">&nbsp;</span></td>
+						<td class="data col-md-7" data-id="canbaojinshenbaobiao" 
 							tal:content="structure python:view.getChildrensByMonth('canbaojinshenbaobiao')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property selectall col-md-4">工会经费申报表</td>
-						<td class="data col-md-8" data-id="gonghuijingfei1" 
+						<td class="property col-md-4">工会经费申报表</td>
+						<td class="selectall col-md-1 text-center checkbox"><input type="checkbox" /><span class="all">&nbsp;</span></td>
+						<td class="data col-md-7" data-id="gonghuijingfei1" 
 							tal:content="structure python:view.getChildrensByMonth('gonghuijingfei1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property selectall col-md-4">水利基金申报表（月报）</td>
-						<td class="data col-md-8" data-id="shuilijijin1" 
+						<td class="property col-md-4">水利基金申报表（月报）</td>
+						<td class="selectall col-md-1 text-center checkbox"><input type="checkbox" /><span class="all">&nbsp;</span></td>
+						<td class="data col-md-7" data-id="shuilijijin1" 
 							tal:content="structure python:view.getChildrensByMonth('shuilijijin1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property selectall col-md-4">社保费申报表</td>
-						<td class="data col-md-8" data-id="shebaofei1" 
+						<td class="property col-md-4">社保费申报表</td>
+						<td class="selectall col-md-1 text-center checkbox"><input type="checkbox" /><span class="all">&nbsp;</span></td>
+						<td class="data col-md-7" data-id="shebaofei1" 
 							tal:content="structure python:view.getChildrensByMonth('shebaofei1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property selectall col-md-4">房产税申报表（租金收入）</td>
-						<td class="data col-md-8" data-id="fangchanshui1" 
+						<td class="property col-md-4">房产税申报表（租金收入）</td>
+						<td class="selectall col-md-1 text-center checkbox"><input type="checkbox" /><span class="all">&nbsp;</span></td>
+						<td class="data col-md-7" data-id="fangchanshui1" 
 							tal:content="structure python:view.getChildrensByMonth('fangchanshui1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property selectall col-md-4">土地增值税申报表（按月）</td>
-						<td class="data col-md-8" data-id="tudizengzhishui1" 
+						<td class="property col-md-4">土地增值税申报表（按月）</td>
+						<td class="selectall col-md-1 text-center checkbox"><input type="checkbox" /><span class="all">&nbsp;</span></td>
+						<td class="data col-md-7" data-id="tudizengzhishui1" 
 							tal:content="structure python:view.getChildrensByMonth('tudizengzhishui1')">
 						</td>						
 					</tr>
 					<tal:block tal:define="description python:view.getChildDesByName('anyueqita1')">
 					<tr class="row">
-						<td class="property selectall col-md-4" tal:content="structure python:description">其他</td>
-						<td class="data col-md-8" data-id="anyueqita1" 
+						<td class="property col-md-4" tal:content="structure python:description">其他</td>
+						<td class="selectall col-md-1 text-center checkbox"><input type="checkbox" /><span class="all">&nbsp;</span></td>
+						<td class="data col-md-7" data-id="anyueqita1" 
 							tal:content="structure python:view.getChildrensByMonth('anyueqita1')">
 						</td>						
 					</tr>
 					</tal:block>
 					<tal:block tal:define="description python:view.getChildDesByName('anyueqita2')">
 					<tr class="row">
-						<td class="property selectall col-md-4" tal:content="structure python:description">其他</td>
-						<td class="data col-md-8" data-id="anyueqita2" 
+						<td class="property col-md-4" tal:content="structure python:description">其他</td>
+						<td class="selectall col-md-1 text-center checkbox"><input type="checkbox" /><span class="all">&nbsp;</span></td>
+						<td class="data col-md-7" data-id="anyueqita2" 
 							tal:content="structure python:view.getChildrensByMonth('anyueqita2')">
 						</td>						
 					</tr>
@@ -176,7 +195,8 @@
 					</tr>
 					<tr class="row">
 						<td class="property col-md-4"></td>
-						<td class="data col-md-8"> 
+						<td class="text-center col-md-1">全选</td>
+						<td class="data col-md-7"> 
 							<table class="table bordered inner">
 								<tr class="row">
 									<td class="col-md-3 text-center">一季度</td>
@@ -188,41 +208,50 @@
 						</td>						
 					</tr>					
 					<tr class="row">
-						<td class="property selectall col-md-4">企业所得税预缴表（A类、B类）</td>
-						<td class="data col-md-8" data-id="qiyesuodeshuialeiblei" 
+						<td class="property col-md-4">企业所得税预缴表（A类、B类）</td>
+						<td class="selectall col-md-1 text-center checkbox"><input type="checkbox" /><span class="all">&nbsp;</span></td>
+						<td class="data col-md-7" data-id="qiyesuodeshuialeiblei" 
 							tal:content="structure python:view.getChildrensByQuarter('qiyesuodeshuialeiblei')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property selectall col-md-4">房产税申报表（房产原值）</td>
-						<td class="data col-md-8" data-id="fangchanshuifangchanyuanzhi1" 
+						<td class="property col-md-4">房产税申报表（房产原值）</td>
+						<td class="selectall col-md-1 text-center checkbox"><input type="checkbox" /><span class="all">&nbsp;</span></td>
+						<td class="data col-md-7" data-id="fangchanshuifangchanyuanzhi1" 
 							tal:content="structure python:view.getChildrensByQuarter('fangchanshuifangchanyuanzhi1')">
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property selectall col-md-4">城镇土地使用税申报表</td>
-						<td class="data col-md-8" data-id="chengzhentudishiyongshui1" 
+						<td class="property col-md-4">城镇土地使用税申报表</td>
+						<td class="selectall col-md-1 text-center checkbox"><input type="checkbox" /><span class="all">&nbsp;</span></td>
+						<td class="data col-md-7" data-id="chengzhentudishiyongshui1" 
 							tal:content="structure python:view.getChildrensByQuarter('chengzhentudishiyongshui1')">
 						</td>						
 					</tr>
 					<tal:block tal:define="description python:view.getChildDesByName('anjiqita1')">
 					<tr class="row">
-						<td class="property selectall col-md-4" tal:content="structure python:description">其他</td>
-						<td class="data col-md-8" data-id="anjiqita1" 
+						<td class="property col-md-4" tal:content="structure python:description">其他</td>
+						<td class="selectall col-md-1 text-center checkbox"><input type="checkbox" /><span class="all">&nbsp;</span></td>
+						<td class="data col-md-7" data-id="anjiqita1" 
 							tal:content="structure python:view.getChildrensByQuarter('anjiqita1')">
 						</td>						
 					</tr>
 					</tal:block>
 					<tal:block tal:define="description python:view.getChildDesByName('anjiqita2')">
 					<tr class="row">
-						<td class="property selectall col-md-4" tal:content="structure python:description">其他</td>
-						<td class="data col-md-8" data-id="anjiqita2" 
+						<td class="property col-md-4" tal:content="structure python:description">其他</td>
+						<td class="selectall col-md-1 text-center checkbox"><input type="checkbox" /><span class="all">&nbsp;</span></td>
+						<td class="data col-md-7" data-id="anjiqita2" 
 							tal:content="structure python:view.getChildrensByQuarter('anjiqita2')">
 						</td>						
 					</tr>
 					</tal:block>
+				</tbody>
+			</table>
+			<table class="table bodered bottom col-md-12">
+				<tbody>					
 					<tr class="row">
-						<td colspan="3" class="text-center col-md-12">按年申报</td>
+						<td colspan="2" class="text-center col-md-12">按年申报</td>
 					</tr>
 					<tr class="row">
 						<td class="property col-md-4">印花税申报表（营业帐薄）</td>
@@ -233,7 +262,7 @@
 							</tal:block>
 							<tal:block tal:condition="not:checked">
 								<input type="checkbox"/>
-								<span tal:attributes="data-property python:property" class="switch-style off">&nbsp;</span>
+								<span tal:attributes="data-property python:property" class="all">&nbsp;</span>
 							</tal:block>							
 						</td>						
 					</tr>
@@ -246,7 +275,7 @@
 							</tal:block>
 							<tal:block tal:condition="not:checked">
 								<input type="checkbox"/>
-								<span tal:attributes="data-property python:property" class="switch-style off">&nbsp;</span>
+								<span tal:attributes="data-property python:property" class="all">&nbsp;</span>
 							</tal:block>							
 						</td>						
 					</tr>
@@ -259,7 +288,7 @@
 							</tal:block>
 							<tal:block tal:condition="not:checked">
 								<input type="checkbox"/>
-								<span tal:attributes="data-property python:property" class="switch-style off">&nbsp;</span>
+								<span tal:attributes="data-property python:property" class="all">&nbsp;</span>
 							</tal:block>							
 						</td>						
 					</tr>
@@ -276,7 +305,7 @@
 							</tal:block>
 							<tal:block tal:condition="not:checked">
 								<input type="checkbox"/>
-								<span tal:attributes="data-property python:property" class="switch-style off">&nbsp;</span>
+								<span tal:attributes="data-property python:property" class="all">&nbsp;</span>
 							</tal:block>							
 						</td>						
 					</tr>
@@ -289,7 +318,7 @@
 							</tal:block>
 							<tal:block tal:condition="not:checked">
 								<input type="checkbox"/>
-								<span tal:attributes="data-property python:property" class="switch-style off">&nbsp;</span>
+								<span tal:attributes="data-property python:property" class="all">&nbsp;</span>
 							</tal:block>							
 						</td>						
 					</tr>																																																		
@@ -451,7 +480,7 @@
     $(".running .number-row").hide();
     return false;
     });
-    $(".outer").on("click",".running button[name='ok']",function() {
+    $(".bottom").on("click",".running button[name='ok']",function() {
     var old = $(".running .focus").html();
 		var action = $(".running .focus").attr('data-url') + "/@@modify_ancijilu";
 		var shenbaocishu = $(this).parent().find('input').val();
@@ -476,23 +505,23 @@
 		},'json');
 		return false;	
 		});	
-    $(".outer").on("click",".running button[name='cancel']",function() {
+    $(".bottom").on("click",".running button[name='cancel']",function() {
          $(".running .form").hide();
          $(".running .number-row").show();
         	$(".running .focus").removeClass("focus");
         	$(".running").removeClass("running");
 		return false;        		
         	});	
-        	//select batch modify		
-	$(".selectall").on("click",function() {
+    //select batch modify		
+	$(".outer").on("click",".selectall",function() {
 		var url = $("#ajax-target").attr('data-target') + "/@@batch_modify";
 		var actionid = $(this).siblings('.data').attr('data-id');
+		$(this).find('input').prop('checked', true);		
 		$(this).siblings('.data').find('input').prop('checked', true);
         var action = "selectall";
 		var data = {'objid':actionid,'action':action};
 		$(this).addClass('unselectall').removeClass('selectall');
 		$.post(url,data,function(callback) {
-
 			if (callback['result']) {
 				$("#ajax-status-notify div").html(callback['message']);
 				$("#ajax-status-notify").show();
@@ -504,12 +533,12 @@
 	$(".outer").on("click",".unselectall",function() {
 		var url = $("#ajax-target").attr('data-target') + "/@@batch_modify";
 		var actionid = $(this).siblings('.data').attr('data-id');
+		$(this).find('input').prop('checked', false);
 		$(this).siblings('.data').find('input').prop('checked', false);
-    var action = "unselectall";
+        var action = "unselectall";
 		var data = {'objid':actionid,'action':action};
 		$(this).addClass('selectall').removeClass('unselectall');
 		$.post(url,data,function(callback) {
-
 			if (callback['result']) {
 				$("#ajax-status-notify div").html(callback['message']);
 				$("#ajax-status-notify").show();
