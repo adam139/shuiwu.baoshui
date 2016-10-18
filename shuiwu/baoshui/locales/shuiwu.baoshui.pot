@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2016-09-22 08:46+0000\n"
+"POT-Creation-Date: 2016-10-17 00:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,7 @@ msgstr ""
 msgid "Data successfully imported."
 msgstr ""
 
-#: ./browser/nashuiren_view.py:179
+#: ./browser/nashuiren_view.py:230
 msgid "Edit nashuiren base info"
 msgstr ""
 
@@ -78,16 +78,48 @@ msgstr ""
 msgid "You will find below the CSV lines that failed."
 msgstr ""
 
+#: ./profiles/default/types/shuiwu.baoshui.anciqita.xml
+msgid "anci qita"
+msgstr ""
+
 #: ./profiles/default/types/shuiwu.baoshui.ancijilu.xml
 msgid "ancijilu"
 msgstr ""
 
-#: ./profiles/default/types/shuiwu.baoshui.baobiaofuzhu.xml
-msgid "baobiao fuzhu"
+#: ./profiles/default/types/shuiwu.baoshui.anciqita.xml
+msgid "anciqita"
 msgstr ""
 
-#: ./profiles/default/types/shuiwu.baoshui.baobiaofuzhu.xml
-msgid "baobiaofuzhu"
+#: ./profiles/default/types/shuiwu.baoshui.anjiqita1.xml
+msgid "anji qita1"
+msgstr ""
+
+#: ./profiles/default/types/shuiwu.baoshui.anjiqita2.xml
+msgid "anji qita2"
+msgstr ""
+
+#: ./profiles/default/types/shuiwu.baoshui.anjiqita1.xml
+msgid "anjiqita1"
+msgstr ""
+
+#: ./profiles/default/types/shuiwu.baoshui.anjiqita2.xml
+msgid "anjiqita2"
+msgstr ""
+
+#: ./profiles/default/types/shuiwu.baoshui.anyueqita2.xml
+msgid "anyue qita2"
+msgstr ""
+
+#: ./profiles/default/types/shuiwu.baoshui.anyueqita1.xml
+msgid "anyueqita1"
+msgstr ""
+
+#: ./profiles/default/types/shuiwu.baoshui.anyueqita2.xml
+msgid "anyueqita2"
+msgstr ""
+
+#: ./profiles/default/types/shuiwu.baoshui.canbaojinshenbaobiao.xml
+msgid "canbaojinshenbaobiao"
 msgstr ""
 
 #: ./content/nashuiren.py:64
@@ -98,12 +130,12 @@ msgstr ""
 msgid "chechuanshui shenbaobiao"
 msgstr ""
 
-#: ./profiles/default/types/shuiwu.baoshui.chengjianshui.xml
-msgid "chengjian shui"
+#: ./profiles/default/types/shuiwu.baoshui.chengjianjiaoyudifangfujia.xml
+msgid "chengjian jiaoyu difangjiaoyufujia"
 msgstr ""
 
-#: ./profiles/default/types/shuiwu.baoshui.chengjianshui.xml
-msgid "chengjian shui shenbao biao"
+#: ./profiles/default/types/shuiwu.baoshui.chengzhentudishiyongshui.xml
+msgid "chengzhentudishiyongshui"
 msgstr ""
 
 #: ./content/nashuiren.py:51
@@ -187,14 +219,6 @@ msgstr ""
 msgid "here"
 msgstr ""
 
-#: ./profiles/default/types/shuiwu.baoshui.jiaoyufeifujia.xml
-msgid "jiaoyu fei fujia"
-msgstr ""
-
-#: ./profiles/default/types/shuiwu.baoshui.jiaoyufeifujia.xml
-msgid "jiaoyu fei fujia shenbao biao"
-msgstr ""
-
 #: ./profiles/default/types/shuiwu.baoshui.jidujilu.xml
 msgid "jidujilu"
 msgstr ""
@@ -239,32 +263,16 @@ msgstr ""
 msgid "niandu"
 msgstr ""
 
-#: ./profiles/default/types/shuiwu.baoshui.qishui.xml
-msgid "qishui"
-msgstr ""
-
-#: ./profiles/default/types/shuiwu.baoshui.qishui.xml
-msgid "qishui shenbaobiao"
-msgstr ""
-
-#: ./profiles/default/types/shuiwu.baoshui.qiyesuodeshuiblei.xml
-msgid "qiye suodeshui blei"
-msgstr ""
-
 #: ./content/nashuiren.py:73
 msgid "qiye suodeshui niandu shenbaobiao ji huisuan qinjiao fudaojilu"
 msgstr ""
 
-#: ./profiles/default/types/shuiwu.baoshui.qiyesuodeshuiblei.xml
-msgid "qiye suodeshui shenbao biao B lei"
+#: ./profiles/default/types/shuiwu.baoshui.qiyesuodeshuialeiblei.xml
+msgid "qiye suodeshui yujiaobiao(a lei b lei)"
 msgstr ""
 
-#: ./profiles/default/types/shuiwu.baoshui.qiyesuodeshuialei.xml
-msgid "qiye suodeshui yujiaobiao(a lei)"
-msgstr ""
-
-#: ./profiles/default/types/shuiwu.baoshui.qiyesuodeshuialei.xml
-msgid "qiyesuodeshui alei"
+#: ./profiles/default/types/shuiwu.baoshui.qiyesuodeshuialeiblei.xml
+msgid "qiyesuodeshui aleiblei"
 msgstr ""
 
 #: ./profiles/default/types/shuiwu.baoshui.shebaofei.xml
@@ -288,35 +296,15 @@ msgstr ""
 msgid "shuili jijin"
 msgstr ""
 
-#: ./profiles/default/types/shuiwu.baoshui.shuilijijinjibao.xml
-msgid "shuili jijin shenbaobiao(jibao)"
-msgstr ""
-
 #: ./profiles/default/types/shuiwu.baoshui.shuilijijin.xml
 msgid "shuili jijin shenbaobiao(yuebao)"
-msgstr ""
-
-#: ./profiles/default/types/shuiwu.baoshui.shuilijijinjibao.xml
-msgid "shuilijijin jibao"
 msgstr ""
 
 #: ./content/nashuiren.py:36
 msgid "shuishou guanlirenyuan"
 msgstr ""
 
-#: ./profiles/default/types/shuiwu.baoshui.touzizhegerensuodeshui.xml
-msgid "touzizhe genren suodeshui shenbaobiao"
-msgstr ""
-
-#: ./profiles/default/types/shuiwu.baoshui.touzizhegerensuodeshui.xml
-msgid "touzizhe geren suodeshui"
-msgstr ""
-
-#: ./profiles/default/types/shuiwu.baoshui.tudishiyongshui.xml
-msgid "tudi shiyong shui shenbaobiao"
-msgstr ""
-
-#: ./profiles/default/types/shuiwu.baoshui.tudizengzhishui.xml
+#: ./profiles/default/types/shuiwu.baoshui.tudizengzhishuianyue.xml
 msgid "tudi zengzhishui"
 msgstr ""
 
@@ -324,12 +312,8 @@ msgstr ""
 msgid "tudi zengzhishui shenbaobiao(anji)"
 msgstr ""
 
-#: ./profiles/default/types/shuiwu.baoshui.tudizengzhishui.xml
+#: ./profiles/default/types/shuiwu.baoshui.tudizengzhishuianyue.xml
 msgid "tudi zengzhishui shenbaobiao(anyue)"
-msgstr ""
-
-#: ./profiles/default/types/shuiwu.baoshui.tudishiyongshui.xml
-msgid "tudishiyongshui"
 msgstr ""
 
 #: ./profiles/default/types/shuiwu.baoshui.tudizengzhishuianji.xml

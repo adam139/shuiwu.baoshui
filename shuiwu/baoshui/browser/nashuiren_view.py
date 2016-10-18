@@ -80,7 +80,7 @@ class NashuirenView(BrowserView):
     
     def outputcheckbox(self,braindata,width=1):
         "根据参数total,braindata,返回jason 输出"
-        outhtml = """<table class="table bordered inner"><tr class="row">"""      
+        outhtml = """<table class="table table-condensed inner"><tr class="row">"""      
 
         for i in braindata:
             o = i.getObject()
@@ -100,7 +100,7 @@ class NashuirenView(BrowserView):
     
     def outputnumber(self,braindata,width=1):
         "根据参数输出html"
-        outhtml = """<table class="table bordered inner"><tr class="row">"""      
+        outhtml = """<table class="table table-condensed inner"><tr class="row">"""      
 
         for i in braindata:
             o = i.getObject()
@@ -148,7 +148,7 @@ class NashuirenEdit(NashuirenView):
 
     def outputcheckbox(self,braindata,width=1):
         "根据参数total,braindata,返回jason 输出"
-        outhtml = """<table class="table bordered inner"><tr class="row">"""      
+        outhtml = """<table class="table table-condensed bordered inner"><tr class="row">"""      
 
         for i in braindata:
             o = i.getObject()
@@ -172,7 +172,7 @@ class NashuirenEdit(NashuirenView):
         
     def outputnumber(self,braindata,width=1):
         "根据参数输出html"
-        outhtml = """<table class="table bordered inner"><tr class="row number-row">"""      
+        outhtml = """<table class="table table-condensed bordered inner"><tr class="row number-row">"""      
 
         for i in braindata:
             o = i.getObject()

@@ -37,7 +37,7 @@
     <div tal:replace="structure provider:plone.scripts" />
     <metal:javascriptslot define-slot="javascript_head_slot" />
     <link tal:replace="structure provider:plone.htmlhead.links" />
-    <link rel="stylesheet" href="http://images.315ok.org/shuiwu/css/print.css"/>
+    <link rel="stylesheet" href="http://shuiwu.315ok.org/shuiwustatic/css/print.css"/>
   </head>
   
   <body tal:define="isRTL portal_state/is_rtl;
@@ -68,34 +68,37 @@
 			class="printthis btn btn-primary col-md-1  text-center" >打印</a>
 		</h5>
 		</div>
-		<h2 class="text-center">资料报送回执表</h2>
+		<h3 class="text-center">资料报送回执表</h3>
 		<div class="report row">
-			<table class="table bodered top col-md-12">
+			<table class="table table-condensed bodered top col-md-12">
 				<tbody>
 					<tr class="row">
 						<td class="property col-md-8">
 							<span>纳税人名称:</span><span tal:content="python:context.guanlidaima"></span>
 						</td>
-						<td class="property col-md-4"><span>档案编码:</span>
-						<span tal:content="python:context.danganbianhao">201</span>
+						<td class="property col-md-4">
+							<span>档案编码:</span>
+							<span tal:content="python:context.danganbianhao">201</span>
 						</td>
 					</tr>
 					<tr class="row">
 						<td class="property col-md-8">
-							<span>纳税人识别号:</span><span tal:content="python:context.id"></span>
+							<span>纳税人识别号:</span>
+							<span tal:content="python:context.id"></span>
 						</td>
-						<td class="property col-md-4"><span>报送日期:</span>
-						<span tal:content="python:context.modified().strftime('%Y-%m-%d')">201</span>
+						<td class="property col-md-4">
+							<span>报送日期:</span>
+							<span tal:content="python:context.modified().strftime('%Y-%m-%d')">201</span>
 						</td>
 					</tr>					
 				</tbody>
-			</table>			
-			<table class="table bodered outer col-md-12">
+			</table>
+			<table class="table table-condensed bodered outer col-md-12">
 				<tbody>
 					<tr class="row theader">
 						<td class="text-center col-md-4">资料种类</td>
 						<td class="data col-md-8">
-							<table class="table bordered inner">
+							<table class="table table-condensed bordered inner">
 								<tr class="row">
 									<td class="col-md-1">1月</td>
 									<td class="col-md-1">2月</td>
@@ -194,7 +197,7 @@
 							tal:content="structure python:view.getChildrensByMonth('tudizengzhishui1')">
 						</td>						
 					</tr>
-					<tal:block tal:define="description python:view.getChildDesByName('anyueqita2')">					
+					<tal:block tal:define="description python:view.getChildDesByName('anyueqita1')">					
 					<tr class="row" tal:condition="description">
 						<td class="property col-md-4">其他1(<span tal:content="python:description"></span>)
 						</td>
@@ -215,10 +218,10 @@
 					<tr class="row">
 						<td colspan="2" class="text-center col-md-12">按季申报</td>
 					</tr>
-					<tr class="row">
+					<tr class="row hiddenprint">
 						<td class="property col-md-4"></td>
 						<td class="data col-md-8"> 
-							<table class="table bordered inner">
+							<table class="table bordered table-condensed inner">
 								<tr class="row">
 									<td class="col-md-3 text-center">一季度</td>
 									<td class="col-md-3 text-center">二季度</td>
@@ -227,7 +230,7 @@
 								</tr>
 							</table>
 						</td>						
-					</tr>					
+					</tr>										
 					<tr class="row">
 						<td class="property col-md-4">企业所得税预缴表（A类、B类）</td>
 						<td class="data col-md-8" 
@@ -256,7 +259,7 @@
 					</tr>
 					</tal:block>					
 					<tal:block tal:define="description python:view.getChildDesByName('anjiqita2')">					
-					<<tr class="row" tal:condition="description">
+					<tr class="row" tal:condition="description">
 						<td class="property col-md-4">其他2(<span tal:content="python:description"></span>)
 						</td>
 						<td class="data col-md-8" 
@@ -267,9 +270,9 @@
 					<tr class="row">
 						<td colspan="2" class="text-center col-md-12">按年申报</td>
 					</tr>
-					<tr class="row">
+					<tr class="row notable">
 						<td class="property col-md-4">印花税申报表（营业帐薄）</td>
-						<td class="data col-md-8" tal:define="property string:yinhuashui;checked python:view.propertyChecked(property)">
+						<td class="data col-md-8 text-center" tal:define="property string:yinhuashui;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
 								<input class="property" readonly checked type="checkbox"/>
 							</tal:block>
@@ -278,9 +281,9 @@
 							</tal:block>							
 						</td>						
 					</tr>
-					<tr class="row">
+					<tr class="row notable">
 						<td class="property col-md-4">车船税申报表</td>
-						<td class="data col-md-8" tal:define="property string:chechuanshui;checked python:view.propertyChecked(property)">
+						<td class="data col-md-8 text-center" tal:define="property string:chechuanshui;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
 								<input class="property" readonly checked type="checkbox"/>
 							</tal:block>
@@ -289,9 +292,9 @@
 							</tal:block>							
 						</td>						
 					</tr>
-					<tr class="row">
+					<tr class="row notable">
 						<td class="property col-md-4">企业所得税年度申报表</td>
-						<td class="data col-md-8" tal:define="property string:qiyesuodeshuiniandu;checked python:view.propertyChecked(property)">
+						<td class="data col-md-8 text-center" tal:define="property string:qiyesuodeshuiniandu;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
 								<input class="property" readonly  checked type="checkbox"/>
 							</tal:block>
@@ -303,10 +306,10 @@
 					<tr class="row">
 						<td colspan="2" class="text-center col-md-12">按次申报</td>
 					</tr>
-					<tr class="row theader">
+					<tr class="row theader hiddenprint">
 						<td class="text-center col-md-4">资料种类</td>
 						<td class="data col-md-8">
-							<table class="table bordered inner">
+							<table class="table table-condensed bordered inner">
 								<tr class="row">
 									<td class="col-md-1">1月</td>
 									<td class="col-md-1">2月</td>

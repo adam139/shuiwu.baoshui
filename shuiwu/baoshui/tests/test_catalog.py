@@ -20,7 +20,7 @@ from shuiwu.baoshui.testing import INTEGRATION_TESTING
 from shuiwu.baoshui import indexer as catalog
 from plone.indexer.delegate import DelegatingIndexerFactory
 from shuiwu.baoshui.tests.test_contents import InitContents
-
+import datetime
 class CatalogSetupTest(InitContents):
 
     layer = INTEGRATION_TESTING
@@ -39,7 +39,8 @@ class CatalogSetupTest(InitContents):
         
         p1 = self.portal['nashuiku1']['nashuiren1']
         self.assertEqual(catalog.indexer_guanlidaima(p1)(), "888201")
-        self.assertEqual(catalog.indexer_dengjiriqi(p1)(), "2015-12-21")
+        dengjiriqi=datetime.datetime.today().strftime("%Y-%m-%d")
+        self.assertEqual(catalog.indexer_dengjiriqi(p1)(), dengjiriqi)
 
                   
 

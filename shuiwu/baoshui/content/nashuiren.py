@@ -42,6 +42,7 @@ class Inashuiren(form.Schema,IBasic):
                              default=u"2012",
                              required=False,)
 #管理代码    
+    dexteritytextindexer.searchable('guanlidaima')
     guanlidaima = schema.ASCIILine(
             title=_(u"guanli daima"),
             description=_(u"shehui xingren daima (nashuiren shibiehao)"),

@@ -321,8 +321,7 @@ class ajaxsearch(grok.View):
         start = int(datadic['start']) # batch search start position
         datekey = int(datadic['datetype'])  # 对应 最近一周，一月，一年……
         size = int(datadic['size'])      # batch search size          
-#         securitykey = int(datadic['security'])  #密级属性：公开/内部/机密
-#         tasktypekey = int(datadic['type']) #任务类型属性：分析/设计/实验/仿真/培训 
+
         tag = datadic['tag'].strip()
         sortcolumn = datadic['sortcolumn']
         sortdirection = datadic['sortdirection']
@@ -337,12 +336,9 @@ class ajaxsearch(grok.View):
         if keyword != "":
             origquery['SearchableText'] = '*'+keyword+'*'        
 
-#         if securitykey != 0:
-#             origquery['security_level'] = searchview.getSecurityLevel(securitykey)
         if datekey != 0:
             origquery['created'] = self.Datecondition(datekey)           
-#         if tasktypekey != 0:
-#             origquery['task_type'] = searchview.getTaskType(tasktypekey)
+
 
         # remove repeat values 
         tag = tag.split(',')
@@ -396,7 +392,7 @@ class ajaxsearch(grok.View):
                                             num=str(k + 1),
                                             title=i.Title,
                                             description= i.Description,
-                                            date = i.dengjiriqi.strftime('%Y-%m-%d'))           
+                                            date = i.dengjiriqi)           
             outhtml = "%s%s" %(outhtml ,out)
             k = k + 1 
            

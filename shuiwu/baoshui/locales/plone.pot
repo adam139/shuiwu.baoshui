@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: emc.project\n"
+"Project-Id-Version: shuiwu.baoshui\n"
 "POT-Creation-Date: 2015-02-14 00:52+0000\n"
 "PO-Revision-Date: 2015-02-14 09:20+0800\n"
 "Last-Translator: adam <yuejun.tang@gmail.com>\n"
@@ -15,5 +15,11 @@ msgstr ""
 "Domain: plone\n"
 
 #: rolemap.xml
-msgid "ChiefQE"
+msgid "ShuiguanyuanMember"
+msgstr ""
+
+msgid "system Ajax view"
+msgstr ""
+
+msgid "nashuiren view"
 msgstr ""

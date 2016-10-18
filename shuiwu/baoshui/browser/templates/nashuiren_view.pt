@@ -23,7 +23,7 @@
 		</h5>
 		</div>
 		<div class="report row">
-			<table class="table bodered top col-md-12">
+			<table class="table bodered table-condensed top col-md-12">
 				<tbody>
 					<tr class="row">
 						<td class="property col-md-8">
@@ -43,12 +43,12 @@
 					</tr>					
 				</tbody>
 			</table>
-			<table class="table bodered outer col-md-12">
+			<table class="table bodered table-condensed outer col-md-12">
 				<tbody>									
 					<tr class="row theader">
 						<td class="text-center col-md-4">资料种类</td>
 						<td class="data col-md-8">
-							<table class="table bordered inner">
+							<table class="table bordered table-condensed inner">
 								<tr class="row">
 									<td class="col-md-1">1月</td>
 									<td class="col-md-1">2月</td>
@@ -171,7 +171,7 @@
 					<tr class="row">
 						<td class="property col-md-4"></td>
 						<td class="data col-md-8"> 
-							<table class="table bordered inner">
+							<table class="table bordered table-condensed inner">
 								<tr class="row">
 									<td class="col-md-3 text-center">一季度</td>
 									<td class="col-md-3 text-center">二季度</td>
@@ -220,9 +220,9 @@
 					<tr class="row">
 						<td colspan="2" class="text-center col-md-12">按年申报</td>
 					</tr>
-					<tr class="row">
+					<tr class="row notable">
 						<td class="property col-md-4">印花税申报表（营业帐薄）</td>
-						<td class="data col-md-8" tal:define="property string:yinhuashui;checked python:view.propertyChecked(property)">
+						<td class="data col-md-8 text-center" tal:define="property string:yinhuashui;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
 								<input class="property" readonly checked type="checkbox"/>
 							</tal:block>
@@ -231,9 +231,9 @@
 							</tal:block>							
 						</td>						
 					</tr>
-					<tr class="row">
+					<tr class="row notable">
 						<td class="property col-md-4">车船税申报表</td>
-						<td class="data col-md-8" tal:define="property string:chechuanshui;checked python:view.propertyChecked(property)">
+						<td class="data col-md-8 text-center" tal:define="property string:chechuanshui;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
 								<input class="property" readonly checked type="checkbox"/>
 							</tal:block>
@@ -242,9 +242,9 @@
 							</tal:block>							
 						</td>						
 					</tr>
-					<tr class="row">
+					<tr class="row notable">
 						<td class="property col-md-4">企业所得税年度申报表</td>
-						<td class="data col-md-8" tal:define="property string:qiyesuodeshuiniandu;checked python:view.propertyChecked(property)">
+						<td class="data col-md-8 text-center" tal:define="property string:qiyesuodeshuiniandu;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
 								<input class="property" readonly  checked type="checkbox"/>
 							</tal:block>
@@ -256,9 +256,9 @@
 					<tr class="row">
 						<td colspan="2" class="text-center col-md-12">管理类</td>
 					</tr>
-					<tr class="row">
+					<tr class="row notable">
 						<td class="property col-md-4">注销税务登记表</td>
-						<td class="data col-md-8" tal:define="property string:zhuxiaoshuiwudengji;checked python:view.propertyChecked(property)">
+						<td class="data col-md-8 text-center" tal:define="property string:zhuxiaoshuiwudengji;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
 								<input class="property" readonly  checked type="checkbox"/>
 							</tal:block>
@@ -267,9 +267,9 @@
 							</tal:block>							
 						</td>						
 					</tr>
-					<tr class="row">
+					<tr class="row notable">
 						<td class="property col-md-4">非正户认定表</td>
-						<td class="data col-md-8" tal:define="property string:feizhenghurending;checked python:view.propertyChecked(property)">
+						<td class="data col-md-8 text-center" tal:define="property string:feizhenghurending;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
 								<input class="property" readonly  checked type="checkbox"/>
 							</tal:block>
@@ -284,7 +284,7 @@
 					<tr class="row theader">
 						<td class="text-center col-md-4">资料种类</td>
 						<td class="data col-md-8">
-							<table class="table bordered inner">
+							<table class="table table-condensed bordered inner">
 								<tr class="row">
 									<td class="col-md-1">1月</td>
 									<td class="col-md-1">2月</td>

@@ -8,4 +8,4 @@ def indexer_guanlidaima(obj, **kw):
 
 @indexer(Inashuiren)
 def indexer_dengjiriqi(obj, **kw):
-    return obj.dengjiriqi
+    return obj.dengjiriqi.strftime("%Y-%m-%d")

@@ -21,7 +21,12 @@
     	<!-- jquery ajax callback function update status notify -->
     	<div class="row" id="ajax-status-notify" style="display:none;">
     		<div class="col-xs-12">notify message</div>
-    	</div>		
+    	</div>
+		<div class ="row">
+		<h5>
+		<a title="打印预览" tal:attributes="href python:context.absolute_url() + '/@@print_preview'" class="col-md-2 col-md-offset-10 text-center btn btn-primary" >打印预览</a>
+		</h5>
+		</div>    			
 		<div class ="row">
 			<h2 class="text-center">
 				<a class="btn btn-primary" 
@@ -30,7 +35,7 @@
 			</h2>
 		</div>
 		<div class="report row">
-			<table class="table bodered top col-md-12">
+			<table class="table bodered table-condensed top col-md-12">
 				<tbody>
 					<tr class="row">
 						<td class="property col-md-8">
@@ -50,7 +55,7 @@
 					</tr>					
 				</tbody>
 			</table>			
-			<table class="table bodered outer col-md-12">
+			<table class="table bodered table-condensed outer col-md-12">
 				<tbody>
 					<tr class="row theader">
 						<td class="text-center col-md-4">资料种类</td>
@@ -248,47 +253,47 @@
 					</tal:block>
 				</tbody>
 			</table>
-			<table class="table bodered bottom col-md-12">
+			<table class="table bodered table-condensed bottom col-md-12">
 				<tbody>					
 					<tr class="row">
 						<td colspan="2" class="text-center col-md-12">按年申报</td>
 					</tr>
-					<tr class="row">
+					<tr class="row notable">
 						<td class="property col-md-4">印花税申报表（营业帐薄）</td>
-						<td class="data col-md-8 p-checkbox" tal:define="property string:yinhuashui;checked python:view.propertyChecked(property)">
+						<td class="data col-md-8 p-checkbox text-center" tal:define="property string:yinhuashui;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
 								<input checked type="checkbox"/>
 								<span tal:attributes="data-property python:property" class="switch-style on">&nbsp;</span>
 							</tal:block>
 							<tal:block tal:condition="not:checked">
 								<input type="checkbox"/>
-								<span tal:attributes="data-property python:property" class="all">&nbsp;</span>
+								<span tal:attributes="data-property python:property" class="switch-style off">&nbsp;</span>
 							</tal:block>							
 						</td>						
 					</tr>
-					<tr class="row">
+					<tr class="row notable">
 						<td class="property col-md-4">车船税申报表</td>
-						<td class="data col-md-8 p-checkbox" tal:define="property string:chechuanshui;checked python:view.propertyChecked(property)">
+						<td class="data col-md-8 p-checkbox text-center" tal:define="property string:chechuanshui;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
 								<input checked type="checkbox"/>
 								<span tal:attributes="data-property python:property" class="switch-style on">&nbsp;</span>
 							</tal:block>
 							<tal:block tal:condition="not:checked">
 								<input type="checkbox"/>
-								<span tal:attributes="data-property python:property" class="all">&nbsp;</span>
+								<span tal:attributes="data-property python:property" class="switch-style off">&nbsp;</span>
 							</tal:block>							
 						</td>						
 					</tr>
-					<tr class="row">
+					<tr class="row notable">
 						<td class="property col-md-4">企业所得税年度申报表</td>
-						<td class="data col-md-8 p-checkbox" tal:define="property string:qiyesuodeshuiniandu;checked python:view.propertyChecked(property)">
+						<td class="data col-md-8 p-checkbox text-center" tal:define="property string:qiyesuodeshuiniandu;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
 								<input checked type="checkbox"/>
 								<span tal:attributes="data-property python:property" class="switch-style on">&nbsp;</span>
 							</tal:block>
 							<tal:block tal:condition="not:checked">
 								<input type="checkbox"/>
-								<span tal:attributes="data-property python:property" class="all">&nbsp;</span>
+								<span tal:attributes="data-property python:property" class="switch-style off">&nbsp;</span>
 							</tal:block>							
 						</td>						
 					</tr>
@@ -296,29 +301,29 @@
 					<tr class="row">
 						<td colspan="2" class="text-center col-md-12">管理类</td>
 					</tr>
-					<tr class="row">
+					<tr class="row notable">
 						<td class="property col-md-4">注销税务登记表</td>
-						<td class="data col-md-8 p-checkbox" tal:define="property string:zhuxiaoshuiwudengji;checked python:view.propertyChecked(property)">
+						<td class="data col-md-8 p-checkbox text-center" tal:define="property string:zhuxiaoshuiwudengji;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
 								<input checked type="checkbox"/>
 								<span tal:attributes="data-property python:property" class="switch-style on">&nbsp;</span>
 							</tal:block>
 							<tal:block tal:condition="not:checked">
 								<input type="checkbox"/>
-								<span tal:attributes="data-property python:property" class="all">&nbsp;</span>
+								<span tal:attributes="data-property python:property" class="switch-style off">&nbsp;</span>
 							</tal:block>							
 						</td>						
 					</tr>
-					<tr class="row">
+					<tr class="row notable">
 						<td class="property col-md-4">非正户认定表</td>
-						<td class="data col-md-8 p-checkbox" tal:define="property string:feizhenghurending;checked python:view.propertyChecked(property)">
+						<td class="data col-md-8 p-checkbox text-center" tal:define="property string:feizhenghurending;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
 								<input checked type="checkbox"/>
 								<span tal:attributes="data-property python:property" class="switch-style on">&nbsp;</span>
 							</tal:block>
 							<tal:block tal:condition="not:checked">
 								<input type="checkbox"/>
-								<span tal:attributes="data-property python:property" class="all">&nbsp;</span>
+								<span tal:attributes="data-property python:property" class="switch-style off">&nbsp;</span>
 							</tal:block>							
 						</td>						
 					</tr>																																																		
@@ -328,7 +333,7 @@
 					<tr class="row theader">
 						<td class="text-center col-md-4">资料种类</td>
 						<td class="data col-md-8">
-							<table class="table bordered inner">
+							<table class="table bordered table-condensed inner">
 								<tr class="row">
 									<td class="col-md-1">1月</td>
 									<td class="col-md-1">2月</td>
@@ -398,7 +403,7 @@
 		$.post(action,data,function(callback) {
 			if (callback['result']) {
 				$("#ajax-status-notify div").html(callback['message']);
-				$("#ajax-status-notify").show();
+				//$("#ajax-status-notify").show();
 			}				
 		},'json');
 		return false;	
@@ -421,7 +426,7 @@
 		$.post(action,data,function(callback) {
 			if (callback['result']) {
 				$("#ajax-status-notify div").html(callback['message']);
-				$("#ajax-status-notify").show();
+				//$("#ajax-status-notify").show();
 			}				
 		},'json');
 		return false;	
@@ -436,7 +441,7 @@
     return false;
     });
     //form ok button
-    $(".outer").on("click",".current button[name='ok']",function() {		
+    $(".table").on("click",".current button[name='ok']",function() {		
 		//var id = $(this).attr('data-id');
 		var old = $(".current .editing").html();
 		var description = $(this).parent().find('input').val();
@@ -458,13 +463,13 @@
         	$(".current .editing").removeClass("editing");
         	$(".current").removeClass("current");		
 			$("#ajax-status-notify div").html(callback['message']);
-			$("#ajax-status-notify").show();
+			//$("#ajax-status-notify").show();
 			}				
 		},'json');
 		return false;	
 		});
 		//form cancel button
-    $(".outer").on("click",".current button[name='cancel']",function() {
+    $(".table").on("click",".current button[name='cancel']",function() {
          $(".current .ajaxdes").hide();
          $(".current .other").show();
          $(".current .editing").removeClass("editing");
@@ -481,7 +486,7 @@
     return false;
     });
     $(".bottom").on("click",".running button[name='ok']",function() {
-    var old = $(".running .focus").html();
+    	var old = $(".running .focus").html();
 		var action = $(".running .focus").attr('data-url') + "/@@modify_ancijilu";
 		var shenbaocishu = $(this).parent().find('input').val();
 		if (old == shenbaocishu) {
@@ -500,7 +505,7 @@
         	$(".running .focus").removeClass("focus");
         	$(".running").removeClass("running");		
 			$("#ajax-status-notify div").html(callback['message']);
-			$("#ajax-status-notify").show();
+			//$("#ajax-status-notify").show();
 			}				
 		},'json');
 		return false;	
@@ -524,7 +529,7 @@
 		$.post(url,data,function(callback) {
 			if (callback['result']) {
 				$("#ajax-status-notify div").html(callback['message']);
-				$("#ajax-status-notify").show();
+				//$("#ajax-status-notify").show();
 			}				
 		},'json');
 		return false;
@@ -541,7 +546,7 @@
 		$.post(url,data,function(callback) {
 			if (callback['result']) {
 				$("#ajax-status-notify div").html(callback['message']);
-				$("#ajax-status-notify").show();
+				//$("#ajax-status-notify").show();
 			}				
 		},'json');
 		return false;
