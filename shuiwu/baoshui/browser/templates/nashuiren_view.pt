@@ -27,7 +27,7 @@
 				<tbody>
 					<tr class="row">
 						<td class="property col-md-8">
-							<span>纳税人名称:</span><span tal:content="python:context.guanlidaima"></span>
+							<span>纳税人名称:</span><span tal:content="python:context.title"></span>
 						</td>
 						<td class="property col-md-4"><span>档案编码:</span>
 						<span tal:content="python:context.danganbianhao">201</span>

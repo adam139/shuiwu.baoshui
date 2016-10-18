@@ -79,6 +79,8 @@ class DataInOut (BrowserView):
         if file_upload is None or not file_upload.filename:
             return
         reader = csv.reader(file_upload)
+#         import pdb
+#         pdb.set_trace()
         header = reader.next()
         if header != data_VALUES:
             msg = _('Wrong specification of the CSV file. Please correct it and retry.')

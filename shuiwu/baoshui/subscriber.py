@@ -212,7 +212,9 @@ def CreateNashuirenEvent(event):
         return      
 
     memberfolder = newest[0].getObject()
-    memberid = event.id        
+    memberid = event.id
+#     import pdb
+#     pdb.set_trace()        
     try:
         item = api.content.create(
                                   type="shuiwu.baoshui.nashuiren",

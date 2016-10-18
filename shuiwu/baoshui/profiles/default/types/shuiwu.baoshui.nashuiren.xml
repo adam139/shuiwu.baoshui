@@ -59,7 +59,7 @@
  </property>
 
   <!-- View information -->
-  <property name="default_view">view</property>
+  <property name="default_view">nashuiren_edit</property>
   <property name="default_view_fallback">False</property>
   <property name="view_methods">
     <element value="base_view" />
@@ -77,7 +77,7 @@
 
   <!-- Actions -->
   <action title="View" action_id="view" category="object" condition_expr=""
-    url_expr="string:${object_url}/" visible="True">
+    url_expr="string:${object_url}/View" visible="True">
     <permission value="View" />
   </action>
 
