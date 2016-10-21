@@ -114,8 +114,9 @@ class DataInOut (BrowserView):
                 dengjiriqi = datas.pop('dengjiriqi')
                 description = datas.pop('description')
                 shuiguanyuan = datas['shuiguanyuan']
-                danganbianhao = datas.pop('danganbianhao')
-                danganbianhao = self.float2str(danganbianhao,"E+")
+                danganbianhao = ""                
+#                 danganbianhao = datas.pop('danganbianhao')
+#                 danganbianhao = self.float2str(danganbianhao,"E+")
 
                 
 # send a add nashuiren event

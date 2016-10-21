@@ -220,7 +220,7 @@ def CreateNashuirenEvent(event):
                                   type="shuiwu.baoshui.nashuiren",
                                   container=memberfolder,
                                   id = memberid,
-                                  safe_id = True)
+                                  safe_id = False)
 #         item =createContentInContainer(memberfolder,"shuiwu.baoshui.nashuiren",checkConstraints=False,id=memberid)
 
         item.title = event.title
