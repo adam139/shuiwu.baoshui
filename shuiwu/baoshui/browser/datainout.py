@@ -112,6 +112,10 @@ class DataInOut (BrowserView):
                 title = name
                 guanlidaima = id                
                 dengjiriqi = datas.pop('dengjiriqi')
+                if ' ' in dengjiriqi:
+                    dengjiriqi = dengjiriqi.split(' ')[0]
+#                 import pdb
+#                 pdb.set_trace()
                 description = datas.pop('description')
                 shuiguanyuan = datas['shuiguanyuan']
                 danganbianhao = ""                
