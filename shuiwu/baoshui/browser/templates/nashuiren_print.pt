@@ -37,7 +37,7 @@
     <div tal:replace="structure provider:plone.scripts" />
     <metal:javascriptslot define-slot="javascript_head_slot" />
     <link tal:replace="structure provider:plone.htmlhead.links" />
-    <link rel="stylesheet" href="http://shuiwu.315ok.org/shuiwustatic/css/print.css"/>
+    <link rel="stylesheet" href="http://192.168.1.214/shuiwustatic/css/print.css"/>
   </head>
   
   <body tal:define="isRTL portal_state/is_rtl;
