@@ -12,8 +12,85 @@ from zope.lifecycleevent.interfaces import IObjectAddedEvent
 from shuiwu.baoshui.content.nashuiren import Inashuiren
 from shuiwu.baoshui.content.nashuiku import Inashuiku
 from shuiwu.baoshui.interfaces import ICreateNashuirenEvent
+import datetime
+from threading import Thread
+from queue import Queue
 
+class CreateSubobjWorker(Thread):
+   def __init__(self, queue):
+       Thread.__init__(self)
+       self.queue = queue
 
+   def run(self):
+       while True:
+           # Get the work from the queue and expand the tuple
+           directory, type, num  = self.queue.get()
+           create_subobj(directory,type,num)
+           self.queue.task_done()
+
+def create_subobj(directory,type,num):
+    type = "shuiwu.baoshui.%s" % type
+    import pdb
+    pdb.set_trace()    
+    for i in range(num):
+        j = str(i + 1)
+        id = "yuedujilu%s" % (j)        
+        tmp = api.content.create(type=type,id=id,title=id,container=directory)
+
+def initObjectTreeWithThread(obj,event):
+    "init all child objects for the nashuiren object that had been created by front end UI"
+       
+#     directory = obj
+    subids = [('zichanfuzaibiao1','yuedujilu',u'资产负债表',12),
+               ('lirunbiao1','yuedujilu',u'利润表',12),
+               ('xianjinliuliangbiao1','yuedujilu',u'现金流量表',12),
+               ('chengjianjiaoyudifangfujia','yuedujilu',u'城建、教育、地方教育附加申报表',12),
+               ('gerensuodeshui1','yuedujilu',u'个人所得税扣缴表',12),
+               ('zhifugongzimingxi1','yuedujilu',u'支付工资明细',12),
+               ('yinhuashuianyue1','yuedujilu',u'印花税申报表（按月）',12),
+               ('canbaojinshenbaobiao','yuedujilu',u'残保金申报表',12),
+               ('gonghuijingfei1','yuedujilu',u'工会经费申报表',12),
+               ('shuilijijin1','yuedujilu',u'水利基金申报表（月报）',12),
+               ('shebaofei1','yuedujilu',u'社保费申报表',12),
+               ('fangchanshui1','yuedujilu',u'房产税申报表（租金收入）',12),
+               ('tudizengzhishui1','yuedujilu',u'土地增值税申报表（按月）',12),
+               ('anyueqita1','yuedujilu',u'其他1',12),
+               ('anyueqita2','yuedujilu',u'其他2',12),
+               ('qiyesuodeshuialeiblei','jidujilu',u'企业所得税预缴表（A类、B类）',4),
+               ('fangchanshuifangchanyuanzhi1','jidujilu',u'房产税申报表（房产原值）',4),
+               ('chengzhentudishiyongshui1','jidujilu',u'城镇土地使用税申报表',4), 
+               ('anjiqita1','jidujilu',u'按季其他1',4),
+               ('anjiqita2','jidujilu',u'按季其他2',4),
+               ('yinhuashuizijinzhangbo1','ancijilu',u'印花税申报表（资金帐薄）',12),
+               ('ziyuanshui1','ancijilu',u'资源税申报表',12),
+               ('gengdizhanyongshui1','ancijilu',u'耕地占用税申报表',12),
+               ('anciqita','ancijilu',u'其他',12)                                                                                                           
+               ]
+   # Create a queue to communicate with the worker threads
+    queue = Queue()
+
+   # Put the tasks into the queue as a tuple
+    for subid,subtype,title,num in subids:
+        title = title.encode('utf-8')
+        if subid.endswith('1') or subid.endswith('2'):
+            type1 = subid[:-1]
+        else:
+            type1 = subid
+        type="shuiwu.baoshui.%s" % type1
+        directory = api.content.create(type=type,id=subid,title=title,container=obj)                  
+        queue.put((directory,subtype,num))
+   # Create 8 worker threads
+    for x in range(7):
+        import pdb
+        pdb.set_trace()        
+        worker = CreateSubobjWorker(queue)
+        # Setting daemon to True will let the main thread exit even though the workers are blocking
+        worker.daemon = True
+#         worker.run()
+        worker.start()                 
+   # Causes the main thread to wait for the queue to finish processing all the tasks
+    queue.join()
+   
 #fire todoitemwillcreated event for every designer when add or modified product designer on project node
 #@adapter(ITeam, IObjectAddedEvent)
 def initObjectTree(obj,event):
@@ -212,35 +289,40 @@ def CreateNashuirenEvent(event):
         return      
 
     memberfolder = newest[0].getObject()
-    memberid = event.id
-#     import pdb
-#     pdb.set_trace()        
+    memberid = event.id       
+    datearray = event.dengjiriqi.split('-')
+    if len(datearray) >= 3:
+        val = map(int,datearray)
+               
+        dengjiriqi = datetime.date(*val)  
+    else:
+        dengjiriqi = datetime.date.today()    
     try:
         item = api.content.create(
                                   type="shuiwu.baoshui.nashuiren",
                                   container=memberfolder,
                                   id = memberid,
+                                  title = event.title,
+                                  description = event.description,
+                                  guanlidaima = event.guanlidaima,
+                                  shuiguanyuan = event.shuiguanyuan,
+                                  danganbianhao = event.danganbianhao,
+                                  dengjiriqi = dengjiriqi,
                                   safe_id = False)
-#         item =createContentInContainer(memberfolder,"shuiwu.baoshui.nashuiren",checkConstraints=False,id=memberid)
+#         item.title = event.title
+#         item.description = event.description
+#         item.guanlidaima = event.guanlidaima
+# #         item.dengjiriqi = event.dengjiriqi 
+#         item.shuiguanyuan = event.shuiguanyuan
+#         item.danganbianhao = event.danganbianhao               
 
-        item.title = event.title
-        item.description = event.description
-        item.guanlidaima = event.guanlidaima
-#         item.dengjiriqi = event.dengjiriqi 
-        item.shuiguanyuan = event.shuiguanyuan
-        item.danganbianhao = event.danganbianhao
-        
-        import datetime
-
-        datearray = event.dengjiriqi.split('-')
-        if len(datearray) >= 3:
-            val = map(int,datearray)
-               
-            item.dengjiriqi = datetime.date(*val)  
-        else:
-            item.dengjiriqi = datetime.date.today()
-#set default view        
-#         item.setLayout('nashuiren_view')
+#         datearray = event.dengjiriqi.split('-')
+#         if len(datearray) >= 3:
+#             val = map(int,datearray)
+#                
+#             item.dengjiriqi = datetime.date(*val)  
+#         else:
+#             item.dengjiriqi = datetime.date.today()
         item.reindexObject()                
         
     except:

@@ -120,9 +120,7 @@ class DataInOut (BrowserView):
                 shuiguanyuan = datas['shuiguanyuan']
                 danganbianhao = ""                
 #                 danganbianhao = datas.pop('danganbianhao')
-#                 danganbianhao = self.float2str(danganbianhao,"E+")
-
-                
+#                 danganbianhao = self.float2str(danganbianhao,"E+")                
 # send a add nashuiren event
                 try:
                     event.notify(CreateNashuirenEvent(
