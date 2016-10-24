@@ -233,7 +233,7 @@ class BaseEdit(dexterity.EditForm):
         pass
     @property
     def fields(self):
-        return field.Fields(Inashuiren).select('title', 'description','dengjiriqi',
+        return field.Fields(Inashuiren).select('id','title', 'description','dengjiriqi',
                                                  'shuiguanyuan','danganbianhao','xiaoguimo')
 
 
