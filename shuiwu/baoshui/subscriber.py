@@ -13,197 +13,116 @@ from shuiwu.baoshui.content.nashuiren import Inashuiren
 from shuiwu.baoshui.content.nashuiku import Inashuiku
 from shuiwu.baoshui.interfaces import ICreateNashuirenEvent
 import datetime
-from threading import Thread
-from queue import Queue
 
-class CreateSubobjWorker(Thread):
-   def __init__(self, queue):
-       Thread.__init__(self)
-       self.queue = queue
-
-   def run(self):
-       while True:
-           # Get the work from the queue and expand the tuple
-           directory, type, num  = self.queue.get()
-           create_subobj(directory,type,num)
-           self.queue.task_done()
-
-def create_subobj(directory,type,num):
-    type = "shuiwu.baoshui.%s" % type
-    import pdb
-    pdb.set_trace()    
-    for i in range(num):
-        j = str(i + 1)
-        id = "yuedujilu%s" % (j)        
-        tmp = api.content.create(type=type,id=id,title=id,container=directory)
 
 def initObjectTreeWithThread(obj,event):
     "init all child objects for the nashuiren object that had been created by front end UI"
        
 #     directory = obj
-    subids = [('zichanfuzaibiao1','yuedujilu',u'资产负债表',12),
-               ('lirunbiao1','yuedujilu',u'利润表',12),
-               ('xianjinliuliangbiao1','yuedujilu',u'现金流量表',12),
-               ('chengjianjiaoyudifangfujia','yuedujilu',u'城建、教育、地方教育附加申报表',12),
-               ('gerensuodeshui1','yuedujilu',u'个人所得税扣缴表',12),
-               ('zhifugongzimingxi1','yuedujilu',u'支付工资明细',12),
-               ('yinhuashuianyue1','yuedujilu',u'印花税申报表（按月）',12),
-               ('canbaojinshenbaobiao','yuedujilu',u'残保金申报表',12),
-               ('gonghuijingfei1','yuedujilu',u'工会经费申报表',12),
-               ('shuilijijin1','yuedujilu',u'水利基金申报表（月报）',12),
-               ('shebaofei1','yuedujilu',u'社保费申报表',12),
-               ('fangchanshui1','yuedujilu',u'房产税申报表（租金收入）',12),
-               ('tudizengzhishui1','yuedujilu',u'土地增值税申报表（按月）',12),
-               ('anyueqita1','yuedujilu',u'其他1',12),
-               ('anyueqita2','yuedujilu',u'其他2',12),
-               ('qiyesuodeshuialeiblei','jidujilu',u'企业所得税预缴表（A类、B类）',4),
-               ('fangchanshuifangchanyuanzhi1','jidujilu',u'房产税申报表（房产原值）',4),
-               ('chengzhentudishiyongshui1','jidujilu',u'城镇土地使用税申报表',4), 
-               ('anjiqita1','jidujilu',u'按季其他1',4),
-               ('anjiqita2','jidujilu',u'按季其他2',4),
-               ('yinhuashuizijinzhangbo1','ancijilu',u'印花税申报表（资金帐薄）',12),
-               ('ziyuanshui1','ancijilu',u'资源税申报表',12),
-               ('gengdizhanyongshui1','ancijilu',u'耕地占用税申报表',12),
-               ('anciqita','ancijilu',u'其他',12)                                                                                                           
+    subids = [('zichanfuzaibiao',u'资产负债表'),
+               ('lirunbiao',u'利润表'),
+               ('xianjinliuliangbiao',u'现金流量表'),
+               ('chengjianjiaoyudifangfujia',u'城建、教育、地方教育附加申报表'),
+               ('gerensuodeshui',u'个人所得税扣缴表'),
+               ('zhifugongzimingxi',u'支付工资明细'),
+               ('yinhuashuianyue',u'印花税申报表（按月）'),
+               ('canbaojinshenbaobiao',u'残保金申报表'),
+               ('gonghuijingfei',u'工会经费申报表'),
+               ('shuilijijin',u'水利基金申报表（月报）'),
+               ('shebaofei',u'社保费申报表'),
+               ('fangchanshui',u'房产税申报表（租金收入）'),
+               ('tudizengzhishuianyue',u'土地增值税申报表（按月）'),
+               ('anyueqita1',u'其他'),
+               ('anyueqita2',u'其他'),
+               ('qiyesuodeshuialeiblei',u'企业所得税预缴表（A类、B类）'),
+               ('fangchanshuifangchanyuanzhi',u'房产税申报表（房产原值）'),
+               ('chengzhentudishiyongshui',u'城镇土地使用税申报表'), 
+               ('anjiqita1',u'按季其他'),
+               ('anjiqita2',u'按季其他'),
+               ('yinhuashuizijinzhangbo',u'印花税申报表（资金帐薄）'),
+               ('ziyuanshui',u'资源税申报表'),
+               ('gengdizhanyongshui',u'耕地占用税申报表'),
+               ('anciqita',u'其他')                                                                                                           
                ]
-   # Create a queue to communicate with the worker threads
-    queue = Queue()
+
 
    # Put the tasks into the queue as a tuple
-    for subid,subtype,title,num in subids:
+    for subid,title in subids:
         title = title.encode('utf-8')
-        if subid.endswith('1') or subid.endswith('2'):
-            type1 = subid[:-1]
-        else:
-            type1 = subid
-        type="shuiwu.baoshui.%s" % type1
+
+        type="shuiwu.baoshui.%s" % subid
         directory = api.content.create(type=type,id=subid,title=title,container=obj)                  
-        queue.put((directory,subtype,num))
-   # Create 8 worker threads
-    for x in range(7):
-        import pdb
-        pdb.set_trace()        
-        worker = CreateSubobjWorker(queue)
-        # Setting daemon to True will let the main thread exit even though the workers are blocking
-        worker.daemon = True
-#         worker.run()
-        worker.start()                 
-   # Causes the main thread to wait for the queue to finish processing all the tasks
-    queue.join()
+
+
    
 #fire todoitemwillcreated event for every designer when add or modified product designer on project node
 #@adapter(ITeam, IObjectAddedEvent)
 def initObjectTree(obj,event):
     "init all child objects for the nashuiren object that had been created by front end UI"
 
-    id = 'zichanfuzaibiao1'
+    id = 'zichanfuzaibiao'
     title = u'资产负债表'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.zichanfuzaibiao',id=id,title=title,container=obj)
-    for i in range(12):
-        j = str(i + 1)
-        id = "yuedujilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.yuedujilu',id=id,title=id,container=item)    
-    id = 'lirunbiao1'
+    
+    id = 'lirunbiao'
     title = u'利润表'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.lirunbiao',id=id,title=title,container=obj)
-    for i in range(12):
-        j = str(i + 1)
-        id = "yuedujilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.yuedujilu',id=id,title=id,container=item)     
-    id = 'xianjinliuliangbiao1'
+    
+    id = 'xianjinliuliangbiao'
     title = u'现金流量表'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.xianjinliuliangbiao',id=id,title=title,container=obj)
-    for i in range(12):
-        j = str(i + 1)
-        id = "yuedujilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.yuedujilu',id=id,title=id,container=item)    
+   
   
     id = 'chengjianjiaoyudifangfujia'
     title = u'城建、教育、地方教育附加申报表'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.chengjianjiaoyudifangfujia',id=id,title=title,container=obj)
     # add month records
-    for i in range(12):
-        j = str(i + 1)
-        id = "yuedujilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.yuedujilu',id=id,title=id,container=item)
-    id = 'gerensuodeshui1'
+
+    id = 'gerensuodeshui'
     title = u'个人所得税扣缴表'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.gerensuodeshui',id=id,title=title,container=obj)
-    for i in range(12):
-        j = str(i + 1)
-        id = "yuedujilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.yuedujilu',id=id,title=id,container=item)         
-    id = 'zhifugongzimingxi1'
+        
+    id = 'zhifugongzimingxi'
     title = u'支付工资明细'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.zhifugongzimingxi',id=id,title=title,container=obj)
-    for i in range(12):
-        j = str(i + 1)
-        id = "yuedujilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.yuedujilu',id=id,title=id,container=item)
-    id = 'yinhuashuianyue1'
+
+    id = 'yinhuashuianyue'
     title = u'印花税申报表（按月）'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.yinhuashuianyue',id=id,title=title,container=obj)
-    for i in range(12):
-        j = str(i + 1)
-        id = "yuedujilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.yuedujilu',id=id,title=id,container=item)    
+   
     id = 'canbaojinshenbaobiao'
     title = u'残保金申报表'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.canbaojinshenbaobiao',id=id,title=title,container=obj)
-    for i in range(12):
-        j = str(i + 1)
-        id = "yuedujilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.yuedujilu',id=id,title=id,container=item)    
+    
    
-    id = 'gonghuijingfei1'
+    id = 'gonghuijingfei'
     title = u'工会经费申报表'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.gonghuijingfei',id=id,title=title,container=obj)
-    for i in range(12):
-        j = str(i + 1)
-        id = "yuedujilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.yuedujilu',id=id,title=id,container=item)    
-    id = 'shuilijijin1'
+    
+    id = 'shuilijijin'
     title = u'水利基金申报表（月报）'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.shuilijijin',id=id,title=title,container=obj)
-    for i in range(12):
-        j = str(i + 1)
-        id = "yuedujilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.yuedujilu',id=id,title=id,container=item)    
-    id = 'shebaofei1'
+   
+    id = 'shebaofei'
     title = u'社保费申报表'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.shebaofei',id=id,title=title,container=obj)
-    for i in range(12):
-        j = str(i + 1)
-        id = "yuedujilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.yuedujilu',id=id,title=id,container=item)
-    id = 'fangchanshui1'
+
+    id = 'fangchanshui'
     title = u'房产税申报表（租金收入）'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.fangchanshui',id=id,title=title,container=obj)
-    for i in range(12):
-        j = str(i + 1)
-        id = "yuedujilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.yuedujilu',id=id,title=id,container=item)    
-    id = 'tudizengzhishui1'
+   
+    id = 'tudizengzhishuianyue'
     title = u'土地增值税申报表（按月）'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.tudizengzhishuianyue',id=id,title=title,container=obj)
-    for i in range(12):
-        j = str(i + 1)
-        id = "yuedujilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.yuedujilu',id=id,title=id,container=item)
-    id = 'anyueqita1'
-    title = u'其他1'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.anyueqita1',id=id,title=title,container=obj)
-    for i in range(12):
-        j = str(i + 1)
-        id = "yuedujilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.yuedujilu',id=id,title=id,container=item)    
-    id = 'anyueqita2'
-    title = u'其他2'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.anyueqita2',id=id,title=title,container=obj)
-    for i in range(12):
-        j = str(i + 1)
-        id = "yuedujilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.yuedujilu',id=id,title=id,container=item)    
+
+    id = 'anyueqita'
+    title = u'其他'.encode("utf-8")
+    item = api.content.create(type='shuiwu.baoshui.anyueqita',id=id,title=title,container=obj)
+   
+    id = 'anyueqita'
+    title = u'其他'.encode("utf-8")
+    item = api.content.create(type='shuiwu.baoshui.anyueqita',id=id,title=title,container=obj)
+   
     
     
 
@@ -211,69 +130,42 @@ def initObjectTree(obj,event):
     id = 'qiyesuodeshuialeiblei'
     title = u'企业所得税预缴表（A类、B类）'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.qiyesuodeshuialeiblei',id=id,title=title,container=obj)
-    for i in range(4):
-        j = str(i + 1)
-        id = "jidujilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.jidujilu',id=id,title=id,container=item)    
-    id = 'fangchanshuifangchanyuanzhi1'
+   
+    id = 'fangchanshuifangchanyuanzhi'
     title = u'房产税申报表（房产原值）'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.fangchanshuifangchanyuanzhi',id=id,title=title,container=obj)
-    for i in range(4):
-        j = str(i + 1)
-        id = "jidujilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.jidujilu',id=id,title=id,container=item)    
+   
  
-    id = 'chengzhentudishiyongshui1'
+    id = 'chengzhentudishiyongshui'
     title = u'城镇土地使用税申报表'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.chengzhentudishiyongshui',id=id,title=title,container=obj)
-    for i in range(4):
-        j = str(i + 1)
-        id = "jidujilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.jidujilu',id=id,title=id,container=item)    
-    id = 'anjiqita1'
-    title = u'按季其他1'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.anjiqita1',id=id,title=title,container=obj)
-    for i in range(4):
-        j = str(i + 1)
-        id = "jidujilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.jidujilu',id=id,title=id,container=item)    
-    id = 'anjiqita2'
-    title = u'按季其他2'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.anjiqita2',id=id,title=title,container=obj)
-    for i in range(4):
-        j = str(i + 1)
-        id = "jidujilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.jidujilu',id=id,title=id,container=item)    
+   
+    id = 'anjiqita'
+    title = u'按季其他'.encode("utf-8")
+    item = api.content.create(type='shuiwu.baoshui.anjiqita',id=id,title=title,container=obj)
+   
+    id = 'anjiqita'
+    title = u'按季其他'.encode("utf-8")
+    item = api.content.create(type='shuiwu.baoshui.anjiqita',id=id,title=title,container=obj)
+   
 
 #按次
-    id = 'yinhuashuizijinzhangbo1'
+    id = 'yinhuashuizijinzhangbo'
     title = u'印花税申报表（资金帐薄）'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.yinhuashuizijinzhangbo',id=id,title=title,container=obj)
-    for i in range(12):
-        j = str(i + 1)
-        id = "ancijilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.ancijilu',id=id,title=id,container=item)    
-    id = 'ziyuanshui1'
+   
+    id = 'ziyuanshui'
     title = u'资源税申报表'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.ziyuanshui',id=id,title=title,container=obj)                                
-    for i in range(12):
-        j = str(i + 1)
-        id = "ancijilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.ancijilu',id=id,title=id,container=item)    
-    id = 'gengdizhanyongshui1'
+   
+    id = 'gengdizhanyongshui'
     title = u'耕地占用税申报表'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.gengdizhanyongshui',id=id,title=title,container=obj)
-    for i in range(12):
-        j = str(i + 1)
-        id = "ancijilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.ancijilu',id=id,title=id,container=item)    
+   
     id = 'anciqita'
     title = u'其他'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.anciqita',id=id,title=title,container=obj)
-    for i in range(12):
-        j = str(i + 1)
-        id = "ancijilu%s" % (j)        
-        tmp = api.content.create(type='shuiwu.baoshui.ancijilu',id=id,title=id,container=item)    
+    
                                                                            
  
 # @grok.subscribe(ICreateNashuirenEvent)

@@ -1,11 +1,6 @@
-from five import grok
-from zope import schema
-
-from plone.directives import form, dexterity
-
-
-
-class Ianyueqita2(form.Schema):
+#-*- coding: UTF-8 -*-
+from shuiwu.baoshui.content.base import Iyuedu
+class Ianyueqita2(Iyuedu):
     """
     anyue qita2
     """

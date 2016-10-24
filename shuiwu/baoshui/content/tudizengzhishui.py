@@ -1,11 +1,7 @@
-from five import grok
-from zope import schema
+#-*- coding: UTF-8 -*-
+from shuiwu.baoshui.content.base import Iyuedu
+class Itudizengzhishui(Iyuedu):
 
-from plone.directives import form, dexterity
-
-from shuiwu.baoshui import _
-
-class Itudizengzhishui(form.Schema):
     """
     tudi zengzhishui shenbaobiao(anyue)
     """

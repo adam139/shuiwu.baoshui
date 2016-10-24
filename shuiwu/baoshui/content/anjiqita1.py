@@ -1,11 +1,7 @@
-from five import grok
-from zope import schema
+#-*- coding: UTF-8 -*-
+from shuiwu.baoshui.content.base import Ijidu
+class Ianjiqita1(Ijidu):
 
-from plone.directives import form, dexterity
-
-from shuiwu.baoshui import _
-
-class Ianjiqita1(form.Schema):
     """
     anji qita1
     """

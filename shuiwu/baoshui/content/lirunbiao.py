@@ -1,11 +1,7 @@
-from five import grok
-from zope import schema
-
-from plone.directives import form, dexterity
-
-from shuiwu.baoshui import _
-
-class Ilirunbiao(form.Schema):
+#-*- coding: UTF-8 -*-
+from shuiwu.baoshui.content.base import Iyuedu
+class Ilirunbiao(Iyuedu):
     """
     lirun biao
     """
+                         
