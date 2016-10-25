@@ -29,7 +29,7 @@ def mapf(brain):
     for subid,title in subids:
         title = title.encode('utf-8')
         type="shuiwu.baoshui.%s" % subid
-        directory = api.content.create(type=type,id=subid,title=title,container=obj)
+        directory = api.content.create(type=type,id=subid,title=title,container=target)
 
 
 def pathsearchFilter(brain):

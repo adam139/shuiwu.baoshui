@@ -78,12 +78,14 @@ class NashuirenView(BrowserView):
         for i in range(nums):
             field = "shenbaofou%s" % str(i+1)
             if getattr(obj,field,False) == False:           
-                out = """<td class="col-md-%(width)s text-center">
-                <input disabled type="checkbox" /></td>""" \
+                out = """<td class="col-md-%(width)s text-center checkbox">
+                <input  type="checkbox" />
+                <span class="switch-style off">&nbsp;</span></td></td>""" \
                 % dict(width=width)
             else:
-                out = """<td class="col-md-%(width)s text-center">
-                <input disabled type="checkbox" checked="checked" /></td>""" \
+                out = """<td class="col-md-%(width)s text-center checkbox">
+                <input  type="checkbox" checked="checked" />
+                <span class="switch-style on">&nbsp;</span></td></td>""" \
                 % dict(width=width)                                  
             outhtml = "%s%s" %(outhtml ,out)
            
