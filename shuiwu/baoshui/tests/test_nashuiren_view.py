@@ -34,7 +34,7 @@ class TestNashuirenView(InitContents):
 #        open('/tmp/test.html', 'w').write(browser.contents)
 
 
-        outstr = '<span>888201</span>'        
+        outstr = '<span>888202</span>'        
         self.assertTrue(outstr in browser.contents)
 
         outstr = 'data-property="yinhuashui"'

@@ -14,6 +14,7 @@ class InitContents(unittest.TestCase):
                              title=u'nashuiku1')        
         portal['nashuiku1'].invokeFactory('shuiwu.baoshui.nashuiren', 'nashuiren1',
                              guanlidaima='888201',
+                             danganbianhao='888202',
                              dengjiriqi=datetime.datetime.today(),
                              year='2016')                                                                 
       
