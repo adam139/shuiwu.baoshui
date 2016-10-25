@@ -30,14 +30,15 @@ class TestView(InitContents):
         request.form = {
                         '_authenticator': auth,
                         'shenbaofou': 'true',
-                                                                       
+                        'number':'2'                                                                       
                         }
 # Look up and invoke the view via traversal
-        obj = self.portal['nashuiku1']['nashuiren1']['zichanfuzaibiao1']['yuedujilu1']
+        obj = self.portal['nashuiku1']['nashuiren1']['zichanfuzaibiao']
 
         view = obj.restrictedTraverse('@@modify_yuedujilu')
         result = view()
-        self.assertEqual(obj.shenbaofou,True)
+        
+        self.assertEqual(obj.shenbaofou2,True)
 
     def test_anjiedit(self):
         request = self.layer['request']        
@@ -47,14 +48,14 @@ class TestView(InitContents):
         request.form = {
                         '_authenticator': auth,
                         'shenbaofou': 'true',
-                                                                       
+                        'number':'2'                                              
                         }
 # Look up and invoke the view via traversal
-        obj = self.portal['nashuiku1']['nashuiren1']['qiyesuodeshuialeiblei']['jidujilu1']
+        obj = self.portal['nashuiku1']['nashuiren1']['qiyesuodeshuialeiblei']
 
         view = obj.restrictedTraverse('@@modify_jidujilu')
         result = view()
-        self.assertEqual(obj.shenbaofou,True)
+        self.assertEqual(obj.shenbaofou2,True)
         
     def test_anciedit(self):
         request = self.layer['request']        
@@ -64,15 +65,15 @@ class TestView(InitContents):
         request.form = {
                         '_authenticator': auth,
                         'shenbaocishu': '3',
-                                                                       
+                        'number':'2'                                              
                         }
 # Look up and invoke the view via traversal
-        obj = self.portal['nashuiku1']['nashuiren1']['ziyuanshui1']['ancijilu1']
+        obj = self.portal['nashuiku1']['nashuiren1']['ziyuanshui']
  
 
         view = obj.restrictedTraverse('@@modify_ancijilu')
         result = view()
-        self.assertEqual(obj.shenbaocishu,3)
+        self.assertEqual(obj.shenbaocishu2,3)
 # modify property        
     def test_propertyedit(self):
         request = self.layer['request']        
@@ -101,7 +102,8 @@ class TestView(InitContents):
         request.form = {
                         '_authenticator': auth,
                         'action': 'selectall',
-                        'objid':'xianjinliuliangbiao1'
+                        'objid':'xianjinliuliangbiao',
+                        'number':'12'
                         }
 # Look up and invoke the view via traversal
         obj = self.portal['nashuiku1']['nashuiren1']
@@ -109,7 +111,7 @@ class TestView(InitContents):
 
         view = obj.restrictedTraverse('@@batch_modify')
         result = view()
-        self.assertEqual(obj['xianjinliuliangbiao1']['yuedujilu1'].shenbaofou,True)
+        self.assertEqual(obj['xianjinliuliangbiao'].shenbaofou11,True)
         
     def test_desedit(self):
         request = self.layer['request']        

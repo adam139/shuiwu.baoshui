@@ -31,7 +31,7 @@ def initObjectTreeWithThread(obj,event):
                ('shuilijijin',u'水利基金申报表（月报）'),
                ('shebaofei',u'社保费申报表'),
                ('fangchanshui',u'房产税申报表（租金收入）'),
-               ('tudizengzhishuianyue',u'土地增值税申报表（按月）'),
+               ('tudizengzhishui',u'土地增值税申报表（按月）'),
                ('anyueqita1',u'其他'),
                ('anyueqita2',u'其他'),
                ('qiyesuodeshuialeiblei',u'企业所得税预缴表（A类、B类）'),

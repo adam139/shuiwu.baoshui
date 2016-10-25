@@ -59,35 +59,38 @@ class NashuirenView(BrowserView):
         "依据按月度申报的内容对象id，提取其每个月申报记录（是否已申报）"
         
         query = self.getPathQuery(objid)
-        query['object_provides'] = Iyuedujilu.__identifier__
-        brains = self.catalog()(query)
-              
+#         query['object_provides'] = Iyuedujilu.__identifier__
+        query['id'] = objid
+        brains = self.catalog()(query)              
         return self.outputcheckbox(brains,width=1)
     
     def getChildrensByQuarter(self,objid):
         "依据按季度申报的内容对象id，提取其每个季度申报记录"
         query = self.getPathQuery(objid)
-        query['object_provides'] = Ijidujilu.__identifier__
-        brains = self.catalog()(query)               
+#         query['object_provides'] = Iyuedujilu.__identifier__
+        query['id'] = objid
+        brains = self.catalog()(query)              
         return self.outputcheckbox(brains,width=3)
     
     def getChildrensByNumber(self,objid):
         "依据按次申报的内容对象id，提取其每月的申报次数"
         query = self.getPathQuery(objid)
-        query['object_provides'] = Iancijilu.__identifier__
+#         query['object_provides'] = Iyuedujilu.__identifier__
+        query['id'] = objid
         brains = self.catalog()(query)               
         return self.outputnumber(brains,width=1)      
     
     def outputcheckbox(self,braindata,width=1):
         "根据参数total,braindata,返回jason 输出"
-        outhtml = """<table class="table table-condensed inner"><tr class="row">"""      
-
-        for i in braindata:
-            o = i.getObject()
-            if o.shenbaofou == False:           
+        outhtml = """<table class="table table-condensed inner"><tr class="row">"""     
+        o = braindata[0].getObject
+        nums = 12/width
+        for i in range(nums):
+            field = "shenbaofou%s" % str(i+1)
+            if getattr(o,field,False) == False:           
                 out = """<td class="col-md-%(width)s text-center">
                 <input disabled type="checkbox" /></td>""" \
-                % dict(width=width,objid=i.id)
+                % dict(width=width)
             else:
                 out = """<td class="col-md-%(width)s text-center">
                 <input disabled type="checkbox" checked="checked" /></td>""" \
@@ -95,17 +98,19 @@ class NashuirenView(BrowserView):
             outhtml = "%s%s" %(outhtml ,out)
            
         data = """%s</tr></table>"""  % outhtml
-
         return data
     
     def outputnumber(self,braindata,width=1):
         "根据参数输出html"
         outhtml = """<table class="table table-condensed inner"><tr class="row">"""      
 
-        for i in braindata:
-            o = i.getObject()
+        o = braindata[0].getObject
+        nums = 12/width
+        for i in range(nums):
+            field = "shenbaocishu%s" % str(i+1)
+            num = getattr(o,field,0)
             out = """<td class="col-md-%(width)s text-center">%(num)s</td>""" \
-                % dict(width=width,num=o.shenbaocishu)                                  
+                % dict(width=width,num=num)                                  
             outhtml = "%s%s" %(outhtml ,out)           
         data = """%s</tr></table>""" % outhtml
         return data
@@ -148,37 +153,41 @@ class NashuirenEdit(NashuirenView):
 
     def outputcheckbox(self,braindata,width=1):
         "根据参数total,braindata,返回jason 输出"
-        outhtml = """<table class="table table-condensed bordered inner"><tr class="row">"""      
-
-        for i in braindata:
-            o = i.getObject()
-            if o.shenbaofou == False:           
+        outhtml = """<table class="table table-condensed bordered inner"><tr class="row">"""         
+        o = braindata[0].getObject
+        nums = 12/width
+        for i in range(nums):
+            j = str(i+1)
+            field = "shenbaofou%s" % j
+            if getattr(o,field,False) == False:          
                 out = """<td class="col-md-%(width)s text-center checkbox">
                 <input type="checkbox" />
-                <span data-url="%(objurl)s" class="switch-style off">&nbsp;</span></td>""" \
-                % dict(width=width,objurl=o.absolute_url())
+                <span data-url="%(objurl)s" data-num="%(tdnumber)s" class="switch-style off">&nbsp;</span></td>""" \
+                % dict(width=width,objurl=o.absolute_url(),tdnumber=j)
             else:
                 out = """<td class="col-md-%(width)s text-center checkbox">
                 <input  type="checkbox" checked="checked" />
-                <span data-url="%(objurl)s" class="switch-style on">&nbsp;</span></td>""" \
-                % dict(width=width,objurl=o.absolute_url())                                  
+                <span data-url="%(objurl)s" data-num="%(tdnumber)s" class="switch-style on">&nbsp;</span></td>""" \
+                % dict(width=width,objurl=o.absolute_url(),tdnumber=j)                                 
             outhtml = "%s%s" %(outhtml ,out)
            
         data = """%s</tr></table>"""  % outhtml
-
-        return data
-    
+        return data   
 
         
     def outputnumber(self,braindata,width=1):
         "根据参数输出html"
         outhtml = """<table class="table table-condensed bordered inner"><tr class="row number-row">"""      
 
-        for i in braindata:
-            o = i.getObject()
+        o = braindata[0].getObject
+        nums = 12/width
+        for i in range(nums):
+            j = str(i+1)
+            field = "shenbaocishu%s" % j
+            num = getattr(o,field,0)
             out = """<td class="col-md-%(width)s text-center">
-            <span class="number" data-url="%(objurl)s">%(num)s</span></td>""" \
-                % dict(width=width,objurl=o.absolute_url(),num=o.shenbaocishu)                                  
+            <span class="number" data-num="%(tdnumber)s" data-url="%(objurl)s">%(num)s</span></td>""" \
+                % dict(width=width,objurl=o.absolute_url(),tdnumber=j,num=num)                                  
             outhtml = "%s%s" %(outhtml ,out)           
         data = """%s</tr>
         <tr class="row form" style=" display:none;">
@@ -275,6 +284,7 @@ class BatchModify(grok.View):
     def render(self):    
         datadic = self.request.form
         objid = datadic['objid']
+        nums = int(datadic['number'])
         shenbaofou = datadic['action']
         if shenbaofou == 'selectall':
             shenbaofou = True
@@ -284,21 +294,21 @@ class BatchModify(grok.View):
         path ="%s/%s" %(path,objid)
         query = {}
         query['path'] = path
-        query['object_provides'] = [Iyuedujilu.__identifier__,Ijidujilu.__identifier__]
+        query['id'] = objid
         brains = self.catalog()(query)
-        for o in brains:
-            obj = o.getObject()
-            obj.shenbaofou = shenbaofou
+        o = brains[0].getObject()
+        for num in range(nums):
+            field = "shenbaofou%s" % str(num + 1)
+            setattr(o,field,shenbaofou)
+            
         ajaxtext = u"<p class='text-success'>更改已保存</p>"
         callback = {"result":True,'message':ajaxtext}
         self.request.response.setHeader('Content-Type', 'application/json')
-        return json.dumps(callback)            
-        
-        
+        return json.dumps(callback)                       
 
  
  # ajax modify yuedu jilu
-class ModifyYuedujlu(grok.View):
+class ModifyYuedujilu(grok.View):
     """AJAX action for yuedu jilu.
     """    
     grok.context(Interface)
@@ -308,45 +318,42 @@ class ModifyYuedujlu(grok.View):
     def render(self):    
         datadic = self.request.form
         shenbaofou = datadic['shenbaofou'] 
+        nums = str(datadic['number'])
+        field = "shenbaofou%s" % nums
         if shenbaofou =="true":
-            self.context.shenbaofou = True
+            setattr(self.context,field,True)
+#             self.context.shenbaofou = True
         else:
-            self.context.shenbaofou = False
+            setattr(self.context,field,False)
+#             self.context.shenbaofou = False
         ajaxtext = u"<p class='text-success'>更改已保存</p>"
         callback = {"result":True,'message':ajaxtext}
         self.request.response.setHeader('Content-Type', 'application/json')
         return json.dumps(callback)
- # ajax modify yuedu jilu
-class ModifyJidujlu(grok.View):
+
+
+class ModifyJidujilu(ModifyYuedujilu):
     """AJAX action for jidu jilu.
     """    
-    grok.context(Ijidujilu)
+    grok.context(Interface)
     grok.name('modify_jidujilu')
-    
-    def render(self):    
-        datadic = self.request.form
-        shenbaofou = datadic['shenbaofou'] 
-        if shenbaofou =="true":
-            self.context.shenbaofou = True
-        else:
-            self.context.shenbaofou = False    
-        ajaxtext = u"<p class='text-success'>更改已保存</p>"
-        callback = {"result":True,'message':ajaxtext}
-        self.request.response.setHeader('Content-Type', 'application/json')
-        return json.dumps(callback)
+    grok.require('zope2.View') 
  
  # ajax modify anci jilu
 class ModifyAncijlu(grok.View):
     """AJAX action for jidu jilu.
     """    
-    grok.context(Iancijilu)
+    grok.context(Interface)
     grok.name('modify_ancijilu')
     grok.require('zope2.View')
     
     def render(self):    
         datadic = self.request.form
         shenbaocishu = int(datadic['shenbaocishu'])
-        self.context.shenbaocishu =  shenbaocishu
+        nums = str(datadic['number'])
+        field = "shenbaocishu%s" % nums
+        setattr(self.context,field,shenbaocishu)        
+#         self.context.shenbaocishu =  shenbaocishu
 
         ajaxtext = u"<p class='text-success'>更改已保存</p>"
         callback = {"result":True,'message':ajaxtext}
