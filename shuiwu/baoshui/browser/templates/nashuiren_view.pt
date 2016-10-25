@@ -70,7 +70,7 @@
 						<td colspan="2" class="text-center col-md-12">按月申报</td>
 					</tr>					
 					<tr class="row">
-						<td class="property col-md-4">资产负责表</td>
+						<td class="property col-md-4">资产负债表</td>
 						<td class="data col-md-8" 
 							tal:content="structure python:view.getChildrensByMonth('zichanfuzaibiao')">
 						</td>						

@@ -140,43 +140,43 @@ class NashuirenView(BrowserView):
 class NashuirenEdit(NashuirenView):
     """nashuiren edit view"""
 
-    def outputcheckbox(self,braindata,width=1):
+    def outputcheckbox(self,obj,width=1):
         "根据参数total,braindata,返回jason 输出"
         outhtml = """<table class="table table-condensed bordered inner"><tr class="row">"""         
-        o = braindata[0].getObject()
+#         o = braindata[0].getObject()
         nums = 12/width
         for i in range(nums):
             j = str(i+1)
             field = "shenbaofou%s" % j
-            if getattr(o,field,False) == False:          
+            if getattr(obj,field,False) == False:          
                 out = """<td class="col-md-%(width)s text-center checkbox">
                 <input type="checkbox" />
                 <span data-url="%(objurl)s" data-num="%(tdnumber)s" class="switch-style off">&nbsp;</span></td>""" \
-                % dict(width=width,objurl=o.absolute_url(),tdnumber=j)
+                % dict(width=width,objurl=obj.absolute_url(),tdnumber=j)
             else:
                 out = """<td class="col-md-%(width)s text-center checkbox">
                 <input  type="checkbox" checked="checked" />
                 <span data-url="%(objurl)s" data-num="%(tdnumber)s" class="switch-style on">&nbsp;</span></td>""" \
-                % dict(width=width,objurl=o.absolute_url(),tdnumber=j)                                 
+                % dict(width=width,objurl=obj.absolute_url(),tdnumber=j)                                 
             outhtml = "%s%s" %(outhtml ,out)
            
         data = """%s</tr></table>"""  % outhtml
         return data   
 
         
-    def outputnumber(self,braindata,width=1):
+    def outputnumber(self,obj,width=1):
         "根据参数输出html"
         outhtml = """<table class="table table-condensed bordered inner"><tr class="row number-row">"""      
 
-        o = braindata[0].getObject()
+#         o = braindata[0].getObject()
         nums = 12/width
         for i in range(nums):
             j = str(i+1)
             field = "shenbaocishu%s" % j
-            num = getattr(o,field,0)
+            num = getattr(obj,field,0)
             out = """<td class="col-md-%(width)s text-center">
             <span class="number" data-num="%(tdnumber)s" data-url="%(objurl)s">%(num)s</span></td>""" \
-                % dict(width=width,objurl=o.absolute_url(),tdnumber=j,num=num)                                  
+                % dict(width=width,objurl=obj.absolute_url(),tdnumber=j,num=num)                                  
             outhtml = "%s%s" %(outhtml ,out)           
         data = """%s</tr>
         <tr class="row form" style=" display:none;">

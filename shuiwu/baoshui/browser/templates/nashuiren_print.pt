@@ -37,7 +37,7 @@
     <div tal:replace="structure provider:plone.scripts" />
     <metal:javascriptslot define-slot="javascript_head_slot" />
     <link tal:replace="structure provider:plone.htmlhead.links" />
-    <link rel="stylesheet" href="http://192.168.1.214/shuiwustatic/css/print.css"/>
+    <link rel="stylesheet" href="http://149.32.48.9/shuiwustatic/css/print.css"/>
   </head>
   
   <body tal:define="isRTL portal_state/is_rtl;
@@ -120,7 +120,7 @@
 						<td colspan="2" class="text-center col-md-12">按月申报</td>
 					</tr>					
 					<tr class="row">
-						<td class="property col-md-4">资产负责表</td>
+						<td class="property col-md-4">资产负债表</td>
 						<td class="data col-md-8" 
 							tal:content="structure python:view.getChildrensByMonth('zichanfuzaibiao')">
 						</td>						
@@ -363,11 +363,8 @@
 		</div>          
         </article>
         </metal:slot>
-
       </div>
-
       </metal:block>
-
     </article>
   </body>
 </html>
