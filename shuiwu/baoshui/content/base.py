@@ -67,39 +67,39 @@ class Ianci(form.Schema):
     """
     anci base interface
     """
-    shenbaocishu1 = schema.Bool(title=_(u"gaiyue shenbao cishu"),
+    shenbaocishu1 = schema.Int(title=_(u"gaiyue shenbao cishu"),
                        required=False,
-                       default=False)
-    shenbaocishu2 = schema.Bool(title=_(u"gaiyue shenbao cishu"),
+                       default=0)
+    shenbaocishu2 = schema.Int(title=_(u"gaiyue shenbao cishu"),
                        required=False,
-                       default=False) 
-    shenbaocishu3 = schema.Bool(title=_(u"gaiyue shenbao cishu"),
+                       default=0) 
+    shenbaocishu3 = schema.Int(title=_(u"gaiyue shenbao cishu"),
                        required=False,
-                       default=False) 
-    shenbaocishu4 = schema.Bool(title=_(u"gaiyue shenbao cishu"),
+                       default=0) 
+    shenbaocishu4 = schema.Int(title=_(u"gaiyue shenbao cishu"),
                        required=False,
-                       default=False) 
-    shenbaocishu5 = schema.Bool(title=_(u"gaiyue shenbao cishu"),
+                       default=0) 
+    shenbaocishu5 = schema.Int(title=_(u"gaiyue shenbao cishu"),
                        required=False,
-                       default=False) 
-    shenbaocishu6 = schema.Bool(title=_(u"gaiyue shenbao cishu"),
+                       default=0) 
+    shenbaocishu6 = schema.Int(title=_(u"gaiyue shenbao cishu"),
                        required=False,
-                       default=False)
-    shenbaocishu7 = schema.Bool(title=_(u"gaiyue shenbao cishu"),
+                       default=0)
+    shenbaocishu7 = schema.Int(title=_(u"gaiyue shenbao cishu"),
                        required=False,
-                       default=False)
-    shenbaocishu8 = schema.Bool(title=_(u"gaiyue shenbao cishu"),
+                       default=0)
+    shenbaocishu8 = schema.Int(title=_(u"gaiyue shenbao cishu"),
                        required=False,
-                       default=False) 
-    shenbaocishu9 = schema.Bool(title=_(u"gaiyue shenbao cishu"),
+                       default=0) 
+    shenbaocishu9 = schema.Int(title=_(u"gaiyue shenbao cishu"),
                        required=False,
-                       default=False) 
-    shenbaocishu10 = schema.Bool(title=_(u"gaiyue shenbao cishu"),
+                       default=0) 
+    shenbaocishu10 = schema.Int(title=_(u"gaiyue shenbao cishu"),
                        required=False,
-                       default=False) 
-    shenbaocishu11 = schema.Bool(title=_(u"gaiyue shenbao cishu"),
+                       default=0) 
+    shenbaocishu11 = schema.Int(title=_(u"gaiyue shenbao cishu"),
                        required=False,
-                       default=False) 
-    shenbaocishu12 = schema.Bool(title=_(u"gaiyue shenbao cishu"),
+                       default=0) 
+    shenbaocishu12 = schema.Int(title=_(u"gaiyue shenbao cishu"),
                        required=False,
-                       default=False)                                   
+                       default=0)                                   

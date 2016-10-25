@@ -14,12 +14,7 @@ from shuiwu.baoshui.content.nashuiku import Inashuiku
 from shuiwu.baoshui.interfaces import ICreateNashuirenEvent
 import datetime
 
-
-def initObjectTreeWithThread(obj,event):
-    "init all child objects for the nashuiren object that had been created by front end UI"
-       
-#     directory = obj
-    subids = [('zichanfuzaibiao',u'资产负债表'),
+subids = [('zichanfuzaibiao',u'资产负债表'),
                ('lirunbiao',u'利润表'),
                ('xianjinliuliangbiao',u'现金流量表'),
                ('chengjianjiaoyudifangfujia',u'城建、教育、地方教育附加申报表'),
@@ -45,11 +40,12 @@ def initObjectTreeWithThread(obj,event):
                ('anciqita',u'其他')                                                                                                           
                ]
 
+def initObjectTreeWithThread(obj,event):
+    "init all child objects for the nashuiren object that had been created by front end UI"      
 
    # Put the tasks into the queue as a tuple
     for subid,title in subids:
         title = title.encode('utf-8')
-
         type="shuiwu.baoshui.%s" % subid
         directory = api.content.create(type=type,id=subid,title=title,container=obj)                  
 

@@ -56,38 +56,28 @@ class NashuirenView(BrowserView):
         
         
     def getChildrensByMonth(self,objid):
-        "依据按月度申报的内容对象id，提取其每个月申报记录（是否已申报）"
-        
-        query = self.getPathQuery(objid)
-#         query['object_provides'] = Iyuedujilu.__identifier__
-        query['id'] = objid
-        brains = self.catalog()(query)              
-        return self.outputcheckbox(brains,width=1)
+        "依据按月度申报的内容对象id，提取其每个月申报记录（是否已申报）"        
+
+        obj = self.context[objid]              
+        return self.outputcheckbox(obj,width=1)
     
     def getChildrensByQuarter(self,objid):
         "依据按季度申报的内容对象id，提取其每个季度申报记录"
-        query = self.getPathQuery(objid)
-#         query['object_provides'] = Iyuedujilu.__identifier__
-        query['id'] = objid
-        brains = self.catalog()(query)              
-        return self.outputcheckbox(brains,width=3)
+        obj = self.context[objid]              
+        return self.outputcheckbox(obj,width=3)
     
     def getChildrensByNumber(self,objid):
         "依据按次申报的内容对象id，提取其每月的申报次数"
-        query = self.getPathQuery(objid)
-#         query['object_provides'] = Iyuedujilu.__identifier__
-        query['id'] = objid
-        brains = self.catalog()(query)               
-        return self.outputnumber(brains,width=1)      
+        obj = self.context[objid]               
+        return self.outputnumber(obj,width=1)      
     
-    def outputcheckbox(self,braindata,width=1):
+    def outputcheckbox(self,obj,width=1):
         "根据参数total,braindata,返回jason 输出"
         outhtml = """<table class="table table-condensed inner"><tr class="row">"""     
-        o = braindata[0].getObject
         nums = 12/width
         for i in range(nums):
             field = "shenbaofou%s" % str(i+1)
-            if getattr(o,field,False) == False:           
+            if getattr(obj,field,False) == False:           
                 out = """<td class="col-md-%(width)s text-center">
                 <input disabled type="checkbox" /></td>""" \
                 % dict(width=width)
@@ -100,15 +90,14 @@ class NashuirenView(BrowserView):
         data = """%s</tr></table>"""  % outhtml
         return data
     
-    def outputnumber(self,braindata,width=1):
+    def outputnumber(self,obj,width=1):
         "根据参数输出html"
         outhtml = """<table class="table table-condensed inner"><tr class="row">"""      
 
-        o = braindata[0].getObject
         nums = 12/width
         for i in range(nums):
             field = "shenbaocishu%s" % str(i+1)
-            num = getattr(o,field,0)
+            num = getattr(obj,field,0)
             out = """<td class="col-md-%(width)s text-center">%(num)s</td>""" \
                 % dict(width=width,num=num)                                  
             outhtml = "%s%s" %(outhtml ,out)           
@@ -154,7 +143,7 @@ class NashuirenEdit(NashuirenView):
     def outputcheckbox(self,braindata,width=1):
         "根据参数total,braindata,返回jason 输出"
         outhtml = """<table class="table table-condensed bordered inner"><tr class="row">"""         
-        o = braindata[0].getObject
+        o = braindata[0].getObject()
         nums = 12/width
         for i in range(nums):
             j = str(i+1)
@@ -179,7 +168,7 @@ class NashuirenEdit(NashuirenView):
         "根据参数输出html"
         outhtml = """<table class="table table-condensed bordered inner"><tr class="row number-row">"""      
 
-        o = braindata[0].getObject
+        o = braindata[0].getObject()
         nums = 12/width
         for i in range(nums):
             j = str(i+1)
@@ -290,13 +279,14 @@ class BatchModify(grok.View):
             shenbaofou = True
         else:
             shenbaofou = False
-        path = "/".join(self.context.getPhysicalPath())
-        path ="%s/%s" %(path,objid)
-        query = {}
-        query['path'] = path
-        query['id'] = objid
-        brains = self.catalog()(query)
-        o = brains[0].getObject()
+#         path = "/".join(self.context.getPhysicalPath())
+#         path ="%s/%s" %(path,objid)
+#         query = {}
+#         query['path'] = path
+#         query['id'] = objid
+#         brains = self.catalog()(query)
+#         o = brains[0].getObject()
+        o = self.context[objid]
         for num in range(nums):
             field = "shenbaofou%s" % str(num + 1)
             setattr(o,field,shenbaofou)
@@ -320,6 +310,8 @@ class ModifyYuedujilu(grok.View):
         shenbaofou = datadic['shenbaofou'] 
         nums = str(datadic['number'])
         field = "shenbaofou%s" % nums
+        import pdb
+        pdb.set_trace()
         if shenbaofou =="true":
             setattr(self.context,field,True)
 #             self.context.shenbaofou = True
