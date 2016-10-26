@@ -94,6 +94,22 @@ class TestView(InitContents):
         result = view()
         self.assertEqual(obj.yinhuashui,True)        
                       
+# modify property        
+    def test_idedit(self):
+        request = self.layer['request']        
+        keyManager = getUtility(IKeyManager)
+        secret = keyManager.secret()
+        auth = hmac.new(secret, TEST_USER_NAME, sha).hexdigest()
+        request.form = {
+                        '_authenticator': auth,
+                        'id':'8853427'                                                                       
+                        }
+# Look up and invoke the view via traversal
+        obj = self.portal['nashuiku1']['nashuiren1']
+        view = obj.restrictedTraverse('@@modify_id')
+        result = view()
+        self.assertEqual(obj.id,'8853427')
+
     def test_batchedit(self):
         request = self.layer['request']        
         keyManager = getUtility(IKeyManager)

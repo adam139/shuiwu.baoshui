@@ -20,11 +20,6 @@ from shuiwu.baoshui import _
 
 class NashuirenView(BrowserView):
     "nashuiren  view"
-#     grok.context(ITeam)
-#     grok.template('team_view')
-#     grok.name('view')
-#     grok.require('emc.project.view_team') 
-
     @memoize    
     def catalog(self):
         context = aq_inner(self.context)
@@ -233,7 +228,7 @@ class BaseEdit(dexterity.EditForm):
         pass
     @property
     def fields(self):
-        return field.Fields(Inashuiren).select('id','title', 'description','dengjiriqi',
+        return field.Fields(Inashuiren).select('title', 'description','dengjiriqi',
                                                  'shuiguanyuan','danganbianhao','xiaoguimo')
 
 
@@ -258,6 +253,30 @@ class ModifyProperty(grok.View):
         callback = {"result":True,'message':ajaxtext}
         self.request.response.setHeader('Content-Type', 'application/json')
         return json.dumps(callback)     
+
+
+class ModifyId(grok.View):
+    """AJAX action for modify nashuiren properties .
+    """    
+    grok.context(Inashuiren)
+    grok.name('modify_id')
+    grok.require('zope2.View')
+    
+    def render(self):    
+        datadic = self.request.form
+        newid = datadic['id']
+        oldid = context.id
+        context = self.context
+        parent = context.aq_parent
+        import pdb
+        pdb.set_trace()
+        parent.manage_renameObject(id, newid) 
+        parent[newid].reindexObject()
+        ajaxtext = u"<p class='text-success'>更改已保存</p>"
+        callback = {"result":True,'message':ajaxtext}
+        self.request.response.setHeader('Content-Type', 'application/json')
+        return json.dumps(callback)
+ 
  # ajax modify yuedu jilu,jidu jilu
 class BatchModify(grok.View):
     """AJAX action for batch modify yuedu jilu.
@@ -312,8 +331,8 @@ class ModifyYuedujilu(grok.View):
         shenbaofou = datadic['shenbaofou'] 
         nums = str(datadic['number'])
         field = "shenbaofou%s" % nums
-        import pdb
-        pdb.set_trace()
+#         import pdb
+#         pdb.set_trace()
         if shenbaofou =="true":
             setattr(self.context,field,True)
 #             self.context.shenbaofou = True

@@ -45,9 +45,25 @@
 						<span tal:content="python:context.danganbianhao">201</span>
 						</td>
 					</tr>
-					<tr class="row">
+					<!--
+					<tr id="modifyid" style=" display:none;">
 						<td class="property col-md-8">
-							<span>纳税人识别号:</span><span tal:content="python:context.id"></span>
+						<form>                          
+                         <div class="form-group">
+                            <label for="InputComment">输入新的纳税人识别号</label>
+                            <input class="form-control" type="text" 
+                            	tal:attributes="value python:context.id"/>
+                        </div>
+                        <button class="btn btn-default" name="ok">确定</button>
+                        <button class="btn btn-default" name="cancel">取消</button>
+                     	</form>
+						</td>
+						<td class="property col-md-4">&nbsp;</td>
+					</tr>
+					-->					
+					<tr class="row">
+						<td class="property col-md-8 ajaxid2">
+							<span>纳税人识别号:</span><span class="idcontent" tal:content="python:context.id"></span>
 						</td>
 						<td class="property col-md-4"><span>报送日期:</span>
 						<span tal:content="python:context.modified().strftime('%Y-%m-%d')">201</span>
@@ -519,6 +535,41 @@
         	$(".running").removeClass("running");
 		return false;        		
         	});	
+    // modify id
+ 	$(".top").on('click','.ajaxid',function() {
+		$(this).addClass("focus");
+
+    // display id modify form
+    $("#modifyid").show();
+    $(this).parent().hide();
+    return false;
+    });
+    $(".top").on("click","#modifyid button[name='ok']",function() {
+    	var old = $(".top .idcontent").html();
+		var action = $("#ajax-target").attr('data-target') + "/@@modify_id";
+		var newid = $(this).parent().find('input').val();
+		if (old == newid) {
+         $("#modifyid").hide();
+         $(".top .ajaxid").parent().show();		
+		  return false;
+		}
+		var data = {'id':newid};
+		$.post(action,data,function(callback) {
+			if (callback['result']) {
+			  $(".top .idcontent").html(newid);
+         $("#modifyid").hide();
+         $(".top .ajaxid").parent().show();		
+		 $("#ajax-status-notify div").html(callback['message']);
+			//$("#ajax-status-notify").show();
+			}				
+		},'json');
+		return false;	
+		});	
+    $(".top").on("click","#modifyid button[name='cancel']",function() {
+         $("#modifyid").hide();
+         $(".top .ajaxid").parent().show();	
+		return false;        		
+        	});   
     //select batch modify		
 	$(".outer").on("click",".selectall",function() {
 		var url = $("#ajax-target").attr('data-target') + "/@@batch_modify";
