@@ -317,7 +317,14 @@
 						</td>						
 					</tr>
 					<tr class="row notable">
-						<td class="property col-md-4">其他：</td>
+						<td class="property col-md-4">其他1：</td>
+						<td class="data col-md-8 p-checkbox text-center">
+								<input type="checkbox"/>
+								<span class="switch-style off">&nbsp;</span>						
+						</td>						
+					</tr>																																																																				
+					<tr class="row notable">
+						<td class="property col-md-4">其他2：</td>
 						<td class="data col-md-8 p-checkbox text-center">
 								<input type="checkbox"/>
 								<span class="switch-style off">&nbsp;</span>						
