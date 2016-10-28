@@ -89,14 +89,14 @@
 						</td>
 						<td class="property col-md-4">
 							<span>报送日期:</span>
-							<span tal:content="python:context.modified().strftime('%Y-%m-%d')">201</span>
+							<span tal:content="python:view.currentDate()">201</span>
 						</td>
 					</tr>					
 				</tbody>
 			</table>
 			<table class="table table-condensed bodered outer col-md-12">
 				<tbody>
-					<tr class="row theader">
+					<tr class="row">
 						<td class="text-center col-md-4">资料种类</td>
 						<td class="data col-md-8">
 							<table class="table table-condensed bordered inner">
@@ -196,6 +196,12 @@
 						<td class="property col-md-4">土地增值税申报表（按月）</td>
 						<td class="data col-md-8" 
 							tal:content="structure python:view.getChildrensByMonth('tudizengzhishui')">
+						</td>						
+					</tr>
+					<tr class="row">
+						<td class="property col-md-4">入库凭证（按月）</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByMonth('rukupingzheng')">
 						</td>						
 					</tr>
 					<tal:block tal:define="description python:view.getChildDesByName('anyueqita1')">					
@@ -309,11 +315,18 @@
 								<span class="switch-style off">&nbsp;</span>
 							</tal:block>							
 						</td>						
-					</tr>																																																															
+					</tr>
+					<tr class="row notable">
+						<td class="property col-md-4">其他：</td>
+						<td class="data col-md-8 p-checkbox text-center">
+								<input type="checkbox"/>
+								<span class="switch-style off">&nbsp;</span>						
+						</td>						
+					</tr>																																																																				
 					<tr class="row">
 						<td colspan="2" class="text-center col-md-12">按次申报</td>
 					</tr>
-					<tr class="row theader hiddenprint">
+					<tr class="row hiddenprint">
 						<td class="text-center col-md-4">资料种类</td>
 						<td class="data col-md-8">
 							<table class="table table-condensed bordered inner">
@@ -335,7 +348,7 @@
 						</td>						
 					</tr>					
 					<tr class="row">
-						<td class="property col-md-4">印花税申报表（资金帐薄）</td>
+						<td class="property col-md-4">印花税申报表（资金账簿）</td>
 						<td class="data col-md-8" 
 							tal:content="structure python:view.getChildrensByNumber('yinhuashuizijinzhangbo')">
 						</td>						
@@ -362,7 +375,7 @@
 					</tr>
 					</tal:block>
 					<tr class="row">
-						<td class="property col-md-4">受理人：<span tal:content="python:view.getProcessor()"></span></td>
+						<td class="property col-md-4">受理人：</td>
 						<td class="data col-md-8">税务机关受理专用章：</td>						
 					</tr>																																								
 				</tbody>

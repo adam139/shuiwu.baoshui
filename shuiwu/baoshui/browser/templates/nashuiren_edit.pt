@@ -66,14 +66,14 @@
 							<span>纳税人识别号:</span><span class="idcontent" tal:content="python:context.id"></span>
 						</td>
 						<td class="property col-md-4"><span>报送日期:</span>
-						<span tal:content="python:context.modified().strftime('%Y-%m-%d')">201</span>
+						<span tal:content="python:view.currentDate()">201</span>
 						</td>
 					</tr>					
 				</tbody>
 			</table>			
 			<table class="table bodered table-condensed outer col-md-12">
 				<tbody>
-					<tr class="row theader">
+					<tr class="row">
 						<td class="text-center col-md-4">资料种类</td>
 						<td class="text-center col-md-1">全选</td>
 						<td class="data col-md-7">
@@ -193,6 +193,13 @@
 							tal:content="structure python:view.getChildrensByMonth('tudizengzhishui')">
 						</td>						
 					</tr>
+					<tr class="row">
+						<td class="property col-md-4">入库凭证（按月）</td>
+						<td data-num="12" class="selectall col-md-1 text-center checkbox"><input type="checkbox" /><span class="all">&nbsp;</span></td>
+						<td class="data col-md-7" data-id="rukupingzheng" 
+							tal:content="structure python:view.getChildrensByMonth('rukupingzheng')">
+						</td>						
+					</tr>					
 					<tal:block tal:define="description python:view.getChildDesByName('anyueqita1')">
 					<tr class="row">
 						<td class="property col-md-4" tal:content="structure python:description">其他</td>

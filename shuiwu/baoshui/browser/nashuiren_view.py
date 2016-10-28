@@ -8,10 +8,11 @@ from plone.directives import dexterity
 from Products.CMFCore.utils import getToolByName
 from plone.memoize.instance import memoize
 from Products.Five.browser import BrowserView
+from datetime import datetime
 
-from shuiwu.baoshui.content.jidujilu import Ijidujilu
-from shuiwu.baoshui.content.ancijilu import Iancijilu
-from shuiwu.baoshui.content.yuedujilu import Iyuedujilu
+# from shuiwu.baoshui.content.jidujilu import Ijidujilu
+# from shuiwu.baoshui.content.ancijilu import Iancijilu
+# from shuiwu.baoshui.content.yuedujilu import Iyuedujilu
 from shuiwu.baoshui.content.nashuiren import Inashuiren
 
 from shuiwu.baoshui import _
@@ -132,6 +133,9 @@ class NashuirenView(BrowserView):
             return obj.shuiguanyuan
         else:
             return obj.creators[0]
+        
+    def currentDate(self):
+        return datetime.now().strftime('%Y-%m-%d')
                  
   
 class NashuirenEdit(NashuirenView):
@@ -265,12 +269,12 @@ class ModifyId(grok.View):
     def render(self):    
         datadic = self.request.form
         newid = datadic['id']
-        oldid = context.id
         context = self.context
+        oldid = context.id
         parent = context.aq_parent
         import pdb
         pdb.set_trace()
-        parent.manage_renameObject(id, newid) 
+        parent.manage_renameObject(oldid, newid) 
         parent[newid].reindexObject()
         ajaxtext = u"<p class='text-success'>更改已保存</p>"
         callback = {"result":True,'message':ajaxtext}

@@ -41,6 +41,7 @@ class Allcontents(InitContents):
         self.assertEqual(self.portal['nashuiku1']['nashuiren1']['shebaofei'].id,'shebaofei')
         self.assertEqual(self.portal['nashuiku1']['nashuiren1']['fangchanshui'].id,'fangchanshui')                                        
         self.assertEqual(self.portal['nashuiku1']['nashuiren1']['tudizengzhishui'].id,'tudizengzhishui') 
+        self.assertEqual(self.portal['nashuiku1']['nashuiren1']['rukupingzheng'].id,'rukupingzheng')        
         self.assertEqual(self.portal['nashuiku1']['nashuiren1']['anyueqita1'].id,'anyueqita1')
         self.assertEqual(self.portal['nashuiku1']['nashuiren1']['anyueqita2'].id,'anyueqita2')
 #按季度

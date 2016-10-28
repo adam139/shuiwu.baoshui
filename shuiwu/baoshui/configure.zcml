@@ -26,7 +26,14 @@
       source="1.0"
       destination="2.0"
       handler="shuiwu.baoshui.migration.createChildTree"
-      profile="shuiwu.baoshui:default"/> 
+      profile="shuiwu.baoshui:default"/>
+  <genericsetup:upgradeStep
+      title="Add rukupingzheng to every nashuiren object"
+      description="update step to add rukupingzheng to every nashuiren object."
+      source="2.0"
+      destination="3.0"
+      handler="shuiwu.baoshui.migration.AddChild"
+      profile="shuiwu.baoshui:default"/>       
 <!-- register indexer -->
   <adapter name="guanlidaima" factory=".indexer.indexer_guanlidaima"/>
   <adapter name="dengjiriqi" factory=".indexer.indexer_dengjiriqi"/>

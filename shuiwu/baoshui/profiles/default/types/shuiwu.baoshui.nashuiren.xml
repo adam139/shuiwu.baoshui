@@ -35,7 +35,8 @@
   <element value="shuiwu.baoshui.shuilijijin" />
   <element value="shuiwu.baoshui.shebaofei" />       
   <element value="shuiwu.baoshui.fangchanshui" />
-  <element value="shuiwu.baoshui.tudizengzhishui" /> 
+  <element value="shuiwu.baoshui.tudizengzhishui" />  
+  <element value="shuiwu.baoshui.rukupingzheng" /> 
   <element value="shuiwu.baoshui.anyueqita1" /> 
   <element value="shuiwu.baoshui.anyueqita2" />      
   </property>

@@ -27,6 +27,7 @@ subids = [('zichanfuzaibiao',u'资产负债表'),
                ('shebaofei',u'社保费申报表'),
                ('fangchanshui',u'房产税申报表（租金收入）'),
                ('tudizengzhishui',u'土地增值税申报表（按月）'),
+               ('rukupingzheng',u'入库凭证（按月）'),
                ('anyueqita1',u'其他'),
                ('anyueqita2',u'其他'),
                ('qiyesuodeshuialeiblei',u'企业所得税预缴表（A类、B类）'),
@@ -34,7 +35,7 @@ subids = [('zichanfuzaibiao',u'资产负债表'),
                ('chengzhentudishiyongshui',u'城镇土地使用税申报表'), 
                ('anjiqita1',u'按季其他'),
                ('anjiqita2',u'按季其他'),
-               ('yinhuashuizijinzhangbo',u'印花税申报表（资金帐薄）'),
+               ('yinhuashuizijinzhangbo',u'印花税申报表（资金账簿）'),
                ('ziyuanshui',u'资源税申报表'),
                ('gengdizhanyongshui',u'耕地占用税申报表'),
                ('anciqita',u'其他')                                                                                                           
@@ -110,7 +111,9 @@ def initObjectTree(obj,event):
     id = 'tudizengzhishuianyue'
     title = u'土地增值税申报表（按月）'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.tudizengzhishuianyue',id=id,title=title,container=obj)
-
+    id = 'tudizengzhishuianyue'
+    title = u'入库凭证（按月）'.encode("utf-8")
+    item = api.content.create(type='shuiwu.baoshui.rukupingzheng',id=id,title=title,container=obj)
     id = 'anyueqita'
     title = u'其他'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.anyueqita',id=id,title=title,container=obj)
@@ -147,7 +150,7 @@ def initObjectTree(obj,event):
 
 #按次
     id = 'yinhuashuizijinzhangbo'
-    title = u'印花税申报表（资金帐薄）'.encode("utf-8")
+    title = u'印花税申报表（资金账簿）'.encode("utf-8")
     item = api.content.create(type='shuiwu.baoshui.yinhuashuizijinzhangbo',id=id,title=title,container=obj)
    
     id = 'ziyuanshui'
@@ -197,20 +200,7 @@ def CreateNashuirenEvent(event):
                                   danganbianhao = event.danganbianhao,
                                   dengjiriqi = dengjiriqi,
                                   safe_id = False)
-#         item.title = event.title
-#         item.description = event.description
-#         item.guanlidaima = event.guanlidaima
-# #         item.dengjiriqi = event.dengjiriqi 
-#         item.shuiguanyuan = event.shuiguanyuan
-#         item.danganbianhao = event.danganbianhao               
 
-#         datearray = event.dengjiriqi.split('-')
-#         if len(datearray) >= 3:
-#             val = map(int,datearray)
-#                
-#             item.dengjiriqi = datetime.date(*val)  
-#         else:
-#             item.dengjiriqi = datetime.date.today()
         item.reindexObject()                
         
     except:
