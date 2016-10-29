@@ -359,7 +359,7 @@
 						</td>						
 					</tr>					
 					<tr class="row">
-						<td class="property col-md-4">印花税申报表（资金帐薄）</td>
+						<td class="property col-md-4">印花税申报表（资金账簿）</td>
 						<td class="data col-md-8" data-id="yinhuashuizijinzhangbo1" 
 							tal:content="structure python:view.getChildrensByNumber('yinhuashuizijinzhangbo')">
 						</td>						

@@ -227,7 +227,7 @@
 						<td colspan="2" class="text-center col-md-12">按年申报</td>
 					</tr>
 					<tr class="row notable">
-						<td class="property col-md-4">印花税申报表（营业帐薄）</td>
+						<td class="property col-md-4">印花税申报表（营业账簿）</td>
 						<td class="data col-md-8 p-checkbox text-center" tal:define="property string:yinhuashui;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
 								<input checked type="checkbox"/>
