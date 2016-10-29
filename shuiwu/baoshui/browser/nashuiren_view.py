@@ -232,7 +232,7 @@ class BaseEdit(dexterity.EditForm):
         pass
     @property
     def fields(self):
-        return field.Fields(Inashuiren).select('title', 'description','dengjiriqi',
+        return field.Fields(Inashuiren).select('title','guanlidaima', 'description','dengjiriqi',
                                                  'shuiguanyuan','danganbianhao','xiaoguimo')
 
 
@@ -272,8 +272,6 @@ class ModifyId(grok.View):
         context = self.context
         oldid = context.id
         parent = context.aq_parent
-        import pdb
-        pdb.set_trace()
         parent.manage_renameObject(oldid, newid) 
         parent[newid].reindexObject()
         ajaxtext = u"<p class='text-success'>更改已保存</p>"

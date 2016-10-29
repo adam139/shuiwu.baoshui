@@ -147,6 +147,12 @@
 							tal:content="structure python:view.getChildrensByMonth('tudizengzhishui')">
 						</td>						
 					</tr>
+					<tr class="row">
+						<td class="property col-md-4">入库凭证（按月）</td>
+						<td class="data col-md-8" 
+							tal:content="structure python:view.getChildrensByMonth('rukupingzheng')">
+						</td>						
+					</tr>					
 					<tal:block tal:define="description python:view.getChildDesByName('anyueqita1')">					
 					<tr class="row" tal:condition="description">
 						<td class="property col-md-4">其他1(<span tal:content="python:description"></span>)
@@ -197,12 +203,6 @@
 						<td class="property col-md-4">城镇土地使用税申报表</td>
 						<td class="data col-md-8" 
 							tal:content="structure python:view.getChildrensByQuarter('chengzhentudishiyongshui')">
-						</td>						
-					</tr>
-					<tr class="row">
-						<td class="property col-md-4">入库凭证（按月）</td>
-						<td class="data col-md-8" 
-							tal:content="structure python:view.getChildrensByMonth('rukupingzheng')">
 						</td>						
 					</tr>					
 					<tal:block tal:define="description python:view.getChildDesByName('anjiqita1')">					

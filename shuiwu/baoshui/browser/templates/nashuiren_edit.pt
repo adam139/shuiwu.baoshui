@@ -44,23 +44,7 @@
 						<td class="property col-md-4"><span>档案编码:</span>
 						<span tal:content="python:context.danganbianhao">201</span>
 						</td>
-					</tr>
-					<!--
-					<tr id="modifyid" style=" display:none;">
-						<td class="property col-md-8">
-						<form>                          
-                         <div class="form-group">
-                            <label for="InputComment">输入新的纳税人识别号</label>
-                            <input class="form-control" type="text" 
-                            	tal:attributes="value python:context.id"/>
-                        </div>
-                        <button class="btn btn-default" name="ok">确定</button>
-                        <button class="btn btn-default" name="cancel">取消</button>
-                     	</form>
-						</td>
-						<td class="property col-md-4">&nbsp;</td>
-					</tr>
-					-->					
+					</tr>					
 					<tr class="row">
 						<td class="property col-md-8 ajaxid2">
 							<span>纳税人识别号:</span><span class="idcontent" tal:content="python:context.id"></span>
@@ -78,7 +62,7 @@
 						<td class="text-center col-md-1">全选</td>
 						<td class="data col-md-7">
 							<table class="table bordered inner">
-								<tr class="row">
+								<tr class="row editing">
 									<td class="col-md-1">1月</td>
 									<td class="col-md-1">2月</td>
 									<td class="col-md-1">3月</td>
@@ -282,7 +266,7 @@
 						<td colspan="2" class="text-center col-md-12">按年申报</td>
 					</tr>
 					<tr class="row notable">
-						<td class="property col-md-4">印花税申报表（营业帐薄）</td>
+						<td class="property col-md-4">印花税申报表（营业账簿）</td>
 						<td class="data col-md-8 p-checkbox text-center" tal:define="property string:yinhuashui;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
 								<input checked type="checkbox"/>
@@ -353,7 +337,7 @@
 					<tr class="row">
 						<td colspan="2" class="text-center col-md-12">按次申报</td>
 					</tr>
-					<tr class="row theader">
+					<tr class="row">
 						<td class="text-center col-md-4">资料种类</td>
 						<td class="data col-md-8">
 							<table class="table bordered table-condensed inner">
@@ -419,6 +403,7 @@
 		}
 		else {
 		checkboxID.prop('checked', true);
+		$(this).css({"color":"red"});
 		}
 		var action = $(this).attr('data-url') + "/@@modify_yuedujilu";
 		var data = {'shenbaofou':shenbaofou,'number':number};		
@@ -444,6 +429,7 @@
 		}
 		else {
 		checkboxID.prop('checked', true);
+		$(this).css({"color":"red"});
 		}
 		var action = $("#ajax-target").attr('data-target') + "/@@modify_property";
 		var data = {'shenbaofou':shenbaofou,'property':property};	
@@ -525,6 +511,7 @@
 		$.post(action,data,function(callback) {
 			if (callback['result']) {
 			  $(".running .focus").html(shenbaocishu);
+			  $(".running .focus").css({"color":"red"});
          $(".running .form").hide();
          $(".running .number-row").show();
         	$(".running .focus").removeClass("focus");
@@ -541,41 +528,6 @@
         	$(".running .focus").removeClass("focus");
         	$(".running").removeClass("running");
 		return false;        		
-        	});	
-    // modify id
- 	$(".top").on('click','.ajaxid',function() {
-		$(this).addClass("focus");
-
-    // display id modify form
-    $("#modifyid").show();
-    $(this).parent().hide();
-    return false;
-    });
-    $(".top").on("click","#modifyid button[name='ok']",function() {
-    	var old = $(".top .idcontent").html();
-		var action = $("#ajax-target").attr('data-target') + "/@@modify_id";
-		var newid = $(this).parent().find('input').val();
-		if (old == newid) {
-         $("#modifyid").hide();
-         $(".top .ajaxid").parent().show();		
-		  return false;
-		}
-		var data = {'id':newid};
-		$.post(action,data,function(callback) {
-			if (callback['result']) {
-			  $(".top .idcontent").html(newid);
-         $("#modifyid").hide();
-         $(".top .ajaxid").parent().show();		
-		 $("#ajax-status-notify div").html(callback['message']);
-			//$("#ajax-status-notify").show();
-			}				
-		},'json');
-		return false;	
-		});	
-    $(".top").on("click","#modifyid button[name='cancel']",function() {
-         $("#modifyid").hide();
-         $(".top .ajaxid").parent().show();	
-		return false;        		
         	});   
     //select batch modify		
 	$(".outer").on("click",".selectall",function() {
@@ -584,6 +536,7 @@
 		var actionid = $(this).siblings('.data').attr('data-id');
 		$(this).find('input').prop('checked', true);		
 		$(this).siblings('.data').find('input').prop('checked', true);
+		$(this).siblings('.data').find('span').css({"color":"red"});
         var action = "selectall";
 		var data = {'objid':actionid,'action':action,'number':number};
 		$(this).addClass('unselectall').removeClass('selectall');
