@@ -64,7 +64,7 @@
 		<div class ="row">
 		<h5>
 		<a title="打印" tal:attributes="href python:context.absolute_url()" 
-			class="printthis btn btn-default col-md-1 col-md-offset-10 text-center" >返回</a>			
+			class="hidden-print btn btn-default col-md-1 col-md-offset-10 text-center" >返回</a>			
 		<a title="打印" href="javascript:this.print();" 
 			class="hidden-print btn btn-primary col-md-1  text-center" >打印</a>
 		</h5>
