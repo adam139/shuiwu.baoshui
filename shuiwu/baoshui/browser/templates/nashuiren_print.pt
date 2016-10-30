@@ -101,18 +101,18 @@
 						<td class="data col-md-8">
 							<div class="table-area">
 								<div class="row">
-									<div class="col-md-1"><span>1 月</div></td>
-									<div class="col-md-1"><span>2 月</div></td>
-									<div class="col-md-1"><span>3 月</div></td>
-									<div class="col-md-1"><span>4 月</div></td>
-									<div class="col-md-1"><span>5 月</div></td>
-									<div class="col-md-1"><span>6 月</div></td>
-									<div class="col-md-1"><span>7 月</div></td>
-									<div class="col-md-1"><span>8 月</div></td>
-									<div class="col-md-1"><span>9 月</div></td>
-									<div class="col-md-1"><span>10月</div></td>
-									<div class="col-md-1"><span>11月</div></td>
-									<div class="col-md-1"><span>12月</div></td>
+									<div class="col-md-1"><span>1 月</span></div>
+									<div class="col-md-1"><span>2 月</span></div>
+									<div class="col-md-1"><span>3 月</span></div>
+									<div class="col-md-1"><span>4 月</span></div>
+									<div class="col-md-1"><span>5 月</span></div>
+									<div class="col-md-1"><span>6 月</span></div>
+									<div class="col-md-1"><span>7 月</span></div>
+									<div class="col-md-1"><span>8 月</span></div>
+									<div class="col-md-1"><span>9 月</span></div>
+									<div class="col-md-1"><span>10月</span></div>
+									<div class="col-md-1"><span>11月</span></div>
+									<div class="col-md-1"><span>12月</span></div>
 								</div>
 							</div>
 						</td>						
