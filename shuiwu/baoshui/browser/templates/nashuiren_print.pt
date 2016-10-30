@@ -66,7 +66,7 @@
 		<a title="打印" tal:attributes="href python:context.absolute_url()" 
 			class="printthis btn btn-default col-md-1 col-md-offset-10 text-center" >返回</a>			
 		<a title="打印" href="javascript:this.print();" 
-			class="printthis btn btn-primary col-md-1  text-center" >打印</a>
+			class="hidden-print btn btn-primary col-md-1  text-center" >打印</a>
 		</h5>
 		</div>
 		<h3 class="text-center">资料报送回执表</h3>
@@ -117,7 +117,7 @@
 							</table>
 						</td>						
 					</tr>
-					<tr class="row">
+					<tr class="row hidden-print">
 						<td colspan="2" class="text-center col-md-12">按月申报</td>
 					</tr>					
 					<tr class="row">
@@ -222,10 +222,10 @@
 						</td>						
 					</tr>
 					</tal:block>																																																																											
-					<tr class="row">
+					<tr class="row hidden-print">
 						<td colspan="2" class="text-center col-md-12">按季申报</td>
 					</tr>
-					<tr class="row hiddenprint">
+					<tr class="row">
 						<td class="property col-md-4"></td>
 						<td class="data col-md-8"> 
 							<table class="table bordered table-condensed inner">
@@ -333,7 +333,7 @@
 					<tr class="row">
 						<td colspan="2" class="text-center col-md-12">按次申报</td>
 					</tr>
-					<tr class="row hiddenprint">
+					<tr class="row hidden-print">
 						<td class="text-center col-md-4">资料种类</td>
 						<td class="data col-md-8">
 							<table class="table table-condensed bordered inner">
