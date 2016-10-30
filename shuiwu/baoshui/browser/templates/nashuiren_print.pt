@@ -99,17 +99,17 @@
 					<tr class="row">
 						<td class="text-center col-md-4">资料种类</td>
 						<td class="data col-md-8">
-							<table class="table table-condensed bordered inner">
+							<table class="table table-condensed bordered inner" style="table-layout:fixed">
 								<tr class="row theader">
-									<td class="col-md-1"><span>1月</span></td>
-									<td class="col-md-1"><span>2月</span></td>
-									<td class="col-md-1"><span>3月</span></td>
-									<td class="col-md-1"><span>4月</span></td>
-									<td class="col-md-1"><span>5月</span></td>
-									<td class="col-md-1"><span>6月</span></td>
-									<td class="col-md-1"><span>7月</span></td>
-									<td class="col-md-1"><span>8月</span></td>
-									<td class="col-md-1"><span>9月</span></td>
+									<td class="col-md-1"><span>1 月</span></td>
+									<td class="col-md-1"><span>2 月</span></td>
+									<td class="col-md-1"><span>3 月</span></td>
+									<td class="col-md-1"><span>4 月</span></td>
+									<td class="col-md-1"><span>5 月</span></td>
+									<td class="col-md-1"><span>6 月</span></td>
+									<td class="col-md-1"><span>7 月</span></td>
+									<td class="col-md-1"><span>8 月</span></td>
+									<td class="col-md-1"><span>9 月</span></td>
 									<td class="col-md-1"><span>10月</span></td>
 									<td class="col-md-1"><span>11月</span></td>
 									<td class="col-md-1"><span>12月</span></td>
