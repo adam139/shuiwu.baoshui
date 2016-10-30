@@ -117,7 +117,7 @@
 							</div>
 						</td>						
 					</tr>
-					<tr class="row hidden-print">
+					<tr class="row">
 						<td colspan="2" class="text-center col-md-12">按月申报</td>
 					</tr>					
 					<tr class="row">
@@ -383,7 +383,7 @@
 					</tal:block>
 					<tr class="row">
 						<td class="property col-md-4">受理人：</td>
-						<td class="data col-md-8">税务机关受理专用章：</td>						
+						<td class="property sign col-md-8">税务机关受理专用章：</td>						
 					</tr>																																								
 				</tbody>
 			</table>
