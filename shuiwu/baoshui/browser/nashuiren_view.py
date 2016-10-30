@@ -74,12 +74,12 @@ class NashuirenView(BrowserView):
         for i in range(nums):
             field = "shenbaofou%s" % str(i+1)
             if getattr(obj,field,False) == False:           
-                out = """<td class="col-md-%(width)s text-center checkbox">
+                out = """<td class="col-md-%(width)s checkbox">
                 <input  type="checkbox" />
                 <span class="switch-style off">&nbsp;</span></td></td>""" \
                 % dict(width=width)
             else:
-                out = """<td class="col-md-%(width)s text-center checkbox">
+                out = """<td class="col-md-%(width)s checkbox">
                 <input  type="checkbox" checked="checked" />
                 <span class="switch-style on">&nbsp;</span></td></td>""" \
                 % dict(width=width)                                  
@@ -96,7 +96,7 @@ class NashuirenView(BrowserView):
         for i in range(nums):
             field = "shenbaocishu%s" % str(i+1)
             num = getattr(obj,field,0)
-            out = """<td class="col-md-%(width)s text-center">%(num)s</td>""" \
+            out = """<td class="col-md-%(width)s">%(num)s</td>""" \
                 % dict(width=width,num=num)                                  
             outhtml = "%s%s" %(outhtml ,out)           
         data = """%s</tr></table>""" % outhtml
@@ -150,12 +150,12 @@ class NashuirenEdit(NashuirenView):
             j = str(i+1)
             field = "shenbaofou%s" % j
             if getattr(obj,field,False) == False:          
-                out = """<td class="col-md-%(width)s text-center checkbox">
+                out = """<td class="col-md-%(width)s checkbox">
                 <input type="checkbox" />
                 <span data-url="%(objurl)s" data-num="%(tdnumber)s" class="switch-style off">&nbsp;</span></td>""" \
                 % dict(width=width,objurl=obj.absolute_url(),tdnumber=j)
             else:
-                out = """<td class="col-md-%(width)s text-center checkbox">
+                out = """<td class="col-md-%(width)s checkbox">
                 <input  type="checkbox" checked="checked" />
                 <span data-url="%(objurl)s" data-num="%(tdnumber)s" class="switch-style on">&nbsp;</span></td>""" \
                 % dict(width=width,objurl=obj.absolute_url(),tdnumber=j)                                 
@@ -175,7 +175,7 @@ class NashuirenEdit(NashuirenView):
             j = str(i+1)
             field = "shenbaocishu%s" % j
             num = getattr(obj,field,0)
-            out = """<td class="col-md-%(width)s text-center">
+            out = """<td class="col-md-%(width)s">
             <span class="number" data-num="%(tdnumber)s" data-url="%(objurl)s">%(num)s</span></td>""" \
                 % dict(width=width,objurl=obj.absolute_url(),tdnumber=j,num=num)                                  
             outhtml = "%s%s" %(outhtml ,out)           
