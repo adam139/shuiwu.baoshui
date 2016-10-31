@@ -76,12 +76,12 @@ class NashuirenView(BrowserView):
             if getattr(obj,field,False) == False:           
                 out = """<td class="col-md-%(width)s checkbox">
                 <input  type="checkbox" />
-                <span class="switch-style off">&nbsp;</span></td></td>""" \
+                <span class="switch-style off">&nbsp;</span></td>""" \
                 % dict(width=width)
             else:
                 out = """<td class="col-md-%(width)s checkbox">
                 <input  type="checkbox" checked="checked" />
-                <span class="switch-style on">&nbsp;</span></td></td>""" \
+                <span class="switch-style on">&nbsp;</span></td>""" \
                 % dict(width=width)                                  
             outhtml = "%s%s" %(outhtml ,out)
            

@@ -101,18 +101,18 @@
 						<td class="data col-md-8">
 							<table class="table table-condensed bordered inner">
 								<tr class="row theader">
-									<td class="col-md-1"><span>1 月</span></td>
-									<td class="col-md-1"><span>2 月</span></td>
-									<td class="col-md-1"><span>3 月</span></td>
-									<td class="col-md-1"><span>4 月</span></td>
-									<td class="col-md-1"><span>5 月</span></td>
-									<td class="col-md-1"><span>6 月</span></td>
-									<td class="col-md-1"><span>7 月</span></td>
-									<td class="col-md-1"><span>8 月</span></td>
-									<td class="col-md-1"><span>9 月</span></td>
-									<td class="col-md-1"><span>10月</span></td>
-									<td class="col-md-1"><span>11月</span></td>
-									<td class="col-md-1"><span>12月</span></td>
+									<td class="col-md-1"><span class="yue1">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue2">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue3">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue4">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue5">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue6">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue7">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue8">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue9">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue10">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue11">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue12">&nbsp;</span></td>
 								</tr>
 							</table>
 						</td>						
@@ -333,23 +333,23 @@
 					<tr class="row">
 						<td colspan="2" class="text-center col-md-12">按次申报</td>
 					</tr>
-					<tr class="row hidden-print">
+					<tr class="row">
 						<td class="text-center col-md-4">资料种类</td>
 						<td class="data col-md-8">
 							<table class="table table-condensed bordered inner">
-								<tr class="row">
-									<td class="col-md-1">1月</td>
-									<td class="col-md-1">2月</td>
-									<td class="col-md-1">3月</td>
-									<td class="col-md-1">4月</td>
-									<td class="col-md-1">5月</td>
-									<td class="col-md-1">6月</td>
-									<td class="col-md-1">7月</td>
-									<td class="col-md-1">8月</td>
-									<td class="col-md-1">9月</td>
-									<td class="col-md-1">10月</td>
-									<td class="col-md-1">11月</td>
-									<td class="col-md-1">12月</td>
+								<tr class="row theader">
+									<td class="col-md-1"><span class="yue1">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue2">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue3">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue4">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue5">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue6">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue7">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue8">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue9">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue10">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue11">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue12">&nbsp;</span></td>
 								</tr>
 							</table>
 						</td>						
