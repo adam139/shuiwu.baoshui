@@ -36,9 +36,8 @@
 
     <div tal:replace="structure provider:plone.scripts" />
     <metal:javascriptslot define-slot="javascript_head_slot" />
-    <link tal:replace="structure provider:plone.htmlhead.links" />
-<!--    <link rel="stylesheet" href="http://shuiwu.315ok.org/shuiwustatic/css/print.css"/>  --> 
-   <link rel="stylesheet" href="http://149.32.48.9:81/css/print.css"/>  
+    <link tal:replace="structure provider:plone.htmlhead.links" /> 
+    <link rel="stylesheet" href="http://149.32.48.9:81/css/print.css"/>
   </head>
   
   <body tal:define="isRTL portal_state/is_rtl;
@@ -64,9 +63,9 @@
 		<div class ="row">
 		<h5>
 		<a title="打印" tal:attributes="href python:context.absolute_url()" 
-			class="printthis btn btn-default col-md-1 col-md-offset-10 text-center" >返回</a>			
+			class="hidden-print btn btn-default col-md-1 col-md-offset-10 text-center" >返回</a>			
 		<a title="打印" href="javascript:this.print();" 
-			class="printthis btn btn-primary col-md-1  text-center" >打印</a>
+			class="hidden-print btn btn-primary col-md-1  text-center" >打印</a>
 		</h5>
 		</div>
 		<h3 class="text-center">资料报送回执表</h3>
@@ -100,19 +99,19 @@
 						<td class="text-center col-md-4">资料种类</td>
 						<td class="data col-md-8">
 							<table class="table table-condensed bordered inner">
-								<tr class="row">
-									<td class="col-md-1">1月</td>
-									<td class="col-md-1">2月</td>
-									<td class="col-md-1">3月</td>
-									<td class="col-md-1">4月</td>
-									<td class="col-md-1">5月</td>
-									<td class="col-md-1">6月</td>
-									<td class="col-md-1">7月</td>
-									<td class="col-md-1">8月</td>
-									<td class="col-md-1">9月</td>
-									<td class="col-md-1">10月</td>
-									<td class="col-md-1">11月</td>
-									<td class="col-md-1">12月</td>
+								<tr class="row theader">
+									<td class="col-md-1"><span class="yue1">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue2">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue3">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue4">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue5">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue6">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue7">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue8">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue9">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue10">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue11">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue12">&nbsp;</span></td>
 								</tr>
 							</table>
 						</td>						
@@ -139,7 +138,7 @@
 						</td>						
 					</tr>
 					<tr class="row">
-						<td class="property col-md-4">城建、教育、地方教育附加申报表</td>
+						<td class="property col-md-4">城建、教育、地方教育附加</td>
 						<td class="data col-md-8" 
 							tal:content="structure python:view.getChildrensByMonth('chengjianjiaoyudifangfujia')">
 						</td>						
@@ -222,10 +221,10 @@
 						</td>						
 					</tr>
 					</tal:block>																																																																											
-					<tr class="row">
+					<tr class="row hidden-print">
 						<td colspan="2" class="text-center col-md-12">按季申报</td>
 					</tr>
-					<tr class="row hiddenprint">
+					<tr class="row">
 						<td class="property col-md-4"></td>
 						<td class="data col-md-8"> 
 							<table class="table bordered table-condensed inner">
@@ -239,7 +238,7 @@
 						</td>						
 					</tr>										
 					<tr class="row">
-						<td class="property col-md-4">企业所得税预缴表（A类、B类）</td>
+						<td class="property col-md-4">企业所得税（A类、B类）</td>
 						<td class="data col-md-8" 
 							tal:content="structure python:view.getChildrensByQuarter('qiyesuodeshuialeiblei')">
 						</td>						
@@ -333,23 +332,23 @@
 					<tr class="row">
 						<td colspan="2" class="text-center col-md-12">按次申报</td>
 					</tr>
-					<tr class="row hiddenprint">
+					<tr class="row">
 						<td class="text-center col-md-4">资料种类</td>
 						<td class="data col-md-8">
 							<table class="table table-condensed bordered inner">
-								<tr class="row">
-									<td class="col-md-1">1月</td>
-									<td class="col-md-1">2月</td>
-									<td class="col-md-1">3月</td>
-									<td class="col-md-1">4月</td>
-									<td class="col-md-1">5月</td>
-									<td class="col-md-1">6月</td>
-									<td class="col-md-1">7月</td>
-									<td class="col-md-1">8月</td>
-									<td class="col-md-1">9月</td>
-									<td class="col-md-1">10月</td>
-									<td class="col-md-1">11月</td>
-									<td class="col-md-1">12月</td>
+								<tr class="row theader">
+									<td class="col-md-1"><span class="yue1">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue2">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue3">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue4">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue5">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue6">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue7">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue8">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue9">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue10">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue11">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue12">&nbsp;</span></td>
 								</tr>
 							</table>
 						</td>						
