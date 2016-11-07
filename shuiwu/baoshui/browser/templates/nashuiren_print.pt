@@ -38,7 +38,6 @@
     <metal:javascriptslot define-slot="javascript_head_slot" />
     <link tal:replace="structure provider:plone.htmlhead.links" />
     <link rel="stylesheet" href="http://shuiwu.315ok.org/shuiwustatic/css/print.css"/> 
- <!--  <link rel="stylesheet" href="http://149.32.48.9/shuiwustatic/css/print.css"/>   --> 
   </head>
   
   <body tal:define="isRTL portal_state/is_rtl;
@@ -99,6 +98,7 @@
 					<tr class="row">
 						<td class="text-center col-md-4">资料种类</td>
 						<td class="data col-md-8">
+<<<<<<< HEAD
 							<div class="table-area">
 								<div class="row">
 									<div class="col-md-1"><span>1 月</span></div>
@@ -115,6 +115,24 @@
 									<div class="col-md-1"><span>12月</span></div>
 								</div>
 							</div>
+=======
+							<table class="table table-condensed bordered inner">
+								<tr class="row theader">
+									<td class="col-md-1"><span class="yue1">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue2">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue3">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue4">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue5">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue6">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue7">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue8">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue9">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue10">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue11">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue12">&nbsp;</span></td>
+								</tr>
+							</table>
+>>>>>>> master
 						</td>						
 					</tr>
 					<tr class="row">
@@ -333,23 +351,23 @@
 					<tr class="row">
 						<td colspan="2" class="text-center col-md-12">按次申报</td>
 					</tr>
-					<tr class="row hidden-print">
+					<tr class="row">
 						<td class="text-center col-md-4">资料种类</td>
 						<td class="data col-md-8">
 							<table class="table table-condensed bordered inner">
-								<tr class="row">
-									<td class="col-md-1">1月</td>
-									<td class="col-md-1">2月</td>
-									<td class="col-md-1">3月</td>
-									<td class="col-md-1">4月</td>
-									<td class="col-md-1">5月</td>
-									<td class="col-md-1">6月</td>
-									<td class="col-md-1">7月</td>
-									<td class="col-md-1">8月</td>
-									<td class="col-md-1">9月</td>
-									<td class="col-md-1">10月</td>
-									<td class="col-md-1">11月</td>
-									<td class="col-md-1">12月</td>
+								<tr class="row theader">
+									<td class="col-md-1"><span class="yue1">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue2">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue3">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue4">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue5">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue6">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue7">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue8">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue9">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue10">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue11">&nbsp;</span></td>
+									<td class="col-md-1"><span class="yue12">&nbsp;</span></td>
 								</tr>
 							</table>
 						</td>						
