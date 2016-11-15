@@ -35,7 +35,7 @@
 					</tr>
 					<tr class="row">
 						<td class="property col-md-8">
-							<span>纳税人识别号:</span><span tal:content="python:context.id"></span>
+							<span>纳税人识别号:</span><span tal:content="python:context.guanlidaima"></span>
 						</td>
 						<td class="property col-md-4"><span>报送日期:</span>
 						<span tal:content="python:view.currentDate()">201</span>
