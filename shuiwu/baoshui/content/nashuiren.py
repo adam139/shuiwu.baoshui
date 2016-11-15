@@ -55,6 +55,34 @@ class Inashuiren(form.Schema,IBasic):
     xiaoguimo = schema.Bool(title=_(u"xiao guimo nashuiren rending"),
                        required=False,
                        default=False)
+#状态    
+    status = schema.Choice(title=_(u"nashui ren zhuangtai"),
+                       required = True,
+                       default="zhengchang",
+                       vocabulary = 'shuiwu.baoshui.nashuirenstatus')
+#登记注册类型
+    type = schema.Choice(title=_(u"nashui dengji zhuce leixing"),
+                       required = True,
+                       default="qitayouxianzeren",
+                       vocabulary = 'shuiwu.baoshui.nashuirentype')
+#财务负责人    
+    caiwufuzeren = schema.TextLine(title=_(u"caiwu fuze ren"),
+                       required=False,
+                       default=u"")
+#财务负责人电话    
+    caiwufuzerendianhua = schema.TextLine(title=_(u"caiwu fuze ren dianhua"),
+                       required=False,
+                       default=u"")
+
+#办税人    
+    banshuiren = schema.TextLine(title=_(u"banshui ren"),
+                       required=False,
+                       default=u"")
+#办税人电话    
+    banshuirendianhua = schema.TextLine(title=_(u"banshui ren dianhua"),
+                       required=False,
+                       default=u"")
+            
 #年度记录
     yinhuashui = schema.Bool(title=_(u"yinhuashui shenbaobiao(yingyezhangbo)"),
                        required=False,

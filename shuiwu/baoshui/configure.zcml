@@ -6,7 +6,15 @@
 
     <!-- Include configuration for dependencies listed in setup.py -->
     <includeDependencies package="." />
-  <include file="permissions.zcml" />
+    <include file="permissions.zcml" />
+    <utility
+         component=".vocabularies.StatusVocabularyFactory"
+         name="shuiwu.baoshui.nashuirenstatus"
+         />
+    <utility
+         component=".vocabularies.TypeVocabularyFactory"
+         name="shuiwu.baoshui.nashuirentype"
+         />           
   <i18n:registerTranslations directory="locales" />
   <include package=".browser" />  
 
