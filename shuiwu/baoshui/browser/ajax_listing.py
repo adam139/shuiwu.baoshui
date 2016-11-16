@@ -12,7 +12,7 @@ import datetime
 from Acquisition import aq_inner
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore import permissions
-
+from Products.CMFPlone.resources import add_resource_on_request
 # from plone.directives import dexterity
 from plone.memoize.instance import memoize
 from shuiwu.baoshui import _
@@ -30,7 +30,11 @@ class sysAjaxListingView(BrowserView):
     """
     AJAX 查询，返回分页结果,for some contenttypes relative to project
     """
-   
+    def __init__(self,context, request):
+        # Each view instance receives context and request as construction parameters
+        self.context = context
+        self.request = request
+        add_resource_on_request(self.request, 'sorter')   
                
     @memoize    
     def catalog(self):
