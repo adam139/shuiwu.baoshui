@@ -4,7 +4,28 @@
     i18n_domain="shuiwu.baoshui">
 
 
-  <!-- -*- extra stuff goes here -*- -->
 
+  <!-- -*- extra stuff goes here -*-  -->
+<include package="plone.behavior" file="meta.zcml" />
+
+ 
+  <plone:behavior
+    title="Nashuiren status"
+    description="Adds nashuiren status field behavior"
+    provides=".status.INashuirenStatus"
+    factory=".status.NashuirenStatus"
+    for="plone.dexterity.interfaces.IDexterityContent"
+    marker=".status.INashuirenStatus"
+    />
+    <!--  
+  <plone:behavior
+    title="Security Level"
+    description="Adds security level field behavior"
+    provides=".security_level.ISecurityLevel"
+    factory=".security_level.SecurityLevel"
+    for="plone.dexterity.interfaces.IDexterityContent"
+    marker=".security_level.ISecurityLevel"
+    />            
+-->
 </configure>
 
