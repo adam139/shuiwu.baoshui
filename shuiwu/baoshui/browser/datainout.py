@@ -65,8 +65,9 @@ class DataInOut (BrowserView):
 
     def IdIsExist(self,Id):
         catalog = getToolByName(self.context, "portal_catalog")
-        brains = catalog(object_provides=Inashuiren.__identifier__,id=Id) 
-        return bool(brains) 
+        brains = catalog(object_provides=Inashuiren.__identifier__,id=Id)
+        guanlidaima_brains =  catalog(object_provides=Inashuiren.__identifier__,guanlidaima=Id)
+        return bool(brains) or bool(guanlidaima_brains)
             
     def importData(self):
         """Import Data from CSV file.
