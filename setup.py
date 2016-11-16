@@ -31,6 +31,7 @@ setup(name='shuiwu.baoshui',
           'collective.dexteritytextindexer',          
           'five.grok',
           'collective.autopermission',
+          'z3c.caching',
           # -*- Extra requirements: -*-
       ],
       extras_require={
