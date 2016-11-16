@@ -54,17 +54,17 @@ class Inashuiren(form.Schema,IBasic):
 #小规模认定
     xiaoguimo = schema.Bool(title=_(u"xiao guimo nashuiren rending"),
                        required=False,
-                       default=False)
-#状态    
-    status = schema.Choice(title=_(u"nashui ren zhuangtai"),
-                       required = True,
-                       default="zhengchang",
-                       vocabulary = 'shuiwu.baoshui.nashuirenstatus')
-#登记注册类型
-    type = schema.Choice(title=_(u"nashui dengji zhuce leixing"),
-                       required = True,
-                       default="qitayouxianzeren",
-                       vocabulary = 'shuiwu.baoshui.nashuirentype')
+                      default=False)
+# #状态    
+#     status = schema.Choice(title=_(u"nashui ren zhuangtai"),
+# #                        required = True,
+#                        default="zhengchang",
+#                        vocabulary = 'shuiwu.baoshui.nashuirenstatus')
+# #登记注册类型
+#     type = schema.Choice(title=_(u"nashui dengji zhuce leixing"),
+#                        required = True,
+#                        default="qitayouxianzeren",
+#                        vocabulary = 'shuiwu.baoshui.nashuirentype')
 #财务负责人    
     caiwufuzeren = schema.TextLine(title=_(u"caiwu fuze ren"),
                        required=False,
