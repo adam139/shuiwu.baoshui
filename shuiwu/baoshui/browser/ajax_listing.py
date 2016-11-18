@@ -392,7 +392,7 @@ class ajaxsearch(grok.View):
                             </tr> """% dict(objurl="%s" % i.getURL(),
                                             num=str(k + 1),
                                             title=i.Title,
-                                            shibiehao = i.id,
+                                            shibiehao = i.guanlidaima,
                                             description= i.Description,
                                             date = i.dengjiriqi)           
             outhtml = "%s%s" %(outhtml ,out)
