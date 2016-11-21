@@ -42,13 +42,19 @@ subids = [('zichanfuzaibiao',u'资产负债表'),
                ]
 
 def initObjectTreeWithThread(obj,event):
-    "init all child objects for the nashuiren object that had been created by front end UI"      
+    "init all child objects for the nashuiren object that had been created by front end UI"
+    
+    target = api.content.create(
+    id = datetime.datetime.today().strftime("%Y"),
+    type='shuiwu.baoshui.niandu',
+    title=u'年度记录',
+    container=obj)      
 
    # Put the tasks into the queue as a tuple
     for subid,title in subids:
         title = title.encode('utf-8')
         type="shuiwu.baoshui.%s" % subid
-        directory = api.content.create(type=type,id=subid,title=title,container=obj)                  
+        directory = api.content.create(type=type,id=subid,title=title,container=target)                  
 
 
    

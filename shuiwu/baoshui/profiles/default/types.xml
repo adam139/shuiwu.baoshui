@@ -40,5 +40,6 @@
   <object name="shuiwu.baoshui.anyueqita2" meta_type="Dexterity FTI" />
   
   <object name="shuiwu.baoshui.nashuiren" meta_type="Dexterity FTI" />
-  <object name="shuiwu.baoshui.nashuiku" meta_type="Dexterity FTI" />  
+  <object name="shuiwu.baoshui.nashuiku" meta_type="Dexterity FTI" />
+  <object name="shuiwu.baoshui.niandu" meta_type="Dexterity FTI" />    
 </object>

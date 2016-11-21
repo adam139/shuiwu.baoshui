@@ -1,25 +1,50 @@
 <?xml version="1.0"?>
-<object name="shuiwu.baoshui.nashuiku"
+<object name="shuiwu.baoshui.niandu"
    meta_type="Dexterity FTI"
    i18n:domain="shuiwu.baoshui" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
   <!-- Basic metadata -->
-  <property name="title" i18n:translate="">Na shui ku</property>
+  <property name="title" i18n:translate="">Na shui niandu</property>
   <property name="description"
-    i18n:translate="">na shui ku baohan duoge nashuiren jilu</property>
+    i18n:translate="">na shui niandu</property>
   <property name="content_icon">folder_icon.gif</property>
   <property name="global_allow">True</property>
   <property name="filter_content_types">True</property>
   <property name="allowed_content_types" >
-
-  <element value="shuiwu.baoshui.nashuiren" />
-     
+  	<!-- anci-->
+  <element value="shuiwu.baoshui.ziyuanshui" />
+  <element value="shuiwu.baoshui.anciqita" />
+  <element value="shuiwu.baoshui.gengdizhanyongshui" />      
+  <element value="shuiwu.baoshui.yinhuashuizijinzhangbo" />
+  	<!-- anjidu-->  
+  <element value="shuiwu.baoshui.qiyesuodeshuialeiblei" /> 	  	
+  <element value="shuiwu.baoshui.chengzhentudishiyongshui" />
+  <element value="shuiwu.baoshui.fangchanshuifangchanyuanzhi" />
+  <element value="shuiwu.baoshui.anjiqita1" />
+  <element value="shuiwu.baoshui.anjiqita2" />  
+  	<!-- anyuedu-->         
+  <element value="shuiwu.baoshui.zichanfuzaibiao" />  
+  <element value="shuiwu.baoshui.lirunbiao" />
+  <element value="shuiwu.baoshui.xianjinliuliangbiao" />
+  <element value="shuiwu.baoshui.chengjianjiaoyudifangfujia" />
+  <element value="shuiwu.baoshui.gerensuodeshui" />   
+  <element value="shuiwu.baoshui.zhifugongzimingxi" />
+  <element value="shuiwu.baoshui.yinhuashuianyue" />      
+  <element value="shuiwu.baoshui.canbaojinshenbaobiao" />
+  <element value="shuiwu.baoshui.gonghuijingfei" /> 
+  <element value="shuiwu.baoshui.shuilijijin" />
+  <element value="shuiwu.baoshui.shebaofei" />       
+  <element value="shuiwu.baoshui.fangchanshui" />
+  <element value="shuiwu.baoshui.tudizengzhishui" />  
+  <element value="shuiwu.baoshui.rukupingzheng" /> 
+  <element value="shuiwu.baoshui.anyueqita1" /> 
+  <element value="shuiwu.baoshui.anyueqita2" />      
   </property>
 
   <property name="allow_discussion">False</property>
 
  <!-- schema interface FIXME: this is ugly -->
- <property name="schema">shuiwu.baoshui.content.nashuiku.Inashuiku</property> 
+ <property name="schema">shuiwu.baoshui.content.niandu.Iniandu</property> 
 
  <!-- class used for content items -->
  <property name="klass">plone.dexterity.content.Container</property>
