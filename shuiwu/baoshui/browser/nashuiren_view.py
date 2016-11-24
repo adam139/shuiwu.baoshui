@@ -14,7 +14,7 @@ from datetime import datetime
 # from shuiwu.baoshui.content.ancijilu import Iancijilu
 # from shuiwu.baoshui.content.yuedujilu import Iyuedujilu
 from shuiwu.baoshui.content.nashuiren import Inashuiren
-
+from shuiwu.baoshui.content.niandu import Iniandu
 from shuiwu.baoshui import _
 
 # grok.templatedir('templates')
@@ -233,14 +233,15 @@ class BaseEdit(dexterity.EditForm):
     @property
     def fields(self):
         return field.Fields(Inashuiren).select('title','guanlidaima', 'description','dengjiriqi',
-                                                 'shuiguanyuan','danganbianhao','xiaoguimo')
+                                                 'shuiguanyuan','danganbianhao','xiaoguimo','status',
+                                                 'type')
 
 
 # ajax modify nashuiren properties,using setattr
 class ModifyProperty(grok.View):
     """AJAX action for modify nashuiren properties .
     """    
-    grok.context(Inashuiren)
+    grok.context(Iniandu)
     grok.name('modify_property')
     grok.require('zope2.View')
     
@@ -248,7 +249,8 @@ class ModifyProperty(grok.View):
         datadic = self.request.form
         property = datadic['property']
         shenbaofou = datadic['shenbaofou']
-        context = self.context 
+        # get nashuiren object
+        context = self.context.aq_parent 
         if shenbaofou =="true":
            setattr(context,property,True)
         else:
@@ -283,7 +285,8 @@ class ModifyId(grok.View):
 class BatchModify(grok.View):
     """AJAX action for batch modify yuedu jilu.
     """    
-    grok.context(Inashuiren)
+#     grok.context(Inashuiren)
+    grok.context(Iniandu)
     grok.name('batch_modify')
     grok.require('zope2.View')
     
@@ -378,7 +381,7 @@ class ModifyAncijlu(grok.View):
 class ModifyDescription(grok.View):
     """AJAX action for modify description.
     """    
-    grok.context(Inashuiren)
+    grok.context(Iniandu)
     grok.name('modify_description')
     grok.require('zope2.View')
     
@@ -398,3 +401,21 @@ class ModifyDescription(grok.View):
         callback = {"result":True,'message':ajaxtext}
         self.request.response.setHeader('Content-Type', 'application/json')
         return json.dumps(callback)
+    
+# batch set tags, call by front end click. (ajax response)
+class ResetSubject(BatchModify):
+    """AJAX action for batch reset subject.
+    """    
+    grok.context(Iniandu)
+    grok.name('modify_description')
+    grok.require('zope2.View')
+    
+    def render(self):    
+        datadic = self.request.form
+        des = datadic['description']
+        
+    def hasnotsubmit(self):
+        "统计未报税的纳税户"
+        return        
+
+    

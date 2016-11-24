@@ -28,7 +28,7 @@ class TestNashuirenView(InitContents):
         
         import transaction
         transaction.commit()
-        obj = portal.absolute_url() + '/nashuiku1/nashuiren1'        
+        obj = portal.absolute_url() + '/nashuiku1/nashuiren1/2016'        
         page = obj + '/@@nashuiren_view'
         browser.open(page)
 #        open('/tmp/test.html', 'w').write(browser.contents)
@@ -37,8 +37,8 @@ class TestNashuirenView(InitContents):
         outstr = '<span>888202</span>'        
         self.assertTrue(outstr in browser.contents)
 
-        outstr = 'data-property="yinhuashui"'
+        outstr = 'class="table table-condensed bordered inner"'
         self.assertTrue(outstr in browser.contents)
-        outstr = '<td class="col-md-1 text-center">0</td>'
+        outstr = '<td class="col-md-1 checkbox">'
         self.assertTrue(outstr in browser.contents)        
         

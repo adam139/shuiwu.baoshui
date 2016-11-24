@@ -385,6 +385,8 @@ class ajaxsearch(grok.View):
         "根据参数total,braindata,返回jason 输出"
         outhtml = ""      
         k = 0
+        import datetime
+        id = datetime.datetime.today().strftime("%Y")
         for i in braindata:
           
             out = """<tr>
@@ -393,7 +395,7 @@ class ajaxsearch(grok.View):
                                 <td class="col-md-3">%(shibiehao)s</td>
                                 <td class="col-md-4">%(description)s</td>
                                 <td class="col-md-1 text-center">%(date)s</td>                                
-                            </tr> """% dict(objurl="%s" % i.getURL(),
+                            </tr> """% dict(objurl="%s/%s" % (i.getURL(),id),
                                             num=str(k + 1),
                                             title=i.Title,
                                             shibiehao = i.guanlidaima,

@@ -55,16 +55,14 @@ class Inashuiren(form.Schema,IBasic):
     xiaoguimo = schema.Bool(title=_(u"xiao guimo nashuiren rending"),
                        required=False,
                       default=False)
-# #状态    
-#     status = schema.Choice(title=_(u"nashui ren zhuangtai"),
-# #                        required = True,
-#                        default="zhengchang",
-#                        vocabulary = 'shuiwu.baoshui.nashuirenstatus')
-# #登记注册类型
-#     type = schema.Choice(title=_(u"nashui dengji zhuce leixing"),
-#                        required = True,
-#                        default="qitayouxianzeren",
-#                        vocabulary = 'shuiwu.baoshui.nashuirentype')
+#状态    
+    status = schema.TextLine(title=_(u"nashui ren zhuangtai"),
+                       required = True,
+                       default=u"")
+#登记注册类型
+    type = schema.TextLine(title=_(u"nashui dengji zhuce leixing"),
+                       required = True,
+                       default=u"")
 #财务负责人    
     caiwufuzeren = schema.TextLine(title=_(u"caiwu fuze ren"),
                        required=False,
@@ -111,7 +109,9 @@ class Inashuiren(form.Schema,IBasic):
 
     
     
-    form.omitted('year','zhuguanshuiwujiguan')
+    form.omitted('year','zhuguanshuiwujiguan','feizhenghurending','zhuxiaoshuiwudengji'
+                 ,'qiyesuodeshuiniandu','gerensuodeshuiniandu','difangshuihuisuan',
+                 'canjirenbaozhengjin','chechuanshui','yinhuashui')
     
 @form.default_value(field=Inashuiren['dengjiriqi'])
 def dengjiriqiDefaultValue(data):

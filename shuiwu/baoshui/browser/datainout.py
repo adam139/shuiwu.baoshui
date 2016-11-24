@@ -18,23 +18,35 @@ from shuiwu.baoshui import _
 data_PROPERTIES = [
     'title',
     'guanlidaima',
+    'type',
+    'status',
     'dengjiriqi',
     'description',
     'shuiguanyuan',        
-    'danganbianhao'
+    'danganbianhao',
+    'caiwufuzeren',
+    'caiwufuzerendianhua',
+    'banshuiren',
+    'banshuirendianhua'
     ] 
 # need byte string
 data_VALUES = [
                u"纳税人名称".encode('utf-8'),
                u"社会信用代码".encode('utf-8'),
+               u"登记注册类型".encode('utf-8'),
+               u"纳税人状态".encode('utf-8'),
                u"登记日期".encode('utf-8'),
 #                u"主管税务机关".encode('utf-8'),
                u"主管税务所（科、分局）".encode('utf-8'),
                u"税收管理员".encode('utf-8'),               
-               u"税收档案编号".encode('utf-8')
+               u"税收档案编号".encode('utf-8'),
+               u"财务负责人".encode('utf-8'),
+               u"财务负责人电话".encode('utf-8'),
+               u"办税人".encode('utf-8'),
+               u"办税人电话".encode('utf-8')
                ]
 
-
+model = u'湖南省湘潭高新技术产业开发区地方税务局'.encode('utf-8')
 class DataInOut (BrowserView):
     """Data import and export as CSV files.
     """
@@ -118,6 +130,10 @@ class DataInOut (BrowserView):
 #                 import pdb
 #                 pdb.set_trace()
                 description = datas.pop('description')
+                if type(description) == type(u"dummy"):
+                    description = description.encode('utf-8')
+                if model in description:
+                    description = description.replace(model,'')
                 shuiguanyuan = datas['shuiguanyuan']
                 danganbianhao = ""                
 #                 danganbianhao = datas.pop('danganbianhao')
