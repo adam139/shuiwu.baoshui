@@ -407,15 +407,25 @@ class ResetSubject(BatchModify):
     """AJAX action for batch reset subject.
     """    
     grok.context(Iniandu)
-    grok.name('modify_description')
+    grok.name('resetsubject')
     grok.require('zope2.View')
     
     def render(self):    
         datadic = self.request.form
         des = datadic['description']
         
+    def nomodifingFilter(brain):
+        if brain.created == brain.modified:
+            return True
+        else:
+            return False
     def hasnotsubmit(self):
         "统计未报税的纳税户"
-        return        
+        query = {"object_provides":Inashuiren.__identifier__}
+        bns = pc(query)
+#     import pdb
+#     pdb.set_trace()
+        bns = filter(nomodifingFilter,bns)        
+        return bns       
 
     

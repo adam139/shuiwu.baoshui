@@ -370,6 +370,8 @@ class ajaxsearch(grok.View):
         origquery['b_start'] = start
         # search all                         
         totalbrains = searchview.search_multicondition(totalquery)
+#         import pdb
+#         pdb.set_trace()
         totalnum = len(totalbrains)
         # batch search         
         braindata = searchview.search_multicondition(origquery)

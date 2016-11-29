@@ -34,6 +34,6 @@ class TestFolderView(InitContents):
         browser.open(page)
 
 
-        self.assertTrue('<table class="row table table-striped table-bordered table-condensed listing">' in browser.contents)
+        self.assertTrue('<table class="row table table-striped table-bordered table-condensed pat-tablesorter">' in browser.contents)
         
                       
