@@ -48,7 +48,10 @@ def initObjectTreeWithThread(obj,event):
     id = datetime.datetime.today().strftime("%Y"),
     type='shuiwu.baoshui.niandu',
     title=u'年度记录',
-    container=obj)      
+    container=obj)
+    subject = u'未申报'
+
+    obj.setSubject(subject)   
 
    # Put the tasks into the queue as a tuple
     for subid,title in subids:
@@ -56,8 +59,83 @@ def initObjectTreeWithThread(obj,event):
         type="shuiwu.baoshui.%s" % subid
         directory = api.content.create(type=type,id=subid,title=title,container=target)                  
 
+def setTagyuedu(obj,event):
+    "set tag"
+    nashuirenobj = obj.aq_parent.aq_parent
+    oldtag = set(nashuirenobj.Subject())
+    if obj.shenbaofou1 ==True:
+        subject = u'一月'.encode('utf-8')
+        subject = oldtag.append(subject)
+        nashuirenobj.setSubject(tuple(subject))
+    elif obj.shenbaofou2 ==True:
+        subject = u'二月'.encode('utf-8')
+        subject = oldtag.append(subject)
+        nashuirenobj.setSubject(tuple(subject))        
+    elif obj.shenbaofou3 ==True:
+        subject = u'三月'.encode('utf-8')
+        subject = oldtag.append(subject)
+        nashuirenobj.setSubject(tuple(subject))
+    elif obj.shenbaofou4 ==True:
+        subject = u'四月'.encode('utf-8')
+        subject = oldtag.append(subject)
+        nashuirenobj.setSubject(tuple(subject))
+    elif obj.shenbaofou5 ==True:
+        subject = u'五月'.encode('utf-8')
+        subject = oldtag.append(subject)
+        nashuirenobj.setSubject(tuple(subject))
+    elif obj.shenbaofou6 ==True:
+        subject = u'六月'.encode('utf-8')
+        subject = oldtag.append(subject)
+        nashuirenobj.setSubject(tuple(subject))
+    elif obj.shenbaofou7 ==True:
+        subject = u'七月'.encode('utf-8')
+        subject = oldtag.append(subject)
+        nashuirenobj.setSubject(tuple(subject))
+    elif obj.shenbaofou8 ==True:
+        subject = u'八月'.encode('utf-8')
+        subject = oldtag.append(subject)
+        nashuirenobj.setSubject(tuple(subject))
+    elif obj.shenbaofou9 ==True:
+        subject = u'九月'.encode('utf-8')
+        subject = oldtag.append(subject)
+        nashuirenobj.setSubject(tuple(subject))
+    elif obj.shenbaofou10 ==True:
+        subject = u'十月'.encode('utf-8')
+        subject = oldtag.append(subject)
+        nashuirenobj.setSubject(tuple(subject))
+    elif obj.shenbaofou11 ==True:
+        subject = u'十一月'.encode('utf-8')
+        subject = oldtag.append(subject)
+        nashuirenobj.setSubject(tuple(subject))                                                                        
+    elif obj.shenbaofou12 ==True:
+        subject = u'十二月'.encode('utf-8')
+        subject = oldtag.append(subject)
+        nashuirenobj.setSubject(tuple(subject))
 
-   
+def setTagjidu(obj,event):
+    "set tag"
+    nashuirenobj = obj.aq_parent.aq_parent
+    oldtag = set(nashuirenobj.Subject())
+    if obj.shenbaofou1 ==True:
+        subject = u'一季度'.encode('utf-8')
+        subject = oldtag.append(subject)
+        nashuirenobj.setSubject(tuple(subject))
+    elif obj.shenbaofou2 ==True:
+        subject = u'二季度'.encode('utf-8')
+        subject = oldtag.append(subject)
+        nashuirenobj.setSubject(tuple(subject))
+    elif obj.shenbaofou3 ==True:
+        subject = u'三季度'.encode('utf-8')
+        subject = oldtag.append(subject)
+        nashuirenobj.setSubject(tuple(subject))                                                                        
+    elif obj.shenbaofou4 ==True:
+        subject = u'四季度'.encode('utf-8')
+        subject = oldtag.append(subject)
+        nashuirenobj.setSubject(tuple(subject))
+        
+def setTaganci(obj,event):
+    "set tag"
+    pass                       
 #fire todoitemwillcreated event for every designer when add or modified product designer on project node
 #@adapter(ITeam, IObjectAddedEvent)
 def initObjectTree(obj,event):

@@ -26,8 +26,8 @@ class Allcontents(InitContents):
                 
     def test_folder_types(self):
         self.assertEqual(self.portal['nashuiku1']['nashuiren1'].id,'nashuiren1')
-#         import pdb
-#         pdb.set_trace()
+        import pdb
+        pdb.set_trace()
 #按月
         self.assertEqual(self.portal['nashuiku1']['nashuiren1']['2016']['zichanfuzaibiao'].id,'zichanfuzaibiao')
         self.assertEqual(self.portal['nashuiku1']['nashuiren1']['2016']['xianjinliuliangbiao'].id,'xianjinliuliangbiao')

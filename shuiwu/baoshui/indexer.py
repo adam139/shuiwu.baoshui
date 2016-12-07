@@ -9,3 +9,24 @@ def indexer_guanlidaima(obj, **kw):
 @indexer(Inashuiren)
 def indexer_dengjiriqi(obj, **kw):
     return obj.dengjiriqi.strftime("%Y-%m-%d")
+
+@indexer(Inashuiren)
+def indexer_status(obj, **kw):
+    return obj.status
+
+@indexer(Inashuiren)
+def indexer_type(obj, **kw):
+    return obj.type
+
+@indexer(Inashuiren)
+def indexer_caiwufuzeren(obj, **kw):
+    return obj.caiwufuzeren
+@indexer(Inashuiren)
+def indexer_caiwufuzerendianhua(obj, **kw):
+    return obj.caiwufuzerendianhua
+@indexer(Inashuiren)
+def indexer_banshuiren(obj, **kw):
+    return obj.banshuiren
+@indexer(Inashuiren)
+def indexer_banshuirendianhua(obj, **kw):
+    return obj.banshuirendianhua
