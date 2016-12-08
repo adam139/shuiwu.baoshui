@@ -231,14 +231,14 @@ class sysAjaxListingView(BrowserView):
 
 # for render userslist viewlet
 # @implementer(IUsersrolesProvider)
-# class  ajaxListingView(sysAjaxListingView):
-#     """
-#     ajax listing view for system content types
-#     """
-#     @memoize
-#     def getTagregistryProxy(self):
-#         settings = getUtility(IRegistry).forInterface(ITagSettings)
-#         return settings.tags    
+class  ajaxListingView(sysAjaxListingView):
+    """
+    ajax listing view for gtags 
+    """
+    @memoize
+    def getTagregistryProxy(self):
+        settings = getUtility(IRegistry).forInterface(ITagSettings)
+        return settings.tags    
     
 
   

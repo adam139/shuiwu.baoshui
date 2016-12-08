@@ -62,55 +62,59 @@ def initObjectTreeWithThread(obj,event):
 def setTagyuedu(obj,event):
     "set tag"
     nashuirenobj = obj.aq_parent.aq_parent
+    #未申报 
+    weishenbao = '\xe6\x9c\xaa\xe7\x94\xb3\xe6\x8a\xa5'
     oldtag = set(nashuirenobj.Subject())
     if obj.shenbaofou1 ==True:
         subject = u'一月'.encode('utf-8')
         subject = oldtag.append(subject)
-        nashuirenobj.setSubject(tuple(subject))
+        
     elif obj.shenbaofou2 ==True:
         subject = u'二月'.encode('utf-8')
         subject = oldtag.append(subject)
-        nashuirenobj.setSubject(tuple(subject))        
+                
     elif obj.shenbaofou3 ==True:
         subject = u'三月'.encode('utf-8')
         subject = oldtag.append(subject)
-        nashuirenobj.setSubject(tuple(subject))
+        
     elif obj.shenbaofou4 ==True:
         subject = u'四月'.encode('utf-8')
         subject = oldtag.append(subject)
-        nashuirenobj.setSubject(tuple(subject))
+        
     elif obj.shenbaofou5 ==True:
         subject = u'五月'.encode('utf-8')
         subject = oldtag.append(subject)
-        nashuirenobj.setSubject(tuple(subject))
+        
     elif obj.shenbaofou6 ==True:
         subject = u'六月'.encode('utf-8')
         subject = oldtag.append(subject)
-        nashuirenobj.setSubject(tuple(subject))
+        
     elif obj.shenbaofou7 ==True:
         subject = u'七月'.encode('utf-8')
         subject = oldtag.append(subject)
-        nashuirenobj.setSubject(tuple(subject))
+        
     elif obj.shenbaofou8 ==True:
         subject = u'八月'.encode('utf-8')
         subject = oldtag.append(subject)
-        nashuirenobj.setSubject(tuple(subject))
+        
     elif obj.shenbaofou9 ==True:
         subject = u'九月'.encode('utf-8')
         subject = oldtag.append(subject)
-        nashuirenobj.setSubject(tuple(subject))
+        
     elif obj.shenbaofou10 ==True:
         subject = u'十月'.encode('utf-8')
         subject = oldtag.append(subject)
-        nashuirenobj.setSubject(tuple(subject))
+        
     elif obj.shenbaofou11 ==True:
         subject = u'十一月'.encode('utf-8')
         subject = oldtag.append(subject)
-        nashuirenobj.setSubject(tuple(subject))                                                                        
+                                                                                
     elif obj.shenbaofou12 ==True:
         subject = u'十二月'.encode('utf-8')
         subject = oldtag.append(subject)
-        nashuirenobj.setSubject(tuple(subject))
+    if weishenbao in oldtag and len(oldtag) > 1:
+        subject = oldtag.remove(weishenbao)
+    nashuirenobj.setSubject(tuple(subject))
 
 def setTagjidu(obj,event):
     "set tag"
@@ -119,19 +123,21 @@ def setTagjidu(obj,event):
     if obj.shenbaofou1 ==True:
         subject = u'一季度'.encode('utf-8')
         subject = oldtag.append(subject)
-        nashuirenobj.setSubject(tuple(subject))
+        
     elif obj.shenbaofou2 ==True:
         subject = u'二季度'.encode('utf-8')
         subject = oldtag.append(subject)
-        nashuirenobj.setSubject(tuple(subject))
+        
     elif obj.shenbaofou3 ==True:
         subject = u'三季度'.encode('utf-8')
         subject = oldtag.append(subject)
-        nashuirenobj.setSubject(tuple(subject))                                                                        
+                                                                                
     elif obj.shenbaofou4 ==True:
         subject = u'四季度'.encode('utf-8')
         subject = oldtag.append(subject)
-        nashuirenobj.setSubject(tuple(subject))
+    if weishenbao in oldtag and len(oldtag) > 1:
+        subject = oldtag.remove(weishenbao)    
+    nashuirenobj.setSubject(tuple(subject))
         
 def setTaganci(obj,event):
     "set tag"
