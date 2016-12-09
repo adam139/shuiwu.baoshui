@@ -112,17 +112,20 @@ class DataInOut (BrowserView):
 #            datas = dict(zip(header, line))
             datas = dict(zip(data_PROPERTIES, line))  
             
+#             import pdb
+#             pdb.set_trace()
             try:
 #                映射数据到纳税人字段
                 title = datas['title']
-                if not isinstance(title, unicode):
-                    name = unicode(title, 'utf-8')
+                
+#                 if not isinstance(title, unicode):
+#                     title = unicode(title, 'utf-8')
 #                 id = IUserPreferredFileNameNormalizer(self.request).normalize(filename)
                 id = datas['guanlidaima']
 
                 id = self.float2str(id,"E+")
                 if self.IdIsExist(id):continue
-                title = name
+#                 title = name
                 guanlidaima = id                
                 dengjiriqi = datas.pop('dengjiriqi')
                 if ' ' in dengjiriqi:
@@ -130,7 +133,7 @@ class DataInOut (BrowserView):
 #                 import pdb
 #                 pdb.set_trace()
                 description = datas.pop('description')
-                if type(description) == type(u"dummy"):
+                if isinstance(description, unicode):
                     description = description.encode('utf-8')
                 if model in description:
                     description = description.replace(model,'')
