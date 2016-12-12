@@ -15,8 +15,15 @@ def indexer_status(obj, **kw):
     return obj.status
 
 @indexer(Inashuiren)
-def indexer_type(obj, **kw):
-    return obj.type
+def indexer_regtype(obj, **kw):
+    return obj.regtype
+@indexer(Inashuiren)
+def indexer_danganbianhao(obj, **kw):
+    return obj.danganbianhao
+
+@indexer(Inashuiren)
+def indexer_shuiguanyuan(obj, **kw):
+    return obj.shuiguanyuan
 
 @indexer(Inashuiren)
 def indexer_caiwufuzeren(obj, **kw):

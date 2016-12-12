@@ -60,7 +60,7 @@ class Inashuiren(form.Schema,IBasic):
                        required = True,
                        default=u"")
 #登记注册类型
-    type = schema.TextLine(title=_(u"nashui dengji zhuce leixing"),
+    regtype = schema.TextLine(title=_(u"nashui dengji zhuce leixing"),
                        required = True,
                        default=u"")
 #财务负责人    

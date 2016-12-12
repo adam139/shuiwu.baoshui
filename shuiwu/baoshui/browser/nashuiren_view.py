@@ -149,16 +149,21 @@ class NashuirenEdit(NashuirenView):
         for i in range(nums):
             j = str(i+1)
             field = "shenbaofou%s" % j
+            objurl = obj.absolute_url()
+            if nums == 12:
+                objurl = "%s/@@modify_yuedujilu" % objurl
+            else:
+                objurl = "%s/@@modify_jidujilu" % objurl
             if getattr(obj,field,False) == False:          
                 out = """<td class="col-md-%(width)s checkbox">
                 <input type="checkbox" />
                 <span data-url="%(objurl)s" data-num="%(tdnumber)s" class="switch-style off">&nbsp;</span></td>""" \
-                % dict(width=width,objurl=obj.absolute_url(),tdnumber=j)
+                % dict(width=width,objurl=objurl,tdnumber=j)
             else:
                 out = """<td class="col-md-%(width)s checkbox">
                 <input  type="checkbox" checked="checked" />
                 <span data-url="%(objurl)s" data-num="%(tdnumber)s" class="switch-style on">&nbsp;</span></td>""" \
-                % dict(width=width,objurl=obj.absolute_url(),tdnumber=j)                                 
+                % dict(width=width,objurl=objurl,tdnumber=j)                                 
             outhtml = "%s%s" %(outhtml ,out)
            
         data = """%s</tr></table>"""  % outhtml
@@ -234,7 +239,8 @@ class BaseEdit(dexterity.EditForm):
     def fields(self):
         return field.Fields(Inashuiren).select('title','guanlidaima', 'description','dengjiriqi',
                                                  'shuiguanyuan','danganbianhao','xiaoguimo','status',
-                                                 'type')
+                                                 'regtype','caiwufuzeren','caiwufuzerendianhua',
+                                                 'banshuiren','banshuirendianhua')
 
 
 # ajax modify nashuiren properties,using setattr
@@ -295,6 +301,30 @@ class BatchModify(grok.View):
         context = aq_inner(self.context)
         pc = getToolByName(context, "portal_catalog")
         return pc
+
+    def tagmap(self,num):
+        yuedult = ['月份-一月',
+                  '月份-二月',
+                  '月份-三月',
+                  '月份-四月',
+                  '月份-五月',
+                  '月份-六月',
+                  '月份-七月',
+                  '月份-八月',
+                  '月份-九月',
+                  '月份-十月',
+                  '月份-十一月',
+                  '月份-十二月'
+                  ]
+        jidult = ['季度-一季度',
+                  '季度-二季度',
+                  '季度-三季度',
+                  '季度-四季度'
+                  ]
+        if num == 12:                    
+            return yuedult
+        else:
+            return jidult
         
     def render(self):    
         datadic = self.request.form
@@ -302,16 +332,18 @@ class BatchModify(grok.View):
         nums = int(datadic['number'])
         shenbaofou = datadic['action']
         if shenbaofou == 'selectall':
-            shenbaofou = True
+            shenbaofou = True            
+            nashuirenobj = self.context.aq_parent
+            oldtag = set(nashuirenobj.Subject())
+            weishenbao = '\xe6\x9c\xaa\xe7\x94\xb3\xe6\x8a\xa5'
+            oldtag = oldtag | set(self.tagmap(nums))
+            if weishenbao in oldtag and len(oldtag) > 1:
+                oldtag.remove(weishenbao)
+            nashuirenobj.setSubject(tuple(oldtag))
+            nashuirenobj.reindexObject(idxs=["Subject"])            
         else:
             shenbaofou = False
-#         path = "/".join(self.context.getPhysicalPath())
-#         path ="%s/%s" %(path,objid)
-#         query = {}
-#         query['path'] = path
-#         query['id'] = objid
-#         brains = self.catalog()(query)
-#         o = brains[0].getObject()
+
         o = self.context[objid]
         for num in range(nums):
             field = "shenbaofou%s" % str(num + 1)
@@ -331,6 +363,22 @@ class ModifyYuedujilu(grok.View):
     grok.name('modify_yuedujilu')
     grok.require('zope2.View')
     
+    def tagmap(self,num):
+        tagdic = {'1':'月份-一月',
+                  '2':'月份-二月',
+                  '3':'月份-三月',
+                  '4':'月份-四月',
+                  '5':'月份-五月',
+                  '6':'月份-六月',
+                  '7':'月份-七月',
+                  '8':'月份-八月',
+                  '9':'月份-九月',
+                  '10':'月份-十月',
+                  '11':'月份-十一月',
+                  '12':'月份-十二月',
+                  }
+        return tagdic[num]
+    
     def render(self):    
         datadic = self.request.form
         shenbaofou = datadic['shenbaofou'] 
@@ -340,9 +388,27 @@ class ModifyYuedujilu(grok.View):
 #         pdb.set_trace()
         if shenbaofou =="true":
             setattr(self.context,field,True)
+            nashuirenobj = self.context.aq_parent.aq_parent
+            oldtag = set(nashuirenobj.Subject())
+            weishenbao = '\xe6\x9c\xaa\xe7\x94\xb3\xe6\x8a\xa5'
+            oldtag.add(self.tagmap(nums))
+            if weishenbao in oldtag and len(oldtag) > 1:
+                oldtag.remove(weishenbao)
+            nashuirenobj.setSubject(tuple(oldtag))
+            nashuirenobj.reindexObject(idxs=["Subject"])            
 #             self.context.shenbaofou = True
         else:
             setattr(self.context,field,False)
+            nashuirenobj = self.context.aq_parent.aq_parent
+            oldtag = set(nashuirenobj.Subject())
+            weishenbao = '\xe6\x9c\xaa\xe7\x94\xb3\xe6\x8a\xa5'
+            thetag = self.tagmap(nums)
+            if thetag in oldtag:
+                oldtag.remove(thetag)
+                if len(oldtag) == 0:
+                    oldtag.add(weishenbao)
+            nashuirenobj.setSubject(tuple(oldtag))
+            nashuirenobj.reindexObject(idxs=["Subject"])            
 #             self.context.shenbaofou = False
         ajaxtext = u"<p class='text-success'>更改已保存</p>"
         callback = {"result":True,'message':ajaxtext}
@@ -355,7 +421,15 @@ class ModifyJidujilu(ModifyYuedujilu):
     """    
     grok.context(Interface)
     grok.name('modify_jidujilu')
-    grok.require('zope2.View') 
+    grok.require('zope2.View')
+    
+    def tagmap(self,num):
+        tagdic = {'1':'季度-一季度',
+                  '2':'季度-二季度',
+                  '3':'季度-三季度',
+                  '4':'季度-四季度'
+                  }
+        return tagdic[num]     
  
  # ajax modify anci jilu
 class ModifyAncijlu(grok.View):

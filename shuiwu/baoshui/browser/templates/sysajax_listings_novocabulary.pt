@@ -41,7 +41,7 @@
 			<ul class="row list-inline" id="dateRangeSearchUl">
 				<li class="title">按日期：</li>
 				<li class="all">
-					<span class="over" data-name="0"><a class="btn btn-default" href="javascript:void(0)" role="button">所有</a></span>
+					<span class="over" data-name="0"><a class="btn btn-primary" href="javascript:void(0)" role="button">所有</a></span>
 				</li>
 				<li class="list_span" class="fenlei_a">
 					<span data-name="1">
@@ -62,7 +62,7 @@
                     	<input type="hidden" value="0" class="taggroup">                    		
                     </li>
                     <li class="all">
-                        <span class="over" data-name="0"><a class="btn btn-default" href="javascript:void(0)" role="button">所有</a></span><!-- 所有 -->
+                        <span class="over" data-name="0"><a class="btn btn-primary" href="javascript:void(0)" role="button">所有</a></span><!-- 所有 -->
                     </li>
                     <li class="tag_list_div" class="fenlei_a">
                     	<span data-name="1"><a class="btn btn-default" href="javascript:void(0)" role="button">分析</a></span>

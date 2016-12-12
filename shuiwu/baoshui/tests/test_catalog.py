@@ -31,11 +31,13 @@ class CatalogSetupTest(InitContents):
         self.assertTrue('guanlidaima' in self.portal.portal_catalog.indexes())
         self.assertTrue('dengjiriqi' in self.portal.portal_catalog.indexes())        
         self.assertTrue('status' in self.portal.portal_catalog.indexes())
-        self.assertTrue('type' in self.portal.portal_catalog.indexes())         
+        self.assertTrue('regtype' in self.portal.portal_catalog.indexes())         
         self.assertTrue('caiwufuzeren' in self.portal.portal_catalog.indexes())
         self.assertTrue('caiwufuzerendianhua' in self.portal.portal_catalog.indexes())
         self.assertTrue('banshuiren' in self.portal.portal_catalog.indexes())
-        self.assertTrue('banshuirendianhua' in self.portal.portal_catalog.indexes())          
+        self.assertTrue('banshuirendianhua' in self.portal.portal_catalog.indexes())
+        self.assertTrue('shuiguanyuan' in self.portal.portal_catalog.indexes())
+        self.assertTrue('danganbianhao' in self.portal.portal_catalog.indexes())                  
 
     def test_indexer(self):
         self.assertTrue(isinstance(catalog.indexer_guanlidaima,

@@ -31,7 +31,7 @@
 			<h2 class="text-center">
 				<a class="btn btn-primary" 
 					tal:attributes="title string:编辑纳税人基本信息;
-					href python:context.absolute_url() + '/@@ajaxedit'" tal:content="python:context.title">某某公司</a>
+					href python:context.aq_parent.absolute_url() + '/@@ajaxedit'" tal:content="python:context.title">某某公司</a>
 			</h2>
 		</div>
 		<div class="report row">
@@ -405,7 +405,7 @@
 		checkboxID.prop('checked', true);
 		$(this).css({"color":"red"});
 		}
-		var action = $(this).attr('data-url') + "/@@modify_yuedujilu";
+		var action = $(this).attr('data-url');
 		var data = {'shenbaofou':shenbaofou,'number':number};		
 		//located parent object and add css class
 		//$(this).parent().addClass("current");

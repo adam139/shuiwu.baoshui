@@ -46,5 +46,26 @@ class TestView(InitContents):
 
         self.assertEqual(json.loads(result)['size'],10)
 
-              
+    def test_total_search(self):
+        request = self.layer['request']        
+        keyManager = getUtility(IKeyManager)
+        secret = keyManager.secret()
+        auth = hmac.new(secret, TEST_USER_NAME, sha).hexdigest()
+        request.form = {
+                        '_authenticator': auth,
+                        'start': 0,
+                        'size':10 ,
+                        'datetype':'1', 
+                        'tag':'0',                                             
+                        'sortcolumn':'created',
+                        'sortdirection':'reverse',
+                        'searchabletext':'',
+                                                                       
+                        }
+# Look up and invoke the view via traversal
+        view = self.portal.restrictedTraverse('@@ajax_total_search')
+        result = view()
+
+
+        self.assertEqual(json.loads(result)['size'],10)             
 

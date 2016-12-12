@@ -59,18 +59,21 @@
  </property>
 
   <!-- View information -->
-  <property name="default_view">view</property>
+  <property name="default_view">nashuiren_edit</property>
   <property name="default_view_fallback">False</property>
   <property name="view_methods">
     <element value="base_view" />
-    <element value="sysajax_listings" />    
+    <element value="sysajax_listings" />
+    <element value="nashuiren_view" />
+    <element value="print_preview" />
+    <element value="nashuiren_edit" />        
   </property>
 
   <!-- Method aliases -->
   <alias from="(Default)" to="(selected layout)" />
-  <alias from="edit" to="@@edit" />
+  <alias from="edit" to="@@nashuiren_edit" />
   <alias from="sharing" to="@@sharing" />
-  <alias from="view" to="@@view" />
+  <alias from="view" to="@@nashuiren_view" />
 
   <!-- Actions -->
   <action title="View" action_id="view" category="object" condition_expr=""

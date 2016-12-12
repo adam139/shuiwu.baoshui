@@ -65,8 +65,10 @@ def setTagyuedu(obj,event):
     #未申报 
     weishenbao = '\xe6\x9c\xaa\xe7\x94\xb3\xe6\x8a\xa5'
     oldtag = set(nashuirenobj.Subject())
+    import pdb
+    pdb.set_trace()
     if obj.shenbaofou1 ==True:
-        subject = u'一月'.encode('utf-8')
+        subject = u'按月-一月'.encode('utf-8')
         subject = oldtag.append(subject)
         
     elif obj.shenbaofou2 ==True:
@@ -111,7 +113,7 @@ def setTagyuedu(obj,event):
                                                                                 
     elif obj.shenbaofou12 ==True:
         subject = u'十二月'.encode('utf-8')
-        subject = oldtag.append(subject)
+        subject = oldtag.add(subject)
     if weishenbao in oldtag and len(oldtag) > 1:
         subject = oldtag.remove(weishenbao)
     nashuirenobj.setSubject(tuple(subject))
@@ -289,6 +291,12 @@ def CreateNashuirenEvent(event):
                                   shuiguanyuan = event.shuiguanyuan,
                                   danganbianhao = event.danganbianhao,
                                   dengjiriqi = dengjiriqi,
+                                  status = event.status,
+                                  regtype = event.regtype,
+                                  caiwufuzeren = event.caiwufuzeren,
+                                  caiwufuzerendianhua = event.caiwufuzeren,
+                                  banshuiren = event.banshuiren,
+                                  banshuirendianhua = event.banshuirendianhua,                                  
                                   safe_id = False)
 
         item.reindexObject()                

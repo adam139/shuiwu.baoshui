@@ -12,10 +12,10 @@
         <indexed_attr value="status"/>
     </index>
     <column value="status"/>
-    <index name="type" meta_type="FieldIndex">
-        <indexed_attr value="type"/>
+    <index name="regtype" meta_type="FieldIndex">
+        <indexed_attr value="regtype"/>
     </index>
-    <column value="type"/>
+    <column value="regtype"/>
     <index name="caiwufuzeren" meta_type="FieldIndex">
         <indexed_attr value="caiwufuzeren"/>
     </index>
@@ -32,4 +32,12 @@
         <indexed_attr value="banshuirendianhua"/>
     </index>
     <column value="banshuirendianhua"/>                                         
+    <index name="shuiguanyuan" meta_type="FieldIndex">
+        <indexed_attr value="shuiguanyuan"/>
+    </index>
+    <column value="shuiguanyuan"/>
+    <index name="danganbianhao" meta_type="FieldIndex">
+        <indexed_attr value="danganbianhao"/>
+    </index>
+    <column value="danganbianhao"/>    
 </object>

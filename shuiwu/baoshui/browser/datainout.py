@@ -18,7 +18,7 @@ from shuiwu.baoshui import _
 data_PROPERTIES = [
     'title',
     'guanlidaima',
-    'type',
+    'regtype',
     'status',
     'dengjiriqi',
     'description',
@@ -139,13 +139,19 @@ class DataInOut (BrowserView):
                     description = description.replace(model,'')
                 shuiguanyuan = datas['shuiguanyuan']
                 danganbianhao = ""                
-#                 danganbianhao = datas.pop('danganbianhao')
-#                 danganbianhao = self.float2str(danganbianhao,"E+")                
+                status = datas.pop('status')
+                regtype = datas.pop('regtype')
+                caiwufuzeren = datas.pop('caiwufuzeren')
+                caiwufuzerendianhua = datas.pop('caiwufuzerendianhua')
+                banshuiren = datas.pop('banshuiren')
+                banshuirendianhua = datas.pop('banshuirendianhua')                              
 # send a add nashuiren event
                 try:
                     event.notify(CreateNashuirenEvent(
                                                 id,title,guanlidaima,dengjiriqi,description,
-                                                shuiguanyuan,danganbianhao))
+                                                shuiguanyuan,danganbianhao,status,regtype,
+                                                caiwufuzeren,caiwufuzerendianhua,banshuiren,
+                                                banshuirendianhua))
 
                 except (AttributeError, ValueError), err:
                     logging.exception(err)
