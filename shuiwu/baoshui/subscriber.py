@@ -40,6 +40,11 @@ subids = [('zichanfuzaibiao',u'资产负债表'),
                ('gengdizhanyongshui',u'耕地占用税申报表'),
                ('anciqita',u'其他')                                                                                                           
                ]
+yuedu_subjects = [u'月度未申报-一月',u'月度未申报-二月',u'月度未申报-三月',u'月度未申报-四月',
+               u'月度未申报-五月',u'月度未申报-六月',u'月度未申报-七月',u'月度未申报-八月',u'月度未申报-九月',
+               u'月度未申报-十月',u'月度未申报-十一月',u'月度未申报-十二月']
+jidu_subjects = [u'季度未申报-一季度',u'季度未申报-二季度',u'季度未申报-三季度',u'季度未申报-四季度']
+ling_subject = [u'其他未申报-零申报']
 
 def initObjectTreeWithThread(obj,event):
     "init all child objects for the nashuiren object that had been created by front end UI"
@@ -49,7 +54,7 @@ def initObjectTreeWithThread(obj,event):
     type='shuiwu.baoshui.niandu',
     title=u'年度记录',
     container=obj)
-    subject = u'未申报'
+    subject = set(yuedu_subjects) | set(jidu_subjects)
 
     obj.setSubject(subject)   
 
