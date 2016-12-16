@@ -349,7 +349,7 @@ class ajaxsearch(grok.View):
             origquery['SearchableText'] = '*'+keyword+'*'        
 
         if datekey != 0:
-            origquery['created'] = self.Datecondition(datekey)           
+            origquery['modified'] = self.Datecondition(datekey)           
 
 
         # remove repeat values 

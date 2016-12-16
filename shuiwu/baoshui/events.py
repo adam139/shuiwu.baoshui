@@ -26,7 +26,7 @@ class CreateNashuirenEvent(object):
         self.banshuirendianhua = banshuirendianhua
 
 class UpdateNashuirenEvent(object):
-    interface.implements(ICreateNashuirenEvent)
+    interface.implements(IUpdateNashuirenEvent)
     
     def __init__(self,id,status,regtype,caiwufuzeren,caiwufuzerendianhua,banshuiren,
                                                 banshuirendianhua):

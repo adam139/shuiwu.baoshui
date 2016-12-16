@@ -10,7 +10,7 @@ from Products.statusmessages.interfaces import IStatusMessage
 # from plone.i18n.normalizer.interfaces import IUserPreferredFileNameNormalizer
 
 from shuiwu.baoshui.content.nashuiren import Inashuiren
-from shuiwu.baoshui.events import CreateNashuirenEvent
+from shuiwu.baoshui.events import CreateNashuirenEvent,UpdateNashuirenEvent
 
 from shuiwu.baoshui import _
 
@@ -92,8 +92,7 @@ class DataInOut (BrowserView):
         if file_upload is None or not file_upload.filename:
             return
         reader = csv.reader(file_upload)
-#         import pdb
-#         pdb.set_trace()
+
         header = reader.next()
         if header != data_VALUES:
             msg = _('Wrong specification of the CSV file. Please correct it and retry.')
@@ -117,18 +116,7 @@ class DataInOut (BrowserView):
 #                     title = unicode(title, 'utf-8')
 #                 id = IUserPreferredFileNameNormalizer(self.request).normalize(filename)
                 id = datas['guanlidaima']
-#                 import pdb
-#                 pdb.set_trace()
                 id = self.float2str(id,"E+")
-                if self.IdIsExist(id):
-#                     continue
-                    try:
-                        event.notify(UpdateNashuirenEvent(
-                                                id,status,regtype,
-                                                caiwufuzeren,caiwufuzerendianhua,banshuiren,
-                                                banshuirendianhua))
-                    except:
-                        continue
 #                 title = name
                 guanlidaima = id                
                 dengjiriqi = datas.pop('dengjiriqi')
@@ -146,7 +134,19 @@ class DataInOut (BrowserView):
                 caiwufuzeren = datas.pop('caiwufuzeren')
                 caiwufuzerendianhua = datas.pop('caiwufuzerendianhua')
                 banshuiren = datas.pop('banshuiren')
-                banshuirendianhua = datas.pop('banshuirendianhua')                              
+                banshuirendianhua = datas.pop('banshuirendianhua')
+                if self.IdIsExist(id):
+# send a update nashuiren event
+                    try:
+                        event.notify(UpdateNashuirenEvent(
+                                                id,status,regtype,
+                                                caiwufuzeren,caiwufuzerendianhua,banshuiren,
+                                                banshuirendianhua))
+#                         usersNumber += 1
+                        continue
+                    
+                    except:
+                        continue                                              
 # send a add nashuiren event
                 try:
                     event.notify(CreateNashuirenEvent(

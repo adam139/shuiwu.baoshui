@@ -395,24 +395,26 @@ class ModifyYuedujilu(grok.View):
         nums = str(datadic['number'])
         field = "shenbaofou%s" % nums
 #         import pdb
-#         pdb.set_trace()
-        
+#         pdb.set_trace()        
         nashuirenobj = self.context.aq_parent.aq_parent
         oldtag = set(nashuirenobj.Subject())
-        #该月度未申报标签
-        thetag = yuedu_subjects[int(nums -1)]
+        rurl = self.request.getURL()
+        if rurl.endswith('modify_yuedujilu'): 
+            #该月度未申报标签
+            thetag = yuedu_subjects[int(nums) - 1].encode('utf-8')
+        else:
+            #该季度未申报标签
+            thetag = jidu_subjects[int(nums) - 1].encode('utf-8')            
         if shenbaofou =="true":
-            setattr(self.context,field,True)
-            
+            setattr(self.context,field,True)            
             #如果该月所有税种已申报，删除该月未申报tag
             if self.isallfinished(field):                                                                                                        
                 if thetag in oldtag:
                     oldtag.remove(thetag)
             # remove 零申报标签
-            weishenbao = ling_subjects[0]
+            weishenbao = ling_subjects[0].encode('utf-8')
             if weishenbao in oldtag:
-                oldtag.remove(weishenbao)
-           
+                oldtag.remove(weishenbao)           
 #             self.context.shenbaofou = True
         else:
             setattr(self.context,field,False)

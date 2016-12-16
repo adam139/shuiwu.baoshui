@@ -61,7 +61,7 @@ def initObjectTreeWithThread(obj,event):
     target = api.content.create(
     id = datetime.datetime.today().strftime("%Y"),
     type='shuiwu.baoshui.niandu',
-    title=u'年度记录',
+    title=u'%s年度记录' % id,
     container=obj)
     status = obj.status
     description = obj.description
@@ -72,8 +72,8 @@ def initObjectTreeWithThread(obj,event):
         tag = "%s-%s" %(group,status)
         init_tags.append(tag)
     if description != "":
-        group = tagroup[0].encode("utf-8")
-        tag = "%s-%s" %(group,status)
+        group = tagroup[1].encode("utf-8")
+        tag = "%s-%s" %(group,description)
         init_tags.append(tag)
     if shuiguanyuan != "":
         group = tagroup[2].encode("utf-8")
@@ -124,7 +124,7 @@ def CreateNashuirenEvent(event):
                                   status = status,
                                   regtype = event.regtype,
                                   caiwufuzeren = event.caiwufuzeren,
-                                  caiwufuzerendianhua = event.caiwufuzeren,
+                                  caiwufuzerendianhua = event.caiwufuzerendianhua,
                                   banshuiren = event.banshuiren,
                                   banshuirendianhua = event.banshuirendianhua,                                  
                                   safe_id = False)                       
@@ -132,7 +132,9 @@ def CreateNashuirenEvent(event):
         return    
 
 def UpdateNashuirenEvent(event):
-    """this event be fired by import nashuiren ui"""
+    """this event be fired by import nashuiren ui
+    id,status,regtype,caiwufuzeren,caiwufuzerendianhua,banshuiren,banshuirendianhua
+    """
 
     site = getSite()     
     catalog = getToolByName(site,'portal_catalog')
@@ -141,14 +143,14 @@ def UpdateNashuirenEvent(event):
     except:
         return     
     memberfolder = newest[0].getObject()
-    memberid = event.id          
-    status = event.status
+    memberid = event.id         
+
     try:
         item = memberfolder[memberid]
-        item.status = status,
+        item.status = event.status,
         item.regtype = event.regtype,
         item.caiwufuzeren = event.caiwufuzeren,
-        item.caiwufuzerendianhua = event.caiwufuzeren,
+        item.caiwufuzerendianhua = event.caiwufuzerendianhua,
         item.banshuiren = event.banshuiren,
         item.banshuirendianhua = event.banshuirendianhua    
         description = item.description
@@ -159,8 +161,8 @@ def UpdateNashuirenEvent(event):
             tag = "%s-%s" %(group,status)
             init_tags.append(tag)
         if description != "":
-            group = tagroup[0].encode("utf-8")
-            tag = "%s-%s" %(group,status)
+            group = tagroup[1].encode("utf-8")
+            tag = "%s-%s" %(group,description)
             init_tags.append(tag)
         if shuiguanyuan != "":
             group = tagroup[2].encode("utf-8")
