@@ -58,6 +58,8 @@
                  zope.lifecycleevent.interfaces.IObjectAddedEvent"
             handler=".subscriber.initObjectTreeWithThread"
             />
+
+<!--
   <subscriber
             for="shuiwu.baoshui.content.base.Iyuedu
                  zope.lifecycleevent.interfaces.IObjectModifiedEvent"
@@ -72,9 +74,14 @@
             for="shuiwu.baoshui.content.base.Ianci
                  zope.lifecycleevent.interfaces.IObjectModifiedEvent"
             handler=".subscriber.setTaganci"
-            />                        
+            />
+            -->                        
   <subscriber
     for="shuiwu.baoshui.interfaces.ICreateNashuirenEvent"
     handler=".subscriber.CreateNashuirenEvent"
-    />            
+    />
+  <subscriber
+    for="shuiwu.baoshui.interfaces.IUpdateNashuirenEvent"
+    handler=".subscriber.UpdateNashuirenEvent"
+    />                
 </configure>

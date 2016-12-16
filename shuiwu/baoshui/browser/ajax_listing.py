@@ -20,7 +20,7 @@ from shuiwu.baoshui.content.nashuiku import Inashuiku
 from shuiwu.baoshui.content.nashuiren import Inashuiren
 
 from Products.Five.browser import BrowserView
-
+from shuiwu.baoshui.subscriber import yuedudic,jidudic
 # from collective.gtags.interfaces import ITagSettings
 # from shuiwu.baoshui import viewReport
 # from shuiwu.baoshui.interface import IUsersrolesProvider     
@@ -109,14 +109,22 @@ class sysAjaxListingView(BrowserView):
             loopc = self.splitTag(tag)
             return loopc['value']
         
-#         import pdb
-#         pdb.set_trace()
+        def sort_by_dic(tag):
+            if tag in yuedudic:
+                return (tag,yuedudic[tag])
+            elif tag in jidudic:
+                return (tag,jidudic[tag])
+            else:
+                return tag              
+
         out = filter(cfilter,tagsets)
         out = map(mapf,out)
+        out2 = map(sort_by_dic,out)
+        if type(out2[0])== type(()):
+            out2 = sorted(out2,key=lambda x: x[1])
+            out = [j[0]  for j in out2]       
 
-        out.sort()
-        lth = len(out)        
-
+        lth = len(out)       
         if size == None:
             if start == 0:
                 tags = out
@@ -172,7 +180,7 @@ class sysAjaxListingView(BrowserView):
         out = ""
         prefix = """
                     <ul class="row tagSelectSearch list-inline">                    
-                    <li class="title">按%s：</li>
+                    <li class="title">%s：</li>
                     <li class="hidden">
                         <input type="hidden" value="0" class="taggroup" data-category="%s-">                            
                     </li>                    
@@ -200,7 +208,7 @@ class sysAjaxListingView(BrowserView):
                     <li class="tag_list_div fenlei_a">
         """
                 prefixing = fixprefix % (fixgroup,fixgroup)
-            loopitem = self.getTagHtml(group,0,5)
+            loopitem = self.getTagHtml(group,0,12)
             loopitem = "%s%s%s" % (prefixing,loopitem,postfix)
             out = "%s%s" % (out,loopitem)
         return out                                  
@@ -272,7 +280,7 @@ class sysloadMore(grok.View):
         return json.dumps(out)   
 
 class loadMore(sysloadMore):
-    """AJAX action for loardmore.
+    """AJAX action for coming from gtag loardmore.
     """    
     grok.context(Interface)
     grok.name('loadmore_tags')

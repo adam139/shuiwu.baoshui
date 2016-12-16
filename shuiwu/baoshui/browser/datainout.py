@@ -109,29 +109,31 @@ class DataInOut (BrowserView):
         usersNumber = 0
         
         for line in validLines:
-#            datas = dict(zip(header, line))
-            datas = dict(zip(data_PROPERTIES, line))  
-            
-#             import pdb
-#             pdb.set_trace()
+            datas = dict(zip(data_PROPERTIES, line)) 
             try:
 #                映射数据到纳税人字段
-                title = datas['title']
-                
+                title = datas['title']                
 #                 if not isinstance(title, unicode):
 #                     title = unicode(title, 'utf-8')
 #                 id = IUserPreferredFileNameNormalizer(self.request).normalize(filename)
                 id = datas['guanlidaima']
-
+#                 import pdb
+#                 pdb.set_trace()
                 id = self.float2str(id,"E+")
-                if self.IdIsExist(id):continue
+                if self.IdIsExist(id):
+#                     continue
+                    try:
+                        event.notify(UpdateNashuirenEvent(
+                                                id,status,regtype,
+                                                caiwufuzeren,caiwufuzerendianhua,banshuiren,
+                                                banshuirendianhua))
+                    except:
+                        continue
 #                 title = name
                 guanlidaima = id                
                 dengjiriqi = datas.pop('dengjiriqi')
                 if ' ' in dengjiriqi:
                     dengjiriqi = dengjiriqi.split(' ')[0]
-#                 import pdb
-#                 pdb.set_trace()
                 description = datas.pop('description')
                 if isinstance(description, unicode):
                     description = description.encode('utf-8')
@@ -152,7 +154,6 @@ class DataInOut (BrowserView):
                                                 shuiguanyuan,danganbianhao,status,regtype,
                                                 caiwufuzeren,caiwufuzerendianhua,banshuiren,
                                                 banshuirendianhua))
-
                 except (AttributeError, ValueError), err:
                     logging.exception(err)
                     IStatusMessage(self.request).addStatusMessage(err, type="error")
@@ -161,7 +162,6 @@ class DataInOut (BrowserView):
             except:
                 invalidLines.append(line)
                 print "Invalid line: %s" % line
-
         if invalidLines:
             datafile = self._createCSV(invalidLines)
             self.request['csverrors'] = True

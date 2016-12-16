@@ -40,11 +40,20 @@ subids = [('zichanfuzaibiao',u'资产负债表'),
                ('gengdizhanyongshui',u'耕地占用税申报表'),
                ('anciqita',u'其他')                                                                                                           
                ]
+#新增tag分组
+tagroup = [u'纳税人状态',u'按税源科室',u'税务管理员']
+#年度钩对字段
+niandugouduiziduan = ["yinhuashui","chechuanshui","qiyesuodeshuiniandu"]
 yuedu_subjects = [u'月度未申报-一月',u'月度未申报-二月',u'月度未申报-三月',u'月度未申报-四月',
                u'月度未申报-五月',u'月度未申报-六月',u'月度未申报-七月',u'月度未申报-八月',u'月度未申报-九月',
                u'月度未申报-十月',u'月度未申报-十一月',u'月度未申报-十二月']
 jidu_subjects = [u'季度未申报-一季度',u'季度未申报-二季度',u'季度未申报-三季度',u'季度未申报-四季度']
-ling_subject = [u'其他未申报-零申报']
+ling_subjects = [u'其他未申报-零申报',u'其他未申报-年度未申报']
+
+#using for yuedu sort
+yuedudic = {u'一月':1,u'二月':2,u'三月':3,u'四月':4,u'五月':5,u'六月':6,u'七月':7,u'八月':8,
+            u'九月':9,u'十月':10,u'十一月':11,u'十二月':12}
+jidudic = {u'一季度':1,u'二季度':2,u'三季度':3,u'四季度':4}
 
 def initObjectTreeWithThread(obj,event):
     "init all child objects for the nashuiren object that had been created by front end UI"
@@ -54,257 +63,111 @@ def initObjectTreeWithThread(obj,event):
     type='shuiwu.baoshui.niandu',
     title=u'年度记录',
     container=obj)
-    subject = set(yuedu_subjects) | set(jidu_subjects)
-
-    obj.setSubject(subject)   
-
+    status = obj.status
+    description = obj.description
+    shuiguanyuan = obj.shuiguanyuan
+    init_tags = []
+    if status != "":
+        group = tagroup[0].encode("utf-8")
+        tag = "%s-%s" %(group,status)
+        init_tags.append(tag)
+    if description != "":
+        group = tagroup[0].encode("utf-8")
+        tag = "%s-%s" %(group,status)
+        init_tags.append(tag)
+    if shuiguanyuan != "":
+        group = tagroup[2].encode("utf-8")
+        tag = "%s-%s" %(group,shuiguanyuan)
+        init_tags.append(tag)
+    subjects = yuedu_subjects + jidu_subjects + ling_subjects + init_tags   
+    obj.setSubject(tuple(subjects))                        
+    obj.reindexObject()
    # Put the tasks into the queue as a tuple
     for subid,title in subids:
         title = title.encode('utf-8')
         type="shuiwu.baoshui.%s" % subid
-        directory = api.content.create(type=type,id=subid,title=title,container=target)                  
-
-def setTagyuedu(obj,event):
-    "set tag"
-    nashuirenobj = obj.aq_parent.aq_parent
-    #未申报 
-    weishenbao = '\xe6\x9c\xaa\xe7\x94\xb3\xe6\x8a\xa5'
-    oldtag = set(nashuirenobj.Subject())
-    import pdb
-    pdb.set_trace()
-    if obj.shenbaofou1 ==True:
-        subject = u'按月-一月'.encode('utf-8')
-        subject = oldtag.append(subject)
-        
-    elif obj.shenbaofou2 ==True:
-        subject = u'二月'.encode('utf-8')
-        subject = oldtag.append(subject)
-                
-    elif obj.shenbaofou3 ==True:
-        subject = u'三月'.encode('utf-8')
-        subject = oldtag.append(subject)
-        
-    elif obj.shenbaofou4 ==True:
-        subject = u'四月'.encode('utf-8')
-        subject = oldtag.append(subject)
-        
-    elif obj.shenbaofou5 ==True:
-        subject = u'五月'.encode('utf-8')
-        subject = oldtag.append(subject)
-        
-    elif obj.shenbaofou6 ==True:
-        subject = u'六月'.encode('utf-8')
-        subject = oldtag.append(subject)
-        
-    elif obj.shenbaofou7 ==True:
-        subject = u'七月'.encode('utf-8')
-        subject = oldtag.append(subject)
-        
-    elif obj.shenbaofou8 ==True:
-        subject = u'八月'.encode('utf-8')
-        subject = oldtag.append(subject)
-        
-    elif obj.shenbaofou9 ==True:
-        subject = u'九月'.encode('utf-8')
-        subject = oldtag.append(subject)
-        
-    elif obj.shenbaofou10 ==True:
-        subject = u'十月'.encode('utf-8')
-        subject = oldtag.append(subject)
-        
-    elif obj.shenbaofou11 ==True:
-        subject = u'十一月'.encode('utf-8')
-        subject = oldtag.append(subject)
-                                                                                
-    elif obj.shenbaofou12 ==True:
-        subject = u'十二月'.encode('utf-8')
-        subject = oldtag.add(subject)
-    if weishenbao in oldtag and len(oldtag) > 1:
-        subject = oldtag.remove(weishenbao)
-    nashuirenobj.setSubject(tuple(subject))
-
-def setTagjidu(obj,event):
-    "set tag"
-    nashuirenobj = obj.aq_parent.aq_parent
-    oldtag = set(nashuirenobj.Subject())
-    if obj.shenbaofou1 ==True:
-        subject = u'一季度'.encode('utf-8')
-        subject = oldtag.append(subject)
-        
-    elif obj.shenbaofou2 ==True:
-        subject = u'二季度'.encode('utf-8')
-        subject = oldtag.append(subject)
-        
-    elif obj.shenbaofou3 ==True:
-        subject = u'三季度'.encode('utf-8')
-        subject = oldtag.append(subject)
-                                                                                
-    elif obj.shenbaofou4 ==True:
-        subject = u'四季度'.encode('utf-8')
-        subject = oldtag.append(subject)
-    if weishenbao in oldtag and len(oldtag) > 1:
-        subject = oldtag.remove(weishenbao)    
-    nashuirenobj.setSubject(tuple(subject))
-        
-def setTaganci(obj,event):
-    "set tag"
-    pass                       
-#fire todoitemwillcreated event for every designer when add or modified product designer on project node
-#@adapter(ITeam, IObjectAddedEvent)
-def initObjectTree(obj,event):
-    "init all child objects for the nashuiren object that had been created by front end UI"
-
-    id = 'zichanfuzaibiao'
-    title = u'资产负债表'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.zichanfuzaibiao',id=id,title=title,container=obj)
-    
-    id = 'lirunbiao'
-    title = u'利润表'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.lirunbiao',id=id,title=title,container=obj)
-    
-    id = 'xianjinliuliangbiao'
-    title = u'现金流量表'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.xianjinliuliangbiao',id=id,title=title,container=obj)
-   
-  
-    id = 'chengjianjiaoyudifangfujia'
-    title = u'城建、教育、地方教育附加申报表'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.chengjianjiaoyudifangfujia',id=id,title=title,container=obj)
-    # add month records
-
-    id = 'gerensuodeshui'
-    title = u'个人所得税扣缴表'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.gerensuodeshui',id=id,title=title,container=obj)
-        
-    id = 'zhifugongzimingxi'
-    title = u'支付工资明细'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.zhifugongzimingxi',id=id,title=title,container=obj)
-
-    id = 'yinhuashuianyue'
-    title = u'印花税申报表（按月）'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.yinhuashuianyue',id=id,title=title,container=obj)
-   
-    id = 'canbaojinshenbaobiao'
-    title = u'残保金申报表'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.canbaojinshenbaobiao',id=id,title=title,container=obj)
-    
-   
-    id = 'gonghuijingfei'
-    title = u'工会经费申报表'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.gonghuijingfei',id=id,title=title,container=obj)
-    
-    id = 'shuilijijin'
-    title = u'水利基金申报表（月报）'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.shuilijijin',id=id,title=title,container=obj)
-   
-    id = 'shebaofei'
-    title = u'社保费申报表'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.shebaofei',id=id,title=title,container=obj)
-
-    id = 'fangchanshui'
-    title = u'房产税申报表（租金收入）'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.fangchanshui',id=id,title=title,container=obj)
-   
-    id = 'tudizengzhishuianyue'
-    title = u'土地增值税申报表（按月）'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.tudizengzhishuianyue',id=id,title=title,container=obj)
-    id = 'tudizengzhishuianyue'
-    title = u'入库凭证（按月）'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.rukupingzheng',id=id,title=title,container=obj)
-    id = 'anyueqita'
-    title = u'其他'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.anyueqita',id=id,title=title,container=obj)
-   
-    id = 'anyueqita'
-    title = u'其他'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.anyueqita',id=id,title=title,container=obj)
-   
-    
-    
-
-#季度    
-    id = 'qiyesuodeshuialeiblei'
-    title = u'企业所得税预缴表（A类、B类）'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.qiyesuodeshuialeiblei',id=id,title=title,container=obj)
-   
-    id = 'fangchanshuifangchanyuanzhi'
-    title = u'房产税申报表（房产原值）'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.fangchanshuifangchanyuanzhi',id=id,title=title,container=obj)
-   
- 
-    id = 'chengzhentudishiyongshui'
-    title = u'城镇土地使用税申报表'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.chengzhentudishiyongshui',id=id,title=title,container=obj)
-   
-    id = 'anjiqita'
-    title = u'按季其他'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.anjiqita',id=id,title=title,container=obj)
-   
-    id = 'anjiqita'
-    title = u'按季其他'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.anjiqita',id=id,title=title,container=obj)
-   
-
-#按次
-    id = 'yinhuashuizijinzhangbo'
-    title = u'印花税申报表（资金账簿）'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.yinhuashuizijinzhangbo',id=id,title=title,container=obj)
-   
-    id = 'ziyuanshui'
-    title = u'资源税申报表'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.ziyuanshui',id=id,title=title,container=obj)                                
-   
-    id = 'gengdizhanyongshui'
-    title = u'耕地占用税申报表'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.gengdizhanyongshui',id=id,title=title,container=obj)
-   
-    id = 'anciqita'
-    title = u'其他'.encode("utf-8")
-    item = api.content.create(type='shuiwu.baoshui.anciqita',id=id,title=title,container=obj)
-    
-                                                                           
+        directory = api.content.create(type=type,id=subid,title=title,container=target)                                                                                                        
  
 # @grok.subscribe(ICreateNashuirenEvent)
 def CreateNashuirenEvent(event):
     """this event be fired by import nashuiren ui"""
 
-    site = getSite()
-     
+    site = getSite()     
     catalog = getToolByName(site,'portal_catalog')
     try:
         newest = catalog.unrestrictedSearchResults({'object_provides': Inashuiku.__identifier__})
     except:
-        return      
-
+        return     
     memberfolder = newest[0].getObject()
     memberid = event.id       
     datearray = event.dengjiriqi.split('-')
     if len(datearray) >= 3:
-        val = map(int,datearray)
-               
+        val = map(int,datearray)               
         dengjiriqi = datetime.date(*val)  
     else:
         dengjiriqi = datetime.date.today()    
+    shuiguanyuan = event.shuiguanyuan
+    # 税源科室
+    description = event.description
+    status = event.status
     try:
         item = api.content.create(
                                   type="shuiwu.baoshui.nashuiren",
                                   container=memberfolder,
                                   id = memberid,
                                   title = event.title,
-                                  description = event.description,
+                                  description = description,
                                   guanlidaima = event.guanlidaima,
-                                  shuiguanyuan = event.shuiguanyuan,
+                                  shuiguanyuan = shuiguanyuan,
                                   danganbianhao = event.danganbianhao,
                                   dengjiriqi = dengjiriqi,
-                                  status = event.status,
+                                  status = status,
                                   regtype = event.regtype,
                                   caiwufuzeren = event.caiwufuzeren,
                                   caiwufuzerendianhua = event.caiwufuzeren,
                                   banshuiren = event.banshuiren,
                                   banshuirendianhua = event.banshuirendianhua,                                  
-                                  safe_id = False)
-
-        item.reindexObject()                
-        
+                                  safe_id = False)                       
     except:
         return    
+
+def UpdateNashuirenEvent(event):
+    """this event be fired by import nashuiren ui"""
+
+    site = getSite()     
+    catalog = getToolByName(site,'portal_catalog')
+    try:
+        newest = catalog.unrestrictedSearchResults({'object_provides': Inashuiku.__identifier__})
+    except:
+        return     
+    memberfolder = newest[0].getObject()
+    memberid = event.id          
+    status = event.status
+    try:
+        item = memberfolder[memberid]
+        item.status = status,
+        item.regtype = event.regtype,
+        item.caiwufuzeren = event.caiwufuzeren,
+        item.caiwufuzerendianhua = event.caiwufuzeren,
+        item.banshuiren = event.banshuiren,
+        item.banshuirendianhua = event.banshuirendianhua    
+        description = item.description
+        shuiguanyuan = item.shuiguanyuan
+        init_tags = []
+        if status != "":
+            group = tagroup[0].encode("utf-8")
+            tag = "%s-%s" %(group,status)
+            init_tags.append(tag)
+        if description != "":
+            group = tagroup[0].encode("utf-8")
+            tag = "%s-%s" %(group,status)
+            init_tags.append(tag)
+        if shuiguanyuan != "":
+            group = tagroup[2].encode("utf-8")
+            tag = "%s-%s" %(group,shuiguanyuan)
+            init_tags.append(tag)
+        subjects = yuedu_subjects + jidu_subjects + ling_subjects + init_tags   
+        item.setSubject(tuple(subjects))                        
+        item.reindexObject()                               
+    except:
+        return

@@ -10,9 +10,6 @@ from plone.memoize.instance import memoize
 from Products.Five.browser import BrowserView
 from datetime import datetime
 
-# from shuiwu.baoshui.content.jidujilu import Ijidujilu
-# from shuiwu.baoshui.content.ancijilu import Iancijilu
-# from shuiwu.baoshui.content.yuedujilu import Iyuedujilu
 from shuiwu.baoshui.content.nashuiren import Inashuiren
 from shuiwu.baoshui.content.niandu import Iniandu
 from shuiwu.baoshui import _
@@ -59,17 +56,9 @@ class ArchivedView(BrowserView):
                                             Id=i.id,                                            
                                             date = i.dengjiriqi)           
             outhtml = "%s%s" %(outhtml ,out)
-            k = k + 1
-            
-        return outhtml                    
-        
-
-
+            k = k + 1            
+        return outhtml                        
         
     def currentYear(self):
-        return datetime.now().strftime('%Y')
-                 
-  
-     
-
+        return datetime.now().strftime('%Y')                  
     

@@ -15,6 +15,8 @@ from datetime import datetime
 # from shuiwu.baoshui.content.yuedujilu import Iyuedujilu
 from shuiwu.baoshui.content.nashuiren import Inashuiren
 from shuiwu.baoshui.content.niandu import Iniandu
+from shuiwu.baoshui.subscriber import yuedu_subjects,jidu_subjects,ling_subjects
+from shuiwu.baoshui.subscriber import subids
 from shuiwu.baoshui import _
 
 # grok.templatedir('templates')
@@ -251,41 +253,51 @@ class ModifyProperty(grok.View):
     grok.name('modify_property')
     grok.require('zope2.View')
     
+    def isallfinished(self):
+        "统计按年申报的所有税种在该时间段是否都钩对，如果都钩对，返回True"
+        # get nashuiren object
+        context = self.context.aq_parent        
+        for filed in niandugouduiziduan:
+            if getattr(context,field,False):
+                return False
+            else:
+                continue
+        return True
+            
     def render(self):    
         datadic = self.request.form
         property = datadic['property']
         shenbaofou = datadic['shenbaofou']
         # get nashuiren object
-        context = self.context.aq_parent 
+        context = self.context.aq_parent
+        oldtag = set(context.Subject())        
+        #年度未申报标签
+        thetag = ling_subjects[1]         
         if shenbaofou =="true":
-           setattr(context,property,True)
+            setattr(context,property,True)
+            #如果所有年报税种已申报，删除年报未申报tag
+            if self.isallfinished():                                                                                                        
+                if thetag in oldtag:
+                    oldtag.remove(thetag)
+            # remove 零申报标签
+            weishenbao = ling_subjects[0]
+            if weishenbao in oldtag:
+                oldtag.remove(weishenbao)           
+           
         else:
             setattr(context,property,False)
+            if thetag not in oldtag:
+                oldtag.add(thetag)
+                #todo 适当时机增加零申报
+#                 if len(oldtag) == 1:
+#                     oldtag.add(weishenbao)
+        context.setSubject(tuple(oldtag))
+        context.reindexObject(idxs=["Subject"])            
+        
         ajaxtext = u"<p class='text-success'>更改已保存</p>"
         callback = {"result":True,'message':ajaxtext}
         self.request.response.setHeader('Content-Type', 'application/json')
         return json.dumps(callback)     
-
-
-class ModifyId(grok.View):
-    """AJAX action for modify nashuiren properties .
-    """    
-    grok.context(Inashuiren)
-    grok.name('modify_id')
-    grok.require('zope2.View')
-    
-    def render(self):    
-        datadic = self.request.form
-        newid = datadic['id']
-        context = self.context
-        oldid = context.id
-        parent = context.aq_parent
-        parent.manage_renameObject(oldid, newid) 
-        parent[newid].reindexObject()
-        ajaxtext = u"<p class='text-success'>更改已保存</p>"
-        callback = {"result":True,'message':ajaxtext}
-        self.request.response.setHeader('Content-Type', 'application/json')
-        return json.dumps(callback)
  
  # ajax modify yuedu jilu,jidu jilu
 class BatchModify(grok.View):
@@ -335,9 +347,9 @@ class BatchModify(grok.View):
             shenbaofou = True            
             nashuirenobj = self.context.aq_parent
             oldtag = set(nashuirenobj.Subject())
-            weishenbao = '\xe6\x9c\xaa\xe7\x94\xb3\xe6\x8a\xa5'
-            oldtag = oldtag | set(self.tagmap(nums))
-            if weishenbao in oldtag and len(oldtag) > 1:
+            # remove 零申报标签
+            weishenbao = ling_subjects[0]
+            if weishenbao in oldtag:
                 oldtag.remove(weishenbao)
             nashuirenobj.setSubject(tuple(oldtag))
             nashuirenobj.reindexObject(idxs=["Subject"])            
@@ -361,24 +373,22 @@ class ModifyYuedujilu(grok.View):
     """    
     grok.context(Interface)
     grok.name('modify_yuedujilu')
-    grok.require('zope2.View')
+    grok.require('zope2.View')   
     
-    def tagmap(self,num):
-        tagdic = {'1':'月份-一月',
-                  '2':'月份-二月',
-                  '3':'月份-三月',
-                  '4':'月份-四月',
-                  '5':'月份-五月',
-                  '6':'月份-六月',
-                  '7':'月份-七月',
-                  '8':'月份-八月',
-                  '9':'月份-九月',
-                  '10':'月份-十月',
-                  '11':'月份-十一月',
-                  '12':'月份-十二月',
-                  }
-        return tagdic[num]
-    
+    def isallfinished(self,field):
+        "统计所有税种在该时间段是否都钩对，如果都钩对，返回True"
+        #年度对象
+        nianduobj = self.context.aq_parent
+        for subid,title in subids[:15]:
+            #税种对象
+            shuizhongobj = nianduobj[subid]
+            yes = getattr(shuizhongobj,field,False)
+            if yes == False:
+                return False
+            else:
+                continue
+        return True                                  
+            
     def render(self):    
         datadic = self.request.form
         shenbaofou = datadic['shenbaofou'] 
@@ -386,29 +396,33 @@ class ModifyYuedujilu(grok.View):
         field = "shenbaofou%s" % nums
 #         import pdb
 #         pdb.set_trace()
+        
+        nashuirenobj = self.context.aq_parent.aq_parent
+        oldtag = set(nashuirenobj.Subject())
+        #该月度未申报标签
+        thetag = yuedu_subjects[int(nums -1)]
         if shenbaofou =="true":
             setattr(self.context,field,True)
-            nashuirenobj = self.context.aq_parent.aq_parent
-            oldtag = set(nashuirenobj.Subject())
-            weishenbao = '\xe6\x9c\xaa\xe7\x94\xb3\xe6\x8a\xa5'
-            oldtag.add(self.tagmap(nums))
-            if weishenbao in oldtag and len(oldtag) > 1:
+            
+            #如果该月所有税种已申报，删除该月未申报tag
+            if self.isallfinished(field):                                                                                                        
+                if thetag in oldtag:
+                    oldtag.remove(thetag)
+            # remove 零申报标签
+            weishenbao = ling_subjects[0]
+            if weishenbao in oldtag:
                 oldtag.remove(weishenbao)
-            nashuirenobj.setSubject(tuple(oldtag))
-            nashuirenobj.reindexObject(idxs=["Subject"])            
+           
 #             self.context.shenbaofou = True
         else:
             setattr(self.context,field,False)
-            nashuirenobj = self.context.aq_parent.aq_parent
-            oldtag = set(nashuirenobj.Subject())
-            weishenbao = '\xe6\x9c\xaa\xe7\x94\xb3\xe6\x8a\xa5'
-            thetag = self.tagmap(nums)
-            if thetag in oldtag:
-                oldtag.remove(thetag)
-                if len(oldtag) == 0:
-                    oldtag.add(weishenbao)
-            nashuirenobj.setSubject(tuple(oldtag))
-            nashuirenobj.reindexObject(idxs=["Subject"])            
+            if thetag not in oldtag:
+                oldtag.add(thetag)
+                #todo 适当时机增加零申报
+#                 if len(oldtag) == 1:
+#                     oldtag.add(weishenbao)
+        nashuirenobj.setSubject(tuple(oldtag))
+        nashuirenobj.reindexObject(idxs=["Subject"])            
 #             self.context.shenbaofou = False
         ajaxtext = u"<p class='text-success'>更改已保存</p>"
         callback = {"result":True,'message':ajaxtext}
@@ -423,13 +437,19 @@ class ModifyJidujilu(ModifyYuedujilu):
     grok.name('modify_jidujilu')
     grok.require('zope2.View')
     
-    def tagmap(self,num):
-        tagdic = {'1':'季度-一季度',
-                  '2':'季度-二季度',
-                  '3':'季度-三季度',
-                  '4':'季度-四季度'
-                  }
-        return tagdic[num]     
+    def isallfinished(self,field):
+        "统计所有税种在该时间段是否都钩对，如果都钩对，返回True"
+        #年度对象
+        nianduobj = self.context.aq_parent
+        for subid,title in subids[16:20]:
+            #按季报税种对象
+            shuizhongobj = nianduobj[subid]
+            yes = getattr(shuizhongobj,field,False)
+            if yes == False:
+                return False
+            else:
+                continue
+        return True     
  
  # ajax modify anci jilu
 class ModifyAncijlu(grok.View):
@@ -502,4 +522,24 @@ class ResetSubject(BatchModify):
         bns = filter(nomodifingFilter,bns)        
         return bns       
 
+
+class ModifyId(grok.View):
+    """AJAX action for modify nashuiren properties .
+    """    
+    grok.context(Inashuiren)
+    grok.name('modify_id')
+    grok.require('zope2.View')
+    
+    def render(self):    
+        datadic = self.request.form
+        newid = datadic['id']
+        context = self.context
+        oldid = context.id
+        parent = context.aq_parent
+        parent.manage_renameObject(oldid, newid) 
+        parent[newid].reindexObject()
+        ajaxtext = u"<p class='text-success'>更改已保存</p>"
+        callback = {"result":True,'message':ajaxtext}
+        self.request.response.setHeader('Content-Type', 'application/json')
+        return json.dumps(callback)
     
