@@ -22,20 +22,20 @@
 		<a title="打印预览" tal:attributes="href python:context.absolute_url() + '/@@print_preview'" class="col-md-2 col-md-offset-10 text-center btn btn-primary" >打印预览</a>
 		</h5>
 		</div>
-		<div class="report row">
+		<div class="report row" tal:define="nashuiren python:context.aq_parent">
 			<table class="table bodered table-condensed top col-md-12">
 				<tbody>
 					<tr class="row">
 						<td class="property col-md-8">
-							<span>纳税人名称:</span><span tal:content="python:context.title"></span>
+							<span>纳税人名称:</span><span tal:content="python:nashuiren.title"></span>
 						</td>
 						<td class="property col-md-4"><span>档案编码:</span>
-						<span tal:content="python:context.danganbianhao">201</span>
+						<span tal:content="python:nashuiren.danganbianhao">201</span>
 						</td>
 					</tr>
 					<tr class="row">
 						<td class="property col-md-8">
-							<span>纳税人识别号:</span><span tal:content="python:context.guanlidaima"></span>
+							<span>纳税人识别号:</span><span tal:content="python:nashuiren.guanlidaima"></span>
 						</td>
 						<td class="property col-md-4"><span>报送日期:</span>
 						<span tal:content="python:view.currentDate()">201</span>

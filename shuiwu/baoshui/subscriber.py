@@ -142,16 +142,16 @@ def UpdateNashuirenEvent(event):
         newest = catalog.unrestrictedSearchResults({'object_provides': Inashuiku.__identifier__})
     except:
         return     
-    memberfolder = newest[0].getObject()
-    memberid = event.id         
-
+    memberfolder = newest[0].getObject()     
     try:
-        item = memberfolder[memberid]
-        item.status = event.status,
-        item.regtype = event.regtype,
-        item.caiwufuzeren = event.caiwufuzeren,
-        item.caiwufuzerendianhua = event.caiwufuzerendianhua,
-        item.banshuiren = event.banshuiren,
+#         import pdb
+#         pdb.set_trace()
+        item = memberfolder[event.id]
+        item.status = event.status
+        item.regtype = event.regtype
+        item.caiwufuzeren = event.caiwufuzeren
+        item.caiwufuzerendianhua = event.caiwufuzerendianhua
+        item.banshuiren = event.banshuiren
         item.banshuirendianhua = event.banshuirendianhua    
         description = item.description
         shuiguanyuan = item.shuiguanyuan
