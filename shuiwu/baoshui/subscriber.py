@@ -58,10 +58,11 @@ jidudic = {u'一季度':1,u'二季度':2,u'三季度':3,u'四季度':4}
 def initObjectTreeWithThread(obj,event):
     "init all child objects for the nashuiren object that had been created by front end UI"
     
+    currentyear = datetime.datetime.today().strftime("%Y")
     target = api.content.create(
-    id = datetime.datetime.today().strftime("%Y"),
+    id = currentyear,
     type='shuiwu.baoshui.niandu',
-    title=u'%s年度记录' % id,
+    title=u'%s年度记录' % currentyear,
     container=obj)
     status = obj.status
     description = obj.description
