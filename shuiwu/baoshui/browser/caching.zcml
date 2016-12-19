@@ -18,7 +18,7 @@
 
     <cache:ruleset
         for=".nashuiren_view.NashuirenView"
-        ruleset="plone.content.itemView"
+        ruleset="shuiwu.baoshui.editing"
         />
     <cache:ruleset
         for=".nashuiren_view.NashuirenEdit"

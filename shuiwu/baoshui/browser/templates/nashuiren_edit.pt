@@ -27,11 +27,11 @@
 		<a title="打印预览" tal:attributes="href python:context.absolute_url() + '/@@print_preview'" class="col-md-2 col-md-offset-10 text-center btn btn-primary" >打印预览</a>
 		</h5>
 		</div>    			
-		<div class ="row">
+		<div class ="row" tal:define="nashuiren python:context.aq_parent">
 			<h2 class="text-center">
 				<a class="btn btn-primary" 
 					tal:attributes="title string:编辑纳税人基本信息;
-					href python:context.aq_parent.absolute_url() + '/@@ajaxedit'" tal:content="python:context.title">某某公司</a>
+					href python:nashuiren.absolute_url() + '/@@ajaxedit'" tal:content="python:nashuiren.title">某某公司</a>
 			</h2>
 		</div>
 		<div class="report row" tal:define="nashuiren python:context.aq_parent">
