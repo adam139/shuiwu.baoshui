@@ -99,14 +99,11 @@ class DataInOut (BrowserView):
             type = 'error'
             IStatusMessage(self.request).addStatusMessage(msg, type=type)
             return
-
         validLines = []
         invalidLines = []
         for line in reader:
-#            datas = dict(zip(header, line))
             validLines.append(line)
-        usersNumber = 0
-        
+        usersNumber = 0        
         for line in validLines:
             datas = dict(zip(data_PROPERTIES, line)) 
             try:

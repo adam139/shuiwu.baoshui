@@ -128,7 +128,7 @@ def CreateNashuirenEvent(event):
                                   caiwufuzerendianhua = event.caiwufuzerendianhua,
                                   banshuiren = event.banshuiren,
                                   banshuirendianhua = event.banshuirendianhua,                                  
-                                  safe_id = False)                       
+                                  safe_id = False)                               
     except:
         return    
 
@@ -170,7 +170,10 @@ def UpdateNashuirenEvent(event):
             tag = "%s-%s" %(group,shuiguanyuan)
             init_tags.append(tag)
         subjects = yuedu_subjects + jidu_subjects + ling_subjects + init_tags   
-        item.setSubject(tuple(subjects))                        
-        item.reindexObject()                               
+        item.setSubject(tuple(subjects))
+        item.reindexObject(idxs=["Subject","Title","Description","status","regtype","shuiguanyuan",
+                            "caiwufuzeren","caiwufuzerendianhua","banshuiren","banshuirendianhua",
+                            "guanlidaima","dengjiriqi"])                                 
+#         item.reindexObject()                               
     except:
         return
