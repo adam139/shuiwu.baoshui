@@ -55,6 +55,9 @@ yuedudic = {u'一月':1,u'二月':2,u'三月':3,u'四月':4,u'五月':5,u'六月
             u'九月':9,u'十月':10,u'十一月':11,u'十二月':12}
 jidudic = {u'一季度':1,u'二季度':2,u'三季度':3,u'四季度':4}
 
+## 统计查询中派出的注册类型
+getout = [u"内资个体"]
+
 def initObjectTreeWithThread(obj,event):
     "init all child objects for the nashuiren object that had been created by front end UI"
     
