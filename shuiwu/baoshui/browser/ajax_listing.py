@@ -18,6 +18,7 @@ from plone.memoize.instance import memoize
 from shuiwu.baoshui import _
 from shuiwu.baoshui.content.nashuiku import Inashuiku
 from shuiwu.baoshui.content.nashuiren import Inashuiren
+from shuiwu.baoshui.subscriber import getout
 
 from Products.Five.browser import BrowserView
 from shuiwu.baoshui.subscriber import yuedudic,jidudic
@@ -376,6 +377,7 @@ class ajaxsearch(grok.View):
 #origquery provide  batch search        
         origquery['b_size'] = size 
         origquery['b_start'] = start
+#         origquery['regtype'] != getout[0]
         # search all                         
         totalbrains = searchview.search_multicondition(totalquery)
 #         import pdb
@@ -471,15 +473,27 @@ class totalajaxsearch(ajaxsearch):
             origquery['Subject'] = rule
                       
 #totalquery  search all 
+#         import pdb
+#         pdb.set_trace()
+#         origquery['regtype'] != getout[0].encode('utf-8')
         totalquery = origquery.copy()
 #origquery provide  batch search        
         origquery['b_size'] = size 
         origquery['b_start'] = start
+        def getout_filter(brain):
+#             import pdb
+#             pdb.set_trace()
+            if brain.regtype == getout[0].encode('utf-8'):
+                return False
+            else:
+                return True
         # search all                         
         totalbrains = searchview.search_multicondition(totalquery)
+        totalbrains = filter(getout_filter,totalbrains)
         totalnum = len(totalbrains)
         # batch search         
         braindata = searchview.search_multicondition(origquery)
+        braindata = filter(getout_filter,braindata)
 #        brainnum = len(braindata)         
         del origquery 
         del totalquery,totalbrains
@@ -493,6 +507,7 @@ class totalajaxsearch(ajaxsearch):
         outhtml = ""      
 
         import datetime
+
         id = datetime.datetime.today().strftime("%Y")
         for i in braindata:          
             out = """<tr>
