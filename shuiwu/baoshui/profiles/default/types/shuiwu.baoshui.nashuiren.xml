@@ -33,11 +33,11 @@
  </property>
 
   <!-- View information -->
-  <property name="default_view">view</property>
+  <property name="default_view">archived_view</property>
   <property name="default_view_fallback">False</property>
   <property name="view_methods">
     <element value="base_view" />
-    <element value="archive_view" />                
+    <element value="archived_view" />                
   </property>
 
   <!-- Method aliases -->

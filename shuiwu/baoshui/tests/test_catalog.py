@@ -37,7 +37,8 @@ class CatalogSetupTest(InitContents):
         self.assertTrue('banshuiren' in self.portal.portal_catalog.indexes())
         self.assertTrue('banshuirendianhua' in self.portal.portal_catalog.indexes())
         self.assertTrue('shuiguanyuan' in self.portal.portal_catalog.indexes())
-        self.assertTrue('danganbianhao' in self.portal.portal_catalog.indexes())                  
+        self.assertTrue('danganbianhao' in self.portal.portal_catalog.indexes())
+        self.assertTrue('guidangzhuangtai' in self.portal.portal_catalog.indexes())                  
 
     def test_indexer(self):
         self.assertTrue(isinstance(catalog.indexer_guanlidaima,

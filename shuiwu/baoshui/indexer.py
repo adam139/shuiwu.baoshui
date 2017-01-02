@@ -37,3 +37,6 @@ def indexer_banshuiren(obj, **kw):
 @indexer(Inashuiren)
 def indexer_banshuirendianhua(obj, **kw):
     return obj.banshuirendianhua
+@indexer(Inashuiren)
+def indexer_guidangzhuangtai(obj, **kw):
+    return obj.guidangzhuangtai

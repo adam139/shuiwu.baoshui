@@ -28,6 +28,7 @@
       description="Extension profile for tongji nashuihu jiben baoshui jilu"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
+      <!--
   <genericsetup:upgradeStep
       title="Add sub tree for nashuiren"
       description="update step to add sub tree for nashuiren."
@@ -41,7 +42,8 @@
       source="2.0"
       destination="3.0"
       handler="shuiwu.baoshui.migration.AddChild"
-      profile="shuiwu.baoshui:default"/>       
+      profile="shuiwu.baoshui:default"/>
+  -->           
 <!-- register indexer -->
   <adapter name="guanlidaima" factory=".indexer.indexer_guanlidaima"/>
   <adapter name="dengjiriqi" factory=".indexer.indexer_dengjiriqi"/>
@@ -53,6 +55,7 @@
   <adapter name="banshuirendianhua" factory=".indexer.indexer_banshuirendianhua"/>
   <adapter name="shuiguanyuan" factory=".indexer.indexer_shuiguanyuan"/>
   <adapter name="danganbianhao" factory=".indexer.indexer_danganbianhao"/>
+  <adapter name="guidangzhuangtai" factory=".indexer.indexer_guidangzhuangtai"/>  
   <subscriber
             for="shuiwu.baoshui.content.nashuiren.Inashuiren
                  zope.lifecycleevent.interfaces.IObjectAddedEvent"

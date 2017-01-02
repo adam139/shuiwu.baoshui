@@ -100,13 +100,16 @@ class Inashuiren(form.Schema,IBasic):
     qiyesuodeshuiniandu = schema.Bool(title=_(u"qiye suodeshui niandu shenbaobiao ji huisuan qinjiao fudaojilu"),
                        required=False,
                        default=False)
+## 管理类字段    
     zhuxiaoshuiwudengji = schema.Bool(title=_(u"zhuxiao shuiwu dengjibiao"),
                        required=False,
                        default=False)
     feizhenghurending = schema.Bool(title=_(u"fei zhenghu rending biao"),
                        required=False,
                        default=False)
-
+    guidangzhuangtai = schema.Bool(title=_(u"guidang zhuangtai"),
+                       required=False,
+                       default=False)
     
     
     form.omitted('year','zhuguanshuiwujiguan','feizhenghurending','zhuxiaoshuiwudengji'

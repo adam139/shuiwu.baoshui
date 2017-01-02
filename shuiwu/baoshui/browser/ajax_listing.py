@@ -18,6 +18,7 @@ from plone.memoize.instance import memoize
 from shuiwu.baoshui import _
 from shuiwu.baoshui.content.nashuiku import Inashuiku
 from shuiwu.baoshui.content.nashuiren import Inashuiren
+from shuiwu.baoshui.content.niandu import Iniandu
 from shuiwu.baoshui.subscriber import getout
 
 from Products.Five.browser import BrowserView
@@ -342,6 +343,11 @@ class ajaxsearch(grok.View):
 
         origquery = searchview.getPathQuery()
         origquery['object_provides'] = Inashuiren.__identifier__
+# 查询当前年度的 niandu对象
+#         import datetime
+#         id = datetime.datetime.today().strftime("%Y")
+#         origquery['object_provides'] = Iniandu.__identifier__
+#         origquery['id'] = id        
         origquery['sort_on'] = sortcolumn  
         origquery['sort_order'] = sortdirection
                 
@@ -439,7 +445,12 @@ class totalajaxsearch(ajaxsearch):
         keyword = (datadic['searchabletext']).strip()     
 
         origquery = searchview.getPathQuery()
-        origquery['object_provides'] = Inashuiren.__identifier__
+#         origquery['object_provides'] = Inashuiren.__identifier__
+##查询当前年度的 niandu对象
+        import datetime
+        id = datetime.datetime.today().strftime("%Y")
+        origquery['object_provides'] = Iniandu.__identifier__
+        origquery['id'] = id        
         origquery['sort_on'] = sortcolumn  
         origquery['sort_order'] = sortdirection                
  #模糊搜索       
@@ -481,8 +492,6 @@ class totalajaxsearch(ajaxsearch):
         origquery['b_size'] = size 
         origquery['b_start'] = start
         def getout_filter(brain):
-#             import pdb
-#             pdb.set_trace()
             if brain.regtype == getout[0].encode('utf-8'):
                 return False
             else:
@@ -504,12 +513,12 @@ class totalajaxsearch(ajaxsearch):
     
     def output(self,start,size,totalnum,braindata):
         "根据参数total,braindata,返回jason 输出"
-        outhtml = ""      
-
+        
+        outhtml = ""     
         import datetime
-
         id = datetime.datetime.today().strftime("%Y")
-        for i in braindata:          
+        for j in braindata:
+            i = j.getObject().aq_parent          
             out = """<tr>
                                 <td class="col-md-1">%(shibiehao)s</td>
                                 <td class="col-md-1"><a href="%(objurl)s">%(title)s</a></td>
@@ -523,8 +532,8 @@ class totalajaxsearch(ajaxsearch):
                                 <td class="col-md-1">%(caiwufuzerendianhua)s</td>
                                 <td class="col-md-1">%(banshuiren)s</td>
                                 <td class="col-md-1">%(banshuirendianhua)s</td>                                
-                            </tr> """% dict(objurl="%s/%s" % (i.getURL(),id),                                            
-                                            title=i.Title,
+                            </tr> """% dict(objurl= j.getURL(),                                            
+                                            title=i.title,
                                             shibiehao = i.guanlidaima,
                                             type = i.regtype,
                                             shuiguanyuan = i.shuiguanyuan,
@@ -534,10 +543,9 @@ class totalajaxsearch(ajaxsearch):
                                             caiwufuzerendianhua = i.caiwufuzerendianhua,
                                             banshuiren = i.banshuiren,
                                             banshuirendianhua = i.banshuirendianhua,
-                                            description= i.Description,
+                                            description= i.description,
                                             date = i.dengjiriqi)           
             outhtml = "%s%s" %(outhtml ,out)
-
            
         data = {'searchresult': outhtml,'start':start,'size':size,'total':totalnum}
         return data 
