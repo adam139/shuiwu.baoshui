@@ -49,6 +49,8 @@ class ArchivedView(BrowserView):
         k = 0
         status = lambda x:(x and  u"已归档" or (not x) and u"未归档")
         for i in brains:
+            obj = i.getObject()
+            zt = obj.guidangzhuangtai
             out = """<tr><td class="col-md-1 text-center">%(num)s</td>
                          <td class="col-md-3 text-left"><a href="%(objurl)s">%(Id)s</a></td>
                          <td class="col-md-3 text-left">%(status)s</td>
@@ -56,9 +58,12 @@ class ArchivedView(BrowserView):
                                             objurl= i.getURL(),
                                             num=str(k + 1),
                                             Id=u"%s年度记录" % i.id,
-                                            status = status(i.getObject().guidangzhuangtai),                                           
+                                            status = status(zt),                                           
                                             date = i.dengjiriqi)           
             #to do set default layout
+            if zt:
+                obj.setLayout("nashiren_view")
+                
             outhtml = "%s%s" %(outhtml ,out)
             k = k + 1            
         return outhtml                        

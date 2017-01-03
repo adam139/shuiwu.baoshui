@@ -17,6 +17,7 @@ from shuiwu.baoshui.content.nashuiren import Inashuiren
 from shuiwu.baoshui.content.niandu import Iniandu
 from shuiwu.baoshui.subscriber import yuedu_subjects,jidu_subjects,ling_subjects
 from shuiwu.baoshui.subscriber import subids,niandugouduiziduan
+from shuiwu.baoshui.subscriber import tagroup
 from shuiwu.baoshui import _
 
 # grok.templatedir('templates')
@@ -285,17 +286,36 @@ class ModifyProperty(grok.View):
         # get niandu object
         context = self.context
         oldtag = set(context.Subject())
+        import pdb
+        pdb.set_trace() 
+        
         # properties in nashuiren
-        if property not in niandugouduiziduan:
+        niandu_fd = niandugouduiziduan
+        niandu_fd.append('guidangzhuangtai')
+        if property not in niandu_fd:
             obj =context.aq_parent
+        # properties in niandu
         else:
             obj = context
                     
         #年度未申报标签
-        thetag = ling_subjects[1].encode('utf-8')         
+        thetag = ling_subjects[1].encode('utf-8')
+        def instring(item):
+            pattern = tagroup[0].encode("utf-8")
+            if pattern in item:
+                return False
+            else:
+                return True          
         if shenbaofou =="true":
             setattr(obj,property,True)
-            if property == "guidangzhuangtai":pass
+            if property == "feizhenghurending":
+#                 sbs = set(obj.Subject())
+                # remove old nashuiren status tag
+                sbs = filter(instring,oldtag)
+                newtag = u"%s-%s" % (taggroup[0],u"非正常")
+                newtag = newtag.encode("utf-8")
+                oldtag = set(sbs.append(newtag))                
+
             #如果所有年报税种已申报，删除年报未申报tag
             if self.isallfinished(obj):                                                                                                        
                 if thetag in oldtag:
