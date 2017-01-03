@@ -47,14 +47,23 @@ class ArchivedView(BrowserView):
         brains = self.catalog()(query)
         outhtml = ""
         k = 0
+        status = lambda x:(x and  u"已归档" or (not x) and u"未归档")
         for i in brains:
+            obj = i.getObject()
+            zt = obj.guidangzhuangtai
             out = """<tr><td class="col-md-1 text-center">%(num)s</td>
                          <td class="col-md-3 text-left"><a href="%(objurl)s">%(Id)s</a></td>
+                         <td class="col-md-3 text-left">%(status)s</td>
                          <td class="col-md-3">%(date)s</td></tr>""" % dict(
-                                            objurl="%s/@@nashuiren_view" % i.getURL(),
+                                            objurl= i.getURL(),
                                             num=str(k + 1),
-                                            Id=i.id,                                            
+                                            Id=u"%s年度记录" % i.id,
+                                            status = status(zt),                                           
                                             date = i.dengjiriqi)           
+            #to do set default layout
+            if zt:
+                obj.setLayout("nashiren_view")
+                
             outhtml = "%s%s" %(outhtml ,out)
             k = k + 1            
         return outhtml                        

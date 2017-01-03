@@ -61,12 +61,6 @@ getout = [u"内资个体"]
 def initObjectTreeWithThread(obj,event):
     "init all child objects for the nashuiren object that had been created by front end UI"
     
-    currentyear = datetime.datetime.today().strftime("%Y")
-    target = api.content.create(
-    id = currentyear,
-    type='shuiwu.baoshui.niandu',
-    title=u'%s年度记录' % currentyear,
-    container=obj)
     status = obj.status
     description = obj.description
     shuiguanyuan = obj.shuiguanyuan
@@ -86,12 +80,26 @@ def initObjectTreeWithThread(obj,event):
     subjects = yuedu_subjects + jidu_subjects + ling_subjects + init_tags   
     obj.setSubject(tuple(subjects))                        
     obj.reindexObject()
+    
+# 內资个体 不需要建立子树    
+    if obj.regtype == getout[0].encode('utf-8'):
+        return     
+# create subtree
+    currentyear = datetime.datetime.today().strftime("%Y")
+    target = api.content.create(
+    id = currentyear,
+    type='shuiwu.baoshui.niandu',
+    title=u'%s年度记录' % currentyear,
+    container=obj)    
    # Put the tasks into the queue as a tuple
     for subid,title in subids:
         title = title.encode('utf-8')
         type="shuiwu.baoshui.%s" % subid
         directory = api.content.create(type=type,id=subid,title=title,container=target)                                                                                                        
  
+def ModifiedNashuirenEvent(obj,event):
+    pass
+
 # @grok.subscribe(ICreateNashuirenEvent)
 def CreateNashuirenEvent(event):
     """this event be fired by import nashuiren ui"""

@@ -1,6 +1,7 @@
 from plone.indexer.decorator import indexer
 # from Products.ZCatalog.interfaces import IZCatalog
 from shuiwu.baoshui.content.nashuiren import Inashuiren
+from shuiwu.baoshui.content.niandu import Iniandu
 
 @indexer(Inashuiren)
 def indexer_guanlidaima(obj, **kw):
@@ -37,3 +38,6 @@ def indexer_banshuiren(obj, **kw):
 @indexer(Inashuiren)
 def indexer_banshuirendianhua(obj, **kw):
     return obj.banshuirendianhua
+@indexer(Iniandu)
+def indexer_guidangzhuangtai(obj, **kw):
+    return obj.guidangzhuangtai

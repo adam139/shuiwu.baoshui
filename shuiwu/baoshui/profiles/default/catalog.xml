@@ -39,5 +39,9 @@
     <index name="danganbianhao" meta_type="FieldIndex">
         <indexed_attr value="danganbianhao"/>
     </index>
-    <column value="danganbianhao"/>    
+    <column value="danganbianhao"/>
+    <index name="guidangzhuangtai" meta_type="FieldIndex">
+        <indexed_attr value="guidangzhuangtai"/>
+    </index>
+    <column value="guidangzhuangtai"/>        
 </object>
