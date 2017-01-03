@@ -32,11 +32,11 @@ class sysAjaxListingView(BrowserView):
     """
     AJAX 查询，返回分页结果,for some contenttypes relative to project
     """
-    def __init__(self,context, request):
-        # Each view instance receives context and request as construction parameters
-        self.context = context
-        self.request = request
-        add_resource_on_request(self.request, 'sorter')   
+#     def __init__(self,context, request):
+#         # Each view instance receives context and request as construction parameters
+#         self.context = context
+#         self.request = request
+#         add_resource_on_request(self.request, 'sorter')   
                
     @memoize    
     def catalog(self):
@@ -507,18 +507,24 @@ class totalajaxsearch(ajaxsearch):
         del origquery 
         del totalquery,totalbrains
 #call output function        
-        data = self.output(start,size,totalnum, braindata)
+        data = self.output(start,size,totalnum, braindata,searchview)
         self.request.response.setHeader('Content-Type', 'application/json')
         return json.dumps(data)
     
-    def output(self,start,size,totalnum,braindata):
+    def output(self,start,size,totalnum,braindata,searchview):
         "根据参数total,braindata,返回jason 输出"
         
         outhtml = ""     
         import datetime
         id = datetime.datetime.today().strftime("%Y")
-        for j in braindata:
-            i = j.getObject().aq_parent          
+        for k in braindata:
+#             import pdb
+#             pdb.set_trace()
+            bpath = k.getURL()
+            nid = bpath.split("/")[-2]
+            qry = {'id':nid}
+            qry['object_provides'] = Inashuiren.__identifier__
+            innerb = searchview.search_multicondition(qry)[0]         
             out = """<tr>
                                 <td class="col-md-1">%(shibiehao)s</td>
                                 <td class="col-md-1"><a href="%(objurl)s">%(title)s</a></td>
@@ -532,19 +538,19 @@ class totalajaxsearch(ajaxsearch):
                                 <td class="col-md-1">%(caiwufuzerendianhua)s</td>
                                 <td class="col-md-1">%(banshuiren)s</td>
                                 <td class="col-md-1">%(banshuirendianhua)s</td>                                
-                            </tr> """% dict(objurl= j.getURL(),                                            
-                                            title=i.title,
-                                            shibiehao = i.guanlidaima,
-                                            type = i.regtype,
-                                            shuiguanyuan = i.shuiguanyuan,
-                                            danganbianhao = i.danganbianhao,
-                                            status = i.status,
-                                            caiwufuzeren = i.caiwufuzeren,
-                                            caiwufuzerendianhua = i.caiwufuzerendianhua,
-                                            banshuiren = i.banshuiren,
-                                            banshuirendianhua = i.banshuirendianhua,
-                                            description= i.description,
-                                            date = i.dengjiriqi)           
+                            </tr> """% dict(objurl= bpath,                                            
+                                            title=innerb.Title,
+                                            shibiehao = innerb.guanlidaima,
+                                            type = innerb.regtype,
+                                            shuiguanyuan = innerb.shuiguanyuan,
+                                            danganbianhao = innerb.danganbianhao,
+                                            status = innerb.status,
+                                            caiwufuzeren = innerb.caiwufuzeren,
+                                            caiwufuzerendianhua = innerb.caiwufuzerendianhua,
+                                            banshuiren = innerb.banshuiren,
+                                            banshuirendianhua = innerb.banshuirendianhua,
+                                            description= innerb.Description,
+                                            date = innerb.dengjiriqi)           
             outhtml = "%s%s" %(outhtml ,out)
            
         data = {'searchresult': outhtml,'start':start,'size':size,'total':totalnum}
