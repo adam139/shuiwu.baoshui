@@ -269,8 +269,8 @@
 						<td colspan="2" class="text-center col-md-12">管理类</td>
 					</tr>
 					<tr class="row notable">
-						<td class="property col-md-4">注销税务登记表</td>
-						<td class="data col-md-8 p-checkbox text-center" tal:define="property string:zhuxiaoshuiwudengji;checked python:view.parentobj_propertyChecked(property)">
+						<td class="property col-md-4">归档状态</td>
+						<td class="data col-md-8 p-checkbox text-center" tal:define="property string:guidangzhuangtai;checked python:view.propertyChecked(property)">
 							<tal:block tal:condition="checked">
 								<input checked type="checkbox"/>
 								<span  class="switch-style on">&nbsp;</span>
