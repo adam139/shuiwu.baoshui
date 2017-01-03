@@ -107,9 +107,6 @@ class Inashuiren(form.Schema,IBasic):
     feizhenghurending = schema.Bool(title=_(u"fei zhenghu rending biao"),
                        required=False,
                        default=False)
-    guidangzhuangtai = schema.Bool(title=_(u"guidang zhuangtai"),
-                       required=False,
-                       default=False)
     
     
     form.omitted('year','zhuguanshuiwujiguan','feizhenghurending','zhuxiaoshuiwudengji'

@@ -56,8 +56,9 @@ class ArchivedView(BrowserView):
                                             objurl= i.getURL(),
                                             num=str(k + 1),
                                             Id=u"%s年度记录" % i.id,
-                                            status = status(i.guidangzhuangtai),                                           
+                                            status = status(i.getObject().guidangzhuangtai),                                           
                                             date = i.dengjiriqi)           
+            #to do set default layout
             outhtml = "%s%s" %(outhtml ,out)
             k = k + 1            
         return outhtml                        

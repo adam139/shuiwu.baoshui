@@ -28,4 +28,8 @@ class Iniandu(form.Schema):
                        default=False)
 #     zhuxiaoshuiwudengji = schema.Bool(title=_(u"zhuxiao shuiwu dengjibiao"),
 #                        required=False,
-#                        default=False)    
+#                        default=False)
+
+    guidangzhuangtai = schema.Bool(title=_(u"guidang zhuangtai"),
+                       required=False,
+                       default=False)    
