@@ -10,9 +10,6 @@ from plone.memoize.instance import memoize
 from Products.Five.browser import BrowserView
 from datetime import datetime
 
-# from shuiwu.baoshui.content.jidujilu import Ijidujilu
-# from shuiwu.baoshui.content.ancijilu import Iancijilu
-# from shuiwu.baoshui.content.yuedujilu import Iyuedujilu
 from shuiwu.baoshui.content.nashuiren import Inashuiren
 from shuiwu.baoshui.content.niandu import Iniandu
 from shuiwu.baoshui.subscriber import yuedu_subjects,jidu_subjects,ling_subjects
@@ -315,7 +312,12 @@ class ModifyProperty(grok.View):
                 newtag = u"%s-%s" % (taggroup[0],u"非正常")
                 newtag = newtag.encode("utf-8")
                 oldtag = set(sbs.append(newtag))                
-
+            if property == "zhuxiaoshuiwudengji":
+                # remove old nashuiren status tag
+                sbs = filter(instring,oldtag)
+                newtag = u"%s-%s" % (taggroup[0],u"注销")
+                newtag = newtag.encode("utf-8")
+                oldtag = set(sbs.append(newtag)) 
             #如果所有年报税种已申报，删除年报未申报tag
             if self.isallfinished(obj):                                                                                                        
                 if thetag in oldtag:
