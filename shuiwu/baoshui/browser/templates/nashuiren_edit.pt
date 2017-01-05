@@ -320,20 +320,7 @@
 								<span tal:attributes="data-property python:property" class="switch-style off">&nbsp;</span>
 							</tal:block>							
 						</td>						
-					</tr>					
-					<tr class="row notable">
-						<td class="property col-md-4">归档状态</td>
-						<td class="data col-md-8 p-checkbox text-center" tal:define="property string:guidangzhuangtai;checked python:view.propertyChecked(property)">
-							<tal:block tal:condition="checked">
-								<input checked type="checkbox"/>
-								<span tal:attributes="data-property python:property" class="switch-style on">&nbsp;</span>
-							</tal:block>
-							<tal:block tal:condition="not:checked">
-								<input type="checkbox"/>
-								<span tal:attributes="data-property python:property" class="switch-style off">&nbsp;</span>
-							</tal:block>							
-						</td>						
-					</tr>
+					</tr>				
 					<tr class="row notable">
 						<td class="property col-md-4">非正户认定表</td>
 						<td class="data col-md-8 p-checkbox text-center" tal:define="property string:feizhenghurending;checked python:view.parentobj_propertyChecked(property)">
@@ -346,7 +333,20 @@
 								<span tal:attributes="data-property python:property" class="switch-style off">&nbsp;</span>
 							</tal:block>							
 						</td>						
-					</tr>																																																		
+					</tr>
+					<tr class="row notable">
+						<td class="property col-md-4">归档状态</td>
+						<td class="data col-md-8 p-checkbox text-center" tal:define="property string:guidangzhuangtai;checked python:view.propertyChecked(property)">
+							<tal:block tal:condition="checked">
+								<input checked type="checkbox"/>
+								<span tal:attributes="data-property python:property" class="switch-style on">&nbsp;</span>
+							</tal:block>
+							<tal:block tal:condition="not:checked">
+								<input type="checkbox"/>
+								<span tal:attributes="data-property python:property" class="switch-style off">&nbsp;</span>
+							</tal:block>							
+						</td>						
+					</tr>																																																							
 					<tr class="row">
 						<td colspan="2" class="text-center col-md-12">按次申报</td>
 					</tr>

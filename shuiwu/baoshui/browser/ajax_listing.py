@@ -194,7 +194,6 @@ class sysAjaxListingView(BrowserView):
         """
         postfix = "</li></ul>"
         for group in groups:
-
             if group != "":                
                 prefixing = prefix % (group,group)
             else:
@@ -216,26 +215,12 @@ class sysAjaxListingView(BrowserView):
             out = "%s%s" % (out,loopitem)
         return out                                  
         
-         
-#     def canbeRead(self):
-# #        status = self.workflow_state()
-# # checkPermission function must be use Title style permission
-#         canbe = self.pm().checkPermission(viewReport,self.context)
-# 
-#         return canbe is not None
-
-
-    
-       
-        
-    def getPathQuery(self):
- 
+    def getPathQuery(self): 
         """返回 all organizations
         """
         query = {}
         query['path'] = "/".join(self.context.getPhysicalPath())
         return query
-
          
     def search_multicondition(self,query):  
         return self.catalog()(query)
@@ -250,9 +235,6 @@ class  ajaxListingView(sysAjaxListingView):
     def getTagregistryProxy(self):
         settings = getUtility(IRegistry).forInterface(ITagSettings)
         return settings.tags    
-    
-
-  
 
  # ajax load more tags       
 class sysloadMore(grok.View):
@@ -267,18 +249,12 @@ class sysloadMore(grok.View):
         return searchview
         
     def render(self):
-        searchview = self.queryview()    
-#        self.portal_state = getMultiAdapter((self.context, self.request), name=u"plone_portal_state")
-                
+        searchview = self.queryview()                  
  # datadic receive front ajax post data       
         datadic = self.request.form
         start = int(datadic['start']) # batch search start position
         group = datadic['category']  # 对应 tag category
-#         import pdb
-#         pdb.set_trace()
         out = searchview.getTagHtml(group,start,None)
-#         getTagHtml(self,category,start=0,size=None)
-
         self.request.response.setHeader('Content-Type', 'application/json')
         return json.dumps(out)   
 
@@ -340,8 +316,7 @@ class ajaxsearch(grok.View):
         tag = datadic['tag'].strip()
         sortcolumn = datadic['sortcolumn']
         sortdirection = datadic['sortdirection']
-        keyword = (datadic['searchabletext']).strip()     
-
+        keyword = (datadic['searchabletext']).strip()    
         origquery = searchview.getPathQuery()
         origquery['object_provides'] = Inashuiren.__identifier__
 # 查询当前年度的 niandu对象
@@ -350,16 +325,12 @@ class ajaxsearch(grok.View):
 #         origquery['object_provides'] = Iniandu.__identifier__
 #         origquery['id'] = id        
         origquery['sort_on'] = sortcolumn  
-        origquery['sort_order'] = sortdirection
-                
+        origquery['sort_order'] = sortdirection                
  #模糊搜索       
         if keyword != "":
-            origquery['SearchableText'] = '*'+keyword+'*'        
-
+            origquery['SearchableText'] = '*'+keyword+'*'       
         if datekey != 0:
             origquery['modified'] = self.Datecondition(datekey)           
-
-
         # remove repeat values 
         tag = tag.split(',')
         tag = set(tag)
@@ -371,14 +342,12 @@ class ajaxsearch(grok.View):
 # recover un-category tag (remove:u"未分类-")
         def recovery(value):
             if unclass not in value:return value
-            return value.split('-')[1]
-            
+            return value.split('-')[1]            
         tag = map(recovery,tag)        
         if '0' in tag and len(tag) > 1:
             tag.remove('0')
             rule = {"query":tag,"operator":"and"}
-            origquery['Subject'] = rule
-                      
+            origquery['Subject'] = rule                      
 #totalquery  search all 
         totalquery = origquery.copy()
 #origquery provide  batch search        
@@ -387,8 +356,6 @@ class ajaxsearch(grok.View):
 #         origquery['regtype'] != getout[0]
         # search all                         
         totalbrains = searchview.search_multicondition(totalquery)
-#         import pdb
-#         pdb.set_trace()
         totalnum = len(totalbrains)
         # batch search         
         braindata = searchview.search_multicondition(origquery)
@@ -396,18 +363,18 @@ class ajaxsearch(grok.View):
         del origquery 
         del totalquery,totalbrains
 #call output function        
+        braindata = tuple(braindata)
         data = self.output(start,size,totalnum, braindata)
         self.request.response.setHeader('Content-Type', 'application/json')
         return json.dumps(data)       
-       
+    @view.memoize   
     def output(self,start,size,totalnum,braindata):
         "根据参数total,braindata,返回jason 输出"
         outhtml = ""      
         k = 0
         import datetime
         id = datetime.datetime.today().strftime("%Y")
-        for i in braindata:
-          
+        for i in braindata:          
             out = """<tr>
                                 <td class="col-md-1 text-center">%(num)s</td>
                                 <td class="col-md-3 text-left"><a href="%(objurl)s">%(title)s</a></td>
@@ -421,8 +388,7 @@ class ajaxsearch(grok.View):
                                             description= i.Description,
                                             date = i.dengjiriqi)           
             outhtml = "%s%s" %(outhtml ,out)
-            k = k + 1 
-           
+            k = k + 1           
         data = {'searchresult': outhtml,'start':start,'size':size,'total':totalnum}
         return data
           
@@ -432,19 +398,16 @@ class totalajaxsearch(ajaxsearch):
     grok.require('zope2.View')
         
     def render(self):    
-#        self.portal_state = getMultiAdapter((self.context, self.request), name=u"plone_portal_state")
         searchview = getMultiAdapter((self.context, self.request),name=u"sysajax_listings")        
  # datadic receive front ajax post data       
         datadic = self.request.form
         start = int(datadic['start']) # batch search start position
         datekey = int(datadic['datetype'])  # 对应 最近一周，一月，一年……
-        size = int(datadic['size'])      # batch search size          
-
+        size = int(datadic['size'])      # batch search size         
         tag = datadic['tag'].strip()
         sortcolumn = datadic['sortcolumn']
         sortdirection = datadic['sortdirection']
-        keyword = (datadic['searchabletext']).strip()     
-
+        keyword = (datadic['searchabletext']).strip()    
         origquery = searchview.getPathQuery()
 #         origquery['object_provides'] = Inashuiren.__identifier__
 ##查询当前年度的 niandu对象
@@ -457,14 +420,8 @@ class totalajaxsearch(ajaxsearch):
  #模糊搜索       
         if keyword != "":
             origquery['SearchableText'] = '*'+keyword+'*'        
-
-#         if securitykey != 0:
-#             origquery['security_level'] = searchview.getSecurityLevel(securitykey)
         if datekey != 0:
-            origquery['created'] = self.Datecondition(datekey)           
-#         if tasktypekey != 0:
-#             origquery['task_type'] = searchview.getTaskType(tasktypekey)
-
+            origquery['modified'] = self.Datecondition(datekey)           
         # remove repeat values 
         tag = tag.split(',')
         tag = set(tag)
@@ -476,18 +433,13 @@ class totalajaxsearch(ajaxsearch):
 # recover un-category tag (remove:u"未分类-")
         def recovery(value):
             if unclass not in value:return value
-            return value.split('-')[1]
-            
+            return value.split('-')[1]            
         tag = map(recovery,tag)        
         if '0' in tag and len(tag) > 1:
             tag.remove('0')
             rule = {"query":tag,"operator":"and"}
-            origquery['Subject'] = rule
-                      
-#totalquery  search all 
-#         import pdb
-#         pdb.set_trace()
-#         origquery['regtype'] != getout[0].encode('utf-8')
+            origquery['Subject'] = rule                      
+#totalquery  search all
         totalquery = origquery.copy()
 #origquery provide  batch search        
         origquery['b_size'] = size 
@@ -555,7 +507,6 @@ class totalajaxsearch(ajaxsearch):
                                             banshuirendianhua = innerb.banshuirendianhua,
                                             description= innerb.Description,
                                             date = innerb.dengjiriqi)           
-            outhtml = "%s%s" %(outhtml ,out)
-           
+            outhtml = "%s%s" %(outhtml ,out)           
         data = {'searchresult': outhtml,'start':start,'size':size,'total':totalnum}
         return data 
