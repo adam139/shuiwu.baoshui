@@ -249,7 +249,7 @@ class BaseEdit(dexterity.EditForm):
     @property
     def fields(self):
         return field.Fields(Inashuiren).select('title','guanlidaima', 'description','dengjiriqi',
-                                                 'shuiguanyuan','danganbianhao','xiaoguimo','status',
+                                                 'shuiguanyuan','danganbianhao','status',
                                                  'regtype','caiwufuzeren','caiwufuzerendianhua',
                                                  'banshuiren','banshuirendianhua')
 
@@ -264,11 +264,7 @@ class ModifyProperty(grok.View):
     
     def isallfinished(self,obj):
         "统计按年申报的所有税种在该时间段是否都钩对，如果都钩对，返回True"
-        # get nashuiren object
-#         context = self.context.aq_parent
-#         context = self.context
-#         import pdb
-#         pdb.set_trace()        
+       
         for fd in niandugouduiziduan:
             if not getattr(obj,fd,False):
                 return False
@@ -282,19 +278,15 @@ class ModifyProperty(grok.View):
         shenbaofou = datadic['shenbaofou']
         # get niandu object
         context = self.context
-        oldtag = set(context.Subject())
-        import pdb
-        pdb.set_trace() 
-        
-        # properties in nashuiren
+        oldtag = set(context.Subject())       
+        # properties in niandu
         niandu_fd = niandugouduiziduan
         niandu_fd.append('guidangzhuangtai')
         if property not in niandu_fd:
-            obj =context.aq_parent
-        # properties in niandu
+            # properties in nashuiren
+            obj =context.aq_parent        
         else:
-            obj = context
-                    
+            obj = context                    
         #年度未申报标签
         thetag = ling_subjects[1].encode('utf-8')
         def instring(item):
@@ -306,18 +298,26 @@ class ModifyProperty(grok.View):
         if shenbaofou =="true":
             setattr(obj,property,True)
             if property == "feizhenghurending":
-#                 sbs = set(obj.Subject())
                 # remove old nashuiren status tag
                 sbs = filter(instring,oldtag)
-                newtag = u"%s-%s" % (taggroup[0],u"非正常")
+                newtag = u"%s-%s" % (tagroup[0],u"非正常")
                 newtag = newtag.encode("utf-8")
-                oldtag = set(sbs.append(newtag))                
+                setattr(obj,"status",newtag.split("-")[-1])
+                obj.reindexObject(idxs=["status"])
+                sbs.append(newtag)
+                oldtag = set(sbs)                
             if property == "zhuxiaoshuiwudengji":
                 # remove old nashuiren status tag
                 sbs = filter(instring,oldtag)
-                newtag = u"%s-%s" % (taggroup[0],u"注销")
+                newtag = u"%s-%s" % (tagroup[0],u"注销")
                 newtag = newtag.encode("utf-8")
-                oldtag = set(sbs.append(newtag)) 
+                setattr(obj,"status",newtag.split("-")[-1])
+                obj.reindexObject(idxs=["status"])
+                sbs.append(newtag)
+                oldtag = set(sbs)
+            if property == "guidangzhuangtai":                
+                obj.reindexObject(idxs=["guidangzhuangtai"])
+                                 
             #如果所有年报税种已申报，删除年报未申报tag
             if self.isallfinished(obj):                                                                                                        
                 if thetag in oldtag:

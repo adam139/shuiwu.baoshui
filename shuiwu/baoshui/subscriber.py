@@ -78,8 +78,7 @@ def initObjectTreeWithThread(obj,event):
         tag = "%s-%s" %(group,shuiguanyuan)
         init_tags.append(tag)
     subjects = yuedu_subjects + jidu_subjects + ling_subjects + init_tags   
-    obj.setSubject(tuple(subjects))                        
-    obj.reindexObject()
+
     
 # 內资个体 不需要建立子树    
     if obj.regtype == getout[0].encode('utf-8'):
@@ -90,15 +89,64 @@ def initObjectTreeWithThread(obj,event):
     id = currentyear,
     type='shuiwu.baoshui.niandu',
     title=u'%s年度记录' % currentyear,
-    container=obj)    
+    container=obj)
+    target.setSubject(tuple(subjects))                        
+    target.reindexObject()        
    # Put the tasks into the queue as a tuple
     for subid,title in subids:
         title = title.encode('utf-8')
         type="shuiwu.baoshui.%s" % subid
         directory = api.content.create(type=type,id=subid,title=title,container=target)                                                                                                        
+
  
 def ModifiedNashuirenEvent(obj,event):
-    pass
+    "the handler of modify nashuiren base info event,update niandu's subjects"
+    status = obj.status
+    description = obj.description
+    shuiguanyuan = obj.shuiguanyuan
+    id = datetime.datetime.today().strftime("%Y")
+    subobj = obj[id]
+    def instring_status(tags):
+        pattern = tagroup[0].encode("utf-8")
+        if pattern in tags:
+            return False
+        else:
+            return True
+    def instring_desc(tags):
+        pattern = tagroup[1].encode("utf-8")
+        if pattern in tags:
+            return False
+        else:
+            return True
+    def instring_shuiguanyuan(tags):
+        pattern = tagroup[2].encode("utf-8")
+        if pattern in tags:
+            return False
+        else:
+            return True                
+    oldtag = set(subobj.Subject())
+    
+    if status != "":        
+        group = tagroup[0].encode("utf-8")
+        tag = "%s-%s" %(group,status)
+        if tag not in oldtag:
+            oldtag = filter(instring_status,oldtag)
+            oldtag.append(tag)
+    if description != "":        
+        group = tagroup[1].encode("utf-8")
+        tag = "%s-%s" %(group,description)
+        if tag not in oldtag:
+            oldtag = filter(instring_desc,oldtag)
+            oldtag.append(tag)
+    if shuiguanyuan != "":
+        group = tagroup[2].encode("utf-8")
+        tag = "%s-%s" %(group,shuiguanyuan)
+        if tag not in oldtag:            
+            oldtag = filter(instring_shuiguanyuan,oldtag)               
+            oldtag.append(tag)
+       
+    subobj.setSubject(tuple(oldtag))                        
+    subobj.reindexObject()
 
 # @grok.subscribe(ICreateNashuirenEvent)
 def CreateNashuirenEvent(event):

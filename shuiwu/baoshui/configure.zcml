@@ -62,12 +62,13 @@
             handler=".subscriber.initObjectTreeWithThread"
             />
 
-<!--
+
   <subscriber
-            for="shuiwu.baoshui.content.base.Iyuedu
+            for="shuiwu.baoshui.content.nashuiren.Inashuiren
                  zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-            handler=".subscriber.setTagyuedu"
+            handler=".subscriber.ModifiedNashuirenEvent"
             />
+<!--            
   <subscriber
             for="shuiwu.baoshui.content.base.Ijidu
                  zope.lifecycleevent.interfaces.IObjectModifiedEvent"

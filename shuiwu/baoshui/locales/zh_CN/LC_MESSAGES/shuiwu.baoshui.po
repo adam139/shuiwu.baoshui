@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: shuiwu.baoshui\n"
-"POT-Creation-Date: 2016-12-16 13:05+0000\n"
-"PO-Revision-Date: 2016-10-17 09:04+0800\n"
+"POT-Creation-Date: 2017-01-05 06:05+0000\n"
+"PO-Revision-Date: 2017-01-05 14:09+0800\n"
 "Last-Translator: Adam <yuejun.tang@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,435 +16,434 @@ msgstr ""
 "Language: zh\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: ./browser/templates/datainout.pt:98
+#: browser/templates/datainout.pt:98
 msgid "Click here to get the errors as a CSV file"
 msgstr "点击这里获取包含错误信息的CSV文件"
 
-#: ./browser/templates/datainout.pt:111
+#: browser/templates/datainout.pt:111
 msgid "Click on the Export button in order to download the full list of the nashuiren jiben xinxi as a CSV file. The CSV syntax is the same used in the template."
 msgstr "点击导出按钮以下载纳税人基本信息，将生成一个CSV文件，该文件语法和模板中一样"
 
-#: ./browser/templates/datainout.pt:45
+#: browser/templates/datainout.pt:45
 msgid "Csv file"
 msgstr "Csv 文件"
 
-#: ./profiles/default/controlpanel.xml
+#: profiles/default/controlpanel.xml
 msgid "Data In/Out"
 msgstr "税务信息导入/导出"
 
-#: ./browser/datainout.py:172
+#: browser/datainout.py:169
 msgid "Data successfully imported."
 msgstr "数据已成功导入"
 
-#: ./browser/nashuiren_view.py:236
+#: browser/nashuiren_view.py:245
 msgid "Edit nashuiren base info"
 msgstr "编辑纳税人基本信息"
 
-#: ./browser/templates/datainout.pt:88
+#: browser/templates/datainout.pt:88
 msgid "Errors detail"
 msgstr "错误详情"
 
-#: ./browser/templates/datainout.pt:108
+#: browser/templates/datainout.pt:108
 msgid "Export"
 msgstr "导出"
 
-#: ./browser/templates/datainout.pt:40
+#: browser/templates/datainout.pt:40
 msgid "Import"
 msgstr "导入"
 
-#: ./profiles/default/types/shuiwu.baoshui.nashuiku.xml
+#: profiles/default/types/shuiwu.baoshui.nashuiku.xml
 msgid "Na shui ku"
 msgstr "纳税人资料库"
 
-#: ./profiles/default/types/shuiwu.baoshui.niandu.xml
+#: profiles/default/types/shuiwu.baoshui.niandu.xml
 msgid "Na shui niandu"
 msgstr "纳税登记年份"
 
-#: ./profiles/default/types/shuiwu.baoshui.nashuiren.xml
+#: profiles/default/types/shuiwu.baoshui.nashuiren.xml
 msgid "Na shui ren"
 msgstr "纳税人"
 
-#: ./browser/templates/datainout.pt:77
+#: browser/templates/datainout.pt:77
 msgid "Results"
 msgstr "结果"
 
-#: ./browser/templates/datainout.pt:48
+#: browser/templates/datainout.pt:48
 msgid "Select your CSV file here. Please respect the syntax of the template available ${here}"
 msgstr "选择CSV文件，该文件模板在${here}"
 
-#: ./browser/datainout.py:169
+#: browser/datainout.py:166
 msgid "Some errors occured. Please check your CSV syntax and retry."
 msgstr "CSV文件语法错误，请更正后，重试。"
 
-#: ./browser/datainout.py:98
+#: browser/datainout.py:98
 msgid "Wrong specification of the CSV file. Please correct it and retry."
 msgstr "CSV文件错误，请更正后，重试。"
 
-#: ./browser/templates/datainout.pt:89
+#: browser/templates/datainout.pt:89
 msgid "You will find below the CSV lines that failed."
 msgstr "你能在下面发现CSV文件在何处有问题。"
 
-#: ./profiles/default/types/shuiwu.baoshui.anciqita.xml
+#: profiles/default/types/shuiwu.baoshui.anciqita.xml
 msgid "anci qita"
 msgstr "按次其他"
 
-#: ./profiles/default/types/shuiwu.baoshui.anciqita.xml
+#: profiles/default/types/shuiwu.baoshui.anciqita.xml
 msgid "anciqita"
 msgstr "其他"
 
-#: ./profiles/default/types/shuiwu.baoshui.anjiqita1.xml
+#: profiles/default/types/shuiwu.baoshui.anjiqita1.xml
 msgid "anji qita1"
 msgstr "按季其他1"
 
-#: ./profiles/default/types/shuiwu.baoshui.anjiqita2.xml
+#: profiles/default/types/shuiwu.baoshui.anjiqita2.xml
 msgid "anji qita2"
 msgstr "按季其他2"
 
-#: ./profiles/default/types/shuiwu.baoshui.anjiqita1.xml
+#: profiles/default/types/shuiwu.baoshui.anjiqita1.xml
 msgid "anjiqita1"
 msgstr "其他1"
 
-#: ./profiles/default/types/shuiwu.baoshui.anjiqita2.xml
+#: profiles/default/types/shuiwu.baoshui.anjiqita2.xml
 msgid "anjiqita2"
 msgstr "其他2"
 
-#: ./profiles/default/types/shuiwu.baoshui.anyueqita2.xml
+#: profiles/default/types/shuiwu.baoshui.anyueqita2.xml
 msgid "anyue qita2"
 msgstr "按月其他2"
 
-#: ./profiles/default/types/shuiwu.baoshui.anyueqita1.xml
+#: profiles/default/types/shuiwu.baoshui.anyueqita1.xml
 msgid "anyueqita1"
 msgstr "其他1"
 
-#: ./profiles/default/types/shuiwu.baoshui.anyueqita2.xml
+#: profiles/default/types/shuiwu.baoshui.anyueqita2.xml
 msgid "anyueqita2"
 msgstr "其他2"
 
-#: ./content/nashuiren.py:76
+#: content/nashuiren.py:76
 msgid "banshui ren"
 msgstr "办税人"
 
-#: ./content/nashuiren.py:80
+#: content/nashuiren.py:80
 msgid "banshui ren dianhua"
 msgstr "办税人电话"
 
-#: ./content/nashuiren.py:67
+#: content/nashuiren.py:67
 msgid "caiwu fuze ren"
 msgstr "财务负责人"
 
-#: ./content/nashuiren.py:71
+#: content/nashuiren.py:71
 msgid "caiwu fuze ren dianhua"
 msgstr "财务负责人电话"
 
-#: ./profiles/default/types/shuiwu.baoshui.canbaojinshenbaobiao.xml
+#: profiles/default/types/shuiwu.baoshui.canbaojinshenbaobiao.xml
 msgid "canbaojinshenbaobiao"
 msgstr "残保金申报表"
 
-#: ./content/nashuiren.py:91
+#: content/nashuiren.py:91
 msgid "canjirenbaozhengjin shenbaobiao"
 msgstr "残疾人保证金申报表"
 
-#: ./content/nashuiren.py:88
+#: content/nashuiren.py:88 content/niandu.py:14
 msgid "chechuanshui shenbaobiao"
 msgstr "车船税申报表"
 
-#: ./profiles/default/types/shuiwu.baoshui.chengjianjiaoyudifangfujia.xml
+#: profiles/default/types/shuiwu.baoshui.chengjianjiaoyudifangfujia.xml
 msgid "chengjian jiaoyu difangjiaoyufujia"
 msgstr "城建、教育、地方教育附加"
 
-#: ./profiles/default/types/shuiwu.baoshui.chengzhentudishiyongshui.xml
+#: profiles/default/types/shuiwu.baoshui.chengzhentudishiyongshui.xml
 msgid "chengzhentudishiyongshui"
 msgstr "城镇土地使用税"
 
-#: ./content/nashuiren.py:52
+#: content/nashuiren.py:52
 msgid "dangan bianhao"
 msgstr "档案编号"
 
-#: ./content/nashuiren.py:26
+#: content/nashuiren.py:26
 msgid "dengji riqi"
 msgstr "登记日期"
 
-#: ./content/nashuiren.py:94
+#: content/nashuiren.py:94
 msgid "difang geshui huisuan qingjiaobiao"
 msgstr "地方税费汇算清缴表"
 
-#: ./profiles/default/types/shuiwu.baoshui.fangchanshui.xml
+#: profiles/default/types/shuiwu.baoshui.fangchanshui.xml
 msgid "fangchanshui"
 msgstr "房产税"
 
-#: ./profiles/default/types/shuiwu.baoshui.fangchanshuifangchanyuanzhi.xml
+#: profiles/default/types/shuiwu.baoshui.fangchanshuifangchanyuanzhi.xml
 msgid "fangchanshui fangchanyuanzhi"
 msgstr "房产税申报表（房产原值）"
 
-#: ./profiles/default/types/shuiwu.baoshui.fangchanshui.xml
+#: profiles/default/types/shuiwu.baoshui.fangchanshui.xml
 msgid "fangchanshui shenbao biao(zujinshouru)"
 msgstr "房产税申报表（租金收入）"
 
-#: ./profiles/default/types/shuiwu.baoshui.fangchanshuifangchanyuanzhi.xml
+#: profiles/default/types/shuiwu.baoshui.fangchanshuifangchanyuanzhi.xml
 msgid "fangchanshui shenbaobiao(fangchanyuanzhi)"
 msgstr "房产税申报表（房产原值）"
 
-#: ./content/nashuiren.py:106
+#: content/nashuiren.py:107
 msgid "fei zhenghu rending biao"
 msgstr "非正户认定表"
 
-#: ./vocabularies.py:8
+#: vocabularies.py:8
 msgid "fou zheng chang"
 msgstr "非正常"
 
-#: ./content/ancijilu.py:12
-#: ./content/base.py:70
+#: content/ancijilu.py:12 content/base.py:70
 msgid "gaiyue shenbao cishu"
 msgstr "该月申报次数"
 
-#: ./profiles/default/types/shuiwu.baoshui.gengdizhanyongshui.xml
+#: profiles/default/types/shuiwu.baoshui.gengdizhanyongshui.xml
 msgid "gengdi zhanyongshui"
 msgstr "耕地占用税"
 
-#: ./profiles/default/types/shuiwu.baoshui.gengdizhanyongshui.xml
+#: profiles/default/types/shuiwu.baoshui.gengdizhanyongshui.xml
 msgid "gengdi zhanyongshui shenbaobiao"
 msgstr "耕地占用税申报表"
 
-#: ./profiles/default/types/shuiwu.baoshui.gerensuodeshui.xml
+#: profiles/default/types/shuiwu.baoshui.gerensuodeshui.xml
 msgid "geren suodeshui"
 msgstr "个人所得税"
 
-#: ./profiles/default/types/shuiwu.baoshui.gerensuodeshui.xml
+#: profiles/default/types/shuiwu.baoshui.gerensuodeshui.xml
 msgid "geren suodeshui koujiao biao"
 msgstr "个人所得税扣缴表"
 
-#: ./content/nashuiren.py:97
+#: content/nashuiren.py:97
 msgid "geren suodeshui niandu shenbaobiao"
 msgstr "个人所得税年度申报表"
 
-#: ./profiles/default/types/shuiwu.baoshui.gonghuijingfei.xml
+#: profiles/default/types/shuiwu.baoshui.gonghuijingfei.xml
 msgid "gonghui jingfei shenbaobiao"
 msgstr "工会经费申报表"
 
-#: ./profiles/default/types/shuiwu.baoshui.gonghuijingfei.xml
+#: profiles/default/types/shuiwu.baoshui.gonghuijingfei.xml
 msgid "gonghuijingfei"
 msgstr "工会经费"
 
-#: ./content/nashuiren.py:47
+#: content/nashuiren.py:47
 msgid "guanli daima"
 msgstr "管理代码"
 
-#: ./vocabularies.py:28
+#: content/niandu.py:33
+msgid "guidang zhuangtai"
+msgstr "归档状态"
+
+#: vocabularies.py:28
 msgid "guo you qi ye"
-msgstr ""
+msgstr "国有企业"
 
-#: ./vocabularies.py:9
+#: vocabularies.py:9
 msgid "he xiao bao yan"
-msgstr ""
+msgstr "核销报验"
 
-#: ./browser/templates/datainout.pt:49
+#: browser/templates/datainout.pt:49
 msgid "here"
 msgstr "这儿"
 
-#: ./profiles/default/types/shuiwu.baoshui.lirunbiao.xml
+#: profiles/default/types/shuiwu.baoshui.lirunbiao.xml
 msgid "lirun biao"
 msgstr "利润表"
 
-#: ./profiles/default/types/shuiwu.baoshui.lirunbiao.xml
+#: profiles/default/types/shuiwu.baoshui.lirunbiao.xml
 msgid "lirunbiao"
 msgstr "利润表"
 
-#: ./profiles/default/types/shuiwu.baoshui.nashuiku.xml
+#: profiles/default/types/shuiwu.baoshui.nashuiku.xml
 msgid "na shui ku baohan duoge nashuiren jilu"
 msgstr "纳税人资料库包含很多纳税人记录"
 
-#: ./profiles/default/types/shuiwu.baoshui.niandu.xml
+#: profiles/default/types/shuiwu.baoshui.niandu.xml
 msgid "na shui niandu"
 msgstr "纳税登记年度"
 
-#: ./profiles/default/types/shuiwu.baoshui.nashuiren.xml
+#: profiles/default/types/shuiwu.baoshui.nashuiren.xml
 msgid "na shui ren niandu sheshui shenbao jilu"
 msgstr "纳税人年度涉税申报记录"
 
-#: ./content/nashuiren.py:63
+#: content/nashuiren.py:63
 msgid "nashui dengji zhuce leixing"
 msgstr "纳税人登记注册类型"
 
-#: ./behavior/status.py:16
-#: ./content/nashuiren.py:59
+#: behavior/status.py:16 content/nashuiren.py:59
 msgid "nashui ren zhuangtai"
 msgstr "纳税人状态"
 
-#: ./browser/templates/datainout.pt:14
+#: browser/templates/datainout.pt:14
 msgid "nashuiren daoru huo daochu"
 msgstr "纳税人导入或导出"
 
-#: ./browser/templates/datainout.pt:27
+#: browser/templates/datainout.pt:27
 msgid "nashuiren import and export as CSV files."
 msgstr "纳税人导入或导出为CSV文件"
 
-#: ./content/nashuiren.py:17
+#: content/nashuiren.py:17
 msgid "nashuiren mingcheng"
 msgstr "纳税人名称"
 
-#: ./content/nashuiren.py:21
+#: content/nashuiren.py:21
 msgid "nashuiren suoshu keshi"
 msgstr "纳税人所属科室"
 
-#: ./browser/templates/datainout.pt:83
+#: browser/templates/datainout.pt:83
 msgid "nashuiren(s) added."
 msgstr "纳税人已添加"
 
-#: ./vocabularies.py:26
+#: vocabularies.py:26
 msgid "nei zi ge ti"
-msgstr ""
+msgstr "内资个体"
 
-#: ./content/nashuiren.py:41
+#: content/nashuiren.py:41
 msgid "niandu"
 msgstr "年度"
 
-#: ./vocabularies.py:27
+#: vocabularies.py:27
 msgid "qi ta you xian ze ren gong si"
-msgstr ""
+msgstr "其他有限责任公司"
 
-#: ./content/nashuiren.py:100
+#: content/nashuiren.py:100 content/niandu.py:26
 msgid "qiye suodeshui niandu shenbaobiao ji huisuan qinjiao fudaojilu"
 msgstr "企业所得税年度申报表及汇算清缴辅导记录"
 
-#: ./profiles/default/types/shuiwu.baoshui.qiyesuodeshuialeiblei.xml
+#: profiles/default/types/shuiwu.baoshui.qiyesuodeshuialeiblei.xml
 msgid "qiye suodeshui yujiaobiao(a lei b lei)"
 msgstr "企业所得税预缴表（A类、B类）"
 
-#: ./profiles/default/types/shuiwu.baoshui.qiyesuodeshuialeiblei.xml
+#: profiles/default/types/shuiwu.baoshui.qiyesuodeshuialeiblei.xml
 msgid "qiyesuodeshui aleiblei"
 msgstr "企业所得税预缴表A类、B类）"
 
-#: ./profiles/default/types/shuiwu.baoshui.rukupingzheng.xml
+#: profiles/default/types/shuiwu.baoshui.rukupingzheng.xml
 msgid "rukupingzheng"
 msgstr "入库凭证"
 
-#: ./profiles/default/types/shuiwu.baoshui.rukupingzheng.xml
+#: profiles/default/types/shuiwu.baoshui.rukupingzheng.xml
 msgid "rukupingzheng anyue shenbaobiao"
 msgstr "入库凭证按月申报表"
 
-#: ./profiles/default/types/shuiwu.baoshui.shebaofei.xml
+#: profiles/default/types/shuiwu.baoshui.shebaofei.xml
 msgid "shebao fei"
 msgstr "社保费"
 
-#: ./profiles/default/types/shuiwu.baoshui.shebaofei.xml
+#: profiles/default/types/shuiwu.baoshui.shebaofei.xml
 msgid "shebao fei shenbaobiao"
 msgstr "社保费申报表"
 
-#: ./content/nashuiren.py:48
+#: content/nashuiren.py:48
 msgid "shehui xingren daima (nashuiren shibiehao)"
 msgstr "社会信任代码（纳税人识别号）"
 
-#: ./vocabularies.py:25
+#: vocabularies.py:25
 msgid "shi ye dan wei"
-msgstr ""
+msgstr "事业单位"
 
-#: ./content/base.py:12
-#: ./content/jidujilu.py:12
-#: ./content/yuedujilu.py:12
+#: content/base.py:12 content/jidujilu.py:12 content/yuedujilu.py:12
 msgid "shifou yi shenbao?"
 msgstr "是否已申报？"
 
-#: ./profiles/default/types/shuiwu.baoshui.shuilijijin.xml
+#: profiles/default/types/shuiwu.baoshui.shuilijijin.xml
 msgid "shuili jijin"
 msgstr "水利基金"
 
-#: ./profiles/default/types/shuiwu.baoshui.shuilijijin.xml
+#: profiles/default/types/shuiwu.baoshui.shuilijijin.xml
 msgid "shuili jijin shenbaobiao(yuebao)"
 msgstr "水利基金申报表（月报）"
 
-#: ./content/nashuiren.py:36
+#: content/nashuiren.py:36
 msgid "shuishou guanlirenyuan"
 msgstr "税收管理人员"
 
-#: ./profiles/default/types/shuiwu.baoshui.tudizengzhishui.xml
+#: profiles/default/types/shuiwu.baoshui.tudizengzhishui.xml
 msgid "tudi zengzhishui"
 msgstr "土地增值税"
 
-#: ./profiles/default/types/shuiwu.baoshui.tudizengzhishui.xml
+#: profiles/default/types/shuiwu.baoshui.tudizengzhishui.xml
 msgid "tudi zengzhishui shenbaobiao(anyue)"
 msgstr "土地增值税申报表（按月）"
 
-#: ./profiles/default/types/shuiwu.baoshui.xianjinliuliangbiao.xml
+#: profiles/default/types/shuiwu.baoshui.xianjinliuliangbiao.xml
 msgid "xianjin liuliang biao"
 msgstr "现金流量表"
 
-#: ./profiles/default/types/shuiwu.baoshui.xianjinliuliangbiao.xml
+#: profiles/default/types/shuiwu.baoshui.xianjinliuliangbiao.xml
 msgid "xianjinliuliangbiao"
 msgstr "现金流量表"
 
-#: ./content/nashuiren.py:55
+#: content/nashuiren.py:55
 msgid "xiao guimo nashuiren rending"
 msgstr "小规模纳税人认定"
 
-#: ./profiles/default/types/shuiwu.baoshui.yinhuashuianci.xml
+#: profiles/default/types/shuiwu.baoshui.yinhuashuianci.xml
 msgid "yinhuashui anci"
 msgstr "印花税按次"
 
-#: ./profiles/default/types/shuiwu.baoshui.yinhuashuianji.xml
+#: profiles/default/types/shuiwu.baoshui.yinhuashuianji.xml
 msgid "yinhuashui anji"
 msgstr "印花税按季"
 
-#: ./profiles/default/types/shuiwu.baoshui.yinhuashuianyue.xml
+#: profiles/default/types/shuiwu.baoshui.yinhuashuianyue.xml
 msgid "yinhuashui anyue"
 msgstr "印花税按月"
 
-#: ./profiles/default/types/shuiwu.baoshui.yinhuashuianyue.xml
+#: profiles/default/types/shuiwu.baoshui.yinhuashuianyue.xml
 msgid "yinhuashui shenbao biao(anyue)"
 msgstr "印花税申报表（按月）"
 
-#: ./profiles/default/types/shuiwu.baoshui.yinhuashuianci.xml
+#: profiles/default/types/shuiwu.baoshui.yinhuashuianci.xml
 msgid "yinhuashui shenbaobiao(anci)"
 msgstr "印花税申报表（按次）"
 
-#: ./profiles/default/types/shuiwu.baoshui.yinhuashuianji.xml
+#: profiles/default/types/shuiwu.baoshui.yinhuashuianji.xml
 msgid "yinhuashui shenbaobiao(anji)"
 msgstr "印花税申报表（按季）"
 
-#: ./content/nashuiren.py:85
+#: content/nashuiren.py:85 content/niandu.py:11
 msgid "yinhuashui shenbaobiao(yingyezhangbo)"
 msgstr "印花税申报表（营业帐薄）"
 
-#: ./profiles/default/types/shuiwu.baoshui.yinhuashuizijinzhangbo.xml
+#: profiles/default/types/shuiwu.baoshui.yinhuashuizijinzhangbo.xml
 msgid "yinhuashui shenbaobiao(zijin zhangbo)"
 msgstr "印花税申报表（资金帐薄）"
 
-#: ./profiles/default/types/shuiwu.baoshui.yinhuashuizijinzhangbo.xml
+#: profiles/default/types/shuiwu.baoshui.yinhuashuizijinzhangbo.xml
 msgid "yinhuashui zijinzhangbo"
 msgstr "印花税申报表（资金帐薄）"
 
-#: ./vocabularies.py:7
+#: vocabularies.py:7
 msgid "zheng chang"
-msgstr ""
+msgstr "正常"
 
-#: ./profiles/default/types/shuiwu.baoshui.zhifugongzimingxi.xml
+#: profiles/default/types/shuiwu.baoshui.zhifugongzimingxi.xml
 msgid "zhifu gongzi mingxi"
 msgstr "支付工资明细"
 
-#: ./content/nashuiren.py:30
+#: content/nashuiren.py:30
 msgid "zhu guan shuiwu jiguan"
 msgstr "主管税务机关"
 
-#: ./vocabularies.py:10
+#: vocabularies.py:10
 msgid "zhu xiao"
-msgstr ""
+msgstr "注销"
 
-#: ./content/nashuiren.py:103
+#: content/nashuiren.py:104
 msgid "zhuxiao shuiwu dengjibiao"
 msgstr "注销税务登记表"
 
-#: ./profiles/default/types/shuiwu.baoshui.zichanfuzaibiao.xml
+#: profiles/default/types/shuiwu.baoshui.zichanfuzaibiao.xml
 msgid "zichan fuzaibiao"
 msgstr "资产负债表"
 
-#: ./profiles/default/types/shuiwu.baoshui.zichanfuzaibiao.xml
+#: profiles/default/types/shuiwu.baoshui.zichanfuzaibiao.xml
 msgid "zichanfuzaibiao"
 msgstr "资产负债表"
 
-#: ./profiles/default/types/shuiwu.baoshui.ziyuanshui.xml
+#: profiles/default/types/shuiwu.baoshui.ziyuanshui.xml
 msgid "ziyuanshui"
 msgstr "资源税"
 
-#: ./profiles/default/types/shuiwu.baoshui.ziyuanshui.xml
+#: profiles/default/types/shuiwu.baoshui.ziyuanshui.xml
 msgid "ziyuanshui shenbaobiao"
 msgstr "资源税申报表"
-

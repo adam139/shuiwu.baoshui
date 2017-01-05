@@ -15,6 +15,7 @@ from Products.CMFCore import permissions
 from Products.CMFPlone.resources import add_resource_on_request
 # from plone.directives import dexterity
 from plone.memoize.instance import memoize
+from plone.memoize import view
 from shuiwu.baoshui import _
 from shuiwu.baoshui.content.nashuiku import Inashuiku
 from shuiwu.baoshui.content.nashuiren import Inashuiren
@@ -507,10 +508,13 @@ class totalajaxsearch(ajaxsearch):
         del origquery 
         del totalquery,totalbrains
 #call output function        
+        # transform to hashable
+        braindata = tuple(braindata)
         data = self.output(start,size,totalnum, braindata,searchview)
         self.request.response.setHeader('Content-Type', 'application/json')
         return json.dumps(data)
     
+    @view.memoize
     def output(self,start,size,totalnum,braindata,searchview):
         "根据参数total,braindata,返回jason 输出"
         

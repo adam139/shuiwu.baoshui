@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2016-12-16 13:05+0000\n"
+"POT-Creation-Date: 2017-01-05 06:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,11 +30,11 @@ msgstr ""
 msgid "Data In/Out"
 msgstr ""
 
-#: ./browser/datainout.py:172
+#: ./browser/datainout.py:169
 msgid "Data successfully imported."
 msgstr ""
 
-#: ./browser/nashuiren_view.py:236
+#: ./browser/nashuiren_view.py:245
 msgid "Edit nashuiren base info"
 msgstr ""
 
@@ -70,7 +70,7 @@ msgstr ""
 msgid "Select your CSV file here. Please respect the syntax of the template available ${here}"
 msgstr ""
 
-#: ./browser/datainout.py:169
+#: ./browser/datainout.py:166
 msgid "Some errors occured. Please check your CSV syntax and retry."
 msgstr ""
 
@@ -143,6 +143,7 @@ msgid "canjirenbaozhengjin shenbaobiao"
 msgstr ""
 
 #: ./content/nashuiren.py:88
+#: ./content/niandu.py:14
 msgid "chechuanshui shenbaobiao"
 msgstr ""
 
@@ -182,7 +183,7 @@ msgstr ""
 msgid "fangchanshui shenbaobiao(fangchanyuanzhi)"
 msgstr ""
 
-#: ./content/nashuiren.py:106
+#: ./content/nashuiren.py:107
 msgid "fei zhenghu rending biao"
 msgstr ""
 
@@ -225,6 +226,10 @@ msgstr ""
 
 #: ./content/nashuiren.py:47
 msgid "guanli daima"
+msgstr ""
+
+#: ./content/niandu.py:33
+msgid "guidang zhuangtai"
 msgstr ""
 
 #: ./vocabularies.py:28
@@ -301,6 +306,7 @@ msgid "qi ta you xian ze ren gong si"
 msgstr ""
 
 #: ./content/nashuiren.py:100
+#: ./content/niandu.py:26
 msgid "qiye suodeshui niandu shenbaobiao ji huisuan qinjiao fudaojilu"
 msgstr ""
 
@@ -399,6 +405,7 @@ msgid "yinhuashui shenbaobiao(anji)"
 msgstr ""
 
 #: ./content/nashuiren.py:85
+#: ./content/niandu.py:11
 msgid "yinhuashui shenbaobiao(yingyezhangbo)"
 msgstr ""
 
@@ -426,7 +433,7 @@ msgstr ""
 msgid "zhu xiao"
 msgstr ""
 
-#: ./content/nashuiren.py:103
+#: ./content/nashuiren.py:104
 msgid "zhuxiao shuiwu dengjibiao"
 msgstr ""
 
