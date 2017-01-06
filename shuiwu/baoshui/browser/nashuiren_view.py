@@ -315,7 +315,8 @@ class ModifyProperty(grok.View):
                 obj.reindexObject(idxs=["status"])
                 sbs.append(newtag)
                 oldtag = set(sbs)
-            if property == "guidangzhuangtai":                
+            if property == "guidangzhuangtai":
+                obj.setLayout("nashuiren_view")                
                 obj.reindexObject(idxs=["guidangzhuangtai"])
                                  
             #如果所有年报税种已申报，删除年报未申报tag
@@ -325,10 +326,11 @@ class ModifyProperty(grok.View):
             # remove 零申报标签
             weishenbao = ling_subjects[0].encode('utf-8')
             if weishenbao in oldtag:
-                oldtag.remove(weishenbao)           
-           
+                oldtag.remove(weishenbao)                     
         else:
-            setattr(context,property,False)
+            setattr(obj,property,False)
+            if property == "guidangzhuangtai":
+                obj.setLayout("nashuiren_edit")             
             if thetag not in oldtag:
                 oldtag.add(thetag)
                 #todo 适当时机增加零申报

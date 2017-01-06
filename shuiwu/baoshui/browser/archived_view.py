@@ -61,8 +61,8 @@ class ArchivedView(BrowserView):
                                             status = status(zt),                                           
                                             date = i.modified.strftime('%Y'))           
             #to do set default layout
-            if zt:
-                obj.setLayout("nashiren_view")
+#             if zt:
+#                 obj.setLayout("nashuiren_view")
                 
             outhtml = "%s%s" %(outhtml ,out)
             k = k + 1            
