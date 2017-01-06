@@ -59,7 +59,7 @@ class ArchivedView(BrowserView):
                                             num=str(k + 1),
                                             Id=u"%s年度记录" % i.id,
                                             status = status(zt),                                           
-                                            date = i.dengjiriqi)           
+                                            date = i.modified.strftime('%Y'))           
             #to do set default layout
             if zt:
                 obj.setLayout("nashiren_view")
