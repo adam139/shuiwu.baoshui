@@ -123,8 +123,7 @@
             			<td class="col-md-1">2013-07-13</td>
             		</tr>
             	</tbody>
-            </table>            
-					
+            </table>           					
             <!--搜索结果列表 End-->
             <!--分页-->
            <nav class="text-center">          	
@@ -138,8 +137,7 @@
             	<li><a class="page" href="javascript:searchEvent(16,10)">末页</a></li>
             </ul>
            </nav>
-		</div>
-        <!--左边内容 End-->		
+		</div>		
 	</div>
   <metal:js fill-slot="javascript_bottom_slot">
 	<script type="text/javascript"
