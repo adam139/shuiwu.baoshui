@@ -7,6 +7,7 @@ from Acquisition import aq_inner
 from plone.directives import dexterity
 from Products.CMFCore.utils import getToolByName
 from plone.memoize.instance import memoize
+from plone.memoize import ram
 from Products.Five.browser import BrowserView
 from datetime import datetime
 
@@ -17,8 +18,13 @@ from shuiwu.baoshui.subscriber import subids,niandugouduiziduan
 from shuiwu.baoshui.subscriber import tagroup
 from shuiwu.baoshui import _
 
-# grok.templatedir('templates')
-
+def _render_output_cachekey(method, self, obj,width):
+    "generator cache key"
+    mf = getattr(obj,"mflag",0)
+#     import pdb
+#     pdb.set_trace()
+    return (obj.absolute_url(),mf)
+    
 class NashuirenView(BrowserView):
     "nashuiren  view"
     @memoize    
@@ -48,11 +54,10 @@ class NashuirenView(BrowserView):
         query = self.getPathQuery(objid)
         query['object_provides'] = Iyuedujilu.__identifier__
         brains = self.catalog()(query)
-        return not bool(brains)
-        
+        return not bool(brains)        
         
     def getChildrensByMonth(self,objid):
-        "依据按月度申报的内容对象id，提取其每个月申报记录（是否已申报）"        
+        "依据按月度申报的内容对象id，提取其每个月申报记录（是否已申报）"      
 
         obj = self.context[objid]              
         return self.outputcheckbox(obj,width=1)
@@ -65,8 +70,9 @@ class NashuirenView(BrowserView):
     def getChildrensByNumber(self,objid):
         "依据按次申报的内容对象id，提取其每月的申报次数"
         obj = self.context[objid]               
-        return self.outputnumber(obj,width=1)      
+        return self.outputnumber(obj,width=1)               
     
+    @ram.cache(_render_output_cachekey)
     def outputcheckbox(self,obj,width=1):
         "根据参数total,braindata,返回jason 输出"
         outhtml = """<table class="table table-condensed inner"><tr class="row">"""     
@@ -83,15 +89,14 @@ class NashuirenView(BrowserView):
                 <input  type="checkbox" checked="checked" />
                 <span class="switch-style on">&nbsp;</span></td>""" \
                 % dict(width=width)                                  
-            outhtml = "%s%s" %(outhtml ,out)
-           
+            outhtml = "%s%s" %(outhtml ,out)           
         data = """%s</tr></table>"""  % outhtml
         return data
     
+    @ram.cache(_render_output_cachekey)
     def outputnumber(self,obj,width=1):
         "根据参数输出html"
-        outhtml = """<table class="table table-condensed inner"><tr class="row">"""      
-
+        outhtml = """<table class="table table-condensed inner"><tr class="row">"""     
         nums = 12/width
         for i in range(nums):
             field = "shenbaocishu%s" % str(i+1)
@@ -105,8 +110,6 @@ class NashuirenView(BrowserView):
     def propertyChecked(self,property):
         "check narenren object,if the property is True"
         obj = self.context
-#         import pdb
-#         pdb.set_trace()
         pro = getattr(obj,property)
         if pro:
             return True
@@ -114,11 +117,8 @@ class NashuirenView(BrowserView):
             return False
         
     def parentobj_propertyChecked(self,property):
-        "check niandu object,if the property is True,using for niandu"
-        
+        "check niandu object,if the property is True,using for niandu"        
         obj = self.context.aq_parent
-#         import pdb
-#         pdb.set_trace()
         pro = getattr(obj,property)
         if pro:
             return True
@@ -129,8 +129,6 @@ class NashuirenView(BrowserView):
         "get child description by child's id"
         query = self.getPathQuery(child)
         brains = self.catalog()(query)
-#         import pdb
-#         pdb.set_trace()
         des = brains[0].Description.strip()
         default = '\xe6\xb9\x98\xe6\xbd\xad\xe9\xab\x98\xe6\x96\xb0\xe5\x8c\xba\xe5\x9c\xb0\xe7\xa8\x8e\xe5\xb1\x80\xe7\xa8\x8e\xe5\x8a\xa1\xe7\xae\xa1\xe7\x90\x86\xe4\xbf\xa1\xe6\x81\xaf'
         if des == default:
@@ -151,11 +149,10 @@ class NashuirenView(BrowserView):
   
 class NashuirenEdit(NashuirenView):
     """nashuiren edit view"""
-
+    @ram.cache(_render_output_cachekey)
     def outputcheckbox(self,obj,width=1):
         "根据参数total,braindata,返回jason 输出"
-        outhtml = """<table class="table table-condensed bordered inner"><tr class="row">"""         
-#         o = braindata[0].getObject()
+        outhtml = """<table class="table table-condensed bordered inner"><tr class="row">"""        
         nums = 12/width
         for i in range(nums):
             j = str(i+1)
@@ -175,17 +172,14 @@ class NashuirenEdit(NashuirenView):
                 <input  type="checkbox" checked="checked" />
                 <span data-url="%(objurl)s" data-num="%(tdnumber)s" class="switch-style on">&nbsp;</span></td>""" \
                 % dict(width=width,objurl=objurl,tdnumber=j)                                 
-            outhtml = "%s%s" %(outhtml ,out)
-           
+            outhtml = "%s%s" %(outhtml ,out)           
         data = """%s</tr></table>"""  % outhtml
-        return data   
-
+        return data  
         
+    @ram.cache(_render_output_cachekey)
     def outputnumber(self,obj,width=1):
         "根据参数输出html"
-        outhtml = """<table class="table table-condensed bordered inner"><tr class="row number-row">"""      
-
-#         o = braindata[0].getObject()
+        outhtml = """<table class="table table-condensed bordered inner"><tr class="row number-row">"""    
         nums = 12/width
         for i in range(nums):
             j = str(i+1)
@@ -253,6 +247,12 @@ class BaseEdit(dexterity.EditForm):
                                                  'regtype','caiwufuzeren','caiwufuzerendianhua',
                                                  'banshuiren','banshuirendianhua')
 
+def auto_increment(obj,property):
+    "when call the function ,obj 's property auto increment 1"
+
+    old = getattr(obj,property,0)
+    setattr(obj,property,old + 1)
+    return
 
 # ajax modify nashuiren properties,using setattr
 class ModifyProperty(grok.View):
@@ -403,6 +403,9 @@ class BatchModify(grok.View):
             shenbaofou = False
 
         o = self.context[objid]
+        # update mflag
+        old = getattr(o,"mflag",0)
+        setattr(o,"mflag",old + 1)
         for num in range(nums):
             field = "shenbaofou%s" % str(num + 1)
             setattr(o,field,shenbaofou)
@@ -469,6 +472,8 @@ class ModifyYuedujilu(grok.View):
                 #todo 适当时机增加零申报
 #                 if len(oldtag) == 1:
 #                     oldtag.add(weishenbao)
+        old = getattr(self.context,"mflag",0)
+        setattr(self.context,"mflag",old + 1)
         nianduobj.setSubject(tuple(oldtag))
         nianduobj.reindexObject(idxs=["Subject"])            
 #             self.context.shenbaofou = False
@@ -515,6 +520,8 @@ class ModifyAncijlu(grok.View):
         setattr(self.context,field,shenbaocishu)        
 #         self.context.shenbaocishu =  shenbaocishu
 
+        old = getattr(self.context,"mflag",0)
+        setattr(self.context,"mflag",old + 1)
         ajaxtext = u"<p class='text-success'>更改已保存</p>"
         callback = {"result":True,'message':ajaxtext}
         self.request.response.setHeader('Content-Type', 'application/json')
