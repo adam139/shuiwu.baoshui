@@ -16,6 +16,7 @@ from Products.CMFPlone.resources import add_resource_on_request
 # from plone.directives import dexterity
 from plone.memoize.instance import memoize
 from plone.memoize import view
+from plone.memoize import ram
 from shuiwu.baoshui import _
 from shuiwu.baoshui.content.nashuiku import Inashuiku
 from shuiwu.baoshui.content.nashuiren import Inashuiren
@@ -28,6 +29,9 @@ from shuiwu.baoshui.subscriber import yuedudic,jidudic
 # from shuiwu.baoshui import viewReport
 # from shuiwu.baoshui.interface import IUsersrolesProvider     
 
+def _ajax_output_cachekey(method,self,start,size,totalnum,braindata,searchview):
+    "ajax table output generator cache key"
+    return braindata
 
 class sysAjaxListingView(BrowserView):
     """
@@ -373,7 +377,7 @@ class ajaxsearch(grok.View):
         outhtml = ""      
         k = 0
         import datetime
-        id = datetime.datetime.today().strftime("%Y")
+#         id = datetime.datetime.today().strftime("%Y")
         for i in braindata:          
             out = """<tr>
                                 <td class="col-md-1 text-center">%(num)s</td>
@@ -466,7 +470,7 @@ class totalajaxsearch(ajaxsearch):
         self.request.response.setHeader('Content-Type', 'application/json')
         return json.dumps(data)
     
-    @view.memoize
+    @ram.cache(_ajax_output_cachekey)
     def output(self,start,size,totalnum,braindata,searchview):
         "根据参数total,braindata,返回jason 输出"
         
@@ -474,39 +478,36 @@ class totalajaxsearch(ajaxsearch):
         import datetime
         id = datetime.datetime.today().strftime("%Y")
         for k in braindata:
-#             import pdb
-#             pdb.set_trace()
             bpath = k.getURL()
             nid = bpath.split("/")[-2]
             qry = {'id':nid}
             qry['object_provides'] = Inashuiren.__identifier__
             innerb = searchview.search_multicondition(qry)[0]         
-            out = """<tr>
-                                <td class="col-md-1">%(shibiehao)s</td>
-                                <td class="col-md-1"><a href="%(objurl)s">%(title)s</a></td>
-                                <td class="col-md-1">%(type)s</td>
-                                <td class="col-md-1">%(description)s</td>
-                                <td class="col-md-1">%(shuiguanyuan)s</td>
-                                <td class="col-md-1">%(danganbianhao)s</td>
-                                <td class="col-md-1">%(status)s</td>
-                                <td class="col-md-1">%(date)s</td>
-                                <td class="col-md-1">%(caiwufuzeren)s</td>
-                                <td class="col-md-1">%(caiwufuzerendianhua)s</td>
-                                <td class="col-md-1">%(banshuiren)s</td>
-                                <td class="col-md-1">%(banshuirendianhua)s</td>                                
-                            </tr> """% dict(objurl= bpath,                                            
-                                            title=innerb.Title,
-                                            shibiehao = innerb.guanlidaima,
-                                            type = innerb.regtype,
-                                            shuiguanyuan = innerb.shuiguanyuan,
-                                            danganbianhao = innerb.danganbianhao,
-                                            status = innerb.status,
-                                            caiwufuzeren = innerb.caiwufuzeren,
-                                            caiwufuzerendianhua = innerb.caiwufuzerendianhua,
-                                            banshuiren = innerb.banshuiren,
-                                            banshuirendianhua = innerb.banshuirendianhua,
-                                            description= innerb.Description,
-                                            date = innerb.dengjiriqi)           
+            out = """<tr><td class="col-md-1">%(shibiehao)s</td>
+            <td class="col-md-1"><a href="%(objurl)s">%(title)s</a></td>
+            <td class="col-md-1">%(type)s</td>
+            <td class="col-md-1">%(description)s</td>
+            <td class="col-md-1">%(shuiguanyuan)s</td>
+            <td class="col-md-1">%(danganbianhao)s</td>
+            <td class="col-md-1">%(status)s</td>
+            <td class="col-md-1">%(date)s</td>
+            <td class="col-md-1">%(caiwufuzeren)s</td>
+            <td class="col-md-1">%(caiwufuzerendianhua)s</td>
+            <td class="col-md-1">%(banshuiren)s</td>
+            <td class="col-md-1">%(banshuirendianhua)s</td>
+            </tr> """% dict(objurl= bpath,
+                            title=innerb.Title,
+                            shibiehao = innerb.guanlidaima,
+                            type = innerb.regtype,
+                            shuiguanyuan = innerb.shuiguanyuan,
+                            danganbianhao = innerb.danganbianhao,
+                            status = innerb.status,
+                            caiwufuzeren = innerb.caiwufuzeren,
+                            caiwufuzerendianhua = innerb.caiwufuzerendianhua,
+                            banshuiren = innerb.banshuiren,
+                            banshuirendianhua = innerb.banshuirendianhua,
+                            description= innerb.Description,
+                            date = innerb.dengjiriqi)           
             outhtml = "%s%s" %(outhtml ,out)           
         data = {'searchresult': outhtml,'start':start,'size':size,'total':totalnum}
         return data 
