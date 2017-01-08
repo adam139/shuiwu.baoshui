@@ -3,6 +3,15 @@ from plone.indexer.decorator import indexer
 from shuiwu.baoshui.content.nashuiren import Inashuiren
 from shuiwu.baoshui.content.niandu import Iniandu
 
+def encode_utf8(valute):
+    # be sure that it is utf-8 encoded
+    if isinstance(value, unicode):
+        value = value.encode('utf-8')
+            # only accept strings
+    assert isinstance(value, str), 'expected converted ' + \
+                'value of IDexterityTextIndexFieldConverter to be a str'
+    return value
+
 @indexer(Inashuiren)
 def indexer_guanlidaima(obj, **kw):
     return obj.guanlidaima
@@ -41,3 +50,18 @@ def indexer_banshuirendianhua(obj, **kw):
 @indexer(Iniandu)
 def indexer_guidangzhuangtai(obj, **kw):
     return obj.guidangzhuangtai
+
+@indexer(Inashuiren)
+def nashuiren_searchable_text_indexer(obj):
+    """Dynamic searchable text indexer.
+    """
+    title = obj.title
+    shibiehao = obj.guanlidaima
+    indexed = []
+    indexed.append(title)
+    indexed.append(shibiehao)
+    return ' '.join(map(encode_utf8,indexed))
+    
+
+
+
