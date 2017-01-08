@@ -3,7 +3,7 @@ from plone.indexer.decorator import indexer
 from shuiwu.baoshui.content.nashuiren import Inashuiren
 from shuiwu.baoshui.content.niandu import Iniandu
 
-def encode_utf8(valute):
+def encode_utf8(value):
     # be sure that it is utf-8 encoded
     if isinstance(value, unicode):
         value = value.encode('utf-8')
@@ -57,6 +57,8 @@ def nashuiren_searchable_text_indexer(obj):
     """
     title = obj.title
     shibiehao = obj.guanlidaima
+    if len(shibiehao) > 3:
+        shibiehao = shibiehao[3:]
     indexed = []
     indexed.append(title)
     indexed.append(shibiehao)

@@ -13,7 +13,7 @@ class Inashuiren(form.Schema,IBasic):
     na shui ren niandu sheshui shenbao jilu
     """
 # 纳税人名称/所属科室/税管员、税务登记日期
-    dexteritytextindexer.searchable('title')
+#     dexteritytextindexer.searchable('title')
     title = schema.TextLine(title=_(u"nashuiren mingcheng"),
                              default=u"",
                              required=True,)
@@ -42,7 +42,7 @@ class Inashuiren(form.Schema,IBasic):
                              default=u"2012",
                              required=False,)
 #管理代码    
-    dexteritytextindexer.searchable('guanlidaima')
+#     dexteritytextindexer.searchable('guanlidaima')
     guanlidaima = schema.ASCIILine(
             title=_(u"guanli daima"),
             description=_(u"shehui xingren daima (nashuiren shibiehao)"),
@@ -79,8 +79,7 @@ class Inashuiren(form.Schema,IBasic):
 #办税人电话    
     banshuirendianhua = schema.TextLine(title=_(u"banshui ren dianhua"),
                        required=False,
-                       default=u"")
-            
+                       default=u"")            
 #年度记录
     yinhuashui = schema.Bool(title=_(u"yinhuashui shenbaobiao(yingyezhangbo)"),
                        required=False,
