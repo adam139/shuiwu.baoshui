@@ -50,6 +50,7 @@ class Inashuiren(form.Schema,IBasic):
 #档案编号     
     danganbianhao = schema.ASCIILine(
             title=_(u"dangan bianhao"),
+            default="",
             required=False)
 #小规模认定
     xiaoguimo = schema.Bool(title=_(u"xiao guimo nashuiren rending"),
@@ -110,7 +111,7 @@ class Inashuiren(form.Schema,IBasic):
     
     form.omitted('year','zhuguanshuiwujiguan','feizhenghurending','zhuxiaoshuiwudengji'
                  ,'qiyesuodeshuiniandu','gerensuodeshuiniandu','difangshuihuisuan',
-                 'canjirenbaozhengjin','chechuanshui','yinhuashui')
+                 'canjirenbaozhengjin','chechuanshui','yinhuashui','xiaoguimo')
     
 @form.default_value(field=Inashuiren['dengjiriqi'])
 def dengjiriqiDefaultValue(data):
