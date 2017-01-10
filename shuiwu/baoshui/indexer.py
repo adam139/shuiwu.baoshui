@@ -56,7 +56,7 @@ def nashuiren_searchable_text_indexer(obj):
     """Dynamic searchable text indexer.
     """
     title = obj.title
-    shibiehao = obj.guanlidaima
+    shibiehao = obj.guanlidaima.strip()
 #     if len(shibiehao) > 3:
 #         shibiehao = shibiehao[3:]
     indexed = []
