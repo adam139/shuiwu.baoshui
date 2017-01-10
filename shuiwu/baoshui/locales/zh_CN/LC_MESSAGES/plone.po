@@ -25,3 +25,6 @@ msgstr "纳税人视图"
 
 msgid "system Ajax view"
 msgstr "系统Ajax视图"
+
+msgid "Archived"
+msgstr "历年资料"
