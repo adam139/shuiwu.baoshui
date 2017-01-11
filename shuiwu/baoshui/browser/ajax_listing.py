@@ -482,7 +482,9 @@ class totalajaxsearch(ajaxsearch):
             nid = bpath.split("/")[-2]
             qry = {'id':nid}
             qry['object_provides'] = Inashuiren.__identifier__
-            innerb = searchview.search_multicondition(qry)[0]         
+            innerb = searchview.search_multicondition(qry)[0]
+#             import pdb
+#             pdb.set_trace()         
             out = """<tr><td class="col-md-1">%(shibiehao)s</td>
             <td class="col-md-1"><a href="%(objurl)s">%(title)s</a></td>
             <td class="col-md-1">%(type)s</td>
@@ -507,7 +509,7 @@ class totalajaxsearch(ajaxsearch):
                             banshuiren = innerb.banshuiren,
                             banshuirendianhua = innerb.banshuirendianhua,
                             description= innerb.Description,
-                            date = innerb.dengjiriqi)           
+                            date = innerb.modified.strftime('%Y-%m-%d'))           
             outhtml = "%s%s" %(outhtml ,out)           
         data = {'searchresult': outhtml,'start':start,'size':size,'total':totalnum}
         return data 
