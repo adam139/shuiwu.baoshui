@@ -512,4 +512,123 @@ class totalajaxsearch(ajaxsearch):
                             date = innerb.modified.strftime('%Y-%m-%d'))           
             outhtml = "%s%s" %(outhtml ,out)           
         data = {'searchresult': outhtml,'start':start,'size':size,'total':totalnum}
-        return data 
+        return data
+    
+class pretotalajaxsearch(totalajaxsearch):
+    """for pre niandu multiconditions search"""
+
+    grok.name('pre_ajax_total_search')
+
+
+    def render(self):    
+        searchview = getMultiAdapter((self.context, self.request),name=u"sysajax_listings")        
+ # datadic receive front ajax post data       
+        datadic = self.request.form
+        start = int(datadic['start']) # batch search start position
+        datekey = int(datadic['datetype'])  # 对应 最近一周，一月，一年……
+        size = int(datadic['size'])      # batch search size         
+        tag = datadic['tag'].strip()
+        sortcolumn = datadic['sortcolumn']
+        sortdirection = datadic['sortdirection']
+        keyword = (datadic['searchabletext']).strip()    
+        origquery = searchview.getPathQuery()
+#         origquery['object_provides'] = Inashuiren.__identifier__
+##查询当前年度的 niandu对象
+        import datetime
+        id = (datetime.datetime.today() + datetime.timedelta(-365)).strftime("%Y")
+        origquery['object_provides'] = Iniandu.__identifier__
+        origquery['id'] = id        
+        origquery['sort_on'] = sortcolumn  
+        origquery['sort_order'] = sortdirection                
+ #模糊搜索       
+        if keyword != "":
+            origquery['SearchableText'] = '*'+keyword+'*'        
+        if datekey != 0:
+            origquery['modified'] = self.Datecondition(datekey)           
+        # remove repeat values 
+        tag = tag.split(',')
+        tag = set(tag)
+        tag = list(tag)
+        all = u"所有".encode("utf-8")
+        unclass = u"未分类".encode("utf-8")        
+# filter contain "u'所有'"
+        tag = filter(lambda x: all not in x, tag)
+# recover un-category tag (remove:u"未分类-")
+        def recovery(value):
+            if unclass not in value:return value
+            return value.split('-')[1]            
+        tag = map(recovery,tag)        
+        if '0' in tag and len(tag) > 1:
+            tag.remove('0')
+            rule = {"query":tag,"operator":"and"}
+            origquery['Subject'] = rule                      
+#totalquery  search all
+        totalquery = origquery.copy()
+#origquery provide  batch search        
+        origquery['b_size'] = size 
+        origquery['b_start'] = start
+        def getout_filter(brain):
+            if brain.regtype == getout[0].encode('utf-8'):
+                return False
+            else:
+                return True
+        # search all                         
+        totalbrains = searchview.search_multicondition(totalquery)
+        totalbrains = filter(getout_filter,totalbrains)
+        totalnum = len(totalbrains)
+        # batch search         
+        braindata = searchview.search_multicondition(origquery)
+        braindata = filter(getout_filter,braindata)
+#        brainnum = len(braindata)         
+        del origquery 
+        del totalquery,totalbrains
+#call output function        
+        # transform to hashable
+        braindata = tuple(braindata)
+        data = self.output(start,size,totalnum, braindata,searchview)
+        self.request.response.setHeader('Content-Type', 'application/json')
+        return json.dumps(data)
+    
+    @ram.cache(_ajax_output_cachekey)
+    def output(self,start,size,totalnum,braindata,searchview):
+        "根据参数total,braindata,返回jason 输出"
+        
+        outhtml = ""     
+        import datetime
+        id = (datetime.datetime.today() + datetime.timedelta(-365)).strftime("%Y")
+        for k in braindata:
+            bpath = k.getURL()
+            nid = bpath.split("/")[-2]
+            qry = {'id':nid}
+            qry['object_provides'] = Inashuiren.__identifier__
+            innerb = searchview.search_multicondition(qry)[0]
+#             import pdb
+#             pdb.set_trace()         
+            out = """<tr><td class="col-md-1">%(shibiehao)s</td>
+            <td class="col-md-1"><a href="%(objurl)s">%(title)s</a></td>
+            <td class="col-md-1">%(type)s</td>
+            <td class="col-md-1">%(description)s</td>
+            <td class="col-md-1">%(shuiguanyuan)s</td>
+            <td class="col-md-1">%(danganbianhao)s</td>
+            <td class="col-md-1">%(status)s</td>
+            <td class="col-md-1">%(date)s</td>
+            <td class="col-md-1">%(caiwufuzeren)s</td>
+            <td class="col-md-1">%(caiwufuzerendianhua)s</td>
+            <td class="col-md-1">%(banshuiren)s</td>
+            <td class="col-md-1">%(banshuirendianhua)s</td>
+            </tr> """% dict(objurl= bpath,
+                            title=innerb.Title,
+                            shibiehao = innerb.guanlidaima,
+                            type = innerb.regtype,
+                            shuiguanyuan = innerb.shuiguanyuan,
+                            danganbianhao = innerb.danganbianhao,
+                            status = innerb.status,
+                            caiwufuzeren = innerb.caiwufuzeren,
+                            caiwufuzerendianhua = innerb.caiwufuzerendianhua,
+                            banshuiren = innerb.banshuiren,
+                            banshuirendianhua = innerb.banshuirendianhua,
+                            description= innerb.Description,
+                            date = innerb.modified.strftime('%Y-%m-%d'))           
+            outhtml = "%s%s" %(outhtml ,out)           
+        data = {'searchresult': outhtml,'start':start,'size':size,'total':totalnum}
+        return data         
