@@ -18,6 +18,8 @@ from shuiwu.baoshui.subscriber import subids,niandugouduiziduan
 from shuiwu.baoshui.subscriber import tagroup
 from shuiwu.baoshui import _
 
+fmt = '%Y/%m/%d %H:%M:%S'
+
 def _render_output_cachekey(method, self, obj,width):
     "generator cache key"
     mf = getattr(obj,"mflag",0)
@@ -346,6 +348,9 @@ class ModifyProperty(grok.View):
             context.setSubject(tuple(oldtag))
             context.reindexObject(idxs=["Subject"])            
         
+#         nobj = context.aq_parent        
+        context.setModificationDate(datetime.now().strftime(fmt))
+        context.reindexObject(idxs=['modified'])
         ajaxtext = u"<p class='text-success'>更改已保存</p>"
         callback = {"result":True,'message':ajaxtext}
         self.request.response.setHeader('Content-Type', 'application/json')
@@ -416,6 +421,9 @@ class BatchModify(grok.View):
             field = "shenbaofou%s" % str(num + 1)
             setattr(o,field,shenbaofou)
             
+        nobj = self.context        
+        nobj.setModificationDate(datetime.now().strftime(fmt))
+        nobj.reindexObject(idxs=['modified'])        
         ajaxtext = u"<p class='text-success'>更改已保存</p>"
         callback = {"result":True,'message':ajaxtext}
         self.request.response.setHeader('Content-Type', 'application/json')
@@ -479,10 +487,14 @@ class ModifyYuedujilu(grok.View):
 #                 if len(oldtag) == 1:
 #                     oldtag.add(weishenbao)
         old = getattr(self.context,"mflag",0)
+
         setattr(self.context,"mflag",old + 1)
         nianduobj.setSubject(tuple(oldtag))
         nianduobj.reindexObject(idxs=["Subject"])            
 #             self.context.shenbaofou = False
+#         nobj = nianduobj.aq_parent        
+        nianduobj.setModificationDate(datetime.now().strftime(fmt))
+        nianduobj.reindexObject(idxs=['modified'])        
         ajaxtext = u"<p class='text-success'>更改已保存</p>"
         callback = {"result":True,'message':ajaxtext}
         self.request.response.setHeader('Content-Type', 'application/json')
@@ -533,6 +545,9 @@ class ModifyAncijlu(grok.View):
 
         old = getattr(self.context,"mflag",0)
         setattr(self.context,"mflag",old + 1)
+        nobj = self.context.aq_parent        
+        nobj.setModificationDate(datetime.now().strftime(fmt))
+        nobj.reindexObject(idxs=['modified'])        
         ajaxtext = u"<p class='text-success'>更改已保存</p>"
         callback = {"result":True,'message':ajaxtext}
         self.request.response.setHeader('Content-Type', 'application/json')

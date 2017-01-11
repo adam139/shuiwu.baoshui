@@ -459,6 +459,7 @@ class totalajaxsearch(ajaxsearch):
         totalnum = len(totalbrains)
         # batch search         
         braindata = searchview.search_multicondition(origquery)
+
         braindata = filter(getout_filter,braindata)
 #        brainnum = len(braindata)         
         del origquery 
@@ -509,7 +510,7 @@ class totalajaxsearch(ajaxsearch):
                             banshuiren = innerb.banshuiren,
                             banshuirendianhua = innerb.banshuirendianhua,
                             description= innerb.Description,
-                            date = innerb.modified.strftime('%Y-%m-%d'))           
+                            date = k.modified.strftime('%Y-%m-%d'))           
             outhtml = "%s%s" %(outhtml ,out)           
         data = {'searchresult': outhtml,'start':start,'size':size,'total':totalnum}
         return data
@@ -578,6 +579,8 @@ class pretotalajaxsearch(totalajaxsearch):
         totalnum = len(totalbrains)
         # batch search         
         braindata = searchview.search_multicondition(origquery)
+#         import pdb
+#         pdb.set_trace()        
         braindata = filter(getout_filter,braindata)
 #        brainnum = len(braindata)         
         del origquery 
@@ -628,7 +631,7 @@ class pretotalajaxsearch(totalajaxsearch):
                             banshuiren = innerb.banshuiren,
                             banshuirendianhua = innerb.banshuirendianhua,
                             description= innerb.Description,
-                            date = innerb.modified.strftime('%Y-%m-%d'))           
+                            date = k.modified.strftime('%Y-%m-%d'))           
             outhtml = "%s%s" %(outhtml ,out)           
         data = {'searchresult': outhtml,'start':start,'size':size,'total':totalnum}
         return data         
