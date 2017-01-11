@@ -265,12 +265,18 @@ class ModifyProperty(grok.View):
     def isallfinished(self,obj):
         "统计按年申报的所有税种在该时间段是否都钩对，如果都钩对，返回True"
        
-        for fd in niandugouduiziduan:
-            if not getattr(obj,fd,False):
-                return False
-            else:
-                continue
-        return True
+        fd = niandugouduiziduan[0]
+        if not getattr(obj,fd,False):
+            return False
+        else:
+            return True 
+        
+#         for fd in niandugouduiziduan[:2]:
+#             if not getattr(obj,fd,False):
+#                 return False
+#             else:
+#                 continue
+#         return True
             
     def render(self):    
         datadic = self.request.form
@@ -428,7 +434,7 @@ class ModifyYuedujilu(grok.View):
         "统计所有税种在该时间段是否都钩对，如果都钩对，返回True"
         #年度对象
         nianduobj = self.context.aq_parent
-        for subid,title in subids[:15]:
+        for subid,title in subids[:9]:
             #税种对象
             shuizhongobj = nianduobj[subid]
             yes = getattr(shuizhongobj,field,False)
@@ -494,15 +500,20 @@ class ModifyJidujilu(ModifyYuedujilu):
         "统计所有税种在该时间段是否都钩对，如果都钩对，返回True"
         #年度对象
         nianduobj = self.context.aq_parent
-        for subid,title in subids[16:20]:
-            #按季报税种对象
-            shuizhongobj = nianduobj[subid]
-            yes = getattr(shuizhongobj,field,False)
-            if yes == False:
-                return False
-            else:
-                continue
-        return True     
+        subid = subids[16][0]
+        title = subids[16][1]
+        shuizhongobj = nianduobj[subid]
+        yes = getattr(shuizhongobj,field,False)
+        return yes
+#         for subid,title in subids[16]:
+#             #按季报税种对象
+#             shuizhongobj = nianduobj[subid]
+#             yes = getattr(shuizhongobj,field,False)
+#             if yes == False:
+#                 return False
+#             else:
+#                 continue
+#         return True     
  
  # ajax modify anci jilu
 class ModifyAncijlu(grok.View):

@@ -18,12 +18,12 @@ subids = [('zichanfuzaibiao',u'资产负债表'),
                ('lirunbiao',u'利润表'),
                ('xianjinliuliangbiao',u'现金流量表'),
                ('chengjianjiaoyudifangfujia',u'城建、教育、地方教育附加申报表'),
-               ('gerensuodeshui',u'个人所得税扣缴表'),
-               ('zhifugongzimingxi',u'支付工资明细'),
+               ('gerensuodeshui',u'个人所得税扣缴表'),               
                ('yinhuashuianyue',u'印花税申报表（按月）'),
                ('canbaojinshenbaobiao',u'残保金申报表'),
                ('gonghuijingfei',u'工会经费申报表'),
                ('shuilijijin',u'水利基金申报表（月报）'),
+               ('zhifugongzimingxi',u'支付工资明细'),
                ('shebaofei',u'社保费申报表'),
                ('fangchanshui',u'房产税申报表（租金收入）'),
                ('tudizengzhishui',u'土地增值税申报表（按月）'),
@@ -43,7 +43,7 @@ subids = [('zichanfuzaibiao',u'资产负债表'),
 #新增tag分组
 tagroup = [u'纳税人状态',u'按税源科室',u'税务管理员']
 #年度钩对字段
-niandugouduiziduan = ["yinhuashui","chechuanshui","qiyesuodeshuiniandu"]
+niandugouduiziduan = ["yinhuashui","qiyesuodeshuiniandu","chechuanshui"]
 yuedu_subjects = [u'月度未申报-一月',u'月度未申报-二月',u'月度未申报-三月',u'月度未申报-四月',
                u'月度未申报-五月',u'月度未申报-六月',u'月度未申报-七月',u'月度未申报-八月',u'月度未申报-九月',
                u'月度未申报-十月',u'月度未申报-十一月',u'月度未申报-十二月']
