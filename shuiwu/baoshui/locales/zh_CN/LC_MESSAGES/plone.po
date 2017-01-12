@@ -28,3 +28,7 @@ msgstr "系统Ajax视图"
 
 msgid "Archived"
 msgstr "历年资料"
+
+msgid "View last year"
+msgstr "查看去年"
+
