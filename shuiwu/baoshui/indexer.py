@@ -57,11 +57,15 @@ def nashuiren_searchable_text_indexer(obj):
     """
     title = obj.title
     shibiehao = obj.guanlidaima.strip()
-#     if len(shibiehao) > 3:
-#         shibiehao = shibiehao[3:]
-    indexed = []
+    ln = len(shibiehao)
+    size = 4
+    batch = ln // size
+    indexed = []    
+    for i in range(batch):
+        new = shibiehao[size * i:]        
+        indexed.append(new)      
     indexed.append(title)
-    indexed.append(shibiehao)
+#     indexed.append(shibiehao)
     return ' '.join(map(encode_utf8,indexed))
     
 
