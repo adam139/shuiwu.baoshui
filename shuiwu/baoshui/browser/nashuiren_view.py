@@ -338,8 +338,18 @@ class ModifyProperty(grok.View):
         else:
             setattr(obj,property,False)
             if property == "guidangzhuangtai":
-                obj.setLayout("nashuiren_edit")             
-            if thetag not in oldtag:
+                obj.setLayout("nashuiren_edit")
+                obj.reindexObject(idxs=["guidangzhuangtai"])
+            elif property == "feizhenghurending" or property == "zhuxiaoshuiwudengji":
+                # remove old nashuiren status tag
+                sbs = filter(instring,oldtag)
+                newtag = u"%s-%s" % (tagroup[0],u"正常")
+                newtag = newtag.encode("utf-8")
+                setattr(obj,"status",newtag.split("-")[-1])
+                obj.reindexObject(idxs=["status"])
+                sbs.append(newtag)
+                oldtag = set(sbs)                                             
+            elif thetag not in oldtag:
                 oldtag.add(thetag)
                 #todo 适当时机增加零申报
 #                 if len(oldtag) == 1:
