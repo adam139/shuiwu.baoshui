@@ -127,15 +127,21 @@ def ModifiedNashuirenEvent(obj,event):
             return False
         else:
             return True                
+        
+
+       
     for id in ids:
-        subobj = obj[id]    
+        try:
+            subobj = obj[id]
+        except:
+            continue
         oldtag = set(subobj.Subject())    
         if status != "":        
             group = tagroup[0].encode("utf-8")
             tag = "%s-%s" %(group,status)
             if tag not in oldtag:
-                oldtag = filter(instring_status,oldtag)
-                oldtag.append(tag)
+                    oldtag = filter(instring_status,oldtag)
+                    oldtag.append(tag)
 
         if description != "":        
             group = tagroup[1].encode("utf-8")
@@ -148,8 +154,7 @@ def ModifiedNashuirenEvent(obj,event):
             tag = "%s-%s" %(group,shuiguanyuan)
             if tag not in oldtag:            
                 oldtag = filter(instring_shuiguanyuan,oldtag)               
-                oldtag.append(tag)
-       
+                oldtag.append(tag)        
         subobj.setSubject(tuple(oldtag))
         subobj.setModificationDate(datetime.datetime.now().strftime(fmt))
         subobj.reindexObject(idxs=['modified','Subject'])                            
