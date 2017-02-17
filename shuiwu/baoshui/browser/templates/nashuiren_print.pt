@@ -87,7 +87,7 @@
 							<span tal:content="python:nashuiren.guanlidaima"></span>
 						</td>
 						<td class="property col-md-4">
-							<span>报送年度:</span>
+							<span>所属年度:</span>
 							<span tal:content="python:context.id">2017</span>
 						</td>						
 						<td class="property col-md-4">
