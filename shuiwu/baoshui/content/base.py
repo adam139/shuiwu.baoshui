@@ -1,11 +1,20 @@
-
+#-*- coding: UTF-8 -*-
 from zope import schema
 
 from plone.directives import form
 
 from shuiwu.baoshui import _
 
-class Iyuedu(form.Schema):
+class Ibase(form.Schema):
+    """
+    该字段是个标志字段，用来标明对象是否被修改 
+    """
+    mfloag = schema.Int(title=_(u"xiu gai biao ji"),
+                       required=False,
+                       default=0)
+
+
+class Iyuedu(Ibase):
     """
     yuedu jilu base interface
     """
@@ -46,7 +55,7 @@ class Iyuedu(form.Schema):
                        required=False,
                        default=False)
     
-class Ijidu(form.Schema):
+class Ijidu(Ibase):
     """
     jidu jilu base interface
     """
@@ -63,7 +72,7 @@ class Ijidu(form.Schema):
                        required=False,
                        default=False)
     
-class Ianci(form.Schema):
+class Ianci(Ibase):
     """
     anci base interface
     """

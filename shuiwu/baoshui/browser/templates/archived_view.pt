@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="context/main_template/macros/master"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"      
+      i18n:domain="shuiwu.baoshui">        
+<head>
+      <metal:block fill-slot="top_slot">
+        <tal:insert tal:replace="nothing"
+              tal:define="disable_column_two python:request.set('disable_plone.rightcolumn', 1);
+              			  disable_column_one python:request.set('disable_plone.leftcolumn', 1)" />
+      </metal:block>
+  </head>
+<body>
+	<div metal:fill-slot="main">
+		<div class="container">			
+            <table class="row table table-striped table-bordered table-condensed pat-tablesorter">
+            	<thead>
+            		<tr>
+            			<th class="col-md-1 text-center">序号</th>
+            			<th class="col-md-3 text-left">年度</th>
+            			<th class="col-md-3 text-left">归档状态</th>
+            			<th class="col-md-1 text-center">归档日期</th>
+            		</tr>
+            	</thead>
+            	<tbody id="searchResultDiv" tal:content="structure python:view.getAllArchived()">
+            		<tr>
+            			<td class="col-md-1">1</td>
+            			<td class="col-md-3">2016</td>
+            			<td class="col-md-3">已归档</td>
+            			<td class="col-md-1">2013-07-13</td>
+            		</tr>
+            	</tbody>
+            </table>            
+					
+            <!--搜索结果列表 End-->
+		</div>
+        <!--左边内容 End-->		
+	</div>
+</body>
+</html>

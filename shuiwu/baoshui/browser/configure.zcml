@@ -7,6 +7,7 @@
     
   <include package="plone.app.contentmenu" />
   <include package="Products.CMFCore" file="permissions.zcml" />
+  <include file="caching.zcml" />   
   <grok:grok package="." />
 
   <!-- Register static resource directory -->
@@ -24,9 +25,19 @@
         title="system Ajax view"/>
 
   <browser:page
+        name="archived_view"
+        template="templates/archived_view.pt"
+        for="shuiwu.baoshui.content.nashuiren.Inashuiren"
+        permission="shuiwu.baoshui.view_nashuiren"
+        class=".archived_view.ArchivedView"
+        menu="plone_displayviews"
+        title="nashuiren archived view"/>
+
+
+  <browser:page
         name="nashuiren_view"
         template="templates/nashuiren_view.pt"
-        for="shuiwu.baoshui.content.nashuiren.Inashuiren"
+        for="shuiwu.baoshui.content.niandu.Iniandu"
         permission="shuiwu.baoshui.view_nashuiren"
         class=".nashuiren_view.NashuirenView"
         menu="plone_displayviews"
@@ -34,13 +45,13 @@
   <browser:page
         name="print_preview"
         template="templates/nashuiren_print.pt"
-        for="shuiwu.baoshui.content.nashuiren.Inashuiren"
+        for="shuiwu.baoshui.content.niandu.Iniandu"
         permission="shuiwu.baoshui.view_nashuiren"
         class=".nashuiren_view.NashuirenView"/>        	        		
   <browser:page
         name="nashuiren_edit"
         template="templates/nashuiren_edit.pt"
-        for="shuiwu.baoshui.content.nashuiren.Inashuiren"
+        for="shuiwu.baoshui.content.niandu.Iniandu"
         permission="shuiwu.baoshui.modify_nashuiren"
         class=".nashuiren_view.NashuirenEdit"/>
 

@@ -10,7 +10,7 @@ from Products.statusmessages.interfaces import IStatusMessage
 # from plone.i18n.normalizer.interfaces import IUserPreferredFileNameNormalizer
 
 from shuiwu.baoshui.content.nashuiren import Inashuiren
-from shuiwu.baoshui.events import CreateNashuirenEvent
+from shuiwu.baoshui.events import CreateNashuirenEvent,UpdateNashuirenEvent
 
 from shuiwu.baoshui import _
 
@@ -18,23 +18,35 @@ from shuiwu.baoshui import _
 data_PROPERTIES = [
     'title',
     'guanlidaima',
+    'regtype',
+    'status',
     'dengjiriqi',
     'description',
     'shuiguanyuan',        
-    'danganbianhao'
+    'danganbianhao',
+    'caiwufuzeren',
+    'caiwufuzerendianhua',
+    'banshuiren',
+    'banshuirendianhua'
     ] 
 # need byte string
 data_VALUES = [
                u"纳税人名称".encode('utf-8'),
                u"社会信用代码".encode('utf-8'),
+               u"登记注册类型".encode('utf-8'),
+               u"纳税人状态".encode('utf-8'),
                u"登记日期".encode('utf-8'),
 #                u"主管税务机关".encode('utf-8'),
                u"主管税务所（科、分局）".encode('utf-8'),
                u"税收管理员".encode('utf-8'),               
-               u"税收档案编号".encode('utf-8')
+               u"税收档案编号".encode('utf-8'),
+               u"财务负责人".encode('utf-8'),
+               u"财务负责人电话".encode('utf-8'),
+               u"办税人".encode('utf-8'),
+               u"办税人电话".encode('utf-8')
                ]
 
-
+model = u'湖南省湘潭高新技术产业开发区地方税务局'.encode('utf-8')
 class DataInOut (BrowserView):
     """Data import and export as CSV files.
     """
@@ -65,8 +77,9 @@ class DataInOut (BrowserView):
 
     def IdIsExist(self,Id):
         catalog = getToolByName(self.context, "portal_catalog")
-        brains = catalog(object_provides=Inashuiren.__identifier__,id=Id) 
-        return bool(brains) 
+        brains = catalog(object_provides=Inashuiren.__identifier__,id=Id)
+        guanlidaima_brains =  catalog(object_provides=Inashuiren.__identifier__,guanlidaima=Id)
+        return bool(brains) or bool(guanlidaima_brains)
             
     def importData(self):
         """Import Data from CSV file.
@@ -79,54 +92,65 @@ class DataInOut (BrowserView):
         if file_upload is None or not file_upload.filename:
             return
         reader = csv.reader(file_upload)
-#         import pdb
-#         pdb.set_trace()
+
         header = reader.next()
         if header != data_VALUES:
             msg = _('Wrong specification of the CSV file. Please correct it and retry.')
             type = 'error'
             IStatusMessage(self.request).addStatusMessage(msg, type=type)
             return
-
         validLines = []
         invalidLines = []
         for line in reader:
-#            datas = dict(zip(header, line))
             validLines.append(line)
-        usersNumber = 0
-        
+        usersNumber = 0        
         for line in validLines:
-#            datas = dict(zip(header, line))
-            datas = dict(zip(data_PROPERTIES, line))  
-            
+            datas = dict(zip(data_PROPERTIES, line)) 
             try:
 #                映射数据到纳税人字段
-                title = datas['title']
-                if not isinstance(title, unicode):
-                    name = unicode(title, 'utf-8')
+                title = datas['title']                
+#                 if not isinstance(title, unicode):
+#                     title = unicode(title, 'utf-8')
 #                 id = IUserPreferredFileNameNormalizer(self.request).normalize(filename)
                 id = datas['guanlidaima']
-
                 id = self.float2str(id,"E+")
-                if self.IdIsExist(id):continue
-                title = name
+#                 title = name
                 guanlidaima = id                
                 dengjiriqi = datas.pop('dengjiriqi')
                 if ' ' in dengjiriqi:
                     dengjiriqi = dengjiriqi.split(' ')[0]
-#                 import pdb
-#                 pdb.set_trace()
                 description = datas.pop('description')
+                if isinstance(description, unicode):
+                    description = description.encode('utf-8')
+                if model in description:
+                    description = description.replace(model,'')
                 shuiguanyuan = datas['shuiguanyuan']
                 danganbianhao = ""                
-#                 danganbianhao = datas.pop('danganbianhao')
-#                 danganbianhao = self.float2str(danganbianhao,"E+")                
+                status = datas.pop('status')
+                regtype = datas.pop('regtype')
+                caiwufuzeren = datas.pop('caiwufuzeren')
+                caiwufuzerendianhua = datas.pop('caiwufuzerendianhua')
+                banshuiren = datas.pop('banshuiren')
+                banshuirendianhua = datas.pop('banshuirendianhua')
+                if self.IdIsExist(id):
+# send a update nashuiren event
+                    try:
+                        event.notify(UpdateNashuirenEvent(
+                                                id,status,regtype,
+                                                caiwufuzeren,caiwufuzerendianhua,banshuiren,
+                                                banshuirendianhua))
+#                         usersNumber += 1
+                        continue
+                    
+                    except:
+                        continue                                              
 # send a add nashuiren event
                 try:
                     event.notify(CreateNashuirenEvent(
                                                 id,title,guanlidaima,dengjiriqi,description,
-                                                shuiguanyuan,danganbianhao))
-
+                                                shuiguanyuan,danganbianhao,status,regtype,
+                                                caiwufuzeren,caiwufuzerendianhua,banshuiren,
+                                                banshuirendianhua))
                 except (AttributeError, ValueError), err:
                     logging.exception(err)
                     IStatusMessage(self.request).addStatusMessage(err, type="error")
@@ -135,7 +159,6 @@ class DataInOut (BrowserView):
             except:
                 invalidLines.append(line)
                 print "Invalid line: %s" % line
-
         if invalidLines:
             datafile = self._createCSV(invalidLines)
             self.request['csverrors'] = True

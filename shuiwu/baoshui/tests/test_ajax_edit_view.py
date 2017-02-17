@@ -33,7 +33,7 @@ class TestView(InitContents):
                         'number':'2'                                                                       
                         }
 # Look up and invoke the view via traversal
-        obj = self.portal['nashuiku1']['nashuiren1']['zichanfuzaibiao']
+        obj = self.portal['nashuiku1']['nashuiren1']['2016']['zichanfuzaibiao']
 
         view = obj.restrictedTraverse('@@modify_yuedujilu')
         result = view()
@@ -51,7 +51,7 @@ class TestView(InitContents):
                         'number':'2'                                              
                         }
 # Look up and invoke the view via traversal
-        obj = self.portal['nashuiku1']['nashuiren1']['qiyesuodeshuialeiblei']
+        obj = self.portal['nashuiku1']['nashuiren1']['2016']['qiyesuodeshuialeiblei']
 
         view = obj.restrictedTraverse('@@modify_jidujilu')
         result = view()
@@ -68,7 +68,7 @@ class TestView(InitContents):
                         'number':'2'                                              
                         }
 # Look up and invoke the view via traversal
-        obj = self.portal['nashuiku1']['nashuiren1']['ziyuanshui']
+        obj = self.portal['nashuiku1']['nashuiren1']['2016']['ziyuanshui']
  
 
         view = obj.restrictedTraverse('@@modify_ancijilu')
@@ -87,7 +87,7 @@ class TestView(InitContents):
                                                                        
                         }
 # Look up and invoke the view via traversal
-        obj = self.portal['nashuiku1']['nashuiren1']
+        obj = self.portal['nashuiku1']['nashuiren1']['2016']
  
 
         view = obj.restrictedTraverse('@@modify_property')
@@ -122,7 +122,7 @@ class TestView(InitContents):
                         'number':'12'
                         }
 # Look up and invoke the view via traversal
-        obj = self.portal['nashuiku1']['nashuiren1']
+        obj = self.portal['nashuiku1']['nashuiren1']['2016']
  
 
         view = obj.restrictedTraverse('@@batch_modify')
@@ -140,7 +140,7 @@ class TestView(InitContents):
                         'subobj_id':'anyueqita1'
                         }
 # Look up and invoke the view via traversal
-        obj = self.portal['nashuiku1']['nashuiren1']
+        obj = self.portal['nashuiku1']['nashuiren1']['2016']
  
 
         view = obj.restrictedTraverse('@@modify_description')

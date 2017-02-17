@@ -1,0 +1,31 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:cache="http://namespaces.zope.org/cache"
+    i18n_domain="shuiwu.baoshui">
+    
+    <include package="z3c.caching" file="meta.zcml" />
+  
+  <cache:rulesetType
+      name="shuiwu.baoshui.editing"
+      title="plone editing view"
+      description="plone editing view"
+      />
+  <cache:rulesetType
+      name="plone.homepage"
+      title="Homepage"
+      description="Site homepage view"
+      />     
+
+    <cache:ruleset
+        for=".nashuiren_view.NashuirenView"
+        ruleset="shuiwu.baoshui.editing"
+        />
+    <cache:ruleset
+        for=".nashuiren_view.NashuirenEdit"
+        ruleset="shuiwu.baoshui.editing"
+        />
+    <cache:ruleset
+        for=".ajax_listing.sysAjaxListingView"
+        ruleset="plone.homepage"
+        />                            
+</configure>

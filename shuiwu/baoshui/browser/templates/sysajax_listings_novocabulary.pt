@@ -39,9 +39,9 @@
 			<input type="hidden" value="created" id="solrSortColumn">
 			<input type="hidden" value="reverse" id="solrSortDirection">
 			<ul class="row list-inline" id="dateRangeSearchUl">
-				<li class="title">按日期：</li>
+				<li class="title">按修改日期：</li>
 				<li class="all">
-					<span class="over" data-name="0"><a class="btn btn-default" href="javascript:void(0)" role="button">所有</a></span>
+					<span class="over" data-name="0"><a class="btn btn-primary" href="javascript:void(0)" role="button">所有</a></span>
 				</li>
 				<li class="list_span" class="fenlei_a">
 					<span data-name="1">
@@ -55,14 +55,15 @@
                     </span>
                  </li>
                </ul>
-               <div id="taggroups" tal:content="structure python:view.getAllTagsHtml()">
+               <!--
+               <div id="taggroups" class="hidden" tal:content="structure python:view.getAllTagsHtml()">
                 <ul class="row list-inline tagSelectSearch">                	
                     <li class="title">按标签：</li>
                     <li class="hidden">
                     	<input type="hidden" value="0" class="taggroup">                    		
                     </li>
                     <li class="all">
-                        <span class="over" data-name="0"><a class="btn btn-default" href="javascript:void(0)" role="button">所有</a></span><!-- 所有 -->
+                        <span class="over" data-name="0"><a class="btn btn-primary" href="javascript:void(0)" role="button">所有</a></span>
                     </li>
                     <li class="tag_list_div" class="fenlei_a">
                     	<span data-name="1"><a class="btn btn-default" href="javascript:void(0)" role="button">分析</a></span>
@@ -72,7 +73,9 @@
                     	<span data-name="5"><a class="btn btn-default" href="javascript:void(0)" role="button">培训</a></span>                     	                   	
                     </li>                   
                 </ul>
-              </div><!--搜索框、搜索条件选择 End--><!--搜索选择结果start-->
+              </div>
+              -->
+              <!--搜索框、搜索条件选择 End--><!--搜索选择结果start-->
               <div class="row">
               	<ul id="all_result_recordinfo" class="list-inline col-xs-12 col-sm-4 col-sm-offset-4">
                 	<li class="a">已选择：</li>
@@ -104,7 +107,7 @@
                 </ul>
                </div>
             </div>
-            <table class="row table table-striped table-bordered table-condensed listing">
+            <table class="row table table-striped table-bordered table-condensed pat-tablesorter">
             	<thead>
             		<tr data-toggle="tooltip" title="点击排序">
             			<th class="col-md-1 text-center">序号</th>
@@ -123,8 +126,7 @@
             			<td class="col-md-1">2013-07-13</td>
             		</tr>
             	</tbody>
-            </table>            
-					
+            </table>           					
             <!--搜索结果列表 End-->
             <!--分页-->
            <nav class="text-center">          	
@@ -138,8 +140,7 @@
             	<li><a class="page" href="javascript:searchEvent(16,10)">末页</a></li>
             </ul>
            </nav>
-		</div>
-        <!--左边内容 End-->		
+		</div>		
 	</div>
   <metal:js fill-slot="javascript_bottom_slot">
 	<script type="text/javascript"

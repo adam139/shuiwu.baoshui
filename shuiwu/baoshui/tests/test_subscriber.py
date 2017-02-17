@@ -40,7 +40,7 @@ class TestView(unittest.TestCase):
                   
     def test_folder_types(self):
         self.assertEqual(self.portal['nashuiku1']['nashuiren1'].id,'nashuiren1')
-        self.assertEqual(self.portal['nashuiku1']['nashuiren1']['gonghuijingfei'].id,'gonghuijingfei')        
+        self.assertEqual(self.portal['nashuiku1']['nashuiren1']['2016']['gonghuijingfei'].id,'gonghuijingfei')        
 
           
 

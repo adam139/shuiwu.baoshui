@@ -1,5 +1,11 @@
 <?xml version="1.0"?>
 <object name="portal_catalog" meta_type="Plone Catalog Tool">
+ 	<index name="fulltext" meta_type="ZCTextIndex">
+  		<indexed_attr value="fulltext"/>
+  		<extra name="index_type" value="Okapi BM25 Rank"/>
+  		<extra name="lexicon_id" value="plone_lexicon"/>
+ 	</index>    
+    
     <index name="guanlidaima" meta_type="FieldIndex">
         <indexed_attr value="guanlidaima"/>
     </index>
@@ -7,5 +13,41 @@
     <index name="dengjiriqi" meta_type="DateIndex">
         <indexed_attr value="dengjiriqi"/>
     </index>
-    <column value="dengjiriqi"/>                     
+    <column value="dengjiriqi"/>
+    <index name="status" meta_type="FieldIndex">
+        <indexed_attr value="status"/>
+    </index>
+    <column value="status"/>
+    <index name="regtype" meta_type="FieldIndex">
+        <indexed_attr value="regtype"/>
+    </index>
+    <column value="regtype"/>
+    <index name="caiwufuzeren" meta_type="FieldIndex">
+        <indexed_attr value="caiwufuzeren"/>
+    </index>
+    <column value="caiwufuzeren"/>
+    <index name="caiwufuzerendianhua" meta_type="FieldIndex">
+        <indexed_attr value="caiwufuzerendianhua"/>
+    </index>
+    <column value="caiwufuzerendianhua"/>
+    <index name="banshuiren" meta_type="FieldIndex">
+        <indexed_attr value="banshuiren"/>
+    </index>
+    <column value="banshuiren"/>
+    <index name="banshuirendianhua" meta_type="FieldIndex">
+        <indexed_attr value="banshuirendianhua"/>
+    </index>
+    <column value="banshuirendianhua"/>                                         
+    <index name="shuiguanyuan" meta_type="FieldIndex">
+        <indexed_attr value="shuiguanyuan"/>
+    </index>
+    <column value="shuiguanyuan"/>
+    <index name="danganbianhao" meta_type="FieldIndex">
+        <indexed_attr value="danganbianhao"/>
+    </index>
+    <column value="danganbianhao"/>
+    <index name="guidangzhuangtai" meta_type="FieldIndex">
+        <indexed_attr value="guidangzhuangtai"/>
+    </index>
+    <column value="guidangzhuangtai"/>        
 </object>

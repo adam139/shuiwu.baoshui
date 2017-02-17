@@ -13,7 +13,7 @@ class Inashuiren(form.Schema,IBasic):
     na shui ren niandu sheshui shenbao jilu
     """
 # 纳税人名称/所属科室/税管员、税务登记日期
-    dexteritytextindexer.searchable('title')
+#     dexteritytextindexer.searchable('title')
     title = schema.TextLine(title=_(u"nashuiren mingcheng"),
                              default=u"",
                              required=True,)
@@ -42,7 +42,7 @@ class Inashuiren(form.Schema,IBasic):
                              default=u"2012",
                              required=False,)
 #管理代码    
-    dexteritytextindexer.searchable('guanlidaima')
+#     dexteritytextindexer.searchable('guanlidaima')
     guanlidaima = schema.ASCIILine(
             title=_(u"guanli daima"),
             description=_(u"shehui xingren daima (nashuiren shibiehao)"),
@@ -50,11 +50,37 @@ class Inashuiren(form.Schema,IBasic):
 #档案编号     
     danganbianhao = schema.ASCIILine(
             title=_(u"dangan bianhao"),
+            default="",
             required=False)
 #小规模认定
     xiaoguimo = schema.Bool(title=_(u"xiao guimo nashuiren rending"),
                        required=False,
-                       default=False)
+                      default=False)
+#状态    
+    status = schema.TextLine(title=_(u"nashui ren zhuangtai"),
+                       required = True,
+                       default=u"")
+#登记注册类型
+    regtype = schema.TextLine(title=_(u"nashui dengji zhuce leixing"),
+                       required = True,
+                       default=u"")
+#财务负责人    
+    caiwufuzeren = schema.TextLine(title=_(u"caiwu fuze ren"),
+                       required=False,
+                       default=u"")
+#财务负责人电话    
+    caiwufuzerendianhua = schema.TextLine(title=_(u"caiwu fuze ren dianhua"),
+                       required=False,
+                       default=u"")
+
+#办税人    
+    banshuiren = schema.TextLine(title=_(u"banshui ren"),
+                       required=False,
+                       default=u"")
+#办税人电话    
+    banshuirendianhua = schema.TextLine(title=_(u"banshui ren dianhua"),
+                       required=False,
+                       default=u"")            
 #年度记录
     yinhuashui = schema.Bool(title=_(u"yinhuashui shenbaobiao(yingyezhangbo)"),
                        required=False,
@@ -74,16 +100,18 @@ class Inashuiren(form.Schema,IBasic):
     qiyesuodeshuiniandu = schema.Bool(title=_(u"qiye suodeshui niandu shenbaobiao ji huisuan qinjiao fudaojilu"),
                        required=False,
                        default=False)
+## 管理类字段    
     zhuxiaoshuiwudengji = schema.Bool(title=_(u"zhuxiao shuiwu dengjibiao"),
                        required=False,
                        default=False)
     feizhenghurending = schema.Bool(title=_(u"fei zhenghu rending biao"),
                        required=False,
                        default=False)
-
     
     
-    form.omitted('year','zhuguanshuiwujiguan')
+    form.omitted('year','zhuguanshuiwujiguan','feizhenghurending','zhuxiaoshuiwudengji'
+                 ,'qiyesuodeshuiniandu','gerensuodeshuiniandu','difangshuihuisuan',
+                 'canjirenbaozhengjin','chechuanshui','yinhuashui','xiaoguimo')
     
 @form.default_value(field=Inashuiren['dengjiriqi'])
 def dengjiriqiDefaultValue(data):

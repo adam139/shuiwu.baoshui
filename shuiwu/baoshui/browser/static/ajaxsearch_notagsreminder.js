@@ -3,8 +3,10 @@
 function closeSearchEventsDiv(flag) {
     if (flag == 1) {
         $("#dateSearch").val("0");
+        $("#dateRangeSearchUl li> .over a").removeClass("btn-primary").addClass("btn-default");
         $("#dateRangeSearchUl li> .over").removeClass("over");
         $("#dateRangeSearchUl").find("li span[data-name='0']").addClass("over");
+        $("#dateRangeSearchUl li> .over a").removeClass("btn-default").addClass("btn-primary");
         searchEvent();
     } else if (flag == 2) {
         $("#securityLevelSearch").val("0");
@@ -20,10 +22,12 @@ function closeSearchEventsDiv(flag) {
     else if (flag == 4) {
         $("#tagSearch").val("0");
         $(".tagSelectSearch").each(function(){
+        	$(this).find("li> .over a").removeClass("btn-primary").addClass("btn-default");
         	$(this).find("li> .over").removeClass("over");
         }); 
         $(".tagSelectSearch").each(function(){
     	$(this).find("li span[data-name='0']").addClass("over");
+    	$(this).find("li span[data-name='0'] a").removeClass("btn-default").addClass("btn-primary");
     	$(this).find(".hidden input").val("0");});
         searchEvent();
     }    
@@ -313,8 +317,10 @@ $(document).ready(function(){
 	//select date range search
     $("#dateRangeSearchUl li").on("click","span",function() {        
                  if ($(this).attr("class") == "title") {} else {
+                 	$("#dateRangeSearchUl li> .over a").removeClass("btn-primary").addClass("btn-default");
                     $("#dateRangeSearchUl li> .over").removeClass("over");
                     $(this).addClass("over");
+                    $(this).find("a").removeClass("btn-default").addClass("btn-primary");
                     $("#dateSearch").attr("value", $(this).attr("data-name"));
                     searchEvent();}       
        return false;
@@ -367,11 +373,13 @@ $(document).ready(function(){
            'json');
     	return false;       	
       	
-      } else  {
+      } else  {                    
+                    $(this).parent().parent().find(".over a").removeClass("btn-primary").addClass("btn-default");
                     $(this).parent().parent().find(".over").removeClass("over");
                     var newval = $(this).parent().parent().find("input").attr("data-category") + $(this).find("a").html();
                     $(this).parent().parent().find("input").attr("value",newval);
-                    $(this).addClass("over");                    
+                    $(this).addClass("over");
+                    $(this).find("a").removeClass("btn-default").addClass("btn-primary");                    
                     $("#tagSearch").attr("value",newval );
                     //$(this).parent().parent().addClass('running');
                     searchEvent();

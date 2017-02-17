@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2016-10-17 00:23+0000\n"
+"POT-Creation-Date: 2017-01-05 06:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,11 +30,11 @@ msgstr ""
 msgid "Data In/Out"
 msgstr ""
 
-#: ./browser/datainout.py:141
+#: ./browser/datainout.py:169
 msgid "Data successfully imported."
 msgstr ""
 
-#: ./browser/nashuiren_view.py:230
+#: ./browser/nashuiren_view.py:245
 msgid "Edit nashuiren base info"
 msgstr ""
 
@@ -54,6 +54,10 @@ msgstr ""
 msgid "Na shui ku"
 msgstr ""
 
+#: ./profiles/default/types/shuiwu.baoshui.niandu.xml
+msgid "Na shui niandu"
+msgstr ""
+
 #: ./profiles/default/types/shuiwu.baoshui.nashuiren.xml
 msgid "Na shui ren"
 msgstr ""
@@ -66,11 +70,11 @@ msgstr ""
 msgid "Select your CSV file here. Please respect the syntax of the template available ${here}"
 msgstr ""
 
-#: ./browser/datainout.py:138
+#: ./browser/datainout.py:166
 msgid "Some errors occured. Please check your CSV syntax and retry."
 msgstr ""
 
-#: ./browser/datainout.py:84
+#: ./browser/datainout.py:98
 msgid "Wrong specification of the CSV file. Please correct it and retry."
 msgstr ""
 
@@ -80,10 +84,6 @@ msgstr ""
 
 #: ./profiles/default/types/shuiwu.baoshui.anciqita.xml
 msgid "anci qita"
-msgstr ""
-
-#: ./profiles/default/types/shuiwu.baoshui.ancijilu.xml
-msgid "ancijilu"
 msgstr ""
 
 #: ./profiles/default/types/shuiwu.baoshui.anciqita.xml
@@ -118,15 +118,32 @@ msgstr ""
 msgid "anyueqita2"
 msgstr ""
 
+#: ./content/nashuiren.py:76
+msgid "banshui ren"
+msgstr ""
+
+#: ./content/nashuiren.py:80
+msgid "banshui ren dianhua"
+msgstr ""
+
+#: ./content/nashuiren.py:67
+msgid "caiwu fuze ren"
+msgstr ""
+
+#: ./content/nashuiren.py:71
+msgid "caiwu fuze ren dianhua"
+msgstr ""
+
 #: ./profiles/default/types/shuiwu.baoshui.canbaojinshenbaobiao.xml
 msgid "canbaojinshenbaobiao"
 msgstr ""
 
-#: ./content/nashuiren.py:64
+#: ./content/nashuiren.py:91
 msgid "canjirenbaozhengjin shenbaobiao"
 msgstr ""
 
-#: ./content/nashuiren.py:61
+#: ./content/nashuiren.py:88
+#: ./content/niandu.py:14
 msgid "chechuanshui shenbaobiao"
 msgstr ""
 
@@ -138,7 +155,7 @@ msgstr ""
 msgid "chengzhentudishiyongshui"
 msgstr ""
 
-#: ./content/nashuiren.py:51
+#: ./content/nashuiren.py:52
 msgid "dangan bianhao"
 msgstr ""
 
@@ -146,7 +163,7 @@ msgstr ""
 msgid "dengji riqi"
 msgstr ""
 
-#: ./content/nashuiren.py:67
+#: ./content/nashuiren.py:94
 msgid "difang geshui huisuan qingjiaobiao"
 msgstr ""
 
@@ -166,21 +183,17 @@ msgstr ""
 msgid "fangchanshui shenbaobiao(fangchanyuanzhi)"
 msgstr ""
 
-#: ./content/nashuiren.py:79
+#: ./content/nashuiren.py:107
 msgid "fei zhenghu rending biao"
 msgstr ""
 
-#: ./profiles/default/types/shuiwu.baoshui.jidujilu.xml
-msgid "gai jidu you shenbao ji dagou,fouze wei kong"
+#: ./vocabularies.py:8
+msgid "fou zheng chang"
 msgstr ""
 
 #: ./content/ancijilu.py:12
-#: ./profiles/default/types/shuiwu.baoshui.ancijilu.xml
+#: ./content/base.py:70
 msgid "gaiyue shenbao cishu"
-msgstr ""
-
-#: ./profiles/default/types/shuiwu.baoshui.yuedujilu.xml
-msgid "gaiyue you shenbao ji dagou,fouze wei kong"
 msgstr ""
 
 #: ./profiles/default/types/shuiwu.baoshui.gengdizhanyongshui.xml
@@ -199,7 +212,7 @@ msgstr ""
 msgid "geren suodeshui koujiao biao"
 msgstr ""
 
-#: ./content/nashuiren.py:70
+#: ./content/nashuiren.py:97
 msgid "geren suodeshui niandu shenbaobiao"
 msgstr ""
 
@@ -211,16 +224,24 @@ msgstr ""
 msgid "gonghuijingfei"
 msgstr ""
 
-#: ./content/nashuiren.py:46
+#: ./content/nashuiren.py:47
 msgid "guanli daima"
+msgstr ""
+
+#: ./content/niandu.py:33
+msgid "guidang zhuangtai"
+msgstr ""
+
+#: ./vocabularies.py:28
+msgid "guo you qi ye"
+msgstr ""
+
+#: ./vocabularies.py:9
+msgid "he xiao bao yan"
 msgstr ""
 
 #: ./browser/templates/datainout.pt:49
 msgid "here"
-msgstr ""
-
-#: ./profiles/default/types/shuiwu.baoshui.jidujilu.xml
-msgid "jidujilu"
 msgstr ""
 
 #: ./profiles/default/types/shuiwu.baoshui.lirunbiao.xml
@@ -235,8 +256,21 @@ msgstr ""
 msgid "na shui ku baohan duoge nashuiren jilu"
 msgstr ""
 
+#: ./profiles/default/types/shuiwu.baoshui.niandu.xml
+msgid "na shui niandu"
+msgstr ""
+
 #: ./profiles/default/types/shuiwu.baoshui.nashuiren.xml
 msgid "na shui ren niandu sheshui shenbao jilu"
+msgstr ""
+
+#: ./content/nashuiren.py:63
+msgid "nashui dengji zhuce leixing"
+msgstr ""
+
+#: ./behavior/status.py:16
+#: ./content/nashuiren.py:59
+msgid "nashui ren zhuangtai"
 msgstr ""
 
 #: ./browser/templates/datainout.pt:14
@@ -259,11 +293,20 @@ msgstr ""
 msgid "nashuiren(s) added."
 msgstr ""
 
+#: ./vocabularies.py:26
+msgid "nei zi ge ti"
+msgstr ""
+
 #: ./content/nashuiren.py:41
 msgid "niandu"
 msgstr ""
 
-#: ./content/nashuiren.py:73
+#: ./vocabularies.py:27
+msgid "qi ta you xian ze ren gong si"
+msgstr ""
+
+#: ./content/nashuiren.py:100
+#: ./content/niandu.py:26
 msgid "qiye suodeshui niandu shenbaobiao ji huisuan qinjiao fudaojilu"
 msgstr ""
 
@@ -275,6 +318,14 @@ msgstr ""
 msgid "qiyesuodeshui aleiblei"
 msgstr ""
 
+#: ./profiles/default/types/shuiwu.baoshui.rukupingzheng.xml
+msgid "rukupingzheng"
+msgstr ""
+
+#: ./profiles/default/types/shuiwu.baoshui.rukupingzheng.xml
+msgid "rukupingzheng anyue shenbaobiao"
+msgstr ""
+
 #: ./profiles/default/types/shuiwu.baoshui.shebaofei.xml
 msgid "shebao fei"
 msgstr ""
@@ -283,10 +334,15 @@ msgstr ""
 msgid "shebao fei shenbaobiao"
 msgstr ""
 
-#: ./content/nashuiren.py:47
+#: ./content/nashuiren.py:48
 msgid "shehui xingren daima (nashuiren shibiehao)"
 msgstr ""
 
+#: ./vocabularies.py:25
+msgid "shi ye dan wei"
+msgstr ""
+
+#: ./content/base.py:12
 #: ./content/jidujilu.py:12
 #: ./content/yuedujilu.py:12
 msgid "shifou yi shenbao?"
@@ -304,20 +360,12 @@ msgstr ""
 msgid "shuishou guanlirenyuan"
 msgstr ""
 
-#: ./profiles/default/types/shuiwu.baoshui.tudizengzhishuianyue.xml
+#: ./profiles/default/types/shuiwu.baoshui.tudizengzhishui.xml
 msgid "tudi zengzhishui"
 msgstr ""
 
-#: ./profiles/default/types/shuiwu.baoshui.tudizengzhishuianji.xml
-msgid "tudi zengzhishui shenbaobiao(anji)"
-msgstr ""
-
-#: ./profiles/default/types/shuiwu.baoshui.tudizengzhishuianyue.xml
+#: ./profiles/default/types/shuiwu.baoshui.tudizengzhishui.xml
 msgid "tudi zengzhishui shenbaobiao(anyue)"
-msgstr ""
-
-#: ./profiles/default/types/shuiwu.baoshui.tudizengzhishuianji.xml
-msgid "tudizengzhishui anji"
 msgstr ""
 
 #: ./profiles/default/types/shuiwu.baoshui.xianjinliuliangbiao.xml
@@ -328,7 +376,7 @@ msgstr ""
 msgid "xianjinliuliangbiao"
 msgstr ""
 
-#: ./content/nashuiren.py:54
+#: ./content/nashuiren.py:55
 msgid "xiao guimo nashuiren rending"
 msgstr ""
 
@@ -356,7 +404,8 @@ msgstr ""
 msgid "yinhuashui shenbaobiao(anji)"
 msgstr ""
 
-#: ./content/nashuiren.py:58
+#: ./content/nashuiren.py:85
+#: ./content/niandu.py:11
 msgid "yinhuashui shenbaobiao(yingyezhangbo)"
 msgstr ""
 
@@ -368,8 +417,8 @@ msgstr ""
 msgid "yinhuashui zijinzhangbo"
 msgstr ""
 
-#: ./profiles/default/types/shuiwu.baoshui.yuedujilu.xml
-msgid "yuedujilu"
+#: ./vocabularies.py:7
+msgid "zheng chang"
 msgstr ""
 
 #: ./profiles/default/types/shuiwu.baoshui.zhifugongzimingxi.xml
@@ -380,7 +429,11 @@ msgstr ""
 msgid "zhu guan shuiwu jiguan"
 msgstr ""
 
-#: ./content/nashuiren.py:76
+#: ./vocabularies.py:10
+msgid "zhu xiao"
+msgstr ""
+
+#: ./content/nashuiren.py:104
 msgid "zhuxiao shuiwu dengjibiao"
 msgstr ""
 

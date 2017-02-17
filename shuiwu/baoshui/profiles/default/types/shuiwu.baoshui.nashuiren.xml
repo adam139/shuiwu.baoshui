@@ -11,34 +11,7 @@
   <property name="global_allow">False</property>
   <property name="filter_content_types">True</property>
   <property name="allowed_content_types" >
-  	<!-- anci-->
-  <element value="shuiwu.baoshui.ziyuanshui" />
-  <element value="shuiwu.baoshui.anciqita" />
-  <element value="shuiwu.baoshui.gengdizhanyongshui" />      
-  <element value="shuiwu.baoshui.yinhuashuizijinzhangbo" />
-  	<!-- anjidu-->  
-  <element value="shuiwu.baoshui.qiyesuodeshuialeiblei" /> 	  	
-  <element value="shuiwu.baoshui.chengzhentudishiyongshui" />
-  <element value="shuiwu.baoshui.fangchanshuifangchanyuanzhi" />
-  <element value="shuiwu.baoshui.anjiqita1" />
-  <element value="shuiwu.baoshui.anjiqita2" />  
-  	<!-- anyuedu-->         
-  <element value="shuiwu.baoshui.zichanfuzaibiao" />  
-  <element value="shuiwu.baoshui.lirunbiao" />
-  <element value="shuiwu.baoshui.xianjinliuliangbiao" />
-  <element value="shuiwu.baoshui.chengjianjiaoyudifangfujia" />
-  <element value="shuiwu.baoshui.gerensuodeshui" />   
-  <element value="shuiwu.baoshui.zhifugongzimingxi" />
-  <element value="shuiwu.baoshui.yinhuashuianyue" />      
-  <element value="shuiwu.baoshui.canbaojinshenbaobiao" />
-  <element value="shuiwu.baoshui.gonghuijingfei" /> 
-  <element value="shuiwu.baoshui.shuilijijin" />
-  <element value="shuiwu.baoshui.shebaofei" />       
-  <element value="shuiwu.baoshui.fangchanshui" />
-  <element value="shuiwu.baoshui.tudizengzhishui" />  
-  <element value="shuiwu.baoshui.rukupingzheng" /> 
-  <element value="shuiwu.baoshui.anyueqita1" /> 
-  <element value="shuiwu.baoshui.anyueqita2" />      
+  <element value="shuiwu.baoshui.niandu" /> 	      
   </property>
 
   <property name="allow_discussion">False</property>
@@ -55,35 +28,35 @@
  <property name="add_permission">shuiwu.baoshui.add_nashuiren</property>
  <property name="behaviors">
      <element value="plone.app.content.interfaces.INameFromTitle" />
-     <element value="collective.dexteritytextindexer.behavior.IDexterityTextIndexer"/>     
-<!--     <element value="plone.app.dexterity.behaviors.metadata.IBasic"/> -->
+     <element value="plone.app.dexterity.behaviors.metadata.ICategorization"/>        
  </property>
 
   <!-- View information -->
-  <property name="default_view">nashuiren_edit</property>
+  <property name="default_view">archived_view</property>
   <property name="default_view_fallback">False</property>
   <property name="view_methods">
     <element value="base_view" />
-    <element value="nashuiren_view" />
-    <element value="sysajax_listings" />
-    <element value="print_preview" />
-    <element value="nashuiren_edit" />                
+    <element value="archived_view" />                
   </property>
 
   <!-- Method aliases -->
   <alias from="(Default)" to="(selected layout)" />
-  <alias from="edit" to="@@nashuiren_edit" />
+  <alias from="edit" to="@@edit" />
   <alias from="sharing" to="@@sharing" />
-  <alias from="view" to="@@nashuiren_view" />
+  <alias from="view" to="@@view" />
 
   <!-- Actions -->
   <action title="View" action_id="view" category="object" condition_expr=""
-    url_expr="string:${object_url}/view" visible="True">
+    url_expr="string:${object_url}/" visible="True">
     <permission value="View" />
   </action>
 
   <action title="Edit" action_id="edit" category="object" condition_expr=""
-    url_expr="string:${object_url}/edit" visible="True">
+    url_expr="string:${object_url}/edit" visible="False">
     <permission value="shuiwu.baoshui:Modify nashuiren" />
   </action>
+  <action title="Archived" action_id="archived" category="object" condition_expr=""
+    url_expr="string:${object_url}/@@archived_view" visible="True">
+    <permission value="shuiwu.baoshui:Modify nashuiren" />
+  </action>  
 </object>
