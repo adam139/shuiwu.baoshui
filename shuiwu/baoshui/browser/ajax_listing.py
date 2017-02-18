@@ -37,11 +37,12 @@ class sysAjaxListingView(BrowserView):
     """
     AJAX 查询，返回分页结果,for some contenttypes relative to project
     """
-#     def __init__(self,context, request):
-#         # Each view instance receives context and request as construction parameters
-#         self.context = context
-#         self.request = request
-#         add_resource_on_request(self.request, 'sorter')   
+    def __init__(self,context, request):
+        # Each view instance receives context and request as construction parameters
+        self.context = context
+        self.request = request
+#         add_resource_on_request(self.request, 'tablesorter')
+        add_resource_on_request(self.request, 'sorter')   
                
     @memoize    
     def catalog(self):
