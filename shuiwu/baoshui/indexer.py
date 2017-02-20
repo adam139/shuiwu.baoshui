@@ -60,7 +60,8 @@ def nashuiren_searchable_text_indexer(obj):
     ln = len(shibiehao)
     size = 4
     batch = ln // size
-    indexed = []    
+    indexed = []
+    indexed.append(shibiehao)    
     for i in range(batch):
         new = shibiehao[size * i:]        
         indexed.append(new)      
