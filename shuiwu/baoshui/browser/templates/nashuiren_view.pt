@@ -286,7 +286,7 @@
 						</td>						
 					</tr>				
 					<tr class="row notable">
-						<td class="property col-md-4">非正户认定表</td>
+						<td class="property col-md-4">非正常户认定表</td>
 						<td class="data col-md-8 p-checkbox text-center" tal:define="property string:feizhenghurending;checked python:view.parentobj_propertyChecked(property)">
 							<tal:block tal:condition="checked">
 								<input checked type="checkbox"/>
