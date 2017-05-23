@@ -9,9 +9,11 @@ function closeSearchEventsDiv(flag) {
         $("#dateRangeSearchUl li> .over a").removeClass("btn-default").addClass("btn-primary");
         searchEvent();
     } else if (flag == 2) {
-        $("#securityLevelSearch").val("0");
-        $("#securityLevelSelectSearch li> .over").removeClass("over");
-        $("#securityLevelSelectSearch").find("li span[data-name='0']").addClass("over");
+        $("#annualSearch").val("0");
+        $("#annualRangeSearchUl li> .over a").removeClass("btn-primary").addClass("btn-default");
+        $("#annualRangeSearchUl li> .over").removeClass("over");
+        $("#annualRangeSearchUl").find("li span[data-name='0']").addClass("over");
+        $("#annualRangeSearchUl li> .over a").removeClass("btn-default").addClass("btn-primary");
         searchEvent();
     } else if (flag == 3) {
         $("#categorySearch").val("0");
@@ -63,7 +65,7 @@ var searchEvent = function(jumpPage, rows, initKeyword) {
         keyword = $("#searchKeyword").val();
     }
     var dateSearchType = $("#dateSearch").val();
-    var level = $("#securityLevelSearch").val();
+    var annual = $("#annualSearch").val();
     var categoryId = $("#categorySearch").val();
     
     // this is list value
@@ -73,7 +75,7 @@ var searchEvent = function(jumpPage, rows, initKeyword) {
     var sortColumn = $("#solrSortColumn").val();    
     var sortDirection = $("#solrSortDirection").val();
         
-    var data = {'datetype':dateSearchType,'security':level,'type':categoryId,'tag':tagId};
+    var data = {'datetype':dateSearchType,'annual':annual,'type':categoryId,'tag':tagId};
     data['sortcolumn'] = sortColumn;
     data['sortdirection'] = sortDirection;    
     
@@ -99,13 +101,13 @@ var searchEvent = function(jumpPage, rows, initKeyword) {
            function(resp) {
                        try {
                 showSearchEventResult(resp, true, keyword);
-                showResultRemind(keyword, dateSearchType, level, categoryId,taged);
+                showResultRemind(keyword, dateSearchType, annual, categoryId,taged);
             }
                        catch(e){alert(e);}
                        },
             'json'); 
 //    var searchCount = 0;
-//    showResultRemind(keyword, dateSearchType, level, categoryId,tagId)
+//    showResultRemind(keyword, dateSearchType, annual, categoryId,tagId)
 };
 var totalCountSearchEvent = 0;
 var showSearchEventResult = function(D, u, C) {
@@ -141,7 +143,7 @@ $("#searchResultDiv").html(a);
 function showResultRemind(d, a, c, e,m) {
 // d search by keyword
 // a search by Date
-// c search by security level
+// c search by annual range
 // e search by type
 // m search by tag, tag number	
     var b = "";
@@ -239,7 +241,7 @@ var generatePageLink = function(c, n, a) {
 
 
 function createStringSearch(d, a, c, g,m) {
-	// a:selected date number,c:selected security level ,g:task type key,m:tag number 
+	// a:selected date number,c:selected annual range ,g:task type key,m:tag number 
     var b = "<li class='a'>已选择：</li><li id='show_site_result'>";
     var h = "";
     switch (a) {
@@ -264,13 +266,13 @@ function createStringSearch(d, a, c, g,m) {
         b += "<div class='select' onclick=\"closeSearchEventsDiv(1)\">时间：<button type='button' class='close' aria-label='Close'><span aria-hidden='true'>" + h + "&times;</span></button></div>";
         break;
     }
-    // security level
+    // annual range
     var f = "";
     if (c == "0") {
         f = "所有";
     } else {
-        f = $("#securityLevelSelectSearch").find("span[data-name='" + c + "'] a").html();
-        b += "<div class='select' onclick=\"closeSearchEventsDiv(2)\">安全等级：<button type='button' class='close' aria-label='Close'><span aria-hidden='true'>" + f + "&times;</span></button></div>";
+        f = $("#annualRangeSearchUl").find("span[data-name='" + c + "'] a").html();
+        b += "<div class='select' onclick=\"closeSearchEventsDiv(2)\">申报年度：<button type='button' class='close' aria-label='Close'><span aria-hidden='true'>" + f + "&times;</span></button></div>";
     }
     //task type
     var e = "";
@@ -325,6 +327,17 @@ $(document).ready(function(){
                     searchEvent();}       
        return false;
     });
+    // annual range search
+    $("#annualRangeSearchUl li").on("click","span",function() {        
+                 if ($(this).attr("class") == "title") {} else {
+                 	$("#annualRangeSearchUl li> .over a").removeClass("btn-primary").addClass("btn-default");
+                    $("#annualRangeSearchUl li> .over").removeClass("over");
+                    $(this).addClass("over");
+                    $(this).find("a").removeClass("btn-default").addClass("btn-primary");
+                    $("#annualSearch").attr("value", $(this).attr("data-name"));
+                    searchEvent();}       
+       return false;
+    });    
     // security level
    $("#securityLevelSelectSearch li").on("click","span",function() {
                 if ($(this).attr("class") == "title" || $(this).attr("class") == "more") {} else 

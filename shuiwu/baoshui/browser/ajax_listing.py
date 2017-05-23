@@ -283,6 +283,24 @@ class ajaxsearch(grok.View):
     grok.require('zope2.View')    
 #     grok.require('shuiwu.baoshui.view_projectsummary')
 
+# annual range search 
+    def Annualcondition(self,key):        
+        "构造日期搜索条件"
+        cur = datetime.datetime.today()
+#今年        
+        if key == 0:  
+            id = cur.strftime("%Y") 
+#去年             
+        elif key == 1:
+            id = (cur + datetime.timedelta(-365)).strftime("%Y")
+            
+        elif key == 2:
+            id = (cur + datetime.timedelta(-730)).strftime("%Y")
+        else:
+            id = (cur + datetime.timedelta(-1095)).strftime("%Y")    
+
+        return id
+
     def Datecondition(self,key):        
         "构造日期搜索条件"
         end = datetime.datetime.today()
@@ -407,6 +425,7 @@ class totalajaxsearch(ajaxsearch):
  # datadic receive front ajax post data       
         datadic = self.request.form
         start = int(datadic['start']) # batch search start position
+        annual = int(datadic['annual'])  # 对应申报年度 今年，去年，千年……
         datekey = int(datadic['datetype'])  # 对应 最近一周，一月，一年……
         size = int(datadic['size'])      # batch search size         
         tag = datadic['tag'].strip()
@@ -417,9 +436,12 @@ class totalajaxsearch(ajaxsearch):
 #         origquery['object_provides'] = Inashuiren.__identifier__
 ##查询当前年度的 niandu对象
         import datetime
-        id = datetime.datetime.today().strftime("%Y")
+#         id = datetime.datetime.today().strftime("%Y")
         origquery['object_provides'] = Iniandu.__identifier__
-        origquery['id'] = id        
+#         origquery['id'] = id
+        origquery['id'] = self.Annualcondition(annual)
+#         import pdb
+#         pdb.set_trace()        
         origquery['sort_on'] = sortcolumn  
         origquery['sort_order'] = sortdirection                
  #模糊搜索       
