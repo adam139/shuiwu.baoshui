@@ -109,6 +109,43 @@ var searchEvent = function(jumpPage, rows, initKeyword) {
 //    var searchCount = 0;
 //    showResultRemind(keyword, dateSearchType, annual, categoryId,tagId)
 };
+// export as csv
+
+var ExportEvent = function() {
+
+    var dateSearchType = $("#dateSearch").val();
+    var annual = $("#annualSearch").val();    
+    // this is list value
+    var tagId = "0";   
+    var tagvalues = $("#taggroups input").each(function(){
+    	tagId = tagId + "," + $(this).val();});    
+    var sortColumn = $("#solrSortColumn").val();    
+    var sortDirection = $("#solrSortDirection").val();        
+    var params = {'datetype':dateSearchType,'annual':annual,'tag':tagId};
+    params['sortcolumn'] = sortColumn;
+    params['sortdirection'] = sortDirection;
+    var action = $("#ajaxexport").attr('data-ajax-target');    
+//st
+    $.ajax({
+    type: "POST",
+    url: action,
+    data: params,
+    success: function(response, status, request) {
+        var disp = request.getResponseHeader('Content-Disposition');
+        if (disp && disp.search('attachment') != -1) {
+            var form = $('<form method="POST" action="' + action + '">');
+            $.each(params, function(k, v) {
+                form.append($('<input type="hidden" name="' + k +
+                        '" value="' + v + '">'));
+            });
+            $('body').append(form);
+            form.submit();   
+  }
+  }
+});
+};
+//st
+
 var totalCountSearchEvent = 0;
 var showSearchEventResult = function(D, u, C) {
 //function showSearchEventResult(D, u, C) {
@@ -315,7 +352,8 @@ $(document).ready(function(){
                searchEvent();
     }
 	// click search button
-	$("#search").on("click","button",function(){ searchEvent();});
+	//$("#search").on("click","button",function(){ searchEvent();});
+	$("#export").on("click",function(){ ExportEvent();});
 	//select date range search
     $("#dateRangeSearchUl li").on("click","span",function() {        
                  if ($(this).attr("class") == "title") {} else {

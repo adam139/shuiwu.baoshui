@@ -68,6 +68,5 @@ class TestView(InitContents):
         view = self.portal.restrictedTraverse('@@ajax_total_search')
         result = view()
 
-
         self.assertEqual(json.loads(result)['size'],10)             
 

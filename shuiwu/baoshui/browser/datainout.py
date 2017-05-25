@@ -252,3 +252,30 @@ class DataInOut (BrowserView):
         self.request.response.addHeader('Cache-Control', "must-revalidate, post-check=0, pre-check=0, public")
         self.request.response.addHeader('Expires', "0")
         return data
+
+class totalExport(DataInOut):
+    """
+    ajax search page export total results
+    """
+    def _getDataInfos(self,**kw):
+        """Generator filled with the orgs data."""
+
+        catalog = getToolByName(self.context, "portal_catalog")
+        query = kw
+        query.update({"object_provides":Inashuiren.__identifier__})
+        
+        brains = catalog(query)
+        
+        for i in brains:
+            dataobj = i.getObject()                                
+            props = []
+            if dataobj is not None:
+                for p in data_PROPERTIES: # data properties 
+#                    import pdb
+#                    pdb.set_trace()                   
+                    if p == "organization_type" or p == "announcement_type" or p == "belondto_area":
+                        props.append(self.tranVoc(getattr(dataobj,p)))
+                    else:
+                        props.append(getattr(dataobj,p))                    
+            yield props    
+    

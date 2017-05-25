@@ -1,4 +1,6 @@
 #-*- coding: UTF-8 -*-
+import csv
+from StringIO import StringIO
 from zope.interface import Interface
 from zope.interface import implementer
 from zope.component import getMultiAdapter
@@ -435,7 +437,7 @@ class totalajaxsearch(ajaxsearch):
         origquery = searchview.getPathQuery()
 #         origquery['object_provides'] = Inashuiren.__identifier__
 ##查询当前年度的 niandu对象
-        import datetime
+#         import datetime
 #         id = datetime.datetime.today().strftime("%Y")
         origquery['object_provides'] = Iniandu.__identifier__
 #         origquery['id'] = id
@@ -471,6 +473,12 @@ class totalajaxsearch(ajaxsearch):
 #origquery provide  batch search        
         origquery['b_size'] = size 
         origquery['b_start'] = start
+        data = self.search(totalquery,origquery)
+        self.request.response.setHeader('Content-Type', 'application/json')
+        return json.dumps(data)
+        
+    def search(self,totalquery,origquery):
+        searchview = getMultiAdapter((self.context, self.request),name=u"sysajax_listings")
         def getout_filter(brain):
             if brain.regtype == getout[0].encode('utf-8'):
                 return False
@@ -485,22 +493,22 @@ class totalajaxsearch(ajaxsearch):
 
         braindata = filter(getout_filter,braindata)
 #        brainnum = len(braindata)         
-        del origquery 
+#         del origquery 
         del totalquery,totalbrains
 #call output function        
         # transform to hashable
         braindata = tuple(braindata)
-        data = self.output(start,size,totalnum, braindata,searchview)
-        self.request.response.setHeader('Content-Type', 'application/json')
-        return json.dumps(data)
+        data = self.output(origquery['b_start'],origquery['b_size'],totalnum, braindata,searchview)
+        
+        return data
     
     @ram.cache(_ajax_output_cachekey)
     def output(self,start,size,totalnum,braindata,searchview):
         "根据参数total,braindata,返回jason 输出"
         
-        outhtml = ""     
-        import datetime
-        id = datetime.datetime.today().strftime("%Y")
+        outhtml = ""   
+#         import datetime
+#         id = datetime.datetime.today().strftime("%Y")
         for k in braindata:
             bpath = k.getURL()
             nid = bpath.split("/")[-2]
@@ -537,7 +545,149 @@ class totalajaxsearch(ajaxsearch):
             outhtml = "%s%s" %(outhtml ,out)           
         data = {'searchresult': outhtml,'start':start,'size':size,'total':totalnum}
         return data
+data_PROPERTIES = [
+                   'Title',
+                   'Description',
+                   'guanlidaima',
+                   'regtype',
+                   'shuiguanyuan',
+                   'status','caiwufuzeren','caiwufuzerendianhua','banshuiren','banshuirendianhua'
+                   ]    
+# need byte string
+data_VALUES = [
+               u"x坐标".encode('utf-8'),
+               u"y坐标".encode('utf-8'),
+               ]
+class searchResultExport(totalajaxsearch):
+    """
+    export multi-conditions search result to csv file
+    """
+    grok.context(Interface)
+    grok.name('export_total_search')
+    grok.require('zope2.View')
+
+    def __call__(self): 
+#     def render(self):    
+        searchview = getMultiAdapter((self.context, self.request),name=u"sysajax_listings")        
+ # datadic receive front ajax post data       
+        datadic = self.request.form
+        if not bool(datadic):
+            annual = datekey  = 0
+            tag = "0,0"
+            sortcolumn = 'modified'
+            sortdirection = 'reverse'
+        else:
+#         start = int(datadic['start']) # batch search start position
+            annual = int(datadic['annual'])  # 对应申报年度 今年，去年，千年……
+            datekey = int(datadic['datetype'])  # 对应 最近一周，一月，一年……
+#         size = int(datadic['size'])      # batch search size         
+            tag = datadic['tag'].strip()
+            sortcolumn = datadic['sortcolumn']
+            sortdirection = datadic['sortdirection']
+        keyword = ''
+#         keyword = (datadic['searchabletext']).strip()    
+
+        origquery = searchview.getPathQuery()
+#         origquery['object_provides'] = Inashuiren.__identifier__
+##查询当前年度的 niandu对象
+#         import datetime
+#         id = datetime.datetime.today().strftime("%Y")
+        origquery['object_provides'] = Iniandu.__identifier__
+#         origquery['id'] = id
+        origquery['id'] = self.Annualcondition(annual)
+#         import pdb
+#         pdb.set_trace()        
+        origquery['sort_on'] = sortcolumn  
+        origquery['sort_order'] = sortdirection                
+ #模糊搜索       
+        if keyword != "":
+            origquery['SearchableText'] = '*'+keyword+'*'        
+        if datekey != 0:
+            origquery['modified'] = self.Datecondition(datekey)           
+        # remove repeat values 
+        tag = tag.split(',')
+        tag = set(tag)
+        tag = list(tag)
+        all = u"所有".encode("utf-8")
+        unclass = u"未分类".encode("utf-8")        
+# filter contain "u'所有'"
+        tag = filter(lambda x: all not in x, tag)
+# recover un-category tag (remove:u"未分类-")
+        def recovery(value):
+            if unclass not in value:return value
+            return value.split('-')[1]            
+        tag = map(recovery,tag)        
+        if '0' in tag and len(tag) > 1:
+            tag.remove('0')
+            rule = {"query":tag,"operator":"and"}
+            origquery['Subject'] = rule                      
+#totalquery  search all
+        totalquery = origquery.copy()
+
+        brains = self.search(totalquery)
+        return self.export(brains)
+
     
+    def search(self,totalquery):
+        
+        searchview = getMultiAdapter((self.context, self.request),name=u"sysajax_listings")
+        def getout_filter(brain):
+            if brain.regtype == getout[0].encode('utf-8'):
+                return False
+            else:
+                return True
+        # search all                         
+        totalbrains = searchview.search_multicondition(totalquery)
+        totalbrains = filter(getout_filter,totalbrains)
+        totalnum = len(totalbrains)      
+#call export function       
+        return totalbrains
+        
+    
+    def export(self,brains):
+        """Generator filled with the nashuiren data."""
+        datafile = self._createCSV(self._getDataInfos(brains))
+        return self._createRequest(datafile.getvalue(), "export.csv")    
+    
+    def _createCSV(self, lines):
+        """Write header and lines within the CSV file."""
+        datafile = StringIO()
+        writor = csv.writer(datafile)
+        writor.writerow(data_VALUES)
+        map(writor.writerow, lines)
+        return datafile
+
+    def _createRequest(self, data, filename):
+        """Create the request to be returned.
+
+        Add the right header and the CSV file.
+        """
+        self.request.response.addHeader('Content-Disposition', "attachment; filename=%s" % filename)
+        self.request.response.addHeader('Content-Type', "text/csv;charset=utf-8")
+        self.request.response.addHeader("Content-Transfer-Encoding", "8bit")        
+        self.request.response.addHeader('Content-Length', "%d" % len(data))
+        self.request.response.addHeader('Pragma', "no-cache")
+        self.request.response.addHeader('Cache-Control', "must-revalidate, post-check=0, pre-check=0, public")
+        self.request.response.addHeader('Expires', "0")
+        return data    
+    
+    def _getDataInfos(self,brains):
+        """fetch table columns info."""     
+
+        searchview = getMultiAdapter((self.context, self.request),name=u"sysajax_listings")
+        for k in brains:
+            bpath = k.getURL()
+            nid = bpath.split("/")[-2]
+            qry = {'id':nid}
+            qry['object_provides'] = Inashuiren.__identifier__
+            innerb = searchview.search_multicondition(qry)[0]                                          
+            props = []
+            if innerb is not None:
+                for p in data_PROPERTIES: # data properties               
+                    props.append(getattr(innerb,p))                    
+            yield props         
+        
+        
 class pretotalajaxsearch(totalajaxsearch):
     """for pre niandu multiconditions search"""
 
@@ -620,8 +770,8 @@ class pretotalajaxsearch(totalajaxsearch):
         "根据参数total,braindata,返回jason 输出"
         
         outhtml = ""     
-        import datetime
-        id = (datetime.datetime.today() + datetime.timedelta(-365)).strftime("%Y")
+#         import datetime
+#         id = (datetime.datetime.today() + datetime.timedelta(-365)).strftime("%Y")
         for k in braindata:
             bpath = k.getURL()
             nid = bpath.split("/")[-2]
