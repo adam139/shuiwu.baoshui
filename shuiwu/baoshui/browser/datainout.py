@@ -209,25 +209,21 @@ class DataInOut (BrowserView):
         
     
     def _getDataInfos(self,**kw):
-        """Generator filled with the orgs data."""
+        """Generator filled with the nashuiren data."""
 
         catalog = getToolByName(self.context, "portal_catalog")
         query = kw
-        query.update({"object_provides":Inashuiren.__identifier__})
-        
-        brains = catalog(query)
-        
+        query.update({"object_provides":Inashuiren.__identifier__})        
+        brains = catalog(query)        
         for i in brains:
-            dataobj = i.getObject()                                
+#             dataobj = i.getObject()                                
             props = []
-            if dataobj is not None:
-                for p in data_PROPERTIES: # data properties 
+            for p in data_PROPERTIES: # data properties 
 #                    import pdb
 #                    pdb.set_trace()                   
-                    if p == "organization_type" or p == "announcement_type" or p == "belondto_area":
-                        props.append(self.tranVoc(getattr(dataobj,p)))
-                    else:
-                        props.append(getattr(dataobj,p))                    
+                if i == "title":
+                    p = "Title"
+                props.append(getattr(i,p))                    
             yield props
 
 

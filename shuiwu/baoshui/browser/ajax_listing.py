@@ -545,19 +545,10 @@ class totalajaxsearch(ajaxsearch):
             outhtml = "%s%s" %(outhtml ,out)           
         data = {'searchresult': outhtml,'start':start,'size':size,'total':totalnum}
         return data
-data_PROPERTIES = [
-                   'Title',
-                   'Description',
-                   'guanlidaima',
-                   'regtype',
-                   'shuiguanyuan',
-                   'status','caiwufuzeren','caiwufuzerendianhua','banshuiren','banshuirendianhua'
-                   ]    
-# need byte string
-data_VALUES = [
-               u"x坐标".encode('utf-8'),
-               u"y坐标".encode('utf-8'),
-               ]
+
+from shuiwu.baoshui.browser.datainout import data_PROPERTIES
+from shuiwu.baoshui.browser.datainout import data_VALUES
+
 class searchResultExport(totalajaxsearch):
     """
     export multi-conditions search result to csv file
@@ -683,7 +674,9 @@ class searchResultExport(totalajaxsearch):
             innerb = searchview.search_multicondition(qry)[0]                                          
             props = []
             if innerb is not None:
-                for p in data_PROPERTIES: # data properties               
+                for p in data_PROPERTIES: # data properties 
+                    if p == "title":
+                        p = "Title"              
                     props.append(getattr(innerb,p))                    
             yield props         
         
