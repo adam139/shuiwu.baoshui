@@ -1,6 +1,6 @@
 #-*- coding: UTF-8 -*-
 import csv
-from StringIO import StringIO
+from cStringIO import StringIO
 from zope.interface import Interface
 from zope.interface import implementer
 from zope.component import getMultiAdapter
@@ -644,8 +644,26 @@ class searchResultExport(totalajaxsearch):
         """Write header and lines within the CSV file."""
         datafile = StringIO()
         writor = csv.writer(datafile)
-        writor.writerow(data_VALUES)
-        map(writor.writerow, lines)
+        def encode2ansi(ins):
+            if type(ins) == type([]):
+                rs = []
+                for k in ins:
+                    if type(k) == type(u"dummy"):
+                        item = k.encode('cp936')
+                    elif k != None:
+                        item = k.decode('utf-8').encode('cp936')
+                    else:
+                        item = k                        
+                    rs.append(item)
+                return rs                        
+            elif type(ins) == type(u"dummy"):
+                return ins.encode('cp936')
+            else:
+                return ins.decode('utf-8').encode('cp936')
+        data_VALUES2 = map(encode2ansi,data_VALUES)
+        lines2 = map(encode2ansi,lines)
+        writor.writerow(data_VALUES2)
+        map(writor.writerow, lines2)
         return datafile
 
     def _createRequest(self, data, filename):
