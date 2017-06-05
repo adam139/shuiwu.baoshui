@@ -1,6 +1,6 @@
 #-*- coding: UTF-8 -*-
 import csv
-from StringIO import StringIO
+from cStringIO import StringIO
 from zope import event
 from zope.interface import implements
 
