@@ -693,8 +693,8 @@ class searchResultExport(totalajaxsearch):
             props = []
             if innerb is not None:
                 for p in data_PROPERTIES: # data properties 
-                    if p == "title":
-                        p = "Title"              
+                    if p == "title":p = "Title"
+                    if p == "description":p = "Description"            
                     props.append(getattr(innerb,p))                    
             yield props         
         
