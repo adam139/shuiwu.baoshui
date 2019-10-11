@@ -277,12 +277,12 @@ class loadMore(sysloadMore):
         return searchview
 
  # ajax multi-condition search       
-class ajaxsearch(grok.View):
+class ajaxsearch(BrowserView):
     """AJAX action for search.
     """    
-    grok.context(Interface)
-    grok.name('ajaxsearch')
-    grok.require('zope2.View')    
+#     grok.context(Interface)
+#     grok.name('ajaxsearch')
+#     grok.require('zope2.View')    
 #     grok.require('shuiwu.baoshui.view_projectsummary')
 
 # annual range search 
@@ -418,9 +418,9 @@ class ajaxsearch(grok.View):
         return data
           
 class totalajaxsearch(ajaxsearch):
-    grok.context(Interface)
-    grok.name('ajax_total_search')
-    grok.require('zope2.View')
+#     grok.context(Interface)
+#     grok.name('ajax_total_search')
+#     grok.require('zope2.View')
         
     def render(self):    
         searchview = getMultiAdapter((self.context, self.request),name=u"sysajax_listings")        

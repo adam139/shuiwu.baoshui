@@ -73,5 +73,18 @@
         permission="cmf.ManagePortal"
 
         />
-		       
+    <!-- ajax view define-->
+    
+   <browser:page
+        name="ajaxsearch"
+        for="*"
+        class=".ajax_listing.ajaxsearch"
+        permission="zope2.View"
+        />
+   <browser:page
+        name="ajax_total_search"
+        for="*"
+        class=".ajax_listing.totalajaxsearch"
+        permission="zope2.View"
+        />        		       
 </configure>

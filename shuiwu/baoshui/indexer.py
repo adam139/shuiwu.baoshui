@@ -53,7 +53,8 @@ def indexer_guidangzhuangtai(obj, **kw):
 
 @indexer(Inashuiren)
 def nashuiren_searchable_text_indexer(obj):
-    """Dynamic searchable text indexer.
+    """Dynamic searchable text indexer.任意敲入纳税人市别号中4位字母
+    ,即返回相关查询结果
     """
     title = obj.title
     shibiehao = obj.guanlidaima.strip()

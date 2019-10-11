@@ -42,7 +42,9 @@ class TestView(InitContents):
                         }
 # Look up and invoke the view via traversal
         view = self.portal.restrictedTraverse('@@ajaxsearch')
-        result = view()
+#         import pdb
+#         pdb.set_trace()
+        result = view.render()
 
 
         self.assertEqual(json.loads(result)['size'],10)
@@ -66,7 +68,7 @@ class TestView(InitContents):
                         }
 # Look up and invoke the view via traversal
         view = self.portal.restrictedTraverse('@@ajax_total_search')
-        result = view()
+        result = view.render()
 
         self.assertEqual(json.loads(result)['size'],10)             
 
